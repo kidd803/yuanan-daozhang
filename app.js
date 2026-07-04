@@ -78,7 +78,7 @@ function bindEvents() {
     render();
   });
 
-  seriesSelect.addEventListener('change', () => {
+  seriesSelect?.addEventListener('change', () => {
     selectSeries(seriesSelect.value);
   });
 
@@ -109,7 +109,7 @@ function bindEvents() {
 
 function populateOptions() {
   yearSelect.append(...years.map((year) => option(year)));
-  seriesSelect.append(...seriesNames.map((series) => option(series)));
+  seriesSelect?.append(...seriesNames.map((series) => option(series)));
 }
 
 function render() {
@@ -122,7 +122,7 @@ function render() {
   renderPosts(filtered, selected);
   renderReader(selected);
   yearSelect.value = state.year;
-  seriesSelect.value = state.series;
+  if (seriesSelect) seriesSelect.value = state.series;
 }
 
 function matchPosts() {
@@ -155,8 +155,9 @@ function renderSummary(filtered) {
   const omitted = archiveMeta.omittedImageOnlyPosts || 0;
   const duplicates = archiveMeta.omittedDuplicatePosts || 0;
   const images = archiveMeta.publicImages || 0;
-  const duplicateText = duplicates ? `，並合併 ${formatCount(duplicates)} 筆重複影片分段` : '';
-  summary.textContent = `共 ${formatCount(posts.length)} 篇文字文章、${formatCount(images)} 張文章圖片，以 ${formatCount(CATEGORY_ORDER.length)} 個主題分類整理，目前符合 ${formatCount(filtered.length)} 篇，另保留 ${formatCount(omitted)} 篇純媒體貼文於本機原始資料${duplicateText}。`;
+  const duplicateText = duplicates ? `，已合併 ${formatCount(duplicates)} 筆重複影片分段` : '';
+  const omittedText = omitted ? `，另存 ${formatCount(omitted)} 篇純媒體原始貼文` : '';
+  summary.textContent = `已整理 ${formatCount(posts.length)} 篇公開文字文章、${formatCount(images)} 張文章圖片，分為 ${formatCount(CATEGORY_ORDER.length)} 個主題；目前符合 ${formatCount(filtered.length)} 篇${duplicateText}${omittedText}。`;
 }
 
 function renderSeries() {
@@ -195,16 +196,17 @@ function renderCategories() {
 
 function renderStats(filtered) {
   const linkCount = posts.reduce((sum, post) => sum + (post.links || []).length, 0);
-  const mediaCount = posts.reduce((sum, post) => sum + (post.mediaCount || 0), 0);
+  const mediaCount = archiveMeta.publicImages || posts.reduce((sum, post) => sum + (post.media || []).length, 0);
   stats.replaceChildren(
-    statLine('全部文字文章', formatCount(posts.length)),
+    statLine('公開文章', formatCount(posts.length)),
     statLine('符合條件', formatCount(filtered.length)),
     statLine('分類數', formatCount(CATEGORY_ORDER.length)),
     statLine('系列數', formatCount(seriesCounts.size)),
     statLine('最早日期', earliestPost?.date || '-'),
     statLine('最新日期', latestPost?.date || '-'),
     statLine('保留連結', formatCount(linkCount)),
-    statLine('公開圖片', formatCount(mediaCount))
+    statLine('公開圖片', formatCount(mediaCount)),
+    statLine('合併重複', formatCount(archiveMeta.omittedDuplicatePosts || 0))
   );
 }
 
