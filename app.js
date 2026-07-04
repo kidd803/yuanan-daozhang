@@ -29,6 +29,7 @@ const state = {
 };
 
 const summary = document.querySelector('#summary');
+const seriesBar = document.querySelector('#seriesBar');
 const categoryBar = document.querySelector('#categoryBar');
 const stats = document.querySelector('.stats');
 const postList = document.querySelector('#postList');
@@ -78,11 +79,7 @@ function bindEvents() {
   });
 
   seriesSelect.addEventListener('change', () => {
-    state.series = seriesSelect.value;
-    state.category = '全部';
-    state.visible = PAGE_SIZE;
-    state.selectedId = null;
-    render();
+    selectSeries(seriesSelect.value);
   });
 
   sortSelect.addEventListener('change', () => {
@@ -119,6 +116,7 @@ function render() {
   const filtered = matchPosts();
   const selected = selectedPost(filtered);
   renderSummary(filtered);
+  renderSeries();
   renderCategories();
   renderStats(filtered);
   renderPosts(filtered, selected);
@@ -159,6 +157,19 @@ function renderSummary(filtered) {
   const images = archiveMeta.publicImages || 0;
   const duplicateText = duplicates ? `，並合併 ${formatCount(duplicates)} 筆重複影片分段` : '';
   summary.textContent = `共 ${formatCount(posts.length)} 篇文字文章、${formatCount(images)} 張文章圖片，以 ${formatCount(CATEGORY_ORDER.length)} 個主題分類整理，目前符合 ${formatCount(filtered.length)} 篇，另保留 ${formatCount(omitted)} 篇純媒體貼文於本機原始資料${duplicateText}。`;
+}
+
+function renderSeries() {
+  const series = ['全部系列', ...seriesNames];
+  seriesBar.replaceChildren(...series.map((seriesName) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    const count = seriesName === '全部系列' ? posts.length : seriesCounts.get(seriesName) || 0;
+    button.textContent = `${seriesName} ${formatCount(count)}`;
+    button.setAttribute('aria-pressed', String(state.series === seriesName));
+    button.addEventListener('click', () => selectSeries(seriesName));
+    return button;
+  }));
 }
 
 function renderCategories() {
@@ -228,7 +239,7 @@ function postCard(post, selected) {
   node.setAttribute('aria-current', String(isSelected));
   node.querySelector('time').textContent = post.date;
   node.querySelector('.category').textContent = post.category || '未分類';
-  if (post.series) node.querySelector('.post-meta').append(seriesBadge(post));
+  if (post.series) node.querySelector('.post-meta').append(seriesBadge(post, true));
   node.querySelector('h2').textContent = post.title;
   node.querySelector('.excerpt').textContent = excerpt(post.body);
   const tags = node.querySelector('.tags');
@@ -273,7 +284,7 @@ function renderReader(post) {
   category.className = 'category';
   category.textContent = post.category || '未分類';
   meta.append(time, category);
-  if (post.series) meta.append(seriesBadge(post));
+  if (post.series) meta.append(seriesBadge(post, true));
   const title = document.createElement('h2');
   title.textContent = post.title;
   header.append(meta, title, readerActions(post));
@@ -382,6 +393,14 @@ function selectPost(id) {
   if (window.matchMedia('(max-width: 860px)').matches) reader.scrollIntoView({ block: 'start' });
 }
 
+function selectSeries(series) {
+  state.series = series;
+  state.category = '全部';
+  state.visible = PAGE_SIZE;
+  state.selectedId = null;
+  render();
+}
+
 function selectedPost(filtered) {
   if (!filtered.length) return null;
   return filtered.find((post) => post.id === state.selectedId) || filtered[0];
@@ -418,9 +437,20 @@ function detailItem(label, value) {
   return fragment;
 }
 
-function seriesBadge(post) {
-  const badge = document.createElement('span');
+function seriesBadge(post, clickable = false) {
+  const badge = document.createElement(clickable ? 'button' : 'span');
   badge.className = 'series-badge';
+  if (clickable) {
+    badge.type = 'button';
+    badge.title = `查看 ${post.series}`;
+    badge.addEventListener('click', (event) => {
+      event.stopPropagation();
+      selectSeries(post.series);
+    });
+    badge.addEventListener('keydown', (event) => {
+      event.stopPropagation();
+    });
+  }
   badge.textContent = seriesLabel(post);
   return badge;
 }
