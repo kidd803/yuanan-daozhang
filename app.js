@@ -161,11 +161,11 @@ function renderSummary(filtered) {
 }
 
 function renderSeries() {
-  const series = ['全部系列', ...seriesNames];
+  const series = seriesNames;
   seriesBar.replaceChildren(...series.map((seriesName) => {
     const button = document.createElement('button');
     button.type = 'button';
-    const count = seriesName === '全部系列' ? posts.length : seriesCounts.get(seriesName) || 0;
+    const count = seriesCounts.get(seriesName) || 0;
     button.textContent = `${seriesName} ${formatCount(count)}`;
     button.setAttribute('aria-pressed', String(state.series === seriesName));
     button.addEventListener('click', () => selectSeries(seriesName));
@@ -396,7 +396,7 @@ function selectPost(id) {
 }
 
 function selectSeries(series) {
-  state.series = series;
+  state.series = state.series === series ? '全部系列' : series;
   state.category = '全部';
   state.visible = PAGE_SIZE;
   state.selectedId = null;

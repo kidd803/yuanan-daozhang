@@ -1,18 +1,19 @@
 :root {
   color-scheme: light;
-  --paper: #f3f6f3;
+  --paper: #f4f7f5;
   --panel: #ffffff;
-  --ink: #202623;
-  --muted: #68736d;
-  --line: #d7ded6;
-  --green: #1f6b54;
-  --green-deep: #174f40;
-  --blue: #2f6285;
-  --gold: #9b7a32;
-  --red: #934739;
-  --soft-green: #e7efe8;
-  --soft-gold: #f4eddc;
-  --shadow: 0 16px 34px rgba(31, 45, 39, 0.09);
+  --ink: #1e2521;
+  --muted: #637169;
+  --line: #d5ded7;
+  --green: #1e7057;
+  --green-deep: #123e33;
+  --blue: #285f82;
+  --gold: #9b7830;
+  --red: #89372f;
+  --soft-green: #e6f0ea;
+  --soft-gold: #f6edda;
+  --shadow: 0 18px 42px rgba(25, 42, 35, 0.12);
+  --small-shadow: 0 8px 22px rgba(25, 42, 35, 0.06);
 }
 
 * {
@@ -30,40 +31,72 @@ body {
 body::before {
   content: "";
   display: block;
-  height: 6px;
+  height: 8px;
   background: var(--green-deep);
 }
 
 .shell {
   width: min(1440px, calc(100vw - 32px));
   margin: 0 auto;
-  padding: 24px 0 56px;
+  padding: 22px 0 56px;
 }
 
 .masthead {
   display: grid;
-  grid-template-columns: minmax(440px, 1fr) minmax(420px, 660px);
-  gap: 24px;
-  align-items: center;
-  padding: 0 0 24px;
-  border-bottom: 1px solid rgba(31, 107, 84, 0.22);
+  grid-template-columns: minmax(560px, 1fr) minmax(390px, 560px);
+  gap: 22px;
+  align-items: stretch;
+  padding: 20px;
+  border: 1px solid rgba(18, 62, 51, 0.18);
+  border-top: 5px solid var(--green-deep);
+  border-radius: 8px;
+  background: #fffefb;
+  box-shadow: var(--shadow);
 }
 
 .brand-lockup {
   display: grid;
-  grid-template-columns: 118px minmax(0, 1fr);
-  gap: 18px;
+  grid-template-columns: 176px minmax(0, 1fr);
+  gap: 22px;
   align-items: center;
 }
 
-.brand-photo {
-  width: 118px;
-  height: 138px;
-  border: 3px solid #ffffff;
+.portrait-frame {
+  position: relative;
+  width: 176px;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(18, 62, 51, 0.24);
   border-radius: 8px;
+  background: #17231f;
+  box-shadow: var(--small-shadow);
+}
+
+.portrait-frame::after {
+  content: "道語";
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 6px;
+  background: rgba(137, 55, 47, 0.92);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.brand-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: 50% 22%;
-  box-shadow: var(--shadow);
+  object-position: 50% 36%;
 }
 
 .brand-copy {
@@ -71,58 +104,81 @@ body::before {
 }
 
 .eyebrow {
-  margin: 0 0 4px;
+  margin: 0 0 6px;
   color: var(--gold);
-  font-size: 0.88rem;
-  font-weight: 750;
+  font-size: 0.92rem;
+  font-weight: 800;
 }
 
 h1 {
   margin: 0;
   color: var(--green-deep);
-  font-size: 2.45rem;
-  line-height: 1.12;
+  font-size: 3rem;
+  line-height: 1.06;
   letter-spacing: 0;
 }
 
-.brand-line {
-  margin: 8px 0 0;
-  color: var(--ink);
-  font-size: 1rem;
+.lineage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+}
+
+.lineage span {
+  min-height: 32px;
+  border: 1px solid rgba(155, 120, 48, 0.28);
+  border-left: 4px solid var(--gold);
+  border-radius: 7px;
+  background: var(--soft-gold);
+  color: #4c3a17;
+  padding: 4px 10px;
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.lineage span:nth-child(2) {
+  border-color: rgba(30, 112, 87, 0.24);
+  border-left-color: var(--green);
+  background: var(--soft-green);
+  color: var(--green-deep);
 }
 
 #summary {
   max-width: 720px;
-  margin: 8px 0 0;
+  margin: 14px 0 0;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.94rem;
 }
 
 .search-panel {
   display: grid;
   grid-template-columns: minmax(220px, 1fr) 120px 110px;
-  gap: 10px;
+  gap: 12px;
   align-items: end;
-  padding: 16px;
-  border: 1px solid rgba(31, 107, 84, 0.2);
+  align-content: center;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.82);
+  background: var(--green-deep);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .field {
   display: grid;
   gap: 5px;
-  color: var(--muted);
+  color: #edf4ee;
   font-size: 0.84rem;
+  font-weight: 750;
 }
 
 input,
 select {
   width: 100%;
-  min-height: 42px;
-  border: 1px solid rgba(31, 107, 84, 0.22);
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 8px;
-  background: var(--panel);
+  background: #fbfdfb;
   color: var(--ink);
   font: inherit;
   padding: 8px 12px;
@@ -136,7 +192,7 @@ input:focus,
 select:focus,
 button:focus,
 .post-card:focus {
-  outline: 3px solid rgba(49, 93, 136, 0.24);
+  outline: 3px solid rgba(40, 95, 130, 0.26);
   outline-offset: 1px;
 }
 
@@ -159,30 +215,31 @@ button:focus,
 .quick-searches button,
 .series-tabs button,
 .categories button {
-  min-height: 34px;
-  border: 1px solid var(--line);
+  min-height: 36px;
+  border: 1px solid rgba(18, 62, 51, 0.14);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.94);
   color: var(--ink);
-  padding: 6px 12px;
+  padding: 6px 13px;
   cursor: pointer;
+  box-shadow: 0 1px 0 rgba(18, 62, 51, 0.05);
 }
 
 .quick-searches button {
-  border-color: rgba(35, 104, 84, 0.28);
+  border-color: rgba(30, 112, 87, 0.26);
   color: var(--green);
-  font-weight: 700;
+  font-weight: 760;
 }
 
 .series-tabs {
-  padding: 12px 0 0;
+  padding: 14px 0 0;
 }
 
 .series-tabs button {
-  border-color: rgba(47, 98, 133, 0.28);
-  background: #f7fbfd;
+  border-color: rgba(40, 95, 130, 0.24);
+  background: #f6fbfd;
   color: var(--blue);
-  font-weight: 700;
+  font-weight: 760;
 }
 
 .series-tabs button[aria-pressed="true"] {
@@ -514,13 +571,17 @@ button.series-badge:hover {
     padding-top: 18px;
   }
 
-  .brand-lockup {
-    grid-template-columns: 100px minmax(0, 1fr);
+  .masthead {
+    padding: 16px;
   }
 
-  .brand-photo {
-    width: 100px;
-    height: 118px;
+  .brand-lockup {
+    grid-template-columns: 126px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .portrait-frame {
+    width: 126px;
   }
 
   h1 {
@@ -552,16 +613,33 @@ button.series-badge:hover {
   }
 
   .brand-lockup {
-    grid-template-columns: 82px minmax(0, 1fr);
+    grid-template-columns: 92px minmax(0, 1fr);
     gap: 12px;
   }
 
-  .brand-photo {
-    width: 82px;
-    height: 98px;
+  .portrait-frame {
+    width: 92px;
   }
 
-  .brand-line,
+  .portrait-frame::after {
+    right: 6px;
+    bottom: 6px;
+    width: 32px;
+    height: 32px;
+    font-size: 0.76rem;
+  }
+
+  .lineage {
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .lineage span {
+    min-height: 28px;
+    padding: 3px 8px;
+    font-size: 0.8rem;
+  }
+
   #summary {
     font-size: 0.88rem;
   }
