@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>圓安道長文章資料庫</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <div>
+          <p class="eyebrow">圓安道長公開文章</p>
+          <h1>圓安道長文章搜尋</h1>
+          <p id="summary">資料載入中</p>
+        </div>
+        <div class="search-panel" aria-label="文章篩選">
+          <label class="field search-field">
+            <span>搜尋</span>
+            <input id="searchInput" type="search" placeholder="輸入關鍵字、分類、系列或日期">
+          </label>
+          <label class="field">
+            <span>年份</span>
+            <select id="yearSelect">
+              <option value="全部年份">全部年份</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>系列</span>
+            <select id="seriesSelect">
+              <option value="全部系列">全部系列</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>排序</span>
+            <select id="sortSelect">
+              <option value="newest">新到舊</option>
+              <option value="oldest">舊到新</option>
+            </select>
+          </label>
+        </div>
+      </header>
+
+      <nav class="quick-searches" aria-label="常用主題">
+        <button type="button" data-query="因果">因果</button>
+        <button type="button" data-query="修行">修行</button>
+        <button type="button" data-query="靜心">靜心</button>
+        <button type="button" data-query="道德經">道德經</button>
+        <button type="button" data-query="氣功">氣功</button>
+        <button type="button" data-query="畫符">畫符</button>
+        <button type="button" data-query="通靈">通靈</button>
+        <button type="button" data-query="紫微斗數">紫微斗數</button>
+      </nav>
+
+      <nav id="categoryBar" class="categories" aria-label="分類"></nav>
+
+      <section class="layout">
+        <aside class="stats" aria-label="統計"></aside>
+        <section class="results" aria-label="文章列表">
+          <div class="result-head">
+            <h2 id="resultTitle">全部文章</h2>
+            <p id="resultMeta"></p>
+          </div>
+          <div id="postList" class="post-list"></div>
+          <button id="loadMoreButton" class="load-more" type="button">顯示更多</button>
+        </section>
+        <article id="reader" class="reader" aria-label="文章內容"></article>
+      </section>
+    </main>
+
+    <template id="postTemplate">
+      <article class="post-card" tabindex="0" role="button">
+        <div class="post-meta">
+          <time></time>
+          <span class="category"></span>
+        </div>
+        <h2></h2>
+        <p class="excerpt"></p>
+        <ul class="tags"></ul>
+      </article>
+    </template>
+
+    <script src="data/posts.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
