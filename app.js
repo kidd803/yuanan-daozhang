@@ -1,6 +1,21 @@
 const posts = Array.isArray(window.YUANAN_POSTS) ? window.YUANAN_POSTS : [];
 const archiveMeta = window.YUANAN_ARCHIVE_META || {};
 const PAGE_SIZE = 60;
+const DEFAULT_CATEGORY_ORDER = [
+  '【悟道真詮】',
+  '養生性命',
+  '處世立命',
+  '【全真道脈】',
+  '修身養性',
+  '人間修行',
+  '丹道修真',
+  '修心煉性',
+  '龍門丹道',
+  '道教經典'
+];
+const CATEGORY_ORDER = Array.isArray(archiveMeta.categoryOrder) && archiveMeta.categoryOrder.length
+  ? archiveMeta.categoryOrder
+  : DEFAULT_CATEGORY_ORDER;
 const countFormat = new Intl.NumberFormat('zh-Hant');
 
 const state = {
@@ -141,15 +156,16 @@ function renderSummary(filtered) {
   }
   const omitted = archiveMeta.omittedImageOnlyPosts || 0;
   const images = archiveMeta.publicImages || 0;
-  summary.textContent = `共 ${formatCount(posts.length)} 篇文字文章、${formatCount(images)} 張文章圖片，目前符合 ${formatCount(filtered.length)} 篇，另保留 ${formatCount(omitted)} 篇純媒體貼文於本機原始資料。`;
+  summary.textContent = `共 ${formatCount(posts.length)} 篇文字文章、${formatCount(images)} 張文章圖片，以 ${formatCount(CATEGORY_ORDER.length)} 個主題分類整理，目前符合 ${formatCount(filtered.length)} 篇，另保留 ${formatCount(omitted)} 篇純媒體貼文於本機原始資料。`;
 }
 
 function renderCategories() {
-  const categories = ['全部', ...categoryCounts.keys()];
+  const extraCategories = [...categoryCounts.keys()].filter((category) => !CATEGORY_ORDER.includes(category));
+  const categories = ['全部', ...CATEGORY_ORDER, ...extraCategories];
   categoryBar.replaceChildren(...categories.map((category) => {
     const button = document.createElement('button');
     button.type = 'button';
-    const count = category === '全部' ? posts.length : categoryCounts.get(category);
+    const count = category === '全部' ? posts.length : categoryCounts.get(category) || 0;
     button.textContent = `${category} ${formatCount(count)}`;
     button.setAttribute('aria-pressed', String(state.category === category));
     button.addEventListener('click', () => {
@@ -170,7 +186,7 @@ function renderStats(filtered) {
   stats.replaceChildren(
     statLine('全部文字文章', formatCount(posts.length)),
     statLine('符合條件', formatCount(filtered.length)),
-    statLine('分類數', formatCount(categoryCounts.size)),
+    statLine('分類數', formatCount(CATEGORY_ORDER.length)),
     statLine('系列數', formatCount(seriesCounts.size)),
     statLine('最早日期', earliestPost?.date || '-'),
     statLine('最新日期', latestPost?.date || '-'),
