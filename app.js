@@ -155,8 +155,10 @@ function renderSummary(filtered) {
     return;
   }
   const omitted = archiveMeta.omittedImageOnlyPosts || 0;
+  const duplicates = archiveMeta.omittedDuplicatePosts || 0;
   const images = archiveMeta.publicImages || 0;
-  summary.textContent = `共 ${formatCount(posts.length)} 篇文字文章、${formatCount(images)} 張文章圖片，以 ${formatCount(CATEGORY_ORDER.length)} 個主題分類整理，目前符合 ${formatCount(filtered.length)} 篇，另保留 ${formatCount(omitted)} 篇純媒體貼文於本機原始資料。`;
+  const duplicateText = duplicates ? `，並合併 ${formatCount(duplicates)} 筆重複影片分段` : '';
+  summary.textContent = `共 ${formatCount(posts.length)} 篇文字文章、${formatCount(images)} 張文章圖片，以 ${formatCount(CATEGORY_ORDER.length)} 個主題分類整理，目前符合 ${formatCount(filtered.length)} 篇，另保留 ${formatCount(omitted)} 篇純媒體貼文於本機原始資料${duplicateText}。`;
 }
 
 function renderCategories() {

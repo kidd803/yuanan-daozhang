@@ -106,8 +106,9 @@ vm.runInContext(text, sandbox, { filename: 'posts.js' });
 const posts = sandbox.window.YUANAN_POSTS || [];
 const archiveMeta = sandbox.window.YUANAN_ARCHIVE_META || {};
 const legacyCategories = loadLegacyCategories();
+const { posts: publicPosts, dedupeStats } = dedupePosts(posts);
 
-for (const post of posts) {
+for (const post of publicPosts) {
   if (!post.legacyCategory && legacyCategories.has(post.id)) {
     post.legacyCategory = legacyCategories.get(post.id);
   }
@@ -115,17 +116,23 @@ for (const post of posts) {
 }
 
 const categories = Object.fromEntries(CATEGORY_ORDER.map((category) => [category, 0]));
-for (const post of posts) {
+const series = {};
+for (const post of publicPosts) {
   categories[post.category] += 1;
+  if (post.series) series[post.series] = (series[post.series] || 0) + 1;
 }
 
 archiveMeta.categories = categories;
+archiveMeta.series = sortCounts(series);
 archiveMeta.categoryOrder = CATEGORY_ORDER;
 archiveMeta.categoryModel = 'fixed-ten-topic-rules-2026-07-04';
+archiveMeta.publicPosts = publicPosts.length;
+archiveMeta.omittedDuplicatePosts = dedupeStats.totalRemoved;
+archiveMeta.dedupedSeries = dedupeStats.series;
 
 const output = [
   `window.YUANAN_ARCHIVE_META = ${JSON.stringify(archiveMeta, null, 2)};`,
-  `window.YUANAN_POSTS = ${JSON.stringify(posts)};`,
+  `window.YUANAN_POSTS = ${JSON.stringify(publicPosts)};`,
   ''
 ].join('\n');
 
@@ -133,13 +140,18 @@ fs.writeFileSync(DATA_FILE, output);
 
 if (fs.existsSync(SUMMARY_FILE)) {
   const summary = JSON.parse(fs.readFileSync(SUMMARY_FILE, 'utf8'));
+  summary.publicPosts = publicPosts.length;
   summary.categories = categories;
+  summary.series = archiveMeta.series;
   summary.categoryOrder = CATEGORY_ORDER;
   summary.categoryModel = archiveMeta.categoryModel;
+  summary.omittedDuplicatePosts = dedupeStats.totalRemoved;
+  summary.dedupedSeries = dedupeStats.series;
   fs.writeFileSync(SUMMARY_FILE, `${JSON.stringify(summary, null, 2)}\n`);
 }
 
 console.log(JSON.stringify(categories, null, 2));
+console.log(JSON.stringify(dedupeStats, null, 2));
 
 function classify(post) {
   const title = post.title || '';
@@ -179,6 +191,99 @@ function firstMatch(text, rules) {
 
 function compact(parts) {
   return parts.filter(Boolean).join('\n').normalize('NFKC');
+}
+
+function dedupePosts(items) {
+  const dedupeSeries = new Map([
+    ['全真龍門方便法門影片', yuananVideoKey]
+  ]);
+  const groups = new Map();
+  const passthrough = [];
+
+  for (const post of items) {
+    const keyFn = dedupeSeries.get(post.series);
+    if (!keyFn) {
+      passthrough.push(post);
+      continue;
+    }
+    const key = `${post.series}::${keyFn(post) || post.id}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(post);
+  }
+
+  const selected = [];
+  const seriesStats = {};
+  for (const group of groups.values()) {
+    const representative = chooseRepresentative(group);
+    selected.push(representative);
+    const seriesName = representative.series;
+    if (!seriesStats[seriesName]) {
+      seriesStats[seriesName] = { before: 0, after: 0, removed: 0 };
+    }
+    seriesStats[seriesName].before += group.length;
+    seriesStats[seriesName].after += 1;
+    seriesStats[seriesName].removed += group.length - 1;
+  }
+
+  const merged = [...passthrough, ...selected].sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+  return {
+    posts: merged,
+    dedupeStats: {
+      totalRemoved: Object.values(seriesStats).reduce((sum, item) => sum + item.removed, 0),
+      series: seriesStats
+    }
+  };
+}
+
+function chooseRepresentative(group) {
+  return [...group].sort((a, b) => representativeScore(b) - representativeScore(a))[0];
+}
+
+function representativeScore(post) {
+  const text = normalizeVideoText(`${post.title}\n${post.body}`);
+  let score = 0;
+  if (/[（(](全|修正版)[）)]/.test(text)) score += 10000;
+  if (!/第\s*[\d一二三四五六七八九十百零〇兩]+\s*部/.test(text)) score += 5000;
+  score += Math.min(normalizeVideoText(post.body).length, 2000);
+  score += (post.media || []).length * 100;
+  score += Math.floor((post.timestamp || 0) / 1000000000000);
+  return score;
+}
+
+function yuananVideoKey(post) {
+  const source = normalizeVideoText(`${post.title}\n${post.body}`);
+  const live = source.match(/圓安講道實況視頻\s*\([一二三四五六七八九十]+\)/);
+  if (live) return live[0];
+
+  const service = source.match(/圓安信徒服務視頻\s*\([一二三四五六七八九十]+\)/);
+  if (service) return service[0];
+
+  const lecture = source.match(/(?:《?全真龍門方便法門》?\s*)?(?:影片\s*)?第?([\d一二三四五六七八九十百零〇兩]+)講(?:\s*\((續|修正版|全)\))?/);
+  if (source.includes('全真龍門方便法門') && lecture) {
+    const suffix = lecture[2] && lecture[2] !== '全' ? `(${lecture[2]})` : '';
+    return `全真龍門方便法門 第${lecture[1]}講${suffix}`;
+  }
+
+  return normalizeVideoText(post.body || post.title)
+    .replace(/第\s*[\d一二三四五六七八九十百零〇兩]+\s*部.*/g, '')
+    .trim();
+}
+
+function normalizeVideoText(text) {
+  return (text || '')
+    .normalize('NFKC')
+    .replace(/#[\s　]*圓安講道[第\s\d一二三四五六七八九十百零〇兩]*部?/g, '')
+    .replace(/#[\s　]*圓安講道/g, '')
+    .replace(/[🎦☯️🧎🧘📶⏰👃]/gu, '')
+    .replace(/安徽省?亳州市|高雄市/g, '')
+    .replace(/[（]/g, '(')
+    .replace(/[）]/g, ')')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function sortCounts(counts) {
+  return Object.fromEntries(Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'zh-Hant')));
 }
 
 function loadLegacyCategories() {

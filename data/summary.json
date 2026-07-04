@@ -3,7 +3,7 @@
   "generatedAt": "2026-07-04T07:00:13.483Z",
   "source": "林圓安 Facebook 官方匯出資料，本公開版保留文字文章與壓縮前 Facebook 中等品質圖片",
   "totalSourcePosts": 3402,
-  "publicPosts": 2328,
+  "publicPosts": 1953,
   "omittedImageOnlyPosts": 1074,
   "publicImages": 4175,
   "publicImageBytes": 520641903,
@@ -20,14 +20,14 @@
     "人間修行": 496,
     "丹道修真": 259,
     "修心煉性": 180,
-    "龍門丹道": 567,
+    "龍門丹道": 192,
     "道教經典": 421
   },
   "series": {
-    "全真龍門方便法門影片": 455,
     "全真龍門方便法門": 109,
     "黃元吉 道德經 81章": 93,
     "淺譯 道德經 81章": 89,
+    "全真龍門方便法門影片": 80,
     "通靈覺知": 40,
     "乩童文化": 38,
     "圓安論氣功": 38,
@@ -46,5 +46,13 @@
     "龍門丹道",
     "道教經典"
   ],
-  "categoryModel": "fixed-ten-topic-rules-2026-07-04"
+  "categoryModel": "fixed-ten-topic-rules-2026-07-04",
+  "omittedDuplicatePosts": 375,
+  "dedupedSeries": {
+    "全真龍門方便法門影片": {
+      "before": 455,
+      "after": 80,
+      "removed": 375
+    }
+  }
 }
