@@ -140,7 +140,8 @@ function renderSummary(filtered) {
     return;
   }
   const omitted = archiveMeta.omittedImageOnlyPosts || 0;
-  summary.textContent = `共 ${formatCount(posts.length)} 篇文字文章，目前符合 ${formatCount(filtered.length)} 篇，另保留 ${formatCount(omitted)} 篇純媒體貼文於本機原始資料。`;
+  const images = archiveMeta.publicImages || 0;
+  summary.textContent = `共 ${formatCount(posts.length)} 篇文字文章、${formatCount(images)} 張文章圖片，目前符合 ${formatCount(filtered.length)} 篇，另保留 ${formatCount(omitted)} 篇純媒體貼文於本機原始資料。`;
 }
 
 function renderCategories() {
@@ -174,7 +175,7 @@ function renderStats(filtered) {
     statLine('最早日期', earliestPost?.date || '-'),
     statLine('最新日期', latestPost?.date || '-'),
     statLine('保留連結', formatCount(linkCount)),
-    statLine('原附件數', formatCount(mediaCount))
+    statLine('公開圖片', formatCount(mediaCount))
   );
 }
 
@@ -213,11 +214,18 @@ function postCard(post, selected) {
   node.querySelector('h2').textContent = post.title;
   node.querySelector('.excerpt').textContent = excerpt(post.body);
   const tags = node.querySelector('.tags');
-  tags.replaceChildren(...(post.tags || []).slice(0, 6).map((tag) => {
+  const tagNodes = (post.tags || []).slice(0, 6).map((tag) => {
     const item = document.createElement('li');
     item.textContent = tag;
     return item;
-  }));
+  });
+  if ((post.media || []).length) {
+    const mediaBadge = document.createElement('li');
+    mediaBadge.className = 'media-badge';
+    mediaBadge.textContent = `圖片 ${formatCount(post.media.length)}`;
+    tagNodes.push(mediaBadge);
+  }
+  tags.replaceChildren(...tagNodes);
   node.addEventListener('click', () => selectPost(post.id));
   node.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -268,11 +276,41 @@ function renderReader(post) {
     detailItem('原附件數', formatCount(post.mediaCount || 0))
   );
 
-  const sections = [header, body];
+  const sections = [header];
+  const media = renderMedia(post);
+  if (media) sections.push(media);
+  sections.push(body);
   if ((post.links || []).length) sections.push(linkList(post.links));
   if ((post.tags || []).length) sections.push(tagList(post.tags));
   sections.push(details);
   reader.replaceChildren(...sections);
+}
+
+function renderMedia(post) {
+  const media = (post.media || []).filter((item) => item?.src);
+  if (!media.length) return null;
+
+  const section = document.createElement('section');
+  section.className = 'reader-media';
+  const heading = document.createElement('h3');
+  heading.textContent = `文章圖片 ${formatCount(media.length)} 張`;
+  const grid = document.createElement('div');
+  grid.className = 'media-grid';
+  grid.replaceChildren(...media.map((item, index) => {
+    const link = document.createElement('a');
+    link.href = item.src;
+    link.className = 'media-link';
+    link.target = '_blank';
+    link.rel = 'noreferrer';
+    const image = document.createElement('img');
+    image.src = item.src;
+    image.alt = `${post.title} 圖片 ${index + 1}`;
+    image.loading = 'lazy';
+    link.append(image);
+    return link;
+  }));
+  section.append(heading, grid);
+  return section;
 }
 
 function readerActions(post) {
