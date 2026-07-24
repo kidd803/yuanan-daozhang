@@ -599,6 +599,104 @@ button.series-badge:hover {
   place-items: center;
 }
 
+.course-order {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 12px;
+  width: min(330px, calc(100vw - 32px));
+  border: 1px solid rgba(155, 120, 48, 0.34);
+  border-radius: 8px;
+  background: #fffaf0;
+  padding: 10px;
+  box-shadow: 0 16px 40px rgba(25, 42, 35, 0.22);
+}
+
+.course-order-image-link {
+  display: block;
+  overflow: hidden;
+  align-self: stretch;
+  min-height: 124px;
+  border: 1px solid rgba(155, 120, 48, 0.26);
+  border-radius: 7px;
+  background: #efe2c5;
+}
+
+.course-order-image-link img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0;
+}
+
+.course-order-copy {
+  min-width: 0;
+}
+
+.course-order-kicker {
+  margin: 0 0 2px;
+  color: var(--gold);
+  font-size: 0.74rem;
+  font-weight: 850;
+}
+
+.course-order h2 {
+  margin: 0;
+  color: var(--green-deep);
+  font-size: 0.98rem;
+  line-height: 1.32;
+  letter-spacing: 0;
+}
+
+.course-order p {
+  margin: 5px 0 0;
+  color: #46564e;
+  font-size: 0.78rem;
+  line-height: 1.42;
+}
+
+.course-order ul {
+  display: grid;
+  gap: 1px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.38;
+}
+
+.course-order li::before {
+  content: "• ";
+  color: var(--gold);
+  font-weight: 900;
+}
+
+.course-order-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  margin-top: 8px;
+  border: 1px solid var(--green);
+  border-radius: 7px;
+  background: var(--green);
+  color: #fff;
+  padding: 5px 11px;
+  font-size: 0.84rem;
+  font-weight: 850;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.course-order-button:hover {
+  background: var(--green-deep);
+}
+
 @media (max-width: 1120px) {
   .masthead {
     grid-template-columns: 1fr;
@@ -621,6 +719,7 @@ button.series-badge:hover {
   .shell {
     width: min(100vw - 20px, 720px);
     padding-top: 18px;
+    padding-bottom: 196px;
   }
 
   .masthead {
@@ -656,6 +755,32 @@ button.series-badge:hover {
   .reader {
     position: static;
     grid-column: auto;
+  }
+
+  .course-order {
+    right: 10px;
+    left: 10px;
+    bottom: 10px;
+    grid-template-columns: 76px minmax(0, 1fr);
+    width: auto;
+    padding: 9px;
+  }
+
+  .course-order-image-link {
+    min-height: 108px;
+  }
+
+  .course-order p {
+    margin-top: 3px;
+  }
+
+  .course-order ul {
+    grid-template-columns: 1fr 1fr;
+    gap: 1px 8px;
+  }
+
+  .course-order li:last-child {
+    grid-column: 1 / -1;
   }
 }
 
@@ -706,5 +831,28 @@ button.series-badge:hover {
 
   .reader-head h2 {
     font-size: 1.25rem;
+  }
+
+  .course-order {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
+  .course-order-image-link {
+    min-height: 96px;
+  }
+
+  .course-order h2 {
+    font-size: 0.9rem;
+  }
+
+  .course-order p,
+  .course-order ul {
+    font-size: 0.72rem;
+  }
+
+  .course-order-button {
+    min-height: 31px;
+    margin-top: 6px;
+    font-size: 0.78rem;
   }
 }
