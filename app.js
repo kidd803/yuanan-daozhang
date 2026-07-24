@@ -21,6 +21,7 @@ const SECRET_PHRASES = ['林明心', '林明毅', '林圓安'];
 const PUBLIC_PREVIEW_RATIO = 0.5;
 const RECOMMENDATION_MIN_LENGTH = 320;
 const ARTICLE_UNLOCK_KEY = 'yuanan-article-unlocked';
+const SITE_URL = 'https://taoism.com.tw';
 
 const state = {
   category: '全部',
@@ -458,8 +459,8 @@ function renderLockedReader(post) {
 
   panel.addEventListener('submit', (event) => {
     event.preventDefault();
-    const ok = SECRET_PHRASES.some((phrase) => normalizeSecret(phrase) === normalizeSecret(input.value));
-    if (!ok) {
+    const matchedPhrase = SECRET_PHRASES.find((phrase) => normalizeSecret(phrase) === normalizeSecret(input.value));
+    if (!matchedPhrase) {
       error.textContent = '暗語不正確，請再確認。';
       error.hidden = false;
       input.select();
@@ -467,6 +468,7 @@ function renderLockedReader(post) {
     }
     state.unlocked = true;
     writeUnlockState();
+    trackArticleUnlock(post, matchedPhrase);
     render();
   });
 
@@ -590,6 +592,24 @@ function closeCourseFrameworkLightbox() {
   courseFrameworkLightbox.hidden = true;
   document.body.classList.remove('has-open-lightbox');
   courseFrameworkOpen?.focus({ preventScroll: true });
+}
+
+function trackArticleUnlock(post, phrase) {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', 'unlock_article_success', {
+    event_label: `暗語成功開啟文章（${phrase}）`,
+    unlock_phrase: phrase,
+    article_title: post.title || '未命名文章',
+    article_url: publicArticleUrl(post),
+    article_id: post.id || '',
+    article_category: post.category || '',
+    article_series: post.series || ''
+  });
+}
+
+function publicArticleUrl(post) {
+  if (!post?.id) return SITE_URL;
+  return `${SITE_URL}/articles/${post.id}.html`;
 }
 
 function hourlyRecommendation() {
