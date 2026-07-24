@@ -128,6 +128,7 @@ function populateOptions() {
 function render() {
   const filtered = matchPosts();
   const selected = selectedPost(filtered);
+  document.body.classList.toggle('is-reading-article', Boolean(selected));
   renderSummary(filtered);
   renderSeries();
   renderCategories();
