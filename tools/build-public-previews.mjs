@@ -49,6 +49,7 @@ function articleIndex(items) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 ${faviconLinks('../')}
+${analyticsTag()}
     <title>圓安道語公開文章預覽索引</title>
     <meta name="description" content="圓安道長公開文章預覽索引，提供約 50% 文章內文供搜尋與查找。">
     <link rel="canonical" href="${SITE_URL}/articles/">
@@ -85,6 +86,7 @@ function articlePage(post) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 ${faviconLinks('../')}
+${analyticsTag()}
     <title>${escapeHtml(post.title || '未命名文章')}｜圓安道語公開預覽</title>
     <meta name="description" content="${escapeHtml(description)}">
     <link rel="canonical" href="${url}">
@@ -140,6 +142,18 @@ ${urls.map((item) => `  <url>
 function faviconLinks(prefix = '') {
   return `    <link rel="icon" type="image/png" sizes="512x512" href="${prefix}assets/favicon.png?v=${ICON_VERSION}">
     <link rel="apple-touch-icon" sizes="180x180" href="${prefix}assets/apple-touch-icon.png?v=${ICON_VERSION}">`;
+}
+
+function analyticsTag() {
+  return `    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2KX5M6ZD9N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2KX5M6ZD9N');
+    </script>`;
 }
 
 function publicPreview(text) {
