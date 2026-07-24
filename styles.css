@@ -323,7 +323,7 @@ button:focus,
 
 .layout {
   display: grid;
-  grid-template-columns: 220px 220px minmax(300px, 380px) minmax(460px, 1fr);
+  grid-template-columns: 220px minmax(300px, 380px) minmax(460px, 1fr);
   gap: 20px 24px;
   align-items: start;
 }
@@ -331,7 +331,8 @@ button:focus,
 .course-framework-ad {
   display: grid;
   gap: 12px;
-  grid-column: 1;
+  width: min(300px, 100%);
+  margin: 18px 0 10px;
   min-width: 0;
   border: 1px solid rgba(155, 120, 48, 0.3);
   border-radius: 8px;
@@ -379,7 +380,6 @@ button:focus,
 }
 
 .stats {
-  grid-column: 2;
   position: sticky;
   top: 16px;
   display: grid;
@@ -404,7 +404,6 @@ button:focus,
 }
 
 .results {
-  grid-column: 3;
   min-width: 0;
 }
 
@@ -523,7 +522,6 @@ button.series-badge:hover {
 }
 
 .reader {
-  grid-column: 4;
   position: sticky;
   top: 16px;
   min-width: 0;
@@ -1129,6 +1127,7 @@ button.series-badge:hover {
   }
 
   .course-framework-ad {
+    width: 100%;
     grid-template-columns: 112px minmax(0, 1fr);
     align-items: center;
     gap: 10px;
