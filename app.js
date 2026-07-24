@@ -18,7 +18,7 @@ const CATEGORY_ORDER = Array.isArray(archiveMeta.categoryOrder) && archiveMeta.c
   : DEFAULT_CATEGORY_ORDER;
 const countFormat = new Intl.NumberFormat('zh-Hant');
 const SECRET_PHRASES = ['林明心', '林明毅', '林圓安'];
-const PUBLIC_PREVIEW_RATIO = 0.3;
+const PUBLIC_PREVIEW_RATIO = 0.5;
 const RECOMMENDATION_MIN_LENGTH = 320;
 const ARTICLE_UNLOCK_KEY = 'yuanan-article-unlocked';
 
@@ -403,7 +403,7 @@ function renderLockedReader(post) {
   const preview = document.createElement('section');
   preview.className = 'public-preview';
   const previewHeading = document.createElement('h3');
-  previewHeading.textContent = '公開預覽 約 30%';
+  previewHeading.textContent = '公開預覽 約 50%';
   const previewBody = document.createElement('div');
   previewBody.className = 'reader-body';
   previewBody.replaceChildren(...paragraphBlocks(publicPreview(post.body)).map((block) => {
@@ -430,7 +430,7 @@ function renderLockedReader(post) {
   label.append(labelText, input);
 
   const hint = document.createElement('p');
-  hint.textContent = '上方已公開約 30% 內文，暗語正確後即可閱讀全文。';
+  hint.textContent = '上方已公開約 50% 內文，暗語正確後即可閱讀全文。';
 
   const error = document.createElement('p');
   error.className = 'unlock-error';

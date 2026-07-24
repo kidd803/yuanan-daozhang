@@ -3,7 +3,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 
 const SITE_URL = 'https://taoism.com.tw';
-const PREVIEW_RATIO = 0.3;
+const PREVIEW_RATIO = 0.5;
 const STYLE_VERSION = '20260724-public-preview';
 const ICON_VERSION = '20260724-mobile-course';
 const outputDir = 'articles';
@@ -15,7 +15,9 @@ vm.runInContext(source, context);
 
 const posts = Array.isArray(context.window.YUANAN_POSTS) ? context.window.YUANAN_POSTS : [];
 
-await rm(outputDir, { recursive: true, force: true });
+if (process.env.PRESERVE_ARTICLES_DIR !== '1') {
+  await rm(outputDir, { recursive: true, force: true });
+}
 await mkdir(outputDir, { recursive: true });
 
 await writeFile(path.join(outputDir, 'index.html'), articleIndex(posts), 'utf8');
@@ -48,7 +50,7 @@ function articleIndex(items) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 ${faviconLinks('../')}
     <title>圓安道語公開文章預覽索引</title>
-    <meta name="description" content="圓安道長公開文章預覽索引，提供約 30% 文章內文供搜尋與查找。">
+    <meta name="description" content="圓安道長公開文章預覽索引，提供約 50% 文章內文供搜尋與查找。">
     <link rel="canonical" href="${SITE_URL}/articles/">
     <link rel="stylesheet" href="../styles.css?v=${STYLE_VERSION}">
   </head>
@@ -58,7 +60,7 @@ ${faviconLinks('../')}
         <a class="preview-home" href="../">圓安道語</a>
         <p class="eyebrow">公開文章預覽索引</p>
         <h1>圓安道語公開文章預覽索引</h1>
-        <p>本頁提供每篇文章約 30% 公開預覽，方便搜尋引擎與信眾查找主題。完整內文請回主站輸入暗語閱讀。</p>
+        <p>本頁提供每篇文章約 50% 公開預覽，方便搜尋引擎與信眾查找主題。完整內文請回主站輸入暗語閱讀。</p>
       </header>
       <section class="preview-list" aria-label="公開文章預覽">
 ${cards}
@@ -93,7 +95,7 @@ ${faviconLinks('../')}
       <article class="preview-article">
         <header class="preview-header">
           <a class="preview-home" href="../">圓安道語</a>
-          <p class="eyebrow">公開文章預覽 約 30%</p>
+          <p class="eyebrow">公開文章預覽 約 50%</p>
           <h1>${escapeHtml(post.title || '未命名文章')}</h1>
           <div class="post-meta">
             <time datetime="${escapeHtml(post.date || '')}">${escapeHtml(post.date || '')}</time>
@@ -105,7 +107,7 @@ ${faviconLinks('../')}
 ${paragraphs}
         </section>
         <footer class="preview-lock">
-          <p>以上為本文約 30% 公開預覽。完整內文請回主站搜尋文章，並輸入暗語閱讀。</p>
+          <p>以上為本文約 50% 公開預覽。完整內文請回主站搜尋文章，並輸入暗語閱讀。</p>
           <a class="course-order-button" href="../">回圓安道語主站</a>
         </footer>
       </article>
