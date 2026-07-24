@@ -601,13 +601,13 @@ button.series-badge:hover {
 
 .course-order {
   position: fixed;
-  left: 16px;
+  left: max(16px, calc((100% - 1440px) / 2));
   bottom: 16px;
   z-index: 30;
   display: grid;
-  grid-template-columns: 88px minmax(0, 1fr);
-  gap: 12px;
-  width: min(330px, calc(100vw - 32px));
+  grid-template-columns: 1fr;
+  gap: 10px;
+  width: 220px;
   border: 1px solid rgba(155, 120, 48, 0.34);
   border-radius: 8px;
   background: #fffaf0;
@@ -618,8 +618,7 @@ button.series-badge:hover {
 .course-order-image-link {
   display: block;
   overflow: hidden;
-  align-self: stretch;
-  min-height: 124px;
+  aspect-ratio: 16 / 11;
   border: 1px solid rgba(155, 120, 48, 0.26);
   border-radius: 7px;
   background: #efe2c5;
@@ -640,14 +639,14 @@ button.series-badge:hover {
 .course-order-kicker {
   margin: 0 0 2px;
   color: var(--gold);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 850;
 }
 
 .course-order h2 {
   margin: 0;
   color: var(--green-deep);
-  font-size: 0.98rem;
+  font-size: 0.94rem;
   line-height: 1.32;
   letter-spacing: 0;
 }
@@ -655,7 +654,7 @@ button.series-badge:hover {
 .course-order p {
   margin: 5px 0 0;
   color: #46564e;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   line-height: 1.42;
 }
 
@@ -666,7 +665,7 @@ button.series-badge:hover {
   padding: 0;
   list-style: none;
   color: var(--muted);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   line-height: 1.38;
 }
 
@@ -680,6 +679,7 @@ button.series-badge:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   min-height: 34px;
   margin-top: 8px;
   border: 1px solid var(--green);
@@ -713,13 +713,17 @@ button.series-badge:hover {
   .reader {
     grid-column: 2;
   }
+
+  .course-order {
+    width: 200px;
+  }
 }
 
 @media (max-width: 860px) {
   .shell {
     width: min(100vw - 20px, 720px);
     padding-top: 18px;
-    padding-bottom: 196px;
+    padding-bottom: 320px;
   }
 
   .masthead {
@@ -761,13 +765,14 @@ button.series-badge:hover {
     right: 10px;
     left: 10px;
     bottom: 10px;
-    grid-template-columns: 76px minmax(0, 1fr);
+    grid-template-columns: 1fr;
+    gap: 8px;
     width: auto;
     padding: 9px;
   }
 
   .course-order-image-link {
-    min-height: 108px;
+    aspect-ratio: 16 / 5;
   }
 
   .course-order p {
@@ -834,11 +839,11 @@ button.series-badge:hover {
   }
 
   .course-order {
-    grid-template-columns: 64px minmax(0, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .course-order-image-link {
-    min-height: 96px;
+    aspect-ratio: 16 / 5;
   }
 
   .course-order h2 {
