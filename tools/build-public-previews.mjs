@@ -61,7 +61,7 @@ ${analyticsTag()}
         <a class="preview-home" href="../">圓安道語</a>
         <p class="eyebrow">公開文章預覽索引</p>
         <h1>圓安道語公開文章預覽索引</h1>
-        <p>本頁提供每篇文章約 50% 公開預覽，方便搜尋引擎與信眾查找主題。完整內文請回主站輸入暗語閱讀。</p>
+        <p>本頁提供每篇文章約 50% 公開預覽，方便搜尋引擎與信眾查找主題。完整內文請回主站輸入已登記道名閱讀。</p>
       </header>
       <section class="preview-list" aria-label="公開文章預覽">
 ${cards}
@@ -109,7 +109,7 @@ ${analyticsTag()}
 ${paragraphs}
         </section>
         <footer class="preview-lock">
-          <p>以上為本文約 50% 公開預覽。完整內文請回主站搜尋文章，並輸入暗語閱讀。</p>
+          <p>以上為本文約 50% 公開預覽。完整內文請回主站搜尋文章，並輸入已登記道名閱讀。</p>
           <a class="course-order-button" href="../">回圓安道語主站</a>
         </footer>
       </article>

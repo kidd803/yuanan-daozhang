@@ -398,7 +398,7 @@ function renderHourlyRecommendation() {
 
   const note = document.createElement('p');
   note.className = 'hourly-pick-note';
-  note.textContent = '每小時自動換一篇；完整內文仍需輸入暗語。';
+  note.textContent = '每小時自動換一篇；完整內文需輸入已登記道名。';
 
   section.append(header, preview, actions, note);
   reader.replaceChildren(section);
@@ -439,7 +439,7 @@ function renderLockedReader(post) {
   const label = document.createElement('label');
   label.className = 'field unlock-field';
   const labelText = document.createElement('span');
-  labelText.textContent = '暗語';
+  labelText.textContent = '道名';
   const input = document.createElement('input');
   input.type = 'text';
   input.lang = 'zh-Hant';
@@ -447,11 +447,11 @@ function renderLockedReader(post) {
   input.autocomplete = 'off';
   input.autocapitalize = 'off';
   input.spellcheck = false;
-  input.placeholder = '請輸入暗語';
+  input.placeholder = '請輸入道名';
   label.append(labelText, input);
 
   const hint = document.createElement('p');
-  hint.textContent = '上方已公開約 50% 內文，暗語正確後即可閱讀全文。';
+  hint.textContent = '與林明心道長登記，輸入您的道名，正確後即可閱讀全文。';
 
   const error = document.createElement('p');
   error.className = 'unlock-error';
@@ -465,7 +465,7 @@ function renderLockedReader(post) {
     event.preventDefault();
     const matchedPhrase = SECRET_PHRASES.find((phrase) => normalizeSecret(phrase) === normalizeSecret(input.value));
     if (!matchedPhrase) {
-      error.textContent = '暗語不正確，請再確認。';
+      error.textContent = '道名不正確，請再確認。';
       error.hidden = false;
       input.select();
       return;
@@ -615,8 +615,8 @@ function closeCourseFrameworkLightbox() {
 function trackArticleUnlock(post, phrase) {
   if (typeof window.gtag !== 'function') return;
   window.gtag('event', 'unlock_article_success', {
-    event_label: `暗語成功開啟文章（${phrase}）`,
-    unlock_phrase: phrase,
+    event_label: `道名成功開啟文章（${phrase}）`,
+    dao_name: phrase,
     article_title: post.title || '未命名文章',
     article_url: publicArticleUrl(post),
     article_id: post.id || '',
