@@ -49,6 +49,7 @@ const resultMeta = document.querySelector('#resultMeta');
 const loadMoreButton = document.querySelector('#loadMoreButton');
 const template = document.querySelector('#postTemplate');
 const quickSearches = document.querySelector('.quick-searches');
+const floatingSearchButton = document.querySelector('#floatingSearchButton');
 
 const categoryCounts = countBy(posts, (post) => post.category || '未分類');
 const seriesCounts = countBy(posts, (post) => post.series);
@@ -98,6 +99,8 @@ function bindEvents() {
     state.visible += PAGE_SIZE;
     render();
   });
+
+  floatingSearchButton?.addEventListener('click', returnToSearch);
 
   quickSearches.addEventListener('click', (event) => {
     const button = event.target.closest('button[data-query]');
@@ -494,10 +497,7 @@ function readerActions(post) {
   searchButton.type = 'button';
   searchButton.className = 'reader-search-button';
   searchButton.textContent = '回到搜尋';
-  searchButton.addEventListener('click', () => {
-    document.querySelector('.masthead')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
-    searchInput.focus({ preventScroll: true });
-  });
+  searchButton.addEventListener('click', returnToSearch);
 
   const copyButton = document.createElement('button');
   copyButton.type = 'button';
@@ -557,6 +557,13 @@ function openRecommendedPost(id) {
   searchInput.value = '';
   render();
   reader.scrollIntoView({ block: 'start', behavior: 'smooth' });
+}
+
+function returnToSearch() {
+  state.selectedId = null;
+  render();
+  document.querySelector('.masthead')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  searchInput.focus({ preventScroll: true });
 }
 
 function hourlyRecommendation() {
