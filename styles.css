@@ -394,14 +394,12 @@ button:focus,
 }
 
 .stats {
-  position: sticky;
-  top: 16px;
   display: grid;
   gap: 10px;
   padding: 16px;
   border: 1px solid rgba(31, 107, 84, 0.2);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.84);
+  background: var(--panel);
 }
 
 .stat {
@@ -683,6 +681,11 @@ button.series-badge:hover {
 
 .reader-media {
   margin-top: 18px;
+}
+
+.reader-public-media {
+  padding: 14px 0 2px;
+  border-top: 1px solid var(--line);
 }
 
 .reader-media h3 {

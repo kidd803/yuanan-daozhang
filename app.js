@@ -22,6 +22,9 @@ const PUBLIC_PREVIEW_RATIO = 0.5;
 const RECOMMENDATION_MIN_LENGTH = 320;
 const ARTICLE_UNLOCK_KEY = 'yuanan-article-unlocked';
 const SITE_URL = 'https://taoism.com.tw';
+const PUBLIC_MEDIA_LIMIT = 6;
+const PUBLIC_PHOTO_KEYWORDS = ['照片', '參訪', '参访', '法會', '法会', '生日', '花', '樹', '树', '宮', '宫', '廟', '庙', '山', '海', '道場', '道场', '祖庭', '鹿邑', '青羊宮', '青羊宫', '崑崙', '昆仑', '華陽觀', '华阳观'];
+const SENSITIVE_MEDIA_KEYWORDS = ['符', '咒', '口訣', '口诀', '真訣', '真诀', '講義', '讲义', '教材', '架構', '架构', '圖解', '图解', '紫微', '斗數', '斗数', '命盤', '命盘', '生肖', '手印'];
 
 const state = {
   category: '全部',
@@ -429,6 +432,7 @@ function renderLockedReader(post) {
     return paragraph;
   }));
   preview.append(previewHeading, previewBody);
+  const publicMedia = renderPublicMedia(post);
 
   const panel = document.createElement('form');
   panel.className = 'unlock-panel';
@@ -473,18 +477,27 @@ function renderLockedReader(post) {
   });
 
   panel.append(hint, label, error, button);
-  reader.replaceChildren(header, preview, panel);
+  reader.replaceChildren(...[header, preview, publicMedia, panel].filter(Boolean));
   input.focus({ preventScroll: true });
 }
 
 function renderMedia(post) {
   const media = (post.media || []).filter((item) => item?.src);
   if (!media.length) return null;
+  return mediaSection(post, media, `文章圖片 ${formatCount(media.length)} 張`, 'reader-media');
+}
 
+function renderPublicMedia(post) {
+  const media = publicPhotoMedia(post);
+  if (!media.length) return null;
+  return mediaSection(post, media, `公開照片 ${formatCount(media.length)} 張`, 'reader-media reader-public-media');
+}
+
+function mediaSection(post, media, headingText, className) {
   const section = document.createElement('section');
-  section.className = 'reader-media';
+  section.className = className;
   const heading = document.createElement('h3');
-  heading.textContent = `文章圖片 ${formatCount(media.length)} 張`;
+  heading.textContent = headingText;
   const grid = document.createElement('div');
   grid.className = 'media-grid';
   grid.replaceChildren(...media.map((item, index) => {
@@ -502,6 +515,11 @@ function renderMedia(post) {
   }));
   section.append(heading, grid);
   return section;
+}
+
+function publicPhotoMedia(post) {
+  if (hasSensitiveMediaContext(post) && !hasPublicPhotoContext(post)) return [];
+  return (post.media || []).filter((item) => item?.src).slice(0, PUBLIC_MEDIA_LIMIT);
 }
 
 function readerActions(post) {
@@ -610,6 +628,16 @@ function trackArticleUnlock(post, phrase) {
 function publicArticleUrl(post) {
   if (!post?.id) return SITE_URL;
   return `${SITE_URL}/articles/${post.id}.html`;
+}
+
+function hasPublicPhotoContext(post) {
+  const text = `${post.title || ''}\n${post.body || ''}\n${post.category || ''}\n${(post.tags || []).join('\n')}`;
+  return PUBLIC_PHOTO_KEYWORDS.some((keyword) => text.includes(keyword));
+}
+
+function hasSensitiveMediaContext(post) {
+  const text = `${post.title || ''}\n${post.body || ''}\n${post.category || ''}\n${(post.tags || []).join('\n')}`;
+  return SENSITIVE_MEDIA_KEYWORDS.some((keyword) => text.includes(keyword));
 }
 
 function hourlyRecommendation() {
