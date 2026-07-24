@@ -463,6 +463,42 @@ button.series-badge:hover {
   padding: 6px 0 0;
 }
 
+.unlock-panel {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid rgba(155, 120, 48, 0.3);
+  border-radius: 8px;
+  background: #fffaf0;
+}
+
+.unlock-panel p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.unlock-panel button {
+  min-height: 40px;
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  background: var(--green);
+  color: #fff;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.unlock-panel .unlock-error {
+  color: var(--red);
+  font-weight: 800;
+}
+
+.unlock-field {
+  color: var(--green-deep);
+  font-weight: 800;
+}
+
 .reader-media {
   margin-top: 18px;
 }

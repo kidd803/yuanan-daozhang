@@ -17,6 +17,8 @@ const CATEGORY_ORDER = Array.isArray(archiveMeta.categoryOrder) && archiveMeta.c
   ? archiveMeta.categoryOrder
   : DEFAULT_CATEGORY_ORDER;
 const countFormat = new Intl.NumberFormat('zh-Hant');
+const SECRET_PHRASES = ['林明心', '林明毅', '林圓安'];
+const ARTICLE_UNLOCK_KEY = 'yuanan-article-unlocked';
 
 const state = {
   category: '全部',
@@ -25,7 +27,8 @@ const state = {
   year: '全部年份',
   series: '全部系列',
   visible: PAGE_SIZE,
-  selectedId: null
+  selectedId: null,
+  unlocked: readUnlockState()
 };
 
 const summary = document.querySelector('#summary');
@@ -243,7 +246,9 @@ function postCard(post, selected) {
   node.querySelector('.category').textContent = post.category || '未分類';
   if (post.series) node.querySelector('.post-meta').append(seriesBadge(post, true));
   node.querySelector('h2').textContent = post.title;
-  node.querySelector('.excerpt').textContent = excerpt(post.body);
+  node.querySelector('.excerpt').textContent = state.unlocked
+    ? excerpt(post.body)
+    : '需輸入暗語才可閱讀文章內容。';
   const tags = node.querySelector('.tags');
   const tagNodes = (post.tags || []).slice(0, 6).map((tag) => {
     const item = document.createElement('li');
@@ -271,8 +276,13 @@ function renderReader(post) {
   if (!post) {
     const empty = document.createElement('p');
     empty.className = 'empty reader-empty';
-    empty.textContent = posts.length ? '請從左側選擇文章' : '尚未匯入文章';
+    empty.textContent = posts.length ? '請從左側選擇文章，輸入暗語後閱讀。' : '尚未匯入文章';
     reader.replaceChildren(empty);
+    return;
+  }
+
+  if (!state.unlocked) {
+    renderLockedReader(post);
     return;
   }
 
@@ -315,6 +325,64 @@ function renderReader(post) {
   if ((post.tags || []).length) sections.push(tagList(post.tags));
   sections.push(details);
   reader.replaceChildren(...sections);
+}
+
+function renderLockedReader(post) {
+  const header = document.createElement('header');
+  header.className = 'reader-head';
+  const meta = document.createElement('div');
+  meta.className = 'post-meta reader-meta';
+  const time = document.createElement('time');
+  time.textContent = post.date;
+  const category = document.createElement('span');
+  category.className = 'category';
+  category.textContent = post.category || '未分類';
+  meta.append(time, category);
+  if (post.series) meta.append(seriesBadge(post, true));
+  const title = document.createElement('h2');
+  title.textContent = post.title;
+  header.append(meta, title);
+
+  const panel = document.createElement('form');
+  panel.className = 'unlock-panel';
+  const label = document.createElement('label');
+  label.className = 'field unlock-field';
+  const labelText = document.createElement('span');
+  labelText.textContent = '暗語';
+  const input = document.createElement('input');
+  input.type = 'password';
+  input.autocomplete = 'off';
+  input.placeholder = '請輸入暗語';
+  label.append(labelText, input);
+
+  const hint = document.createElement('p');
+  hint.textContent = '文章內容已鎖定，暗語正確後即可閱讀全文。';
+
+  const error = document.createElement('p');
+  error.className = 'unlock-error';
+  error.hidden = true;
+
+  const button = document.createElement('button');
+  button.type = 'submit';
+  button.textContent = '開啟文章';
+
+  panel.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const ok = SECRET_PHRASES.some((phrase) => normalizeSecret(phrase) === normalizeSecret(input.value));
+    if (!ok) {
+      error.textContent = '暗語不正確，請再確認。';
+      error.hidden = false;
+      input.select();
+      return;
+    }
+    state.unlocked = true;
+    writeUnlockState();
+    render();
+  });
+
+  panel.append(hint, label, error, button);
+  reader.replaceChildren(header, panel);
+  input.focus({ preventScroll: true });
 }
 
 function renderMedia(post) {
@@ -414,7 +482,8 @@ function selectSeries(series) {
 
 function selectedPost(filtered) {
   if (!filtered.length) return null;
-  return filtered.find((post) => post.id === state.selectedId) || filtered[0];
+  if (!state.selectedId) return null;
+  return filtered.find((post) => post.id === state.selectedId) || null;
 }
 
 function countBy(items, keyFn) {
@@ -488,6 +557,26 @@ function searchTokens(query) {
 
 function normalizeSearch(text) {
   return (text || '').toString().toLowerCase().normalize('NFKC');
+}
+
+function normalizeSecret(text) {
+  return (text || '').toString().trim().normalize('NFKC');
+}
+
+function readUnlockState() {
+  try {
+    return window.sessionStorage.getItem(ARTICLE_UNLOCK_KEY) === 'true';
+  } catch {
+    return false;
+  }
+}
+
+function writeUnlockState() {
+  try {
+    window.sessionStorage.setItem(ARTICLE_UNLOCK_KEY, 'true');
+  } catch {
+    // Session storage can be unavailable in strict browser modes; keep the in-memory unlock.
+  }
 }
 
 function option(value) {
