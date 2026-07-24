@@ -961,7 +961,7 @@ button.series-badge:hover {
   .shell {
     width: min(100vw - 20px, 720px);
     padding-top: 18px;
-    padding-bottom: 320px;
+    padding-bottom: calc(116px + env(safe-area-inset-bottom));
   }
 
   .masthead {
@@ -1007,28 +1007,26 @@ button.series-badge:hover {
   .course-order {
     right: 10px;
     left: 10px;
-    bottom: 10px;
-    grid-template-columns: 1fr;
-    gap: 8px;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    grid-template-columns: 88px minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
     width: auto;
-    padding: 9px;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 8px;
   }
 
   .course-order-image-link {
-    aspect-ratio: 16 / 5;
+    align-self: stretch;
+    aspect-ratio: 1;
+    min-height: 86px;
+    max-height: 96px;
   }
 
-  .course-order p {
-    margin-top: 3px;
-  }
-
+  .course-order p,
   .course-order ul {
-    grid-template-columns: 1fr 1fr;
-    gap: 1px 8px;
-  }
-
-  .course-order li:last-child {
-    grid-column: 1 / -1;
+    display: none;
   }
 }
 
@@ -1117,25 +1115,25 @@ button.series-badge:hover {
   }
 
   .course-order {
-    grid-template-columns: 1fr;
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 8px;
   }
 
   .course-order-image-link {
-    aspect-ratio: 16 / 5;
+    aspect-ratio: 1;
+    min-height: 76px;
+    max-height: 86px;
   }
 
   .course-order h2 {
-    font-size: 0.9rem;
-  }
-
-  .course-order p,
-  .course-order ul {
-    font-size: 0.72rem;
+    font-size: 0.86rem;
   }
 
   .course-order-button {
-    min-height: 31px;
+    min-height: 32px;
     margin-top: 6px;
+    padding: 4px 9px;
     font-size: 0.78rem;
   }
+
 }

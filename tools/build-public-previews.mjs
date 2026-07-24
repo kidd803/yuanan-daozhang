@@ -5,6 +5,7 @@ import vm from 'node:vm';
 const SITE_URL = 'https://taoism.com.tw';
 const PREVIEW_RATIO = 0.3;
 const STYLE_VERSION = '20260724-public-preview';
+const ICON_VERSION = '20260724-mobile-course';
 const outputDir = 'articles';
 
 const source = await readFile('data/posts.js', 'utf8');
@@ -45,6 +46,7 @@ function articleIndex(items) {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+${faviconLinks('../')}
     <title>圓安道語公開文章預覽索引</title>
     <meta name="description" content="圓安道長公開文章預覽索引，提供約 30% 文章內文供搜尋與查找。">
     <link rel="canonical" href="${SITE_URL}/articles/">
@@ -80,6 +82,7 @@ function articlePage(post) {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+${faviconLinks('../')}
     <title>${escapeHtml(post.title || '未命名文章')}｜圓安道語公開預覽</title>
     <meta name="description" content="${escapeHtml(description)}">
     <link rel="canonical" href="${url}">
@@ -130,6 +133,11 @@ ${urls.map((item) => `  <url>
   </url>`).join('\n')}
 </urlset>
 `;
+}
+
+function faviconLinks(prefix = '') {
+  return `    <link rel="icon" type="image/png" sizes="512x512" href="${prefix}assets/favicon.png?v=${ICON_VERSION}">
+    <link rel="apple-touch-icon" sizes="180x180" href="${prefix}assets/apple-touch-icon.png?v=${ICON_VERSION}">`;
 }
 
 function publicPreview(text) {
