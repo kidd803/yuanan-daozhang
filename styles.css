@@ -961,7 +961,7 @@ button.series-badge:hover {
   .shell {
     width: min(100vw - 20px, 720px);
     padding-top: 18px;
-    padding-bottom: calc(116px + env(safe-area-inset-bottom));
+    padding-bottom: 24px;
   }
 
   .masthead {
@@ -1005,16 +1005,19 @@ button.series-badge:hover {
   }
 
   .course-order {
-    right: 10px;
-    left: 10px;
-    bottom: max(10px, env(safe-area-inset-bottom));
+    position: static;
+    right: auto;
+    left: auto;
+    bottom: auto;
+    z-index: auto;
     grid-template-columns: 88px minmax(0, 1fr);
     align-items: center;
     gap: 10px;
-    width: auto;
-    max-width: 680px;
-    margin: 0 auto;
+    width: min(100vw - 20px, 720px);
+    max-width: 720px;
+    margin: 14px auto calc(14px + env(safe-area-inset-bottom));
     padding: 8px;
+    box-shadow: var(--small-shadow);
   }
 
   .course-order-image-link {
