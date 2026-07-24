@@ -451,7 +451,7 @@ function renderLockedReader(post) {
   label.append(labelText, input);
 
   const hint = document.createElement('p');
-  hint.textContent = '與林明心道長登記，輸入您的道名，正確後即可閱讀全文。';
+  hint.textContent = '與林明心道長登記後，\n輸入您的道名，正確後即可閱讀全文。';
 
   const error = document.createElement('p');
   error.className = 'unlock-error';
