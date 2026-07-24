@@ -156,12 +156,8 @@ function renderSummary(filtered) {
     summary.textContent = '尚未匯入文章';
     return;
   }
-  const omitted = archiveMeta.omittedImageOnlyPosts || 0;
-  const duplicates = archiveMeta.omittedDuplicatePosts || 0;
   const images = archiveMeta.publicImages || 0;
-  const duplicateText = duplicates ? `，已合併 ${formatCount(duplicates)} 筆重複影片分段` : '';
-  const omittedText = omitted ? `，另存 ${formatCount(omitted)} 篇純媒體原始貼文` : '';
-  summary.textContent = `已整理 ${formatCount(posts.length)} 篇公開文字文章、${formatCount(images)} 張文章圖片，分為 ${formatCount(CATEGORY_ORDER.length)} 個主題；目前符合 ${formatCount(filtered.length)} 篇${duplicateText}${omittedText}。`;
+  summary.textContent = `已整理 ${formatCount(posts.length)} 篇公開文字文章、${formatCount(images)} 張文章圖片，分為 ${formatCount(CATEGORY_ORDER.length)} 個主題；目前符合 ${formatCount(filtered.length)} 篇。`;
 }
 
 function renderSeries() {
@@ -209,8 +205,7 @@ function renderStats(filtered) {
     statLine('最早日期', earliestPost?.date || '-'),
     statLine('最新日期', latestPost?.date || '-'),
     statLine('保留連結', formatCount(linkCount)),
-    statLine('公開圖片', formatCount(mediaCount)),
-    statLine('合併重複', formatCount(archiveMeta.omittedDuplicatePosts || 0))
+    statLine('公開圖片', formatCount(mediaCount))
   );
 }
 
