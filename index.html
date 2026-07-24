@@ -17,7 +17,7 @@
     <title>圓安道語</title>
     <meta name="description" content="圓安道長道語公開文章查詢，提供分類、系列與文章公開預覽，完整內文需輸入暗語閱讀。">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-    <link rel="stylesheet" href="styles.css?v=20260724-visible-course-ad">
+    <link rel="stylesheet" href="styles.css?v=20260724-course-lightbox">
   </head>
   <body>
     <main class="shell">
@@ -71,9 +71,9 @@
       </section>
 
       <aside class="course-framework-ad" aria-label="圓安道長九科課程架構">
-        <div class="course-framework-image">
+        <button id="courseFrameworkOpen" class="course-framework-image" type="button" aria-label="放大九科課程架構圖片">
           <img src="assets/yuanan-course-framework.jpg" alt="圓安道長九科課程架構">
-        </div>
+        </button>
         <div class="course-framework-copy">
           <p class="eyebrow">圓安道長課程</p>
           <h2>九科課程架構</h2>
@@ -134,6 +134,11 @@
       <span class="floating-search-icon" aria-hidden="true"></span>
     </button>
 
+    <div id="courseFrameworkLightbox" class="image-lightbox" role="dialog" aria-modal="true" aria-label="九科課程架構放大圖" hidden>
+      <button class="image-lightbox-close" type="button" aria-label="關閉放大圖">×</button>
+      <img src="assets/yuanan-course-framework.jpg" alt="圓安道長九科課程架構放大圖">
+    </div>
+
     <template id="postTemplate">
       <article class="post-card" tabindex="0" role="button">
         <div class="post-meta">
@@ -147,6 +152,6 @@
     </template>
 
     <script src="data/posts.js?v=20260724-preview-50"></script>
-    <script src="app.js?v=20260724-floating-search"></script>
+    <script src="app.js?v=20260724-course-lightbox"></script>
   </body>
 </html>

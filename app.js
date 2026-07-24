@@ -50,6 +50,9 @@ const loadMoreButton = document.querySelector('#loadMoreButton');
 const template = document.querySelector('#postTemplate');
 const quickSearches = document.querySelector('.quick-searches');
 const floatingSearchButton = document.querySelector('#floatingSearchButton');
+const courseFrameworkOpen = document.querySelector('#courseFrameworkOpen');
+const courseFrameworkLightbox = document.querySelector('#courseFrameworkLightbox');
+const courseFrameworkClose = courseFrameworkLightbox?.querySelector('.image-lightbox-close');
 
 const categoryCounts = countBy(posts, (post) => post.category || '未分類');
 const seriesCounts = countBy(posts, (post) => post.series);
@@ -101,6 +104,15 @@ function bindEvents() {
   });
 
   floatingSearchButton?.addEventListener('click', returnToSearch);
+  courseFrameworkOpen?.addEventListener('click', openCourseFrameworkLightbox);
+  courseFrameworkClose?.addEventListener('click', closeCourseFrameworkLightbox);
+  courseFrameworkLightbox?.addEventListener('click', (event) => {
+    if (event.target === courseFrameworkLightbox) closeCourseFrameworkLightbox();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !courseFrameworkLightbox?.hidden) closeCourseFrameworkLightbox();
+  });
 
   quickSearches.addEventListener('click', (event) => {
     const button = event.target.closest('button[data-query]');
@@ -564,6 +576,20 @@ function returnToSearch() {
   render();
   document.querySelector('.masthead')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   searchInput.focus({ preventScroll: true });
+}
+
+function openCourseFrameworkLightbox() {
+  if (!courseFrameworkLightbox) return;
+  courseFrameworkLightbox.hidden = false;
+  document.body.classList.add('has-open-lightbox');
+  courseFrameworkClose?.focus({ preventScroll: true });
+}
+
+function closeCourseFrameworkLightbox() {
+  if (!courseFrameworkLightbox) return;
+  courseFrameworkLightbox.hidden = true;
+  document.body.classList.remove('has-open-lightbox');
+  courseFrameworkOpen?.focus({ preventScroll: true });
 }
 
 function hourlyRecommendation() {

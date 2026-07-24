@@ -344,9 +344,17 @@ button:focus,
 .course-framework-image {
   display: block;
   overflow: hidden;
+  width: 100%;
   border: 1px solid rgba(155, 120, 48, 0.26);
   border-radius: 7px;
   background: #efe2c5;
+  padding: 0;
+  cursor: zoom-in;
+}
+
+.course-framework-image:focus-visible {
+  outline: 3px solid rgba(31, 107, 84, 0.32);
+  outline-offset: 3px;
 }
 
 .course-framework-image img {
@@ -1041,6 +1049,56 @@ button.series-badge:hover {
   transform-origin: center;
 }
 
+.has-open-lightbox {
+  overflow: hidden;
+}
+
+.image-lightbox[hidden] {
+  display: none;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  background: rgba(12, 24, 20, 0.84);
+  padding: 24px;
+}
+
+.image-lightbox img {
+  display: block;
+  width: auto;
+  max-width: min(900px, calc(100vw - 48px));
+  max-height: calc(100vh - 72px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  background: #fffaf0;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.42);
+}
+
+.image-lightbox-close {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 50%;
+  background: rgba(18, 62, 51, 0.9);
+  color: #fff;
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.image-lightbox-close:hover {
+  background: var(--green);
+}
+
 @media (max-width: 1120px) {
   .masthead {
     grid-template-columns: 1fr;
@@ -1165,6 +1223,22 @@ button.series-badge:hover {
     right: 12px;
     width: 44px;
     height: 44px;
+  }
+
+  .image-lightbox {
+    padding: 12px;
+  }
+
+  .image-lightbox img {
+    max-width: calc(100vw - 24px);
+    max-height: calc(100dvh - 88px);
+  }
+
+  .image-lightbox-close {
+    top: 10px;
+    right: 10px;
+    width: 42px;
+    height: 42px;
   }
 
   .course-order-image-link {
