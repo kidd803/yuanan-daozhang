@@ -443,6 +443,18 @@ button.series-badge:hover {
   cursor: pointer;
 }
 
+.reader-actions .reader-search-button {
+  border-color: rgba(155, 120, 48, 0.36);
+  background: var(--soft-gold);
+  color: #4c3a17;
+  font-weight: 800;
+}
+
+.reader-actions .reader-search-button:hover {
+  border-color: var(--gold);
+  background: #efe2c5;
+}
+
 .reader-body {
   padding: 6px 0 0;
 }

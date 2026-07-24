@@ -347,6 +347,15 @@ function renderMedia(post) {
 function readerActions(post) {
   const actions = document.createElement('div');
   actions.className = 'reader-actions';
+  const searchButton = document.createElement('button');
+  searchButton.type = 'button';
+  searchButton.className = 'reader-search-button';
+  searchButton.textContent = '回到搜尋';
+  searchButton.addEventListener('click', () => {
+    document.querySelector('.masthead')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    searchInput.focus({ preventScroll: true });
+  });
+
   const copyButton = document.createElement('button');
   copyButton.type = 'button';
   copyButton.textContent = '複製文字';
@@ -355,7 +364,7 @@ function readerActions(post) {
     copyButton.textContent = ok ? '已複製' : '複製失敗';
     setTimeout(() => { copyButton.textContent = '複製文字'; }, 1300);
   });
-  actions.append(copyButton);
+  actions.append(searchButton, copyButton);
   return actions;
 }
 
