@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://taoism.com.tw/sitemap.xml

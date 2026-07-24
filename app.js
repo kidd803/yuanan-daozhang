@@ -18,6 +18,7 @@ const CATEGORY_ORDER = Array.isArray(archiveMeta.categoryOrder) && archiveMeta.c
   : DEFAULT_CATEGORY_ORDER;
 const countFormat = new Intl.NumberFormat('zh-Hant');
 const SECRET_PHRASES = ['林明心', '林明毅', '林圓安'];
+const PUBLIC_PREVIEW_RATIO = 0.3;
 const ARTICLE_UNLOCK_KEY = 'yuanan-article-unlocked';
 
 const state = {
@@ -248,7 +249,7 @@ function postCard(post, selected) {
   node.querySelector('h2').textContent = post.title;
   node.querySelector('.excerpt').textContent = state.unlocked
     ? excerpt(post.body)
-    : '需輸入暗語才可閱讀文章內容。';
+    : publicExcerpt(post.body);
   const tags = node.querySelector('.tags');
   const tagNodes = (post.tags || []).slice(0, 6).map((tag) => {
     const item = document.createElement('li');
@@ -343,6 +344,19 @@ function renderLockedReader(post) {
   title.textContent = post.title;
   header.append(meta, title);
 
+  const preview = document.createElement('section');
+  preview.className = 'public-preview';
+  const previewHeading = document.createElement('h3');
+  previewHeading.textContent = '公開預覽 約 30%';
+  const previewBody = document.createElement('div');
+  previewBody.className = 'reader-body';
+  previewBody.replaceChildren(...paragraphBlocks(publicPreview(post.body)).map((block) => {
+    const paragraph = document.createElement('p');
+    paragraph.textContent = block;
+    return paragraph;
+  }));
+  preview.append(previewHeading, previewBody);
+
   const panel = document.createElement('form');
   panel.className = 'unlock-panel';
   const label = document.createElement('label');
@@ -360,7 +374,7 @@ function renderLockedReader(post) {
   label.append(labelText, input);
 
   const hint = document.createElement('p');
-  hint.textContent = '文章內容已鎖定，暗語正確後即可閱讀全文。';
+  hint.textContent = '上方已公開約 30% 內文，暗語正確後即可閱讀全文。';
 
   const error = document.createElement('p');
   error.className = 'unlock-error';
@@ -385,7 +399,7 @@ function renderLockedReader(post) {
   });
 
   panel.append(hint, label, error, button);
-  reader.replaceChildren(header, panel);
+  reader.replaceChildren(header, preview, panel);
   input.focus({ preventScroll: true });
 }
 
@@ -553,6 +567,20 @@ function paragraphBlocks(text) {
 function excerpt(text) {
   const compact = (text || '').replace(/\s+/g, ' ').trim();
   return compact.length > 120 ? `${compact.slice(0, 120)}...` : compact;
+}
+
+function publicPreview(text) {
+  const body = (text || '').toString().trim();
+  if (!body || body.length <= 180) return body;
+  const limit = Math.max(1, Math.ceil(body.length * PUBLIC_PREVIEW_RATIO));
+  const slice = body.slice(0, limit);
+  const cleanCut = slice.replace(/[，,。！？!?；;：:、\s]*[^\n，,。！？!?；;：:、\s]{0,18}$/, '');
+  return `${(cleanCut || slice).trim()}...`;
+}
+
+function publicExcerpt(text) {
+  const compact = publicPreview(text).replace(/\s+/g, ' ').trim();
+  return compact.length > 180 ? `${compact.slice(0, 180)}...` : compact;
 }
 
 function searchTokens(query) {

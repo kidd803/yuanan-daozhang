@@ -463,6 +463,18 @@ button.series-badge:hover {
   padding: 6px 0 0;
 }
 
+.public-preview {
+  margin-top: 18px;
+  padding: 16px 0 2px;
+  border-bottom: 1px solid var(--line);
+}
+
+.public-preview h3 {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-size: 0.92rem;
+}
+
 .unlock-panel {
   display: grid;
   gap: 14px;
@@ -597,6 +609,123 @@ button.series-badge:hover {
   min-height: 220px;
   display: grid;
   place-items: center;
+}
+
+.site-footer {
+  margin: 28px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid rgba(31, 107, 84, 0.16);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.site-footer a,
+.preview-home,
+.preview-card a {
+  color: var(--blue);
+}
+
+.preview-page {
+  background: var(--paper);
+}
+
+.preview-shell {
+  width: min(980px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 28px 0 56px;
+}
+
+.preview-header,
+.preview-card,
+.preview-lock {
+  border: 1px solid rgba(31, 107, 84, 0.18);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--small-shadow);
+}
+
+.preview-header {
+  padding: 22px;
+}
+
+.preview-home {
+  display: inline-flex;
+  margin-bottom: 12px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.preview-header h1 {
+  font-size: 2.2rem;
+}
+
+.preview-header > p:last-child {
+  margin: 12px 0 0;
+  color: var(--muted);
+}
+
+.preview-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.preview-card {
+  padding: 16px;
+}
+
+.preview-card h2 {
+  margin: 8px 0 6px;
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
+
+.preview-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.preview-article {
+  display: grid;
+  gap: 18px;
+}
+
+.preview-body,
+.preview-lock {
+  padding: 22px;
+}
+
+.preview-body {
+  border: 1px solid rgba(31, 107, 84, 0.18);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.preview-body p {
+  margin: 16px 0;
+  white-space: pre-wrap;
+}
+
+.preview-body p:first-child {
+  margin-top: 0;
+}
+
+.preview-body p:last-child {
+  margin-bottom: 0;
+}
+
+.preview-lock {
+  background: #fffaf0;
+}
+
+.preview-lock p {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+.preview-lock .course-order-button {
+  width: auto;
 }
 
 .course-order {
@@ -792,6 +921,20 @@ button.series-badge:hover {
 @media (max-width: 560px) {
   h1 {
     font-size: 1.62rem;
+  }
+
+  .preview-shell {
+    width: min(100vw - 20px, 720px);
+  }
+
+  .preview-header,
+  .preview-body,
+  .preview-lock {
+    padding: 16px;
+  }
+
+  .preview-header h1 {
+    font-size: 1.55rem;
   }
 
   .brand-lockup {
