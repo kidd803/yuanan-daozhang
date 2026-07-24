@@ -227,7 +227,7 @@ button:focus,
   border: 1px solid rgba(40, 95, 130, 0.18);
   border-radius: 8px;
   background: #f6f0e9;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 10 / 7;
 }
 
 .facebook-join-image img {
@@ -1055,7 +1055,7 @@ button.series-badge:hover {
   }
 
   .facebook-join-image {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 10 / 7;
   }
 
   .facebook-join h2 {
