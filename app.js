@@ -350,8 +350,12 @@ function renderLockedReader(post) {
   const labelText = document.createElement('span');
   labelText.textContent = '暗語';
   const input = document.createElement('input');
-  input.type = 'password';
+  input.type = 'text';
+  input.lang = 'zh-Hant';
+  input.inputMode = 'text';
   input.autocomplete = 'off';
+  input.autocapitalize = 'off';
+  input.spellcheck = false;
   input.placeholder = '請輸入暗語';
   label.append(labelText, input);
 
