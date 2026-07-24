@@ -331,8 +331,10 @@ button:focus,
 .course-framework-ad {
   display: grid;
   gap: 12px;
-  width: min(300px, 100%);
-  margin: 18px 0 10px;
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
+  margin: 0;
   min-width: 0;
   border: 1px solid rgba(155, 120, 48, 0.3);
   border-radius: 8px;
@@ -388,6 +390,8 @@ button:focus,
 }
 
 .stats {
+  grid-column: 1;
+  grid-row: 1;
   position: sticky;
   top: 16px;
   display: grid;
@@ -412,6 +416,8 @@ button:focus,
 }
 
 .results {
+  grid-column: 2;
+  grid-row: 1 / span 2;
   min-width: 0;
 }
 
@@ -530,6 +536,8 @@ button.series-badge:hover {
 }
 
 .reader {
+  grid-column: 3;
+  grid-row: 1 / span 2;
   position: sticky;
   top: 16px;
   min-width: 0;
@@ -1119,11 +1127,13 @@ button.series-badge:hover {
   .course-framework-ad,
   .stats {
     grid-column: 1;
+    grid-row: auto;
   }
 
   .results,
   .reader {
     grid-column: 2;
+    grid-row: auto;
   }
 
   .course-order {
@@ -1182,6 +1192,7 @@ button.series-badge:hover {
   .reader {
     position: static;
     grid-column: auto;
+    grid-row: auto;
   }
 
   .course-framework-ad {
