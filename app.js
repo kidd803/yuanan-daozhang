@@ -19,6 +19,7 @@ const CATEGORY_ORDER = Array.isArray(archiveMeta.categoryOrder) && archiveMeta.c
 const countFormat = new Intl.NumberFormat('zh-Hant');
 const SECRET_PHRASES = ['林明心', '林明毅', '林圓安'];
 const PUBLIC_PREVIEW_RATIO = 0.3;
+const RECOMMENDATION_MIN_LENGTH = 320;
 const ARTICLE_UNLOCK_KEY = 'yuanan-article-unlocked';
 
 const state = {
@@ -29,6 +30,7 @@ const state = {
   series: '全部系列',
   visible: PAGE_SIZE,
   selectedId: null,
+  recommendationHour: currentHourKey(),
   unlocked: readUnlockState()
 };
 
@@ -109,6 +111,13 @@ function bindEvents() {
     searchInput.value = state.query;
     render();
   });
+
+  setInterval(() => {
+    const nextHour = currentHourKey();
+    if (nextHour === state.recommendationHour) return;
+    state.recommendationHour = nextHour;
+    if (!state.selectedId) render();
+  }, 60000);
 }
 
 function populateOptions() {
@@ -270,10 +279,7 @@ function postCard(post, selected) {
 
 function renderReader(post) {
   if (!post) {
-    const empty = document.createElement('p');
-    empty.className = 'empty reader-empty';
-    empty.textContent = posts.length ? '請從左側選擇文章，輸入暗語後閱讀。' : '尚未匯入文章';
-    reader.replaceChildren(empty);
+    renderHourlyRecommendation();
     return;
   }
 
@@ -321,6 +327,61 @@ function renderReader(post) {
   if ((post.tags || []).length) sections.push(tagList(post.tags));
   sections.push(details);
   reader.replaceChildren(...sections);
+}
+
+function renderHourlyRecommendation() {
+  const recommendation = hourlyRecommendation();
+  if (!recommendation) {
+    const empty = document.createElement('p');
+    empty.className = 'empty reader-empty';
+    empty.textContent = '尚未匯入文章';
+    reader.replaceChildren(empty);
+    return;
+  }
+
+  const section = document.createElement('section');
+  section.className = 'hourly-pick';
+
+  const header = document.createElement('header');
+  header.className = 'hourly-pick-head';
+  const kicker = document.createElement('p');
+  kicker.className = 'eyebrow';
+  kicker.textContent = '本小時推薦道語';
+  const title = document.createElement('h2');
+  title.textContent = recommendation.title;
+  const meta = document.createElement('div');
+  meta.className = 'post-meta reader-meta';
+  const time = document.createElement('time');
+  time.textContent = recommendation.date;
+  const category = document.createElement('span');
+  category.className = 'category';
+  category.textContent = recommendation.category || '未分類';
+  meta.append(time, category);
+  if (recommendation.series) meta.append(seriesBadge(recommendation, true));
+  header.append(kicker, title, meta);
+
+  const preview = document.createElement('div');
+  preview.className = 'hourly-pick-preview';
+  preview.replaceChildren(...paragraphBlocks(publicPreview(recommendation.body)).map((block) => {
+    const paragraph = document.createElement('p');
+    paragraph.textContent = block;
+    return paragraph;
+  }));
+
+  const actions = document.createElement('div');
+  actions.className = 'reader-actions';
+  const readButton = document.createElement('button');
+  readButton.type = 'button';
+  readButton.textContent = '閱讀這篇';
+  readButton.addEventListener('click', () => openRecommendedPost(recommendation.id));
+  actions.append(readButton);
+
+  const note = document.createElement('p');
+  note.className = 'hourly-pick-note';
+  note.textContent = '每小時自動換一篇；完整內文仍需輸入暗語。';
+
+  section.append(header, preview, actions, note);
+  reader.replaceChildren(section);
 }
 
 function renderLockedReader(post) {
@@ -483,6 +544,29 @@ function selectPost(id) {
   state.selectedId = id;
   render();
   if (window.matchMedia('(max-width: 860px)').matches) reader.scrollIntoView({ block: 'start' });
+}
+
+function openRecommendedPost(id) {
+  state.category = '全部';
+  state.year = '全部年份';
+  state.series = '全部系列';
+  state.query = '';
+  state.visible = PAGE_SIZE;
+  state.selectedId = id;
+  searchInput.value = '';
+  render();
+  reader.scrollIntoView({ block: 'start', behavior: 'smooth' });
+}
+
+function hourlyRecommendation() {
+  if (!posts.length) return null;
+  const candidates = posts.filter((post) => (post.body || '').replace(/\s+/g, '').length >= RECOMMENDATION_MIN_LENGTH);
+  const pool = candidates.length ? candidates : posts;
+  return pool[(state.recommendationHour * 37) % pool.length];
+}
+
+function currentHourKey() {
+  return Math.floor(Date.now() / 3600000);
 }
 
 function selectSeries(series) {

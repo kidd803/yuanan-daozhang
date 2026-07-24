@@ -530,6 +530,44 @@ button.series-badge:hover {
   padding: 6px 0 0;
 }
 
+.hourly-pick {
+  display: grid;
+  gap: 16px;
+  min-height: 420px;
+  align-content: center;
+}
+
+.hourly-pick-head {
+  display: grid;
+  gap: 8px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(31, 107, 84, 0.16);
+}
+
+.hourly-pick-head h2 {
+  margin: 0;
+  color: var(--green-deep);
+  font-size: 1.7rem;
+  line-height: 1.34;
+}
+
+.hourly-pick-preview {
+  max-height: 260px;
+  overflow: hidden;
+  color: #3b4942;
+}
+
+.hourly-pick-preview p {
+  margin: 14px 0;
+  white-space: pre-wrap;
+}
+
+.hourly-pick-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
 .public-preview {
   margin-top: 18px;
   padding: 16px 0 2px;
