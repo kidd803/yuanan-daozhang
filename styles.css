@@ -328,11 +328,15 @@ button:focus,
   align-items: start;
 }
 
+.left-sidebar {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+
 .course-framework-ad {
   display: grid;
   gap: 12px;
-  grid-column: 1;
-  grid-row: 2;
   width: 100%;
   margin: 0;
   min-width: 0;
@@ -390,8 +394,6 @@ button:focus,
 }
 
 .stats {
-  grid-column: 1;
-  grid-row: 1;
   position: sticky;
   top: 16px;
   display: grid;
@@ -416,8 +418,6 @@ button:focus,
 }
 
 .results {
-  grid-column: 2;
-  grid-row: 1 / span 2;
   min-width: 0;
 }
 
@@ -536,8 +536,6 @@ button.series-badge:hover {
 }
 
 .reader {
-  grid-column: 3;
-  grid-row: 1 / span 2;
   position: sticky;
   top: 16px;
   min-width: 0;
@@ -1124,16 +1122,13 @@ button.series-badge:hover {
     grid-template-columns: 200px minmax(300px, 1fr);
   }
 
-  .course-framework-ad,
-  .stats {
+  .left-sidebar {
     grid-column: 1;
-    grid-row: auto;
   }
 
   .results,
   .reader {
     grid-column: 2;
-    grid-row: auto;
   }
 
   .course-order {
@@ -1186,13 +1181,11 @@ button.series-badge:hover {
     grid-template-columns: 1fr;
   }
 
-  .course-framework-ad,
-  .stats,
+  .left-sidebar,
   .results,
   .reader {
     position: static;
     grid-column: auto;
-    grid-row: auto;
   }
 
   .course-framework-ad {
