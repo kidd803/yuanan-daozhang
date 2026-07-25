@@ -36,19 +36,19 @@ body::before {
 }
 
 .shell {
-  width: min(1440px, calc(100vw - 32px));
+  width: min(1440px, calc(100vw - 28px));
   margin: 0 auto;
-  padding: 22px 0 56px;
+  padding: 14px 0 52px;
 }
 
 .masthead {
   display: grid;
-  grid-template-columns: minmax(560px, 1fr) minmax(390px, 560px);
-  gap: 22px;
-  align-items: stretch;
-  padding: 20px;
+  grid-template-columns: minmax(520px, 1fr) minmax(420px, 560px);
+  gap: 18px;
+  align-items: center;
+  padding: 16px;
   border: 1px solid rgba(18, 62, 51, 0.18);
-  border-top: 5px solid var(--green-deep);
+  border-top: 4px solid var(--green-deep);
   border-radius: 8px;
   background: #fffefb;
   box-shadow: var(--shadow);
@@ -56,14 +56,14 @@ body::before {
 
 .brand-lockup {
   display: grid;
-  grid-template-columns: 176px minmax(0, 1fr);
-  gap: 22px;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 18px;
   align-items: center;
 }
 
 .portrait-frame {
   position: relative;
-  width: 176px;
+  width: 140px;
   aspect-ratio: 4 / 5;
   margin: 0;
   overflow: hidden;
@@ -80,13 +80,13 @@ body::before {
   bottom: 10px;
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 6px;
   background: rgba(137, 55, 47, 0.92);
   color: #fff;
-  font-size: 0.92rem;
+  font-size: 0.84rem;
   font-weight: 800;
   line-height: 1.1;
 }
@@ -113,7 +113,7 @@ body::before {
 h1 {
   margin: 0;
   color: var(--green-deep);
-  font-size: 3rem;
+  font-size: 2.55rem;
   line-height: 1.06;
   letter-spacing: 0;
 }
@@ -122,18 +122,18 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 14px 0 0;
+  margin: 10px 0 0;
 }
 
 .lineage span {
-  min-height: 32px;
+  min-height: 30px;
   border: 1px solid rgba(155, 120, 48, 0.28);
   border-left: 4px solid var(--gold);
   border-radius: 7px;
   background: var(--soft-gold);
   color: #4c3a17;
-  padding: 4px 10px;
-  font-size: 0.92rem;
+  padding: 3px 10px;
+  font-size: 0.88rem;
   font-weight: 800;
 }
 
@@ -146,18 +146,19 @@ h1 {
 
 #summary {
   max-width: 720px;
-  margin: 14px 0 0;
+  margin: 10px 0 0;
   color: var(--muted);
   font-size: 0.94rem;
 }
 
 .search-panel {
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) 120px 110px;
-  gap: 12px;
+  grid-template-columns: minmax(240px, 1fr) 124px 112px;
+  gap: 10px;
   align-items: end;
   align-content: center;
-  padding: 18px;
+  align-self: center;
+  padding: 12px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 8px;
   background: var(--green-deep);
@@ -166,22 +167,22 @@ h1 {
 
 .field {
   display: grid;
-  gap: 5px;
+  gap: 4px;
   color: #edf4ee;
-  font-size: 0.84rem;
+  font-size: 0.8rem;
   font-weight: 750;
 }
 
 input,
 select {
   width: 100%;
-  min-height: 44px;
+  min-height: 40px;
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 8px;
   background: #fbfdfb;
   color: var(--ink);
   font: inherit;
-  padding: 8px 12px;
+  padding: 7px 11px;
 }
 
 button {
@@ -205,19 +206,19 @@ button:focus,
 }
 
 .quick-searches {
-  padding: 18px 0 0;
+  padding: 12px 0 0;
 }
 
 .facebook-join {
   display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
-  gap: 22px;
+  grid-template-columns: 136px minmax(0, 1fr);
+  gap: 16px;
   align-items: center;
-  margin-top: 18px;
+  margin-top: 12px;
   border: 1px solid rgba(40, 95, 130, 0.18);
   border-radius: 8px;
   background: #f8fbfd;
-  padding: 14px;
+  padding: 10px;
   box-shadow: var(--small-shadow);
 }
 
@@ -227,7 +228,7 @@ button:focus,
   border: 1px solid rgba(40, 95, 130, 0.18);
   border-radius: 8px;
   background: #f6f0e9;
-  aspect-ratio: 10 / 7;
+  aspect-ratio: 4 / 3;
 }
 
 .facebook-join-image img {
@@ -245,27 +246,27 @@ button:focus,
 .facebook-join h2 {
   margin: 0;
   color: var(--green-deep);
-  font-size: 1.3rem;
+  font-size: 1.08rem;
   line-height: 1.35;
 }
 
 .facebook-join p:not(.eyebrow) {
-  margin: 8px 0 0;
+  margin: 4px 0 0;
   color: var(--muted);
-  font-size: 0.94rem;
+  font-size: 0.88rem;
 }
 
 .facebook-join-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 38px;
-  margin-top: 12px;
+  min-height: 34px;
+  margin-top: 8px;
   border: 1px solid #2f63a3;
   border-radius: 8px;
   background: #2f63a3;
   color: #fff;
-  padding: 7px 14px;
+  padding: 5px 12px;
   font-weight: 850;
   line-height: 1.25;
   text-decoration: none;
@@ -276,7 +277,7 @@ button:focus,
 }
 
 .categories {
-  padding: 10px 0 20px;
+  padding: 8px 0 18px;
 }
 
 .quick-searches button,
@@ -326,7 +327,7 @@ button:focus,
 }
 
 .series-tabs {
-  padding: 14px 0 0;
+  padding: 10px 0 0;
 }
 
 .series-tabs button {
@@ -1199,11 +1200,11 @@ button.series-badge:hover {
   }
 
   .search-panel {
-    max-width: 760px;
+    max-width: none;
   }
 
   .facebook-join {
-    grid-template-columns: 210px minmax(0, 1fr);
+    grid-template-columns: 128px minmax(0, 1fr);
   }
 
   .layout {
@@ -1236,20 +1237,20 @@ button.series-badge:hover {
   }
 
   .masthead {
-    padding: 16px;
+    padding: 14px;
   }
 
   .brand-lockup {
-    grid-template-columns: 126px minmax(0, 1fr);
-    gap: 16px;
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 14px;
   }
 
   .portrait-frame {
-    width: 126px;
+    width: 112px;
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
 
   .search-panel {
@@ -1261,8 +1262,8 @@ button.series-badge:hover {
   }
 
   .facebook-join {
-    grid-template-columns: 170px minmax(0, 1fr);
-    gap: 14px;
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 12px;
   }
 
   .layout {
@@ -1375,12 +1376,12 @@ button.series-badge:hover {
   }
 
   .brand-lockup {
-    grid-template-columns: 92px minmax(0, 1fr);
-    gap: 12px;
+    grid-template-columns: 82px minmax(0, 1fr);
+    gap: 11px;
   }
 
   .portrait-frame {
-    width: 92px;
+    width: 82px;
   }
 
   .portrait-frame::after {
@@ -1429,24 +1430,29 @@ button.series-badge:hover {
   }
 
   .facebook-join {
-    grid-template-columns: 1fr;
-    padding: 12px;
+    grid-template-columns: 82px minmax(0, 1fr);
+    gap: 10px;
+    padding: 10px;
   }
 
   .facebook-join-image {
-    aspect-ratio: 10 / 7;
+    aspect-ratio: 1;
   }
 
   .facebook-join h2 {
-    font-size: 1.08rem;
+    font-size: 0.98rem;
   }
 
   .facebook-join p:not(.eyebrow) {
-    font-size: 0.86rem;
+    display: none;
   }
 
   .facebook-join-button {
     width: 100%;
+    min-height: 32px;
+    margin-top: 6px;
+    padding: 4px 9px;
+    font-size: 0.8rem;
   }
 
   .reader {
