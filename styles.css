@@ -209,73 +209,6 @@ button:focus,
   padding: 12px 0 0;
 }
 
-.facebook-join {
-  display: grid;
-  grid-template-columns: 136px minmax(0, 1fr);
-  gap: 16px;
-  align-items: center;
-  margin-top: 12px;
-  border: 1px solid rgba(40, 95, 130, 0.18);
-  border-radius: 8px;
-  background: #f8fbfd;
-  padding: 10px;
-  box-shadow: var(--small-shadow);
-}
-
-.facebook-join-image {
-  display: block;
-  overflow: hidden;
-  border: 1px solid rgba(40, 95, 130, 0.18);
-  border-radius: 8px;
-  background: #f6f0e9;
-  aspect-ratio: 4 / 3;
-}
-
-.facebook-join-image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 54%;
-}
-
-.facebook-join-copy {
-  min-width: 0;
-}
-
-.facebook-join h2 {
-  margin: 0;
-  color: var(--green-deep);
-  font-size: 1.08rem;
-  line-height: 1.35;
-}
-
-.facebook-join p:not(.eyebrow) {
-  margin: 4px 0 0;
-  color: var(--muted);
-  font-size: 0.88rem;
-}
-
-.facebook-join-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 34px;
-  margin-top: 8px;
-  border: 1px solid #2f63a3;
-  border-radius: 8px;
-  background: #2f63a3;
-  color: #fff;
-  padding: 5px 12px;
-  font-weight: 850;
-  line-height: 1.25;
-  text-decoration: none;
-}
-
-.facebook-join-button:hover {
-  background: #244f84;
-}
-
 .categories {
   padding: 8px 0 18px;
 }
@@ -372,6 +305,64 @@ button:focus,
   display: grid;
   gap: 20px;
   min-width: 0;
+}
+
+.yuanan-ip-card {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid rgba(40, 95, 130, 0.18);
+  border-radius: 8px;
+  background: #f8fbfd;
+  padding: 10px;
+  box-shadow: var(--small-shadow);
+}
+
+.yuanan-ip-image {
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(40, 95, 130, 0.18);
+  border-radius: 8px;
+  background: #f6f0e9;
+}
+
+.yuanan-ip-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.yuanan-ip-copy {
+  min-width: 0;
+}
+
+.yuanan-ip-card h2 {
+  margin: 0;
+  color: var(--green-deep);
+  font-size: 0.98rem;
+  line-height: 1.35;
+}
+
+.yuanan-ip-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 34px;
+  margin-top: 8px;
+  border: 1px solid #2f63a3;
+  border-radius: 8px;
+  background: #2f63a3;
+  color: #fff;
+  padding: 5px 12px;
+  font-size: 0.84rem;
+  font-weight: 850;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.yuanan-ip-button:hover {
+  background: #244f84;
 }
 
 .course-framework-ad,
@@ -1203,10 +1194,6 @@ button.series-badge:hover {
     max-width: none;
   }
 
-  .facebook-join {
-    grid-template-columns: 128px minmax(0, 1fr);
-  }
-
   .layout {
     grid-template-columns: 200px minmax(300px, 1fr);
   }
@@ -1261,11 +1248,6 @@ button.series-badge:hover {
     grid-column: 1 / -1;
   }
 
-  .facebook-join {
-    grid-template-columns: 112px minmax(0, 1fr);
-    gap: 12px;
-  }
-
   .layout {
     grid-template-columns: 1fr;
   }
@@ -1275,6 +1257,12 @@ button.series-badge:hover {
   .reader {
     position: static;
     grid-column: auto;
+  }
+
+  .yuanan-ip-card {
+    grid-template-columns: 128px minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
   }
 
   .course-framework-ad,
@@ -1429,26 +1417,16 @@ button.series-badge:hover {
     font-size: 0.74em;
   }
 
-  .facebook-join {
-    grid-template-columns: 82px minmax(0, 1fr);
+  .yuanan-ip-card {
+    grid-template-columns: 108px minmax(0, 1fr);
     gap: 10px;
-    padding: 10px;
   }
 
-  .facebook-join-image {
-    aspect-ratio: 1;
-  }
-
-  .facebook-join h2 {
+  .yuanan-ip-card h2 {
     font-size: 0.98rem;
   }
 
-  .facebook-join p:not(.eyebrow) {
-    display: none;
-  }
-
-  .facebook-join-button {
-    width: 100%;
+  .yuanan-ip-button {
     min-height: 32px;
     margin-top: 6px;
     padding: 4px 9px;
