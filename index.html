@@ -42,7 +42,7 @@
         "inLanguage": "zh-Hant"
       }
     </script>
-    <link rel="stylesheet" href="styles.css?v=20260726-series-cards">
+    <link rel="stylesheet" href="styles.css?v=20260726-topic-cards">
   </head>
   <body>
     <main class="shell">
@@ -150,7 +150,13 @@
         </div>
         <nav id="seriesBar" class="series-tabs" aria-label="道語系列專題"></nav>
       </section>
-      <nav id="categoryBar" class="categories" aria-label="分類"></nav>
+      <section class="category-section" aria-label="道語主題分類">
+        <div class="category-header">
+          <p class="eyebrow">分類瀏覽</p>
+          <h2>道語主題分類</h2>
+        </div>
+        <nav id="categoryBar" class="categories" aria-label="道語主題分類"></nav>
+      </section>
 
       <section class="layout">
         <aside class="left-sidebar" aria-label="統計與課程">
@@ -248,6 +254,6 @@
     </template>
 
     <script src="data/posts.js?v=20260726-category-labels"></script>
-    <script src="app.js?v=20260726-series-cards"></script>
+    <script src="app.js?v=20260726-topic-cards"></script>
   </body>
 </html>

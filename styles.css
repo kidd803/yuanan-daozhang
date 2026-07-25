@@ -305,10 +305,6 @@ button:focus,
   line-height: 1.45;
 }
 
-.categories {
-  padding: 8px 0 18px;
-}
-
 .quick-searches button,
 .series-tabs button,
 .categories button {
@@ -437,6 +433,76 @@ button:focus,
   border-color: var(--blue);
   background: var(--blue);
   color: #fff;
+}
+
+.category-section {
+  margin: 14px 0 18px;
+  border: 1px solid rgba(30, 112, 87, 0.14);
+  border-radius: 8px;
+  background: #fbfdfb;
+  padding: 12px;
+  box-shadow: var(--small-shadow);
+}
+
+.category-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.category-header .eyebrow {
+  margin: 0;
+}
+
+.category-header h2 {
+  margin: 0;
+  color: var(--green-deep);
+  font-size: 1.08rem;
+  line-height: 1.2;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.categories button {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-content: center;
+  align-items: center;
+  justify-content: stretch;
+  gap: 10px;
+  min-height: 54px;
+  border-radius: 8px;
+  padding: 9px 12px;
+  text-align: left;
+  white-space: normal;
+}
+
+.categories .filter-label {
+  color: var(--green-deep);
+  font-size: 0.9rem;
+  font-weight: 850;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.categories .filter-count {
+  justify-self: end;
+  min-width: auto;
+  height: auto;
+  padding: 3px 8px;
+  font-size: 0.78rem;
+  line-height: 1.15;
+}
+
+.categories .filter-count::after {
+  content: " 篇";
+  font-size: 0.86em;
+  font-weight: 760;
 }
 
 .categories button[aria-pressed="true"] {
@@ -1360,6 +1426,10 @@ button.series-badge:hover {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .categories {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .layout {
     grid-template-columns: 200px minmax(300px, 1fr);
   }
@@ -1411,6 +1481,10 @@ button.series-badge:hover {
   }
 
   .series-tabs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .categories {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
@@ -1615,7 +1689,15 @@ button.series-badge:hover {
     padding: 10px;
   }
 
+  .category-section {
+    padding: 10px;
+  }
+
   .series-header {
+    margin-bottom: 8px;
+  }
+
+  .category-header {
     margin-bottom: 8px;
   }
 
@@ -1623,7 +1705,16 @@ button.series-badge:hover {
     font-size: 1rem;
   }
 
+  .category-header h2 {
+    font-size: 1rem;
+  }
+
   .series-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .categories {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
   }
@@ -1640,7 +1731,18 @@ button.series-badge:hover {
     padding: 9px;
   }
 
+  .categories button {
+    min-height: 58px;
+    border-radius: 8px;
+    padding: 9px;
+  }
+
   .series-tabs .filter-label {
+    font-size: 0.82rem;
+    line-height: 1.35;
+  }
+
+  .categories .filter-label {
     font-size: 0.82rem;
     line-height: 1.35;
   }
@@ -1653,6 +1755,13 @@ button.series-badge:hover {
   }
 
   .series-tabs .filter-count {
+    min-width: auto;
+    height: auto;
+    padding: 3px 7px;
+    font-size: 0.72rem;
+  }
+
+  .categories .filter-count {
     min-width: auto;
     height: auto;
     padding: 3px 7px;
