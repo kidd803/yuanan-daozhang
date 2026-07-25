@@ -26,6 +26,12 @@ const PUBLIC_MEDIA_LIMIT = 6;
 const SEARCH_TRACK_DELAY = 900;
 const PUBLIC_PHOTO_KEYWORDS = ['照片', '參訪', '参访', '法會', '法会', '生日', '花', '樹', '树', '宮', '宫', '廟', '庙', '山', '海', '道場', '道场', '祖庭', '鹿邑', '青羊宮', '青羊宫', '崑崙', '昆仑', '華陽觀', '华阳观'];
 const SENSITIVE_MEDIA_KEYWORDS = ['符', '咒', '口訣', '口诀', '真訣', '真诀', '講義', '讲义', '教材', '架構', '架构', '圖解', '图解', '紫微', '斗數', '斗数', '命盤', '命盘', '生肖', '手印'];
+const SERIES_DISPLAY_NAMES = {
+  '淺譯 道德經 81章': '淺譯《道德經》81 章',
+  '黃元吉 道德經 81章': '黃元吉《道德經》81 章',
+  '畫符 100講': '畫符 100 講',
+  '紫微斗數推演 99': '紫微斗數推演 99 講'
+};
 const PILLAR_FILTERS = {
   '全真道入門': {
     categories: ['全真道脈', '道教經典'],
@@ -273,9 +279,9 @@ function renderSeries() {
     const button = document.createElement('button');
     button.type = 'button';
     const count = seriesCounts.get(seriesName) || 0;
-    button.append(filterLabel(seriesName, count));
+    button.append(filterLabel(seriesDisplayName(seriesName), count));
     button.setAttribute('aria-pressed', String(state.series === seriesName));
-    button.setAttribute('aria-label', `${seriesName}，${formatCount(count)} 篇`);
+    button.setAttribute('aria-label', `${seriesDisplayName(seriesName)}，${formatCount(count)} 篇`);
     button.addEventListener('click', () => selectSeries(seriesName));
     return button;
   }));
@@ -318,6 +324,10 @@ function filterLabel(label, count) {
   number.textContent = formatCount(count);
   fragment.append(name, number);
   return fragment;
+}
+
+function seriesDisplayName(seriesName) {
+  return SERIES_DISPLAY_NAMES[seriesName] || seriesName;
 }
 
 function renderStats(filtered) {

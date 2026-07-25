@@ -355,20 +355,82 @@ button:focus,
   font-weight: 760;
 }
 
+.series-section {
+  margin: 14px 0 0;
+  border: 1px solid rgba(40, 95, 130, 0.14);
+  border-radius: 8px;
+  background: #f8fbfd;
+  padding: 12px;
+  box-shadow: var(--small-shadow);
+}
+
+.series-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.series-header .eyebrow {
+  margin: 0;
+  color: var(--blue);
+}
+
+.series-header h2 {
+  margin: 0;
+  color: var(--green-deep);
+  font-size: 1.08rem;
+  line-height: 1.2;
+}
+
 .series-tabs {
-  padding: 10px 0 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0;
 }
 
 .series-tabs button {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-content: space-between;
+  align-items: center;
+  justify-content: stretch;
+  gap: 10px;
+  min-height: 66px;
   border-color: rgba(40, 95, 130, 0.24);
+  border-radius: 8px;
   background: #f6fbfd;
   color: var(--blue);
   font-weight: 760;
+  padding: 10px 12px;
+  text-align: left;
+  white-space: normal;
+}
+
+.series-tabs .filter-label {
+  color: var(--green-deep);
+  font-size: 0.92rem;
+  font-weight: 850;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 .series-tabs .filter-count {
+  justify-self: end;
+  min-width: auto;
+  height: auto;
   border-color: rgba(40, 95, 130, 0.14);
   background: rgba(40, 95, 130, 0.08);
+  padding: 3px 8px;
+  font-size: 0.78rem;
+  line-height: 1.15;
+}
+
+.series-tabs .filter-count::after {
+  content: " 篇";
+  font-size: 0.86em;
+  font-weight: 760;
 }
 
 .series-tabs button[aria-pressed="true"] {
@@ -1294,6 +1356,10 @@ button.series-badge:hover {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .series-tabs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .layout {
     grid-template-columns: 200px minmax(300px, 1fr);
   }
@@ -1342,6 +1408,10 @@ button.series-badge:hover {
 
   .search-panel {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .series-tabs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .search-field {
@@ -1541,10 +1611,38 @@ button.series-badge:hover {
     gap: 7px;
   }
 
+  .series-section {
+    padding: 10px;
+  }
+
+  .series-header {
+    margin-bottom: 8px;
+  }
+
+  .series-header h2 {
+    font-size: 1rem;
+  }
+
+  .series-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
   .series-tabs button,
   .categories button {
     gap: 6px;
     padding: 6px 10px;
+  }
+
+  .series-tabs button {
+    min-height: 74px;
+    border-radius: 8px;
+    padding: 9px;
+  }
+
+  .series-tabs .filter-label {
+    font-size: 0.82rem;
+    line-height: 1.35;
   }
 
   .filter-count {
@@ -1552,6 +1650,13 @@ button.series-badge:hover {
     height: 1.35em;
     padding: 0 0.44em;
     font-size: 0.74em;
+  }
+
+  .series-tabs .filter-count {
+    min-width: auto;
+    height: auto;
+    padding: 3px 7px;
+    font-size: 0.72rem;
   }
 
   .yuanan-ip-card {
