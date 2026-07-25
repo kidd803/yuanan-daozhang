@@ -112,7 +112,7 @@ function bindEvents() {
 
   floatingSearchButton?.addEventListener('click', returnToSearch);
   courseFrameworkOpen?.addEventListener('click', () => {
-    openImageLightbox('assets/yuanan-course-framework.jpg', '圓安道長九科課程架構放大圖', courseFrameworkOpen);
+    openImageLightbox('assets/yuanan-course-framework.jpg', '圓安道長九科高階課程架構放大圖', courseFrameworkOpen);
   });
   foundationSeriesOpen?.addEventListener('click', () => {
     openImageLightbox('assets/yuanan-foundation-series.jpg', '全真基礎研讀六大系列放大圖', foundationSeriesOpen);
