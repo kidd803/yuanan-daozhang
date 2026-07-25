@@ -57,6 +57,8 @@ const floatingSearchButton = document.querySelector('#floatingSearchButton');
 const courseFrameworkOpen = document.querySelector('#courseFrameworkOpen');
 const courseFrameworkLightbox = document.querySelector('#courseFrameworkLightbox');
 const courseFrameworkClose = courseFrameworkLightbox?.querySelector('.image-lightbox-close');
+const courseFrameworkLightboxImage = courseFrameworkLightbox?.querySelector('img');
+let activeLightboxTrigger = null;
 
 const categoryCounts = countBy(posts, (post) => post.category || '未分類');
 const seriesCounts = countBy(posts, (post) => post.series);
@@ -108,14 +110,16 @@ function bindEvents() {
   });
 
   floatingSearchButton?.addEventListener('click', returnToSearch);
-  courseFrameworkOpen?.addEventListener('click', openCourseFrameworkLightbox);
-  courseFrameworkClose?.addEventListener('click', closeCourseFrameworkLightbox);
+  courseFrameworkOpen?.addEventListener('click', () => {
+    openImageLightbox('assets/yuanan-course-framework.jpg', '圓安道長九科課程架構放大圖', courseFrameworkOpen);
+  });
+  courseFrameworkClose?.addEventListener('click', closeImageLightbox);
   courseFrameworkLightbox?.addEventListener('click', (event) => {
-    if (event.target === courseFrameworkLightbox) closeCourseFrameworkLightbox();
+    if (event.target === courseFrameworkLightbox) closeImageLightbox();
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !courseFrameworkLightbox?.hidden) closeCourseFrameworkLightbox();
+    if (event.key === 'Escape' && !courseFrameworkLightbox?.hidden) closeImageLightbox();
   });
 
   quickSearches.addEventListener('click', (event) => {
@@ -501,15 +505,15 @@ function mediaSection(post, media, headingText, className) {
   const grid = document.createElement('div');
   grid.className = 'media-grid';
   grid.replaceChildren(...media.map((item, index) => {
-    const link = document.createElement('a');
-    link.href = item.src;
+    const link = document.createElement('button');
+    link.type = 'button';
     link.className = 'media-link';
-    link.target = '_blank';
-    link.rel = 'noreferrer';
+    link.setAttribute('aria-label', `放大 ${post.title} 圖片 ${index + 1}`);
     const image = document.createElement('img');
     image.src = item.src;
     image.alt = `${post.title} 圖片 ${index + 1}`;
     image.loading = 'lazy';
+    link.addEventListener('click', () => openImageLightbox(item.src, image.alt, link));
     link.append(image);
     return link;
   }));
@@ -598,18 +602,23 @@ function returnToSearch() {
   searchInput.focus({ preventScroll: true });
 }
 
-function openCourseFrameworkLightbox() {
-  if (!courseFrameworkLightbox) return;
+function openImageLightbox(src, alt, trigger = null) {
+  if (!courseFrameworkLightbox || !courseFrameworkLightboxImage || !src) return;
+  activeLightboxTrigger = trigger;
+  courseFrameworkLightboxImage.src = src;
+  courseFrameworkLightboxImage.alt = alt || '放大圖片';
   courseFrameworkLightbox.hidden = false;
   document.body.classList.add('has-open-lightbox');
   courseFrameworkClose?.focus({ preventScroll: true });
 }
 
-function closeCourseFrameworkLightbox() {
+function closeImageLightbox() {
   if (!courseFrameworkLightbox) return;
   courseFrameworkLightbox.hidden = true;
   document.body.classList.remove('has-open-lightbox');
-  courseFrameworkOpen?.focus({ preventScroll: true });
+  const focusTarget = activeLightboxTrigger?.isConnected ? activeLightboxTrigger : courseFrameworkOpen;
+  activeLightboxTrigger = null;
+  focusTarget?.focus({ preventScroll: true });
 }
 
 function trackArticleUnlock(post, phrase) {

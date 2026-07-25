@@ -702,10 +702,14 @@ button.series-badge:hover {
 .media-link {
   display: block;
   overflow: hidden;
+  width: 100%;
+  padding: 0;
+  appearance: none;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #eef1ed;
   aspect-ratio: 1 / 1;
+  cursor: zoom-in;
 }
 
 .media-link img {
@@ -713,6 +717,11 @@ button.series-badge:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.media-link:focus-visible {
+  outline: 3px solid rgba(35, 126, 92, 0.34);
+  outline-offset: 3px;
 }
 
 .reader-body p {
