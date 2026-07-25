@@ -601,7 +601,6 @@ function renderLockedReader(post) {
 
   panel.append(hint, label, error, button);
   reader.replaceChildren(...[header, preview, publicMedia, panel].filter(Boolean));
-  input.focus({ preventScroll: true });
 }
 
 function renderMedia(post) {
@@ -698,6 +697,7 @@ function tagList(tags) {
 }
 
 function selectPost(id, source = 'post_list') {
+  blurActiveControl();
   state.selectedId = id;
   render();
   const post = posts.find((item) => item.id === id);
@@ -706,6 +706,7 @@ function selectPost(id, source = 'post_list') {
 }
 
 function openRecommendedPost(id) {
+  blurActiveControl();
   state.category = '全部';
   state.year = '全部年份';
   state.series = '全部系列';
@@ -725,6 +726,11 @@ function returnToSearch() {
   trackEvent('return_to_search');
   document.querySelector('.masthead')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   searchInput.focus({ preventScroll: true });
+}
+
+function blurActiveControl() {
+  const active = document.activeElement;
+  if (active instanceof HTMLElement && active.matches('input, textarea, select, button')) active.blur();
 }
 
 function openImageLightbox(src, alt, trigger = null) {
