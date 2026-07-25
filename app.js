@@ -2,10 +2,10 @@ const posts = Array.isArray(window.YUANAN_POSTS) ? window.YUANAN_POSTS : [];
 const archiveMeta = window.YUANAN_ARCHIVE_META || {};
 const PAGE_SIZE = 60;
 const DEFAULT_CATEGORY_ORDER = [
-  '【悟道真詮】',
+  '悟道真詮',
   '養生性命',
   '處世立命',
-  '【全真道脈】',
+  '全真道脈',
   '修身養性',
   '人間修行',
   '丹道修真',
