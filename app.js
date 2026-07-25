@@ -33,6 +33,7 @@ const state = {
   sort: 'newest',
   year: '全部年份',
   series: '全部系列',
+  pillar: '',
   visible: PAGE_SIZE,
   selectedId: null,
   recommendationHour: currentHourKey(),
@@ -54,6 +55,7 @@ const resultMeta = document.querySelector('#resultMeta');
 const loadMoreButton = document.querySelector('#loadMoreButton');
 const template = document.querySelector('#postTemplate');
 const quickSearches = document.querySelector('.quick-searches');
+const pillarSections = document.querySelector('.pillar-sections');
 const floatingSearchButton = document.querySelector('#floatingSearchButton');
 const courseFrameworkOpen = document.querySelector('#courseFrameworkOpen');
 const foundationSeriesOpen = document.querySelector('#foundationSeriesOpen');
@@ -81,6 +83,7 @@ function bindEvents() {
     state.category = '全部';
     state.year = '全部年份';
     state.series = '全部系列';
+    state.pillar = '';
     state.visible = PAGE_SIZE;
     state.selectedId = null;
     render();
@@ -91,6 +94,7 @@ function bindEvents() {
     state.year = yearSelect.value;
     state.category = '全部';
     state.series = '全部系列';
+    state.pillar = '';
     state.query = '';
     searchInput.value = '';
     state.visible = PAGE_SIZE;
@@ -147,6 +151,7 @@ function bindEvents() {
     state.category = '全部';
     state.year = '全部年份';
     state.series = '全部系列';
+    state.pillar = '';
     state.visible = PAGE_SIZE;
     state.selectedId = null;
     searchInput.value = state.query;
@@ -155,6 +160,12 @@ function bindEvents() {
       search_term: state.query,
       result_count: matchPosts().length
     });
+  });
+
+  pillarSections?.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-pillar]');
+    if (!button) return;
+    selectPillar(button);
   });
 
   bindAnalyticsLinks();
@@ -244,6 +255,7 @@ function renderCategories() {
     button.addEventListener('click', () => {
       state.category = category;
       state.series = '全部系列';
+      state.pillar = '';
       state.year = '全部年份';
       state.visible = PAGE_SIZE;
       state.selectedId = null;
@@ -286,11 +298,14 @@ function renderStats(filtered) {
 
 function renderPosts(filtered, selected) {
   const visiblePosts = filtered.slice(0, state.visible);
-  resultTitle.textContent = state.series !== '全部系列'
+  const currentTitle = state.series !== '全部系列'
     ? state.series
-    : state.category === '全部'
-      ? '全部文章'
-      : state.category;
+    : state.pillar
+      ? state.pillar
+      : state.category === '全部'
+        ? '全部文章'
+        : state.category;
+  resultTitle.textContent = currentTitle;
   resultMeta.textContent = filtered.length
     ? `顯示 ${formatCount(visiblePosts.length)} / ${formatCount(filtered.length)} 篇`
     : '0 篇';
@@ -632,6 +647,7 @@ function openRecommendedPost(id) {
   state.category = '全部';
   state.year = '全部年份';
   state.series = '全部系列';
+  state.pillar = '';
   state.query = '';
   state.visible = PAGE_SIZE;
   state.selectedId = id;
@@ -757,9 +773,31 @@ function currentHourKey() {
   return Math.floor(Date.now() / 3600000);
 }
 
+function selectPillar(button) {
+  const pillar = button.dataset.pillar || '';
+  state.pillar = pillar;
+  state.query = button.dataset.query || '';
+  state.category = button.dataset.category || '全部';
+  state.year = '全部年份';
+  state.series = '全部系列';
+  state.visible = PAGE_SIZE;
+  state.selectedId = null;
+  searchInput.value = state.query;
+  render();
+  const resultCount = matchPosts().length;
+  trackEvent('pillar_section_click', {
+    pillar_name: pillar,
+    search_term: state.query,
+    category_name: state.category,
+    result_count: resultCount
+  });
+  document.querySelector('.layout')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+}
+
 function selectSeries(series, source = 'series_tab') {
   state.series = state.series === series ? '全部系列' : series;
   state.category = '全部';
+  state.pillar = '';
   state.visible = PAGE_SIZE;
   state.selectedId = null;
   render();
