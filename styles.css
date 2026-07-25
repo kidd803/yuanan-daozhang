@@ -282,6 +282,10 @@ button:focus,
 .quick-searches button,
 .series-tabs button,
 .categories button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
   min-height: 36px;
   border: 1px solid rgba(18, 62, 51, 0.14);
   border-radius: 999px;
@@ -290,6 +294,29 @@ button:focus,
   padding: 6px 13px;
   cursor: pointer;
   box-shadow: 0 1px 0 rgba(18, 62, 51, 0.05);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.filter-label {
+  min-width: 0;
+}
+
+.filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.7em;
+  height: 1.45em;
+  border: 1px solid rgba(18, 62, 51, 0.12);
+  border-radius: 999px;
+  background: rgba(18, 62, 51, 0.07);
+  color: color-mix(in srgb, currentColor 82%, #fff);
+  padding: 0 0.5em;
+  font-size: 0.78em;
+  font-variant-numeric: tabular-nums;
+  font-weight: 850;
+  letter-spacing: 0;
 }
 
 .quick-searches button {
@@ -309,6 +336,11 @@ button:focus,
   font-weight: 760;
 }
 
+.series-tabs .filter-count {
+  border-color: rgba(40, 95, 130, 0.14);
+  background: rgba(40, 95, 130, 0.08);
+}
+
 .series-tabs button[aria-pressed="true"] {
   border-color: var(--blue);
   background: var(--blue);
@@ -318,6 +350,13 @@ button:focus,
 .categories button[aria-pressed="true"] {
   border-color: var(--green);
   background: var(--green);
+  color: #fff;
+}
+
+.series-tabs button[aria-pressed="true"] .filter-count,
+.categories button[aria-pressed="true"] .filter-count {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.18);
   color: #fff;
 }
 
@@ -1369,6 +1408,24 @@ button.series-badge:hover {
 
   .search-panel {
     grid-template-columns: 1fr;
+  }
+
+  .series-tabs,
+  .categories {
+    gap: 7px;
+  }
+
+  .series-tabs button,
+  .categories button {
+    gap: 6px;
+    padding: 6px 10px;
+  }
+
+  .filter-count {
+    min-width: 1.55em;
+    height: 1.35em;
+    padding: 0 0.44em;
+    font-size: 0.74em;
   }
 
   .facebook-join {

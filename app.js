@@ -203,8 +203,9 @@ function renderSeries() {
     const button = document.createElement('button');
     button.type = 'button';
     const count = seriesCounts.get(seriesName) || 0;
-    button.textContent = `${seriesName} ${formatCount(count)}`;
+    button.append(filterLabel(seriesName, count));
     button.setAttribute('aria-pressed', String(state.series === seriesName));
+    button.setAttribute('aria-label', `${seriesName}，${formatCount(count)} 篇`);
     button.addEventListener('click', () => selectSeries(seriesName));
     return button;
   }));
@@ -217,8 +218,9 @@ function renderCategories() {
     const button = document.createElement('button');
     button.type = 'button';
     const count = category === '全部' ? posts.length : categoryCounts.get(category) || 0;
-    button.textContent = `${category} ${formatCount(count)}`;
+    button.append(filterLabel(category, count));
     button.setAttribute('aria-pressed', String(state.category === category));
+    button.setAttribute('aria-label', `${category}，${formatCount(count)} 篇`);
     button.addEventListener('click', () => {
       state.category = category;
       state.series = '全部系列';
@@ -229,6 +231,18 @@ function renderCategories() {
     });
     return button;
   }));
+}
+
+function filterLabel(label, count) {
+  const fragment = document.createDocumentFragment();
+  const name = document.createElement('span');
+  name.className = 'filter-label';
+  name.textContent = label;
+  const number = document.createElement('span');
+  number.className = 'filter-count';
+  number.textContent = formatCount(count);
+  fragment.append(name, number);
+  return fragment;
 }
 
 function renderStats(filtered) {
