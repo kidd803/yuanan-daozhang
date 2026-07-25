@@ -198,6 +198,7 @@ function bindEvents() {
       search_term: state.query,
       result_count: matchPosts().length
     });
+    scrollToResultsOnMobile();
   });
 
   pillarSections?.addEventListener('click', (event) => {
@@ -225,6 +226,7 @@ function render() {
   const filtered = matchPosts();
   const selected = selectedPost(filtered);
   document.body.classList.toggle('is-reading-article', Boolean(selected));
+  document.body.classList.toggle('is-filtered-list', hasActiveFilter());
   renderSummary(filtered);
   renderSeries();
   renderCategories();
@@ -309,6 +311,7 @@ function renderCategories() {
         category_name: category,
         result_count: matchPosts().length
       });
+      scrollToResultsOnMobile();
     });
     return button;
   }));
@@ -328,6 +331,16 @@ function filterLabel(label, count) {
 
 function seriesDisplayName(seriesName) {
   return SERIES_DISPLAY_NAMES[seriesName] || seriesName;
+}
+
+function hasActiveFilter() {
+  return Boolean(
+    state.query ||
+    state.pillar ||
+    state.category !== '全部' ||
+    state.year !== '全部年份' ||
+    state.series !== '全部系列'
+  );
 }
 
 function renderStats(filtered) {
@@ -864,6 +877,7 @@ function selectPillar(button) {
     series_name: (filter.series || []).join('、'),
     result_count: resultCount
   });
+  if (scrollToResultsOnMobile()) return;
   document.querySelector('.layout')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
 }
 
@@ -879,6 +893,13 @@ function selectSeries(series, source = 'series_tab') {
     source,
     result_count: matchPosts().length
   });
+  scrollToResultsOnMobile();
+}
+
+function scrollToResultsOnMobile() {
+  if (!window.matchMedia('(max-width: 860px)').matches) return false;
+  document.querySelector('.results')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  return true;
 }
 
 function selectedPost(filtered) {

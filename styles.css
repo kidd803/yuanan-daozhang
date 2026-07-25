@@ -1511,6 +1511,30 @@ button.series-badge:hover {
     grid-column: auto;
   }
 
+  .results {
+    order: 1;
+  }
+
+  .reader {
+    order: 2;
+  }
+
+  .left-sidebar {
+    order: 3;
+  }
+
+  body:not(.is-reading-article) .reader {
+    display: none;
+  }
+
+  .is-reading-article .reader {
+    order: 1;
+  }
+
+  .is-reading-article .results {
+    order: 2;
+  }
+
   .yuanan-ip-card {
     grid-template-columns: 128px minmax(0, 1fr);
     align-items: center;
@@ -1557,6 +1581,7 @@ button.series-badge:hover {
     padding: 8px;
   }
 
+  .is-filtered-list .course-order,
   .is-reading-article .course-order {
     display: none;
   }
