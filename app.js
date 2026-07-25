@@ -23,6 +23,7 @@ const RECOMMENDATION_MIN_LENGTH = 320;
 const ARTICLE_UNLOCK_KEY = 'yuanan-article-unlocked';
 const SITE_URL = 'https://taoism.com.tw';
 const PUBLIC_MEDIA_LIMIT = 6;
+const SEARCH_TRACK_DELAY = 900;
 const PUBLIC_PHOTO_KEYWORDS = ['照片', '參訪', '参访', '法會', '法会', '生日', '花', '樹', '树', '宮', '宫', '廟', '庙', '山', '海', '道場', '道场', '祖庭', '鹿邑', '青羊宮', '青羊宫', '崑崙', '昆仑', '華陽觀', '华阳观'];
 const SENSITIVE_MEDIA_KEYWORDS = ['符', '咒', '口訣', '口诀', '真訣', '真诀', '講義', '讲义', '教材', '架構', '架构', '圖解', '图解', '紫微', '斗數', '斗数', '命盤', '命盘', '生肖', '手印'];
 
@@ -60,6 +61,7 @@ const courseFrameworkLightbox = document.querySelector('#courseFrameworkLightbox
 const courseFrameworkClose = courseFrameworkLightbox?.querySelector('.image-lightbox-close');
 const courseFrameworkLightboxImage = courseFrameworkLightbox?.querySelector('img');
 let activeLightboxTrigger = null;
+let searchTrackTimer = null;
 
 const categoryCounts = countBy(posts, (post) => post.category || '未分類');
 const seriesCounts = countBy(posts, (post) => post.series);
@@ -82,6 +84,7 @@ function bindEvents() {
     state.visible = PAGE_SIZE;
     state.selectedId = null;
     render();
+    scheduleSearchTracking('search_input');
   });
 
   yearSelect.addEventListener('change', () => {
@@ -93,6 +96,10 @@ function bindEvents() {
     state.visible = PAGE_SIZE;
     state.selectedId = null;
     render();
+    trackEvent('filter_year', {
+      filter_year: state.year,
+      result_count: matchPosts().length
+    });
   });
 
   seriesSelect?.addEventListener('change', () => {
@@ -103,11 +110,18 @@ function bindEvents() {
     state.sort = sortSelect.value;
     state.visible = PAGE_SIZE;
     render();
+    trackEvent('sort_articles', {
+      sort_order: state.sort
+    });
   });
 
   loadMoreButton.addEventListener('click', () => {
     state.visible += PAGE_SIZE;
     render();
+    trackEvent('load_more_articles', {
+      visible_count: state.visible,
+      result_count: matchPosts().length
+    });
   });
 
   floatingSearchButton?.addEventListener('click', returnToSearch);
@@ -137,7 +151,13 @@ function bindEvents() {
     state.selectedId = null;
     searchInput.value = state.query;
     render();
+    trackEvent('quick_search', {
+      search_term: state.query,
+      result_count: matchPosts().length
+    });
   });
+
+  bindAnalyticsLinks();
 
   setInterval(() => {
     const nextHour = currentHourKey();
@@ -228,6 +248,10 @@ function renderCategories() {
       state.visible = PAGE_SIZE;
       state.selectedId = null;
       render();
+      trackEvent('filter_category', {
+        category_name: category,
+        result_count: matchPosts().length
+      });
     });
     return button;
   }));
@@ -309,11 +333,11 @@ function postCard(post, selected) {
     tagNodes.push(mediaBadge);
   }
   tags.replaceChildren(...tagNodes);
-  node.addEventListener('click', () => selectPost(post.id));
+  node.addEventListener('click', () => selectPost(post.id, 'post_list'));
   node.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      selectPost(post.id);
+      selectPost(post.id, 'post_list_keyboard');
     }
   });
   return node;
@@ -559,6 +583,7 @@ function readerActions(post) {
   copyButton.addEventListener('click', async () => {
     const ok = await copyText(`${post.title}\n\n${post.body}`.trim());
     copyButton.textContent = ok ? '已複製' : '複製失敗';
+    trackArticleEvent(ok ? 'copy_article_text' : 'copy_article_text_failed', post);
     setTimeout(() => { copyButton.textContent = '複製文字'; }, 1300);
   });
   actions.append(searchButton, copyButton);
@@ -595,9 +620,11 @@ function tagList(tags) {
   return list;
 }
 
-function selectPost(id) {
+function selectPost(id, source = 'post_list') {
   state.selectedId = id;
   render();
+  const post = posts.find((item) => item.id === id);
+  trackArticleEvent('select_article', post, { source });
   if (window.matchMedia('(max-width: 860px)').matches) reader.scrollIntoView({ block: 'start' });
 }
 
@@ -610,12 +637,14 @@ function openRecommendedPost(id) {
   state.selectedId = id;
   searchInput.value = '';
   render();
+  trackArticleEvent('select_hourly_recommendation', posts.find((post) => post.id === id));
   reader.scrollIntoView({ block: 'start', behavior: 'smooth' });
 }
 
 function returnToSearch() {
   state.selectedId = null;
   render();
+  trackEvent('return_to_search');
   document.querySelector('.masthead')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   searchInput.focus({ preventScroll: true });
 }
@@ -627,6 +656,10 @@ function openImageLightbox(src, alt, trigger = null) {
   courseFrameworkLightboxImage.alt = alt || '放大圖片';
   courseFrameworkLightbox.hidden = false;
   document.body.classList.add('has-open-lightbox');
+  trackEvent('open_image_lightbox', {
+    image_alt: alt || '放大圖片',
+    image_src: src
+  });
   courseFrameworkClose?.focus({ preventScroll: true });
 }
 
@@ -640,15 +673,61 @@ function closeImageLightbox() {
 }
 
 function trackArticleUnlock(post, phrase) {
-  if (typeof window.gtag !== 'function') return;
-  window.gtag('event', 'unlock_article_success', {
+  trackArticleEvent('unlock_article_success', post, {
     event_label: `道名成功開啟文章（${phrase}）`,
-    dao_name: phrase,
+    dao_name: phrase
+  });
+}
+
+function bindAnalyticsLinks() {
+  document.querySelectorAll('.course-order-button, .course-order-image-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      trackEvent('course_signup_click', {
+        link_text: link.textContent.trim() || link.querySelector('img')?.alt || '圓安丹道入門線上試播課',
+        link_url: link.href
+      });
+    });
+  });
+
+  document.querySelectorAll('.yuanan-ip-button, .yuanan-ip-image').forEach((link) => {
+    link.addEventListener('click', () => {
+      trackEvent('facebook_join_click', {
+        link_text: link.textContent.trim() || link.querySelector('img')?.alt || '圓安道長 Facebook',
+        link_url: link.href
+      });
+    });
+  });
+}
+
+function scheduleSearchTracking(source) {
+  window.clearTimeout(searchTrackTimer);
+  if (!state.query) return;
+  searchTrackTimer = window.setTimeout(() => {
+    trackEvent('site_search', {
+      search_term: state.query,
+      source,
+      result_count: matchPosts().length
+    });
+  }, SEARCH_TRACK_DELAY);
+}
+
+function trackArticleEvent(name, post, params = {}) {
+  if (!post) return;
+  trackEvent(name, {
     article_title: post.title || '未命名文章',
     article_url: publicArticleUrl(post),
     article_id: post.id || '',
     article_category: post.category || '',
-    article_series: post.series || ''
+    article_series: post.series || '',
+    ...params
+  });
+}
+
+function trackEvent(name, params = {}) {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', name, {
+    page_title: document.title,
+    ...params
   });
 }
 
@@ -678,12 +757,17 @@ function currentHourKey() {
   return Math.floor(Date.now() / 3600000);
 }
 
-function selectSeries(series) {
+function selectSeries(series, source = 'series_tab') {
   state.series = state.series === series ? '全部系列' : series;
   state.category = '全部';
   state.visible = PAGE_SIZE;
   state.selectedId = null;
   render();
+  trackEvent('filter_series', {
+    series_name: state.series,
+    source,
+    result_count: matchPosts().length
+  });
 }
 
 function selectedPost(filtered) {
