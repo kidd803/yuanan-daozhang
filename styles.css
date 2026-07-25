@@ -334,7 +334,8 @@ button:focus,
   min-width: 0;
 }
 
-.course-framework-ad {
+.course-framework-ad,
+.foundation-series-ad {
   display: grid;
   gap: 12px;
   width: 100%;
@@ -347,7 +348,12 @@ button:focus,
   box-shadow: var(--small-shadow);
 }
 
-.course-framework-image {
+.foundation-series-ad {
+  background: #fffdf5;
+}
+
+.course-framework-image,
+.foundation-series-image {
   display: block;
   overflow: hidden;
   width: 100%;
@@ -358,39 +364,70 @@ button:focus,
   cursor: zoom-in;
 }
 
-.course-framework-image:focus-visible {
+.course-framework-image:focus-visible,
+.foundation-series-image:focus-visible {
   outline: 3px solid rgba(31, 107, 84, 0.32);
   outline-offset: 3px;
 }
 
-.course-framework-image img {
+.course-framework-image img,
+.foundation-series-image img {
   display: block;
   width: 100%;
   height: auto;
 }
 
-.course-framework-copy {
+.course-framework-copy,
+.foundation-series-copy {
   display: grid;
   gap: 6px;
 }
 
-.course-framework-copy .eyebrow {
+.course-framework-copy .eyebrow,
+.foundation-series-copy .eyebrow {
   margin: 0;
   color: var(--gold);
 }
 
-.course-framework-copy h2 {
+.course-framework-copy h2,
+.foundation-series-copy h2 {
   margin: 0;
   color: var(--green-deep);
   font-size: 1.05rem;
   line-height: 1.35;
 }
 
-.course-framework-copy p:not(.eyebrow) {
+.course-framework-copy p:not(.eyebrow),
+.foundation-series-copy p:not(.eyebrow) {
   margin: 0;
   color: var(--muted);
   font-size: 0.82rem;
   line-height: 1.5;
+}
+
+.foundation-series-list {
+  display: grid;
+  gap: 7px;
+  margin: 4px 0 0;
+  padding-left: 1.25em;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.foundation-series-list li::marker {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.foundation-series-list strong {
+  display: block;
+  color: var(--green-deep);
+  font-size: 0.86rem;
+}
+
+.foundation-series-list span {
+  display: block;
 }
 
 .stats {
@@ -1200,22 +1237,31 @@ button.series-badge:hover {
     grid-column: auto;
   }
 
-  .course-framework-ad {
+  .course-framework-ad,
+  .foundation-series-ad {
     width: 100%;
     grid-template-columns: 112px minmax(0, 1fr);
     align-items: center;
     gap: 10px;
   }
 
-  .course-framework-image {
+  .course-framework-image,
+  .foundation-series-image {
     align-self: stretch;
     aspect-ratio: 3 / 4;
   }
 
-  .course-framework-image img {
+  .course-framework-image img,
+  .foundation-series-image img {
     height: 100%;
     object-fit: cover;
     object-position: 50% 50%;
+  }
+
+  .foundation-series-list {
+    max-height: 9.5rem;
+    overflow: auto;
+    padding-right: 4px;
   }
 
   .course-order {
@@ -1350,17 +1396,25 @@ button.series-badge:hover {
     padding: 16px;
   }
 
-  .course-framework-ad {
+  .course-framework-ad,
+  .foundation-series-ad {
     grid-template-columns: 96px minmax(0, 1fr);
     padding: 10px;
   }
 
-  .course-framework-copy h2 {
+  .course-framework-copy h2,
+  .foundation-series-copy h2 {
     font-size: 0.95rem;
   }
 
-  .course-framework-copy p:not(.eyebrow) {
+  .course-framework-copy p:not(.eyebrow),
+  .foundation-series-copy p:not(.eyebrow) {
     font-size: 0.78rem;
+  }
+
+  .foundation-series-list {
+    gap: 5px;
+    font-size: 0.74rem;
   }
 
   .reader-head h2 {

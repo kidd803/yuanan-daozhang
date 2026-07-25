@@ -55,6 +55,7 @@ const template = document.querySelector('#postTemplate');
 const quickSearches = document.querySelector('.quick-searches');
 const floatingSearchButton = document.querySelector('#floatingSearchButton');
 const courseFrameworkOpen = document.querySelector('#courseFrameworkOpen');
+const foundationSeriesOpen = document.querySelector('#foundationSeriesOpen');
 const courseFrameworkLightbox = document.querySelector('#courseFrameworkLightbox');
 const courseFrameworkClose = courseFrameworkLightbox?.querySelector('.image-lightbox-close');
 const courseFrameworkLightboxImage = courseFrameworkLightbox?.querySelector('img');
@@ -112,6 +113,9 @@ function bindEvents() {
   floatingSearchButton?.addEventListener('click', returnToSearch);
   courseFrameworkOpen?.addEventListener('click', () => {
     openImageLightbox('assets/yuanan-course-framework.jpg', '圓安道長九科課程架構放大圖', courseFrameworkOpen);
+  });
+  foundationSeriesOpen?.addEventListener('click', () => {
+    openImageLightbox('assets/yuanan-foundation-series.jpg', '全真基礎研讀六大系列放大圖', foundationSeriesOpen);
   });
   courseFrameworkClose?.addEventListener('click', closeImageLightbox);
   courseFrameworkLightbox?.addEventListener('click', (event) => {
