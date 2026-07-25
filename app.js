@@ -26,6 +26,38 @@ const PUBLIC_MEDIA_LIMIT = 6;
 const SEARCH_TRACK_DELAY = 900;
 const PUBLIC_PHOTO_KEYWORDS = ['照片', '參訪', '参访', '法會', '法会', '生日', '花', '樹', '树', '宮', '宫', '廟', '庙', '山', '海', '道場', '道场', '祖庭', '鹿邑', '青羊宮', '青羊宫', '崑崙', '昆仑', '華陽觀', '华阳观'];
 const SENSITIVE_MEDIA_KEYWORDS = ['符', '咒', '口訣', '口诀', '真訣', '真诀', '講義', '讲义', '教材', '架構', '架构', '圖解', '图解', '紫微', '斗數', '斗数', '命盤', '命盘', '生肖', '手印'];
+const PILLAR_FILTERS = {
+  '全真道入門': {
+    categories: ['全真道脈', '道教經典'],
+    series: ['全真道歷史', '重陽立教十五論'],
+    keywords: ['全真', '龍門', '冠巾', '皈依', '傳戒', '传戒', '王重陽', '王重阳', '丘處機', '丘处机', '北七真', '祖師', '祖师'],
+    minScore: 3
+  },
+  '全真龍門道脈': {
+    categories: ['全真道脈'],
+    series: ['全真道歷史', '重陽立教十五論'],
+    keywords: ['全真', '龍門', '龙门', '道脈', '道脉', '王重陽', '王重阳', '丘處機', '丘处机', '太清宮', '太清宫', '鹿邑', '蓬萊', '蓬莱', '師承', '师承', '冠巾'],
+    minScore: 2
+  },
+  '丹道修真': {
+    categories: ['丹道修真', '龍門丹道', '養生性命'],
+    series: ['圓安論氣功'],
+    keywords: ['丹道', '內丹', '内丹', '性命', '築基', '筑基', '煉精', '炼精', '煉氣', '炼气', '煉神', '炼神', '打坐', '靜坐', '静坐', '火候', '綿息', '息法', '丹田', '任督'],
+    minScore: 2
+  },
+  '修心煉性': {
+    categories: ['修心煉性', '修身養性', '處世立命', '悟道真詮'],
+    series: [],
+    keywords: ['修心', '煉性', '炼性', '心性', '起心動念', '起心动念', '貪', '瞋', '癡', '放下', '無為', '无为', '虛靜', '虚静', '人情', '家庭', '工作', '煩惱', '烦恼'],
+    minScore: 2
+  },
+  '經典講堂': {
+    categories: ['道教經典'],
+    series: ['黃元吉 道德經 81章', '淺譯 道德經 81章', '重陽立教十五論'],
+    keywords: ['道德經', '道德经', '清靜經', '清静经', '重陽立教十五論', '重阳立教十五论', '龍門心法', '龙门心法', '太乙金華', '太乙金华', '丘祖', '祖師著作', '經典', '经典'],
+    minScore: 2
+  }
+};
 
 const state = {
   category: '全部',
@@ -203,6 +235,7 @@ function matchPosts() {
     .filter((post) => state.category === '全部' || post.category === state.category)
     .filter((post) => state.year === '全部年份' || post.date?.startsWith(state.year))
     .filter((post) => state.series === '全部系列' || post.series === state.series)
+    .filter((post) => !state.pillar || pillarScore(post, state.pillar) > 0)
     .filter((post) => {
       if (!tokens.length) return true;
       const text = [
@@ -216,7 +249,13 @@ function matchPosts() {
       const haystack = normalizeSearch(text);
       return tokens.every((token) => haystack.includes(token));
     })
-    .sort((a, b) => state.sort === 'oldest' ? a.timestamp - b.timestamp : b.timestamp - a.timestamp);
+    .sort((a, b) => {
+      if (state.pillar) {
+        const scoreDiff = pillarScore(b, state.pillar) - pillarScore(a, state.pillar);
+        if (scoreDiff) return scoreDiff;
+      }
+      return state.sort === 'oldest' ? a.timestamp - b.timestamp : b.timestamp - a.timestamp;
+    });
 }
 
 function renderSummary(filtered) {
@@ -773,22 +812,46 @@ function currentHourKey() {
   return Math.floor(Date.now() / 3600000);
 }
 
+function pillarScore(post, pillar) {
+  const filter = PILLAR_FILTERS[pillar];
+  if (!filter) return 0;
+
+  let score = 0;
+  if ((filter.categories || []).includes(post.category)) score += 2;
+  if (post.series && (filter.series || []).includes(post.series)) score += 5;
+
+  const title = normalizeSearch(post.title || '');
+  const body = normalizeSearch(post.body || '');
+  const tags = normalizeSearch((post.tags || []).join('\n'));
+
+  for (const keyword of filter.keywords || []) {
+    const token = normalizeSearch(keyword);
+    if (!token) continue;
+    if (title.includes(token)) score += 3;
+    else if (tags.includes(token)) score += 2;
+    else if (body.includes(token)) score += 1;
+  }
+
+  return score >= (filter.minScore || 1) ? score : 0;
+}
+
 function selectPillar(button) {
   const pillar = button.dataset.pillar || '';
   state.pillar = pillar;
-  state.query = button.dataset.query || '';
-  state.category = button.dataset.category || '全部';
+  state.query = '';
+  state.category = '全部';
   state.year = '全部年份';
   state.series = '全部系列';
   state.visible = PAGE_SIZE;
   state.selectedId = null;
-  searchInput.value = state.query;
+  searchInput.value = '';
   render();
   const resultCount = matchPosts().length;
+  const filter = PILLAR_FILTERS[pillar] || {};
   trackEvent('pillar_section_click', {
     pillar_name: pillar,
-    search_term: state.query,
-    category_name: state.category,
+    category_name: (filter.categories || []).join('、'),
+    series_name: (filter.series || []).join('、'),
     result_count: resultCount
   });
   document.querySelector('.layout')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
