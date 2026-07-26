@@ -1,12 +1,12 @@
 {
   "title": "圓安道長文章資料庫",
-  "generatedAt": "2026-07-26T05:32:55.463Z",
+  "generatedAt": "2026-07-26T05:53:26.361Z",
   "source": "林圓安 Facebook 官方匯出資料，本公開版保留文字文章與壓縮前 Facebook 中等品質圖片",
   "totalSourcePosts": 3402,
   "publicPosts": 1945,
   "omittedImageOnlyPosts": 1074,
-  "publicImages": 4200,
-  "publicImageBytes": 524975848,
+  "publicImages": 4233,
+  "publicImageBytes": 535447886,
   "dateRange": {
     "from": "2015-12-11",
     "to": "2026-06-29"
@@ -71,7 +71,9 @@
       "importedAt": "2026-07-26T00:00:00+08:00",
       "posts": 37,
       "series": "全真道法統",
-      "duplicatesFiltered": 3
+      "duplicatesFiltered": 3,
+      "images": 33,
+      "imageFiles": 33
     },
     "yuananFatong": {
       "title": "圓安道長｜全真道法統文章整合",
