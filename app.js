@@ -35,13 +35,13 @@ const SERIES_DISPLAY_NAMES = {
 const PILLAR_FILTERS = {
   '全真道入門': {
     categories: ['全真道脈', '道教經典'],
-    series: ['全真道歷史', '重陽立教十五論'],
+    series: ['全真道法統', '全真道歷史', '重陽立教十五論'],
     keywords: ['全真', '龍門', '冠巾', '皈依', '傳戒', '传戒', '王重陽', '王重阳', '丘處機', '丘处机', '北七真', '祖師', '祖师'],
     minScore: 3
   },
   '全真龍門道脈': {
     categories: ['全真道脈'],
-    series: ['全真道歷史', '重陽立教十五論'],
+    series: ['全真道法統', '全真道歷史', '重陽立教十五論'],
     keywords: ['全真', '龍門', '龙门', '道脈', '道脉', '王重陽', '王重阳', '丘處機', '丘处机', '太清宮', '太清宫', '鹿邑', '蓬萊', '蓬莱', '師承', '师承', '冠巾'],
     minScore: 2
   },
@@ -104,7 +104,7 @@ let activeLightboxTrigger = null;
 let searchTrackTimer = null;
 
 const categoryCounts = countBy(posts, (post) => post.category || '未分類');
-const seriesCounts = countBy(posts, (post) => post.series);
+const seriesCounts = countSeries(posts);
 const years = [...new Set(posts.map((post) => post.date?.slice(0, 4)).filter(Boolean))]
   .sort((a, b) => b.localeCompare(a));
 const seriesNames = [...seriesCounts.keys()].sort((a, b) => a.localeCompare(b, 'zh-Hant'));
@@ -242,7 +242,7 @@ function matchPosts() {
   return posts
     .filter((post) => state.category === '全部' || post.category === state.category)
     .filter((post) => state.year === '全部年份' || post.date?.startsWith(state.year))
-    .filter((post) => state.series === '全部系列' || post.series === state.series)
+    .filter((post) => state.series === '全部系列' || postHasSeries(post, state.series))
     .filter((post) => !state.pillar || pillarScore(post, state.pillar) > 0)
     .filter((post) => {
       if (!tokens.length) return true;
@@ -250,7 +250,7 @@ function matchPosts() {
         post.title,
         post.body,
         post.category,
-        post.series,
+        ...postSeriesNames(post),
         post.date,
         ...(post.tags || [])
       ].join('\n');
@@ -361,7 +361,7 @@ function renderStats(filtered) {
 function renderPosts(filtered, selected) {
   const visiblePosts = filtered.slice(0, state.visible);
   const currentTitle = state.series !== '全部系列'
-    ? state.series
+    ? seriesDisplayName(state.series)
     : state.pillar
       ? state.pillar
       : state.category === '全部'
@@ -392,7 +392,7 @@ function postCard(post, selected) {
   node.setAttribute('aria-current', String(isSelected));
   node.querySelector('time').textContent = post.date;
   node.querySelector('.category').textContent = post.category || '未分類';
-  if (post.series) node.querySelector('.post-meta').append(seriesBadge(post, true));
+  appendSeriesBadges(node.querySelector('.post-meta'), post, true);
   node.querySelector('h2').textContent = post.title;
   node.querySelector('.excerpt').textContent = state.unlocked
     ? excerpt(post.body)
@@ -441,7 +441,7 @@ function renderReader(post) {
   category.className = 'category';
   category.textContent = post.category || '未分類';
   meta.append(time, category);
-  if (post.series) meta.append(seriesBadge(post, true));
+  appendSeriesBadges(meta, post, true);
   const title = document.createElement('h2');
   title.textContent = post.title;
   header.append(meta, title, readerActions(post));
@@ -458,7 +458,7 @@ function renderReader(post) {
   details.className = 'reader-details';
   details.append(
     detailItem('文章 ID', post.id),
-    detailItem('系列', seriesLabel(post) || '-'),
+    detailItem('系列', postSeriesNames(post).map((seriesName) => seriesLabel(post, seriesName)).join('、') || '-'),
     detailItem('原附件數', formatCount(post.mediaCount || 0))
   );
 
@@ -500,7 +500,7 @@ function renderHourlyRecommendation() {
   category.className = 'category';
   category.textContent = recommendation.category || '未分類';
   meta.append(time, category);
-  if (recommendation.series) meta.append(seriesBadge(recommendation, true));
+  appendSeriesBadges(meta, recommendation, true);
   header.append(kicker, title, meta);
 
   const preview = document.createElement('div');
@@ -538,7 +538,7 @@ function renderLockedReader(post) {
   category.className = 'category';
   category.textContent = post.category || '未分類';
   meta.append(time, category);
-  if (post.series) meta.append(seriesBadge(post, true));
+  appendSeriesBadges(meta, post, true);
   const title = document.createElement('h2');
   title.textContent = post.title;
   header.append(meta, title);
@@ -802,7 +802,7 @@ function trackArticleEvent(name, post, params = {}) {
     article_url: publicArticleUrl(post),
     article_id: post.id || '',
     article_category: post.category || '',
-    article_series: post.series || '',
+    article_series: postSeriesNames(post).join('、'),
     ...params
   });
 }
@@ -847,7 +847,7 @@ function pillarScore(post, pillar) {
 
   let score = 0;
   if ((filter.categories || []).includes(post.category)) score += 2;
-  if (post.series && (filter.series || []).includes(post.series)) score += 5;
+  if ((filter.series || []).some((seriesName) => postHasSeries(post, seriesName))) score += 5;
 
   const title = normalizeSearch(post.title || '');
   const body = normalizeSearch(post.body || '');
@@ -924,6 +924,16 @@ function countBy(items, keyFn) {
   return new Map([...map.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'zh-Hant')));
 }
 
+function countSeries(items) {
+  const map = new Map();
+  for (const item of items) {
+    for (const seriesName of postSeriesNames(item)) {
+      map.set(seriesName, (map.get(seriesName) || 0) + 1);
+    }
+  }
+  return new Map([...map.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'zh-Hant')));
+}
+
 function statLine(label, value) {
   const row = document.createElement('div');
   row.className = 'stat';
@@ -945,29 +955,43 @@ function detailItem(label, value) {
   return fragment;
 }
 
-function seriesBadge(post, clickable = false) {
+function appendSeriesBadges(container, post, clickable = false) {
+  const badges = postSeriesNames(post).map((seriesName) => seriesBadge(post, clickable, seriesName));
+  container.append(...badges);
+}
+
+function seriesBadge(post, clickable = false, seriesName = post.series) {
   const badge = document.createElement(clickable ? 'button' : 'span');
   badge.className = 'series-badge';
   if (clickable) {
     badge.type = 'button';
-    badge.title = `查看 ${post.series}`;
+    badge.title = `查看 ${seriesName}`;
     badge.addEventListener('click', (event) => {
       event.stopPropagation();
-      selectSeries(post.series);
+      selectSeries(seriesName);
     });
     badge.addEventListener('keydown', (event) => {
       event.stopPropagation();
     });
   }
-  badge.textContent = seriesLabel(post);
+  badge.textContent = seriesLabel(post, seriesName);
   return badge;
 }
 
-function seriesLabel(post) {
-  if (!post.series) return '';
+function seriesLabel(post, seriesName = post.series) {
+  if (!seriesName) return '';
+  if (seriesName !== post.series) return seriesName;
   const index = post.seriesIndex ? ` ${post.seriesIndex}` : '';
   const unit = post.seriesUnit || '';
-  return `${post.series}${index}${unit}`;
+  return `${seriesName}${index}${unit}`;
+}
+
+function postSeriesNames(post) {
+  return [...new Set([post.series, ...(post.seriesAliases || [])].filter(Boolean))];
+}
+
+function postHasSeries(post, seriesName) {
+  return postSeriesNames(post).includes(seriesName);
 }
 
 function paragraphBlocks(text) {

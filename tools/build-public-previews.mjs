@@ -37,7 +37,7 @@ function articleIndex(items) {
           <div class="post-meta">
             <time datetime="${escapeHtml(post.date || '')}">${escapeHtml(post.date || '')}</time>
             <span class="category">${escapeHtml(post.category || '未分類')}</span>
-            ${post.series ? `<span class="series-badge">${escapeHtml(seriesLabel(post))}</span>` : ''}
+            ${seriesBadges(post)}
           </div>
           <h2><a href="${escapeHtml(post.id)}.html">${escapeHtml(post.title || '未命名文章')}</a></h2>
           <p>${escapeHtml(shortText(publicPreview(post.body), 180))}</p>
@@ -102,7 +102,7 @@ ${analyticsTag()}
           <div class="post-meta">
             <time datetime="${escapeHtml(post.date || '')}">${escapeHtml(post.date || '')}</time>
             <span class="category">${escapeHtml(post.category || '未分類')}</span>
-            ${post.series ? `<span class="series-badge">${escapeHtml(seriesLabel(post))}</span>` : ''}
+            ${seriesBadges(post)}
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -174,11 +174,22 @@ function shortText(text, limit) {
   return compact.length > limit ? `${compact.slice(0, limit)}...` : compact;
 }
 
-function seriesLabel(post) {
-  if (!post.series) return '';
+function seriesBadges(post) {
+  return postSeriesNames(post)
+    .map((seriesName) => `<span class="series-badge">${escapeHtml(seriesLabel(post, seriesName))}</span>`)
+    .join('');
+}
+
+function seriesLabel(post, seriesName = post.series) {
+  if (!seriesName) return '';
+  if (seriesName !== post.series) return seriesName;
   const index = post.seriesIndex ? ` ${post.seriesIndex}` : '';
   const unit = post.seriesUnit || '';
-  return `${post.series}${index}${unit}`;
+  return `${seriesName}${index}${unit}`;
+}
+
+function postSeriesNames(post) {
+  return [...new Set([post.series, ...(post.seriesAliases || [])].filter(Boolean))];
 }
 
 function validDate(value) {

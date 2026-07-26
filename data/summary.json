@@ -1,9 +1,9 @@
 {
   "title": "圓安道長文章資料庫",
-  "generatedAt": "2026-07-04T07:00:13.483Z",
+  "generatedAt": "2026-07-26T05:32:55.463Z",
   "source": "林圓安 Facebook 官方匯出資料，本公開版保留文字文章與壓縮前 Facebook 中等品質圖片",
   "totalSourcePosts": 3402,
-  "publicPosts": 1908,
+  "publicPosts": 1945,
   "omittedImageOnlyPosts": 1074,
   "publicImages": 4200,
   "publicImageBytes": 524975848,
@@ -15,7 +15,7 @@
     "悟道真詮": 56,
     "養生性命": 39,
     "處世立命": 187,
-    "全真道脈": 117,
+    "全真道脈": 154,
     "修身養性": 25,
     "人間修行": 494,
     "丹道修真": 259,
@@ -28,6 +28,7 @@
     "紫微斗數推演": 99,
     "黃元吉 道德經 81章": 93,
     "淺譯 道德經 81章": 89,
+    "全真道法統": 53,
     "通靈覺知": 40,
     "乩童文化": 38,
     "圓安論氣功": 38,
@@ -63,6 +64,21 @@
       "importedAt": "2026-07-26T00:00:00+08:00",
       "posts": 21,
       "series": "全真道歷史"
+    },
+    "linyiyiFatong": {
+      "title": "林宜毅｜全真教法統",
+      "source": "林宜毅臉書內網",
+      "importedAt": "2026-07-26T00:00:00+08:00",
+      "posts": 37,
+      "series": "全真道法統",
+      "duplicatesFiltered": 3
+    },
+    "yuananFatong": {
+      "title": "圓安道長｜全真道法統文章整合",
+      "source": "圓安道長既有文章",
+      "importedAt": "2026-07-26T00:00:00+08:00",
+      "posts": 16,
+      "series": "全真道法統"
     }
   }
 }
