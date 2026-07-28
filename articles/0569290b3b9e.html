@@ -17,7 +17,18 @@
     <title>心有萬般牽絆，放下便是人間自在｜圓安道語公開預覽</title>
     <meta name="description" content="心有萬般牽絆，放下便是人間自在 浮生一世，看似日日與外物周旋往來，究其根本，終是與自己心神相處。世人終日為氣性所束、為嗜欲所牽、為塵擾所纏，歷盡世態炎涼、人情冷暖，卻鮮能靜心自省：是何執滯，令己終日疲憊、心神空耗？ 上古道家所言之七情、六欲、五蔽、世間諸執，並非幽玄虛妄之論，而是世人稟性之常、塵世歷...">
     <link rel="canonical" href="https://taoism.com.tw/articles/0569290b3b9e.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="心有萬般牽絆，放下便是人間自在｜圓安道語公開預覽">
+    <meta property="og:description" content="心有萬般牽絆，放下便是人間自在 浮生一世，看似日日與外物周旋往來，究其根本，終是與自己心神相處。世人終日為氣性所束、為嗜欲所牽、為塵擾所纏，歷盡世態炎涼、人情冷暖，卻鮮能靜心自省：是何執滯，令己終日疲憊、心神空耗？ 上古道家所言之七情、六欲、五蔽、世間諸執，並非幽玄虛妄之論，而是世人稟性之常、塵世歷...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/0569290b3b9e.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="心有萬般牽絆，放下便是人間自在｜圓安道語公開預覽">
+    <meta name="twitter:description" content="心有萬般牽絆，放下便是人間自在 浮生一世，看似日日與外物周旋往來，究其根本，終是與自己心神相處。世人終日為氣性所束、為嗜欲所牽、為塵擾所纏，歷盡世態炎涼、人情冷暖，卻鮮能靜心自省：是何執滯，令己終日疲憊、心神空耗？ 上古道家所言之七情、六欲、五蔽、世間諸執，並非幽玄虛妄之論，而是世人稟性之常、塵世歷...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-05">2026-06-05</time>
             <span class="category">人間修行</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/0569290b3b9e.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/0569290b3b9e.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -52,5 +68,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

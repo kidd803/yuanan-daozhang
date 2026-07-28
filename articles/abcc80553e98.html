@@ -17,7 +17,18 @@
     <title>道德經第四十四章以《清靜經》互證解｜圓安道語公開預覽</title>
     <meta name="description" content="道德經第四十四章以《清靜經》互證解 一、道德經第四十四章（原文） 名與身孰親？ 身與貨孰多？ 得與亡孰病？ 甚愛必大費； 多藏必厚亡。 故知足不辱， 知止不殆， 可以長久。 二、白話淺釋 名聲與生命，哪一個更親近？ 生命與財貨，哪一個更重要？ 獲得名利與喪失生命，哪一個更有害？ 過分執著愛戀，必定造...">
     <link rel="canonical" href="https://taoism.com.tw/articles/abcc80553e98.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="道德經第四十四章以《清靜經》互證解｜圓安道語公開預覽">
+    <meta property="og:description" content="道德經第四十四章以《清靜經》互證解 一、道德經第四十四章（原文） 名與身孰親？ 身與貨孰多？ 得與亡孰病？ 甚愛必大費； 多藏必厚亡。 故知足不辱， 知止不殆， 可以長久。 二、白話淺釋 名聲與生命，哪一個更親近？ 生命與財貨，哪一個更重要？ 獲得名利與喪失生命，哪一個更有害？ 過分執著愛戀，必定造...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/abcc80553e98.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="道德經第四十四章以《清靜經》互證解｜圓安道語公開預覽">
+    <meta name="twitter:description" content="道德經第四十四章以《清靜經》互證解 一、道德經第四十四章（原文） 名與身孰親？ 身與貨孰多？ 得與亡孰病？ 甚愛必大費； 多藏必厚亡。 故知足不辱， 知止不殆， 可以長久。 二、白話淺釋 名聲與生命，哪一個更親近？ 生命與財貨，哪一個更重要？ 獲得名利與喪失生命，哪一個更有害？ 過分執著愛戀，必定造...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-10">2026-05-10</time>
             <span class="category">修心煉性</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/abcc80553e98.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/abcc80553e98.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -70,5 +86,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>《清靜經》與全真龍門派修煉丹法要旨｜圓安道語公開預覽</title>
     <meta name="description" content="《清靜經》與全真龍門派修煉丹法要旨 《太上老君說常清靜經》（簡稱《清靜經》），乃道家修心之總綱，玄門入道之津梁；全真龍門派丹法，則以「性命雙修」為核心，融經絡之學、內丹煉養於一體。二者同源共流，《清靜經》為「修心之體」，龍門丹法為「煉氣之用」，體用不二，方能成就金丹大道。今以文言述之，引祖師訓示、丹...">
     <link rel="canonical" href="https://taoism.com.tw/articles/e2209c70100b.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="《清靜經》與全真龍門派修煉丹法要旨｜圓安道語公開預覽">
+    <meta property="og:description" content="《清靜經》與全真龍門派修煉丹法要旨 《太上老君說常清靜經》（簡稱《清靜經》），乃道家修心之總綱，玄門入道之津梁；全真龍門派丹法，則以「性命雙修」為核心，融經絡之學、內丹煉養於一體。二者同源共流，《清靜經》為「修心之體」，龍門丹法為「煉氣之用」，體用不二，方能成就金丹大道。今以文言述之，引祖師訓示、丹...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/e2209c70100b.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="《清靜經》與全真龍門派修煉丹法要旨｜圓安道語公開預覽">
+    <meta name="twitter:description" content="《清靜經》與全真龍門派修煉丹法要旨 《太上老君說常清靜經》（簡稱《清靜經》），乃道家修心之總綱，玄門入道之津梁；全真龍門派丹法，則以「性命雙修」為核心，融經絡之學、內丹煉養於一體。二者同源共流，《清靜經》為「修心之體」，龍門丹法為「煉氣之用」，體用不二，方能成就金丹大道。今以文言述之，引祖師訓示、丹...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-11-29">2025-11-29</time>
             <span class="category">龍門丹道</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/e2209c70100b.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/e2209c70100b.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -53,5 +69,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

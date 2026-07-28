@@ -17,7 +17,18 @@
     <title>第六卷｜昆嵛山立教與全真法統之始｜圓安道語公開預覽</title>
     <meta name="description" content="第六卷｜昆嵛山立教與全真法統之始 第一章｜入山：一切從此開始 金大定七年（1167）七月。 王重陽祖師離開終南山。 向東而行。 這一次東行，不是遊歷。 也不是避世。 而是為了—— 開一條道。 ⸻ 行至山東寧海。 見昆嵛山。 群峰疊起，谷深林密。 山中煙霞常在。 古來相傳， 此地為東華帝君舊跡。 道氣...">
     <link rel="canonical" href="https://taoism.com.tw/articles/7ce33890be3d.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="第六卷｜昆嵛山立教與全真法統之始｜圓安道語公開預覽">
+    <meta property="og:description" content="第六卷｜昆嵛山立教與全真法統之始 第一章｜入山：一切從此開始 金大定七年（1167）七月。 王重陽祖師離開終南山。 向東而行。 這一次東行，不是遊歷。 也不是避世。 而是為了—— 開一條道。 ⸻ 行至山東寧海。 見昆嵛山。 群峰疊起，谷深林密。 山中煙霞常在。 古來相傳， 此地為東華帝君舊跡。 道氣...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/7ce33890be3d.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="第六卷｜昆嵛山立教與全真法統之始｜圓安道語公開預覽">
+    <meta name="twitter:description" content="第六卷｜昆嵛山立教與全真法統之始 第一章｜入山：一切從此開始 金大定七年（1167）七月。 王重陽祖師離開終南山。 向東而行。 這一次東行，不是遊歷。 也不是避世。 而是為了—— 開一條道。 ⸻ 行至山東寧海。 見昆嵛山。 群峰疊起，谷深林密。 山中煙霞常在。 古來相傳， 此地為東華帝君舊跡。 道氣...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-18">2026-03-18</time>
             <span class="category">全真道脈</span>
             <span class="series-badge">全真道法統 6卷</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/7ce33890be3d.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/7ce33890be3d.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -67,5 +83,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

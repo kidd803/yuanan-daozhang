@@ -17,7 +17,18 @@
     <title>黃元吉註 道德經第六十四章｜圓安道語公開預覽</title>
     <meta name="description" content="黃元吉註 道德經第六十四章 一、原文（通行本） 其安易持，其未兆易謀。 其脆易泮，其微易散。 為之於未有，治之於未亂。 合抱之木，生於毫末； 九層之臺，起於累土； 千里之行，始於足下。 為者敗之，執者失之。 是以聖人無為，故無敗； 無執，故無失。 民之從事，常於幾成而敗之。 慎終如始，則無敗事。 是...">
     <link rel="canonical" href="https://taoism.com.tw/articles/1ba6c0d1c55c.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="黃元吉註 道德經第六十四章｜圓安道語公開預覽">
+    <meta property="og:description" content="黃元吉註 道德經第六十四章 一、原文（通行本） 其安易持，其未兆易謀。 其脆易泮，其微易散。 為之於未有，治之於未亂。 合抱之木，生於毫末； 九層之臺，起於累土； 千里之行，始於足下。 為者敗之，執者失之。 是以聖人無為，故無敗； 無執，故無失。 民之從事，常於幾成而敗之。 慎終如始，則無敗事。 是...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/1ba6c0d1c55c.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="黃元吉註 道德經第六十四章｜圓安道語公開預覽">
+    <meta name="twitter:description" content="黃元吉註 道德經第六十四章 一、原文（通行本） 其安易持，其未兆易謀。 其脆易泮，其微易散。 為之於未有，治之於未亂。 合抱之木，生於毫末； 九層之臺，起於累土； 千里之行，始於足下。 為者敗之，執者失之。 是以聖人無為，故無敗； 無執，故無失。 民之從事，常於幾成而敗之。 慎終如始，則無敗事。 是...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-04-17">2026-04-17</time>
             <span class="category">道教經典</span>
             <span class="series-badge">黃元吉 道德經 81章 64章</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/1ba6c0d1c55c.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/1ba6c0d1c55c.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -72,5 +88,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

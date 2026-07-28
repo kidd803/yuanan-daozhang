@@ -17,7 +17,18 @@
     <title>《道德經》歷代五大核心註本的核心差異與研讀建議，兼顧學術性與實用性，...｜圓安道語公開預覽</title>
     <meta name="description" content="《道德經》歷代五大核心註本的核心差異與研讀建議，兼顧學術性與實用性，便於根據自身需求選擇： 一、歷代重要註本核心對比 《道德真經注》（河上公注） ： 偏向養生修仙，融合黃老之學 語言淺白，直指經文實踐層面，強調「治身與治國同源」，對「氣」「精」「神」的詮釋契合道門修煉傳統 初學者、關注養生與實踐者、...">
     <link rel="canonical" href="https://taoism.com.tw/articles/d7c302d1c3a7.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="《道德經》歷代五大核心註本的核心差異與研讀建議，兼顧學術性與實用性，...｜圓安道語公開預覽">
+    <meta property="og:description" content="《道德經》歷代五大核心註本的核心差異與研讀建議，兼顧學術性與實用性，便於根據自身需求選擇： 一、歷代重要註本核心對比 《道德真經注》（河上公注） ： 偏向養生修仙，融合黃老之學 語言淺白，直指經文實踐層面，強調「治身與治國同源」，對「氣」「精」「神」的詮釋契合道門修煉傳統 初學者、關注養生與實踐者、...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/d7c302d1c3a7.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="《道德經》歷代五大核心註本的核心差異與研讀建議，兼顧學術性與實用性，...｜圓安道語公開預覽">
+    <meta name="twitter:description" content="《道德經》歷代五大核心註本的核心差異與研讀建議，兼顧學術性與實用性，便於根據自身需求選擇： 一、歷代重要註本核心對比 《道德真經注》（河上公注） ： 偏向養生修仙，融合黃老之學 語言淺白，直指經文實踐層面，強調「治身與治國同源」，對「氣」「精」「神」的詮釋契合道門修煉傳統 初學者、關注養生與實踐者、...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-02">2025-12-02</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/d7c302d1c3a7.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/d7c302d1c3a7.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -52,5 +68,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

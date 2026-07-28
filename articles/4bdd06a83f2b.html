@@ -17,7 +17,18 @@
     <title>《西下營村的香傳水餃》｜圓安道語公開預覽</title>
     <meta name="description" content="《西下營村的香傳水餃》 通州西下營村，隱於京郊深處，是個安靜得近乎恬淡的村落。村道兩旁整齊排列著平屋，轉角處，便見一間樸素的小店 ——「香傳水餃」。 這家店沒有絢麗的燈牌，沒有霓虹閃爍，可每到飯點，門口的車輛總能從巷口一路排到土路上。有人從朝陽驅車一個多小時而來，有人下班後輾轉三趟地鐵再搭計程車，只...">
     <link rel="canonical" href="https://taoism.com.tw/articles/4bdd06a83f2b.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="《西下營村的香傳水餃》｜圓安道語公開預覽">
+    <meta property="og:description" content="《西下營村的香傳水餃》 通州西下營村，隱於京郊深處，是個安靜得近乎恬淡的村落。村道兩旁整齊排列著平屋，轉角處，便見一間樸素的小店 ——「香傳水餃」。 這家店沒有絢麗的燈牌，沒有霓虹閃爍，可每到飯點，門口的車輛總能從巷口一路排到土路上。有人從朝陽驅車一個多小時而來，有人下班後輾轉三趟地鐵再搭計程車，只...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/4bdd06a83f2b.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="《西下營村的香傳水餃》｜圓安道語公開預覽">
+    <meta name="twitter:description" content="《西下營村的香傳水餃》 通州西下營村，隱於京郊深處，是個安靜得近乎恬淡的村落。村道兩旁整齊排列著平屋，轉角處，便見一間樸素的小店 ——「香傳水餃」。 這家店沒有絢麗的燈牌，沒有霓虹閃爍，可每到飯點，門口的車輛總能從巷口一路排到土路上。有人從朝陽驅車一個多小時而來，有人下班後輾轉三趟地鐵再搭計程車，只...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-26">2026-03-26</time>
             <span class="category">人間修行</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/4bdd06a83f2b.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/4bdd06a83f2b.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -48,5 +64,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>王重陽真人史實略述｜圓安道語公開預覽</title>
     <meta name="description" content="王重陽真人史實略述 王重陽（1112年－1170年），原名中孚，字允卿，後改名世雄，字德威，入道後賜號重陽子，陝西咸陽人，為全真道開山祖師，其一生事跡載於《全真列祖傳》《終南山祖庭仙真內傳》等典籍，核心史實如下： 一、棄俗入道，悟道創教 - 出身儒士世家，早年習儒業、應科舉，後逢金國統治北方，天下擾...">
     <link rel="canonical" href="https://taoism.com.tw/articles/2a8af440b606.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="王重陽真人史實略述｜圓安道語公開預覽">
+    <meta property="og:description" content="王重陽真人史實略述 王重陽（1112年－1170年），原名中孚，字允卿，後改名世雄，字德威，入道後賜號重陽子，陝西咸陽人，為全真道開山祖師，其一生事跡載於《全真列祖傳》《終南山祖庭仙真內傳》等典籍，核心史實如下： 一、棄俗入道，悟道創教 - 出身儒士世家，早年習儒業、應科舉，後逢金國統治北方，天下擾...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/2a8af440b606.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="王重陽真人史實略述｜圓安道語公開預覽">
+    <meta name="twitter:description" content="王重陽真人史實略述 王重陽（1112年－1170年），原名中孚，字允卿，後改名世雄，字德威，入道後賜號重陽子，陝西咸陽人，為全真道開山祖師，其一生事跡載於《全真列祖傳》《終南山祖庭仙真內傳》等典籍，核心史實如下： 一、棄俗入道，悟道創教 - 出身儒士世家，早年習儒業、應科舉，後逢金國統治北方，天下擾...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-11-28">2025-11-28</time>
             <span class="category">全真道脈</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/2a8af440b606.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/2a8af440b606.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -57,5 +73,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

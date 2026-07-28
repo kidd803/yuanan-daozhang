@@ -17,7 +17,18 @@
     <title>天道、天機、天賦、天命：悟透四者真義，方得人生通透｜圓安道語公開預覽</title>
     <meta name="description" content="天道、天機、天賦、天命：悟透四者真義，方得人生通透 人生行世，終日尋問：己身本源、所能所為、前路何往。 古聖傳下四字至理——天道、天機、天賦、天命，盡藏世間成事、修道之底蘊。悟通四者脈絡，便曉立身行道、圓滿此生的根本真諦。 天道：萬物恆常之至理 天道者，天地運行不易之常規，先天大道之本體也。 天行有...">
     <link rel="canonical" href="https://taoism.com.tw/articles/6d1bebb4d8df.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="天道、天機、天賦、天命：悟透四者真義，方得人生通透｜圓安道語公開預覽">
+    <meta property="og:description" content="天道、天機、天賦、天命：悟透四者真義，方得人生通透 人生行世，終日尋問：己身本源、所能所為、前路何往。 古聖傳下四字至理——天道、天機、天賦、天命，盡藏世間成事、修道之底蘊。悟通四者脈絡，便曉立身行道、圓滿此生的根本真諦。 天道：萬物恆常之至理 天道者，天地運行不易之常規，先天大道之本體也。 天行有...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/6d1bebb4d8df.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="天道、天機、天賦、天命：悟透四者真義，方得人生通透｜圓安道語公開預覽">
+    <meta name="twitter:description" content="天道、天機、天賦、天命：悟透四者真義，方得人生通透 人生行世，終日尋問：己身本源、所能所為、前路何往。 古聖傳下四字至理——天道、天機、天賦、天命，盡藏世間成事、修道之底蘊。悟通四者脈絡，便曉立身行道、圓滿此生的根本真諦。 天道：萬物恆常之至理 天道者，天地運行不易之常規，先天大道之本體也。 天行有...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-21">2026-05-21</time>
             <span class="category">處世立命</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/6d1bebb4d8df.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/6d1bebb4d8df.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -56,5 +72,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

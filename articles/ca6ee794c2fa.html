@@ -17,7 +17,18 @@
     <title>诸子呀！如何是种种边？就是盲修瞎坐，烹铅炼汞，种种旁门也。如何是边呢...｜圓安道語公開預覽</title>
     <meta name="description" content="诸子呀！如何是种种边？就是盲修瞎坐，烹铅炼汞，种种旁门也。如何是边呢，这些旁门非中非正，譬如一张桌案，这些旁门总在四边，不能入心，纵使到心，亦不离桌，殊不知离桌，方是虚空大道，不能离桌，还是物，不是道，岂非边也。 边者，寻也，邪也，界也，岸也。旁则不中，邪则不正。有地界，则不能广大；有崖岸，则不能洪...">
     <link rel="canonical" href="https://taoism.com.tw/articles/ca6ee794c2fa.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="诸子呀！如何是种种边？就是盲修瞎坐，烹铅炼汞，种种旁门也。如何是边呢...｜圓安道語公開預覽">
+    <meta property="og:description" content="诸子呀！如何是种种边？就是盲修瞎坐，烹铅炼汞，种种旁门也。如何是边呢，这些旁门非中非正，譬如一张桌案，这些旁门总在四边，不能入心，纵使到心，亦不离桌，殊不知离桌，方是虚空大道，不能离桌，还是物，不是道，岂非边也。 边者，寻也，邪也，界也，岸也。旁则不中，邪则不正。有地界，则不能广大；有崖岸，则不能洪...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/ca6ee794c2fa.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="诸子呀！如何是种种边？就是盲修瞎坐，烹铅炼汞，种种旁门也。如何是边呢...｜圓安道語公開預覽">
+    <meta name="twitter:description" content="诸子呀！如何是种种边？就是盲修瞎坐，烹铅炼汞，种种旁门也。如何是边呢，这些旁门非中非正，譬如一张桌案，这些旁门总在四边，不能入心，纵使到心，亦不离桌，殊不知离桌，方是虚空大道，不能离桌，还是物，不是道，岂非边也。 边者，寻也，邪也，界也，岸也。旁则不中，邪则不正。有地界，则不能广大；有崖岸，则不能洪...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2018-11-02">2018-11-02</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/ca6ee794c2fa.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/ca6ee794c2fa.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -46,5 +62,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

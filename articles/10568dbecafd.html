@@ -17,7 +17,18 @@
     <title>命理術數教學(七)｜圓安道語公開預覽</title>
     <meta name="description" content="命理術數教學(七) 河圖與洛書的核心差異與同源之旨 1. 先天與後天： 河圖為「先天之數」，主造化生成，揭示萬物未生之前的陰陽五行本源，屬「體」； 洛書為「後天之數」，主運行制化，揭示萬物生成之後的陰陽五行變化，屬「用」。 2. 相生與相克： 河圖重「五行相生」，體現天地氣機的綿延不息； 洛書重「五...">
     <link rel="canonical" href="https://taoism.com.tw/articles/10568dbecafd.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="命理術數教學(七)｜圓安道語公開預覽">
+    <meta property="og:description" content="命理術數教學(七) 河圖與洛書的核心差異與同源之旨 1. 先天與後天： 河圖為「先天之數」，主造化生成，揭示萬物未生之前的陰陽五行本源，屬「體」； 洛書為「後天之數」，主運行制化，揭示萬物生成之後的陰陽五行變化，屬「用」。 2. 相生與相克： 河圖重「五行相生」，體現天地氣機的綿延不息； 洛書重「五...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/10568dbecafd.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="命理術數教學(七)｜圓安道語公開預覽">
+    <meta name="twitter:description" content="命理術數教學(七) 河圖與洛書的核心差異與同源之旨 1. 先天與後天： 河圖為「先天之數」，主造化生成，揭示萬物未生之前的陰陽五行本源，屬「體」； 洛書為「後天之數」，主運行制化，揭示萬物生成之後的陰陽五行變化，屬「用」。 2. 相生與相克： 河圖重「五行相生」，體現天地氣機的綿延不息； 洛書重「五...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-02-14">2026-02-14</time>
             <span class="category">處世立命</span>
             <span class="series-badge">紫微斗數推演 7講</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/10568dbecafd.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/10568dbecafd.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -51,5 +67,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

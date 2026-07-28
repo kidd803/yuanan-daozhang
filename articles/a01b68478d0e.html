@@ -17,7 +17,18 @@
     <title>黃元吉註 道德經第七十章｜圓安道語公開預覽</title>
     <meta name="description" content="黃元吉註 道德經第七十章 一、原文（通行本） 吾言甚易知，甚易行。 天下莫能知，莫能行。 言有宗，事有君。 夫唯無知，是以不我知。 知我者希，則我者貴。 是以聖人被褐懷玉。 二、黃元吉註 逐句詳解（繁體） 1. 吾言甚易知，甚易行 - 老子所說的道理：無為、守柔、抱樸、寡欲， 極為淺易明白，也極容易...">
     <link rel="canonical" href="https://taoism.com.tw/articles/a01b68478d0e.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="黃元吉註 道德經第七十章｜圓安道語公開預覽">
+    <meta property="og:description" content="黃元吉註 道德經第七十章 一、原文（通行本） 吾言甚易知，甚易行。 天下莫能知，莫能行。 言有宗，事有君。 夫唯無知，是以不我知。 知我者希，則我者貴。 是以聖人被褐懷玉。 二、黃元吉註 逐句詳解（繁體） 1. 吾言甚易知，甚易行 - 老子所說的道理：無為、守柔、抱樸、寡欲， 極為淺易明白，也極容易...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/a01b68478d0e.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="黃元吉註 道德經第七十章｜圓安道語公開預覽">
+    <meta name="twitter:description" content="黃元吉註 道德經第七十章 一、原文（通行本） 吾言甚易知，甚易行。 天下莫能知，莫能行。 言有宗，事有君。 夫唯無知，是以不我知。 知我者希，則我者貴。 是以聖人被褐懷玉。 二、黃元吉註 逐句詳解（繁體） 1. 吾言甚易知，甚易行 - 老子所說的道理：無為、守柔、抱樸、寡欲， 極為淺易明白，也極容易...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-04-20">2026-04-20</time>
             <span class="category">道教經典</span>
             <span class="series-badge">黃元吉 道德經 81章 70章</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/a01b68478d0e.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/a01b68478d0e.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -63,5 +79,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

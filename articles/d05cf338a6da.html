@@ -17,7 +17,18 @@
     <title>圓安論氣功與丹道問與答(12)｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論氣功與丹道問與答(12) 問： 如何修氣功與丹道｜精濃縮完整授課講義 答：一、氣功正規入門練法 核心：三調養後天、有為煉氣 1. 調身：坐勢端正、全身放鬆、舌抵上顎、形正體鬆 2. 調息：腹式呼吸，吸鼓呼收，細長勻緩、不憋不強 3. 調心：輕守丹田、放下雜念、平和養神 4. 流程：安坐放鬆→調...">
     <link rel="canonical" href="https://taoism.com.tw/articles/d05cf338a6da.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論氣功與丹道問與答(12)｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論氣功與丹道問與答(12) 問： 如何修氣功與丹道｜精濃縮完整授課講義 答：一、氣功正規入門練法 核心：三調養後天、有為煉氣 1. 調身：坐勢端正、全身放鬆、舌抵上顎、形正體鬆 2. 調息：腹式呼吸，吸鼓呼收，細長勻緩、不憋不強 3. 調心：輕守丹田、放下雜念、平和養神 4. 流程：安坐放鬆→調...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/d05cf338a6da.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論氣功與丹道問與答(12)｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論氣功與丹道問與答(12) 問： 如何修氣功與丹道｜精濃縮完整授課講義 答：一、氣功正規入門練法 核心：三調養後天、有為煉氣 1. 調身：坐勢端正、全身放鬆、舌抵上顎、形正體鬆 2. 調息：腹式呼吸，吸鼓呼收，細長勻緩、不憋不強 3. 調心：輕守丹田、放下雜念、平和養神 4. 流程：安坐放鬆→調...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-14">2026-05-14</time>
             <span class="category">丹道修真</span>
             <span class="series-badge">圓安論氣功 12篇</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/d05cf338a6da.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/d05cf338a6da.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -68,5 +84,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

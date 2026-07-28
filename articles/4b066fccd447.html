@@ -17,7 +17,18 @@
     <title>📜 冠巾第二章｜祖庭鹿邑｜圓安道語公開預覽</title>
     <meta name="description" content="📜 冠巾第二章｜祖庭鹿邑 鹿邑太清宮， 位於河南省鹿邑縣城東太清宮鎮。 相傳為老子誕生之地。 《史記》記載，老子為楚國苦縣曲仁里人。 苦縣曲仁里，即今河南鹿邑一帶。 東漢延熹八年（165年）， 始建老子廟。 唐代尊老子為始祖， 宮觀地位日益重要。 唐乾封元年（666年）， 尊號「太上玄元皇帝」，建...">
     <link rel="canonical" href="https://taoism.com.tw/articles/4b066fccd447.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="📜 冠巾第二章｜祖庭鹿邑｜圓安道語公開預覽">
+    <meta property="og:description" content="📜 冠巾第二章｜祖庭鹿邑 鹿邑太清宮， 位於河南省鹿邑縣城東太清宮鎮。 相傳為老子誕生之地。 《史記》記載，老子為楚國苦縣曲仁里人。 苦縣曲仁里，即今河南鹿邑一帶。 東漢延熹八年（165年）， 始建老子廟。 唐代尊老子為始祖， 宮觀地位日益重要。 唐乾封元年（666年）， 尊號「太上玄元皇帝」，建...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/4b066fccd447.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="📜 冠巾第二章｜祖庭鹿邑｜圓安道語公開預覽">
+    <meta name="twitter:description" content="📜 冠巾第二章｜祖庭鹿邑 鹿邑太清宮， 位於河南省鹿邑縣城東太清宮鎮。 相傳為老子誕生之地。 《史記》記載，老子為楚國苦縣曲仁里人。 苦縣曲仁里，即今河南鹿邑一帶。 東漢延熹八年（165年）， 始建老子廟。 唐代尊老子為始祖， 宮觀地位日益重要。 唐乾封元年（666年）， 尊號「太上玄元皇帝」，建...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-02-25">2026-02-25</time>
             <span class="category">全真道脈</span>
             <span class="series-badge">全真道法統 2章</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/4b066fccd447.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/4b066fccd447.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -57,5 +73,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

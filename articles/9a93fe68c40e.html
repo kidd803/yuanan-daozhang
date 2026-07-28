@@ -17,7 +17,18 @@
     <title>圓安論道：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論道： 伍柳派與東派代表人物核心修煉主張與生涯梗概 一、 東派代表人物：陸西星 陸西星（1520—1606），字長庚，號潛虛，明代江蘇興化人，自稱呂洞賓降靈授道，由此開創東派丹法，著有《方壺外史》《悟真篇註》《參同契測疏》等核心典籍。 其核心修煉主張圍繞陰陽同類雙修展開，認為孤陰不生、獨陽不長，...">
     <link rel="canonical" href="https://taoism.com.tw/articles/9a93fe68c40e.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論道： 伍柳派與東派代表人物核心修煉主張與生涯梗概 一、 東派代表人物：陸西星 陸西星（1520—1606），字長庚，號潛虛，明代江蘇興化人，自稱呂洞賓降靈授道，由此開創東派丹法，著有《方壺外史》《悟真篇註》《參同契測疏》等核心典籍。 其核心修煉主張圍繞陰陽同類雙修展開，認為孤陰不生、獨陽不長，...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/9a93fe68c40e.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論道： 伍柳派與東派代表人物核心修煉主張與生涯梗概 一、 東派代表人物：陸西星 陸西星（1520—1606），字長庚，號潛虛，明代江蘇興化人，自稱呂洞賓降靈授道，由此開創東派丹法，著有《方壺外史》《悟真篇註》《參同契測疏》等核心典籍。 其核心修煉主張圍繞陰陽同類雙修展開，認為孤陰不生、獨陽不長，...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-30">2025-12-30</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/9a93fe68c40e.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/9a93fe68c40e.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -50,5 +66,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

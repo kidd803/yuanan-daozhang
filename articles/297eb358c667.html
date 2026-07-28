@@ -17,7 +17,18 @@
     <title>半生疲勞，皆因執著於表象｜圓安道語公開預覽</title>
     <meta name="description" content="半生疲勞，皆因執著於表象 察覺自身執著外相，方是修身踐道之始。世間凡能擾動心神、牽動情緒之人與事，皆是歷煉心性的必修功課。它們如明鏡一般，照見靈府深處隱藏的執滯牽絆。 許多人窮盡半生向外馳求，卻不知身心勞頓的根源，從來都在自身之內。當心緒翻湧之時，不必強行抵觸壓抑，當先順應本心，容許自己靜心斂氣。而...">
     <link rel="canonical" href="https://taoism.com.tw/articles/297eb358c667.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="半生疲勞，皆因執著於表象｜圓安道語公開預覽">
+    <meta property="og:description" content="半生疲勞，皆因執著於表象 察覺自身執著外相，方是修身踐道之始。世間凡能擾動心神、牽動情緒之人與事，皆是歷煉心性的必修功課。它們如明鏡一般，照見靈府深處隱藏的執滯牽絆。 許多人窮盡半生向外馳求，卻不知身心勞頓的根源，從來都在自身之內。當心緒翻湧之時，不必強行抵觸壓抑，當先順應本心，容許自己靜心斂氣。而...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/297eb358c667.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="半生疲勞，皆因執著於表象｜圓安道語公開預覽">
+    <meta name="twitter:description" content="半生疲勞，皆因執著於表象 察覺自身執著外相，方是修身踐道之始。世間凡能擾動心神、牽動情緒之人與事，皆是歷煉心性的必修功課。它們如明鏡一般，照見靈府深處隱藏的執滯牽絆。 許多人窮盡半生向外馳求，卻不知身心勞頓的根源，從來都在自身之內。當心緒翻湧之時，不必強行抵觸壓抑，當先順應本心，容許自己靜心斂氣。而...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-13">2026-06-13</time>
             <span class="category">修心煉性</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/297eb358c667.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/297eb358c667.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -51,5 +67,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

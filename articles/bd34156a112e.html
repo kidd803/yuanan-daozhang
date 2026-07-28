@@ -17,7 +17,18 @@
     <title>陳摶老祖丹道修煉核心要義（節選《指玄篇》）｜圓安道語公開預覽</title>
     <meta name="description" content="陳摶老祖丹道修煉核心要義（節選《指玄篇》） 一、修煉總綱：以靜為宗，返本還真 1. 「道本虛無，生於一氣，一氣分陰陽，陰陽生萬物。修煉者，攬陰陽之氣，歸於一元，復歸無極，是謂還真。」 2. 「靜者，道之體也；動者，道之用也。常靜則氣定，氣定則神凝，神凝則性見，性見則道成。」 3. 「丹經云：『煉精化...">
     <link rel="canonical" href="https://taoism.com.tw/articles/bd34156a112e.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="陳摶老祖丹道修煉核心要義（節選《指玄篇》）｜圓安道語公開預覽">
+    <meta property="og:description" content="陳摶老祖丹道修煉核心要義（節選《指玄篇》） 一、修煉總綱：以靜為宗，返本還真 1. 「道本虛無，生於一氣，一氣分陰陽，陰陽生萬物。修煉者，攬陰陽之氣，歸於一元，復歸無極，是謂還真。」 2. 「靜者，道之體也；動者，道之用也。常靜則氣定，氣定則神凝，神凝則性見，性見則道成。」 3. 「丹經云：『煉精化...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/bd34156a112e.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="陳摶老祖丹道修煉核心要義（節選《指玄篇》）｜圓安道語公開預覽">
+    <meta name="twitter:description" content="陳摶老祖丹道修煉核心要義（節選《指玄篇》） 一、修煉總綱：以靜為宗，返本還真 1. 「道本虛無，生於一氣，一氣分陰陽，陰陽生萬物。修煉者，攬陰陽之氣，歸於一元，復歸無極，是謂還真。」 2. 「靜者，道之體也；動者，道之用也。常靜則氣定，氣定則神凝，神凝則性見，性見則道成。」 3. 「丹經云：『煉精化...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-11-29">2025-11-29</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/bd34156a112e.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/bd34156a112e.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -51,5 +67,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

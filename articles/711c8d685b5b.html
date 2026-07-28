@@ -17,7 +17,18 @@
     <title>書店老闆讀全真道｜《重陽立教十五論》第七講｜圓安道語公開預覽</title>
     <meta name="description" content="書店老闆讀全真道｜《重陽立教十五論》第七講 合道伴：同行之人，會成全你，也會拖累你 原文 凡出家人，不可獨住，亦不可濫同。獨住則恐有失照應，濫同則又亂其行止。須擇有道心者，可以同處；有志節者，可以共修。若彼此放逸，言語雜亂，心不在道，雖同住亦無益，反生障礙。此合道伴之法。 白話講解 祖師講到這一論，...">
     <link rel="canonical" href="https://taoism.com.tw/articles/711c8d685b5b.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="書店老闆讀全真道｜《重陽立教十五論》第七講｜圓安道語公開預覽">
+    <meta property="og:description" content="書店老闆讀全真道｜《重陽立教十五論》第七講 合道伴：同行之人，會成全你，也會拖累你 原文 凡出家人，不可獨住，亦不可濫同。獨住則恐有失照應，濫同則又亂其行止。須擇有道心者，可以同處；有志節者，可以共修。若彼此放逸，言語雜亂，心不在道，雖同住亦無益，反生障礙。此合道伴之法。 白話講解 祖師講到這一論，...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/711c8d685b5b.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="書店老闆讀全真道｜《重陽立教十五論》第七講｜圓安道語公開預覽">
+    <meta name="twitter:description" content="書店老闆讀全真道｜《重陽立教十五論》第七講 合道伴：同行之人，會成全你，也會拖累你 原文 凡出家人，不可獨住，亦不可濫同。獨住則恐有失照應，濫同則又亂其行止。須擇有道心者，可以同處；有志節者，可以共修。若彼此放逸，言語雜亂，心不在道，雖同住亦無益，反生障礙。此合道伴之法。 白話講解 祖師講到這一論，...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-09">2026-05-09</time>
             <span class="category">道教經典</span>
             <span class="series-badge">重陽立教十五論 7講</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/711c8d685b5b.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/711c8d685b5b.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -48,5 +64,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

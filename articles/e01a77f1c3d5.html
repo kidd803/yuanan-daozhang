@@ -17,7 +17,18 @@
     <title>圓安論道：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論道： 「守一」與道家核心修持概念的關聯 1. 與「無為」的關聯 「無為」是道家思想的核心準則，強調順應自然、不妄為、不執著；「守一」則是踐行「無為」的具體修持路徑。 守一的關鍵在於「綿綿若存，用之不勤」，讓心念歸於純一而不執著於具象（如死守丹田、追求感應），這種「不執不妄」的狀態，正是「無為」...">
     <link rel="canonical" href="https://taoism.com.tw/articles/e01a77f1c3d5.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論道： 「守一」與道家核心修持概念的關聯 1. 與「無為」的關聯 「無為」是道家思想的核心準則，強調順應自然、不妄為、不執著；「守一」則是踐行「無為」的具體修持路徑。 守一的關鍵在於「綿綿若存，用之不勤」，讓心念歸於純一而不執著於具象（如死守丹田、追求感應），這種「不執不妄」的狀態，正是「無為」...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/e01a77f1c3d5.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論道： 「守一」與道家核心修持概念的關聯 1. 與「無為」的關聯 「無為」是道家思想的核心準則，強調順應自然、不妄為、不執著；「守一」則是踐行「無為」的具體修持路徑。 守一的關鍵在於「綿綿若存，用之不勤」，讓心念歸於純一而不執著於具象（如死守丹田、追求感應），這種「不執不妄」的狀態，正是「無為」...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-29">2025-12-29</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/e01a77f1c3d5.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/e01a77f1c3d5.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -49,5 +65,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

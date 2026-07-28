@@ -4,7 +4,7 @@ import vm from 'node:vm';
 
 const SITE_URL = 'https://taoism.com.tw';
 const PREVIEW_RATIO = 0.5;
-const STYLE_VERSION = '20260724-public-preview';
+const STYLE_VERSION = '20260728-share-url';
 const ICON_VERSION = '20260724-mobile-course';
 const outputDir = 'articles';
 
@@ -90,6 +90,17 @@ ${analyticsTag()}
     <title>${escapeHtml(post.title || '未命名文章')}｜圓安道語公開預覽</title>
     <meta name="description" content="${escapeHtml(description)}">
     <link rel="canonical" href="${url}">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="${escapeHtml(post.title || '未命名文章')}｜圓安道語公開預覽">
+    <meta property="og:description" content="${escapeHtml(description)}">
+    <meta property="og:url" content="${url}">
+    <meta property="og:image" content="${SITE_URL}/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${escapeHtml(post.title || '未命名文章')}｜圓安道語公開預覽">
+    <meta name="twitter:description" content="${escapeHtml(description)}">
+    <meta name="twitter:image" content="${SITE_URL}/assets/yuanan-ip-character.jpg">
     <link rel="stylesheet" href="../styles.css?v=${STYLE_VERSION}">
   </head>
   <body class="preview-page">
@@ -104,6 +115,11 @@ ${analyticsTag()}
             <span class="category">${escapeHtml(post.category || '未分類')}</span>
             ${seriesBadges(post)}
           </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="${escapeHtml(url)}" readonly>
+            <button type="button" data-copy-url="${escapeHtml(url)}">複製網址</button>
+          </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
 ${paragraphs}
@@ -114,6 +130,7 @@ ${paragraphs}
         </footer>
       </article>
     </main>
+${copyScript()}
   </body>
 </html>
 `;
@@ -153,6 +170,34 @@ function analyticsTag() {
       gtag('js', new Date());
 
       gtag('config', 'G-2KX5M6ZD9N');
+    </script>`;
+}
+
+function copyScript() {
+  return `    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
     </script>`;
 }
 

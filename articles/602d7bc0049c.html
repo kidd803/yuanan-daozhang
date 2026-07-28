@@ -17,7 +17,18 @@
     <title>道家道術無所不能，豈可盡信道術？｜圓安道語公開預覽</title>
     <meta name="description" content="道家道術無所不能，豈可盡信道術？ 道家大道，體包天地、貫徹陰陽、造化萬物，道術本為順天應人、修身濟世、趨吉避凶、安撫身心之法，自古流傳玄奧深遠，妙用無窮。上可觀星定紀、調理陰陽風水，中可安魂鎮煞、消災解厄，下可養生延壽、禦邪護身。世人見其靈驗不可思議，便執以為道術無所不能、萬事皆可依仗，凡事祈禱、畫...">
     <link rel="canonical" href="https://taoism.com.tw/articles/602d7bc0049c.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="道家道術無所不能，豈可盡信道術？｜圓安道語公開預覽">
+    <meta property="og:description" content="道家道術無所不能，豈可盡信道術？ 道家大道，體包天地、貫徹陰陽、造化萬物，道術本為順天應人、修身濟世、趨吉避凶、安撫身心之法，自古流傳玄奧深遠，妙用無窮。上可觀星定紀、調理陰陽風水，中可安魂鎮煞、消災解厄，下可養生延壽、禦邪護身。世人見其靈驗不可思議，便執以為道術無所不能、萬事皆可依仗，凡事祈禱、畫...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/602d7bc0049c.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="道家道術無所不能，豈可盡信道術？｜圓安道語公開預覽">
+    <meta name="twitter:description" content="道家道術無所不能，豈可盡信道術？ 道家大道，體包天地、貫徹陰陽、造化萬物，道術本為順天應人、修身濟世、趨吉避凶、安撫身心之法，自古流傳玄奧深遠，妙用無窮。上可觀星定紀、調理陰陽風水，中可安魂鎮煞、消災解厄，下可養生延壽、禦邪護身。世人見其靈驗不可思議，便執以為道術無所不能、萬事皆可依仗，凡事祈禱、畫...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-27">2026-05-27</time>
             <span class="category">道教經典</span>
             <span class="series-badge">畫符 100講 27講</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/602d7bc0049c.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/602d7bc0049c.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -47,5 +63,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

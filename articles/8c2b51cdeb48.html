@@ -17,7 +17,18 @@
     <title>二、全真教「三文火一武火」呼吸節奏操作示範｜圓安道語公開預覽</title>
     <meta name="description" content="二、全真教「三文火一武火」呼吸節奏操作示範 全真教「三文火一武火」是煉氣化神階段的核心火候節奏，以「呼吸與意念同步」為關鍵，操作簡潔易踐行，以下分步詳解（以盤坐修煉為基礎）： （一）準備階段：調身、調息、調心 1. 調身： 採散盤或單盤，腰背挺直，舌抵上齶，雙目微閉，雙手疊放於丹田（左手在下，右手在...">
     <link rel="canonical" href="https://taoism.com.tw/articles/8c2b51cdeb48.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="二、全真教「三文火一武火」呼吸節奏操作示範｜圓安道語公開預覽">
+    <meta property="og:description" content="二、全真教「三文火一武火」呼吸節奏操作示範 全真教「三文火一武火」是煉氣化神階段的核心火候節奏，以「呼吸與意念同步」為關鍵，操作簡潔易踐行，以下分步詳解（以盤坐修煉為基礎）： （一）準備階段：調身、調息、調心 1. 調身： 採散盤或單盤，腰背挺直，舌抵上齶，雙目微閉，雙手疊放於丹田（左手在下，右手在...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/8c2b51cdeb48.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="二、全真教「三文火一武火」呼吸節奏操作示範｜圓安道語公開預覽">
+    <meta name="twitter:description" content="二、全真教「三文火一武火」呼吸節奏操作示範 全真教「三文火一武火」是煉氣化神階段的核心火候節奏，以「呼吸與意念同步」為關鍵，操作簡潔易踐行，以下分步詳解（以盤坐修煉為基礎）： （一）準備階段：調身、調息、調心 1. 調身： 採散盤或單盤，腰背挺直，舌抵上齶，雙目微閉，雙手疊放於丹田（左手在下，右手在...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-03">2025-12-03</time>
             <span class="category">全真道脈</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/8c2b51cdeb48.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/8c2b51cdeb48.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -61,5 +77,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

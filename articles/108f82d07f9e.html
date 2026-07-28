@@ -17,7 +17,18 @@
     <title>圓安論道：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論道： 伍柳派與東派關於「三關九竅」的修煉釋義 兩派對「三關九竅」的界定與修煉指向，皆圍繞內丹核心次第展開，但因清修與雙修的路徑差異，詮釋側重與實踐方法截然不同。 一、 三關 「三關」即丹道修煉的煉精化炁、煉炁化神、煉神還虛三大階段，兩派對其內涵與修持方式的詮釋各有側重。 1. 伍柳派（清修） ...">
     <link rel="canonical" href="https://taoism.com.tw/articles/108f82d07f9e.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論道： 伍柳派與東派關於「三關九竅」的修煉釋義 兩派對「三關九竅」的界定與修煉指向，皆圍繞內丹核心次第展開，但因清修與雙修的路徑差異，詮釋側重與實踐方法截然不同。 一、 三關 「三關」即丹道修煉的煉精化炁、煉炁化神、煉神還虛三大階段，兩派對其內涵與修持方式的詮釋各有側重。 1. 伍柳派（清修） ...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/108f82d07f9e.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論道： 伍柳派與東派關於「三關九竅」的修煉釋義 兩派對「三關九竅」的界定與修煉指向，皆圍繞內丹核心次第展開，但因清修與雙修的路徑差異，詮釋側重與實踐方法截然不同。 一、 三關 「三關」即丹道修煉的煉精化炁、煉炁化神、煉神還虛三大階段，兩派對其內涵與修持方式的詮釋各有側重。 1. 伍柳派（清修） ...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-30">2025-12-30</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/108f82d07f9e.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/108f82d07f9e.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -58,5 +74,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>道德經第六章《精簡版》｜圓安道語公開預覽</title>
     <meta name="description" content="道德經第六章《精簡版》 本章承續上章「虛靜」之旨，深入探討「道」的本體與生命源力，以「谷神」與「玄牝」為喻，直指萬化生生不息的根本。 原文曰：谷神不死，是謂玄牝。玄牝之門，是謂天地根。綿綿若存，用之不勤。 「谷神」非指鬼神，乃喻「道」體虛靈不滅、包容萬物之性。「谷」虛能納，「神」靈不昧，二者合一，即...">
     <link rel="canonical" href="https://taoism.com.tw/articles/dcb9a574ad3d.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="道德經第六章《精簡版》｜圓安道語公開預覽">
+    <meta property="og:description" content="道德經第六章《精簡版》 本章承續上章「虛靜」之旨，深入探討「道」的本體與生命源力，以「谷神」與「玄牝」為喻，直指萬化生生不息的根本。 原文曰：谷神不死，是謂玄牝。玄牝之門，是謂天地根。綿綿若存，用之不勤。 「谷神」非指鬼神，乃喻「道」體虛靈不滅、包容萬物之性。「谷」虛能納，「神」靈不昧，二者合一，即...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/dcb9a574ad3d.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="道德經第六章《精簡版》｜圓安道語公開預覽">
+    <meta name="twitter:description" content="道德經第六章《精簡版》 本章承續上章「虛靜」之旨，深入探討「道」的本體與生命源力，以「谷神」與「玄牝」為喻，直指萬化生生不息的根本。 原文曰：谷神不死，是謂玄牝。玄牝之門，是謂天地根。綿綿若存，用之不勤。 「谷神」非指鬼神，乃喻「道」體虛靈不滅、包容萬物之性。「谷」虛能納，「神」靈不昧，二者合一，即...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-17">2026-03-17</time>
             <span class="category">道教經典</span>
             <span class="series-badge">淺譯 道德經 81章 6章</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/dcb9a574ad3d.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/dcb9a574ad3d.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -44,5 +60,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

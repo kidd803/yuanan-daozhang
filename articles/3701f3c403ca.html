@@ -17,7 +17,18 @@
     <title>臺灣乩童文化之源流、儀式內涵與當代社會變遷探析｜圓安道語公開預覽</title>
     <meta name="description" content="臺灣乩童文化之源流、儀式內涵與當代社會變遷探析 摘要 乩童文化為臺灣民間信仰最具代表性之宗教現象，深植於閩粵移民拓墾史、華南巫道傳統與臺灣在地社會脈絡之中，歷經數百年傳承，已成為臺灣鄉土文化、民俗宗教與社會精神生活之重要核心。 本文以文獻梳理、儀式考辨、社會文化分析為核心，考述臺灣乩童文化之歷史源流...">
     <link rel="canonical" href="https://taoism.com.tw/articles/3701f3c403ca.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="臺灣乩童文化之源流、儀式內涵與當代社會變遷探析｜圓安道語公開預覽">
+    <meta property="og:description" content="臺灣乩童文化之源流、儀式內涵與當代社會變遷探析 摘要 乩童文化為臺灣民間信仰最具代表性之宗教現象，深植於閩粵移民拓墾史、華南巫道傳統與臺灣在地社會脈絡之中，歷經數百年傳承，已成為臺灣鄉土文化、民俗宗教與社會精神生活之重要核心。 本文以文獻梳理、儀式考辨、社會文化分析為核心，考述臺灣乩童文化之歷史源流...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/3701f3c403ca.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="臺灣乩童文化之源流、儀式內涵與當代社會變遷探析｜圓安道語公開預覽">
+    <meta name="twitter:description" content="臺灣乩童文化之源流、儀式內涵與當代社會變遷探析 摘要 乩童文化為臺灣民間信仰最具代表性之宗教現象，深植於閩粵移民拓墾史、華南巫道傳統與臺灣在地社會脈絡之中，歷經數百年傳承，已成為臺灣鄉土文化、民俗宗教與社會精神生活之重要核心。 本文以文獻梳理、儀式考辨、社會文化分析為核心，考述臺灣乩童文化之歷史源流...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-21">2026-05-21</time>
             <span class="category">人間修行</span>
             <span class="series-badge">乩童文化 1篇</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/3701f3c403ca.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/3701f3c403ca.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -79,5 +95,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

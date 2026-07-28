@@ -17,7 +17,18 @@
     <title>圓安論道：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論道： 聽息法與心息相依同屬道家內丹術的基礎煉 養功夫，核心均在調和呼吸與心神，但二者在修持層次、操作重心與內在旨歸上存在明顯區別。 聽息法： 側重於以耳攝息、以息制心，屬於初級入靜功夫。 其操作要領為：兩目微閉，心神內收，不刻意控制呼吸，僅以耳根輕輕聽聞自身的呼吸聲（或鼻息出入的綿長之氣），不...">
     <link rel="canonical" href="https://taoism.com.tw/articles/d88991049e00.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論道： 聽息法與心息相依同屬道家內丹術的基礎煉 養功夫，核心均在調和呼吸與心神，但二者在修持層次、操作重心與內在旨歸上存在明顯區別。 聽息法： 側重於以耳攝息、以息制心，屬於初級入靜功夫。 其操作要領為：兩目微閉，心神內收，不刻意控制呼吸，僅以耳根輕輕聽聞自身的呼吸聲（或鼻息出入的綿長之氣），不...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/d88991049e00.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論道： 聽息法與心息相依同屬道家內丹術的基礎煉 養功夫，核心均在調和呼吸與心神，但二者在修持層次、操作重心與內在旨歸上存在明顯區別。 聽息法： 側重於以耳攝息、以息制心，屬於初級入靜功夫。 其操作要領為：兩目微閉，心神內收，不刻意控制呼吸，僅以耳根輕輕聽聞自身的呼吸聲（或鼻息出入的綿長之氣），不...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-01-09">2026-01-09</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/d88991049e00.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/d88991049e00.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -49,5 +65,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>道德經第三十三章與佛教經典互證詳解｜圓安道語公開預覽</title>
     <meta name="description" content="道德經第三十三章與佛教經典互證詳解 第三十三章原文（王弼通行本） 知人者智，自知者明。勝人者有力，自勝者強。知足者富，強行者有志。不失其所者久，死而不亡者壽。 一、知人者智，自知者明——外識與內明，智與般若之會 1. 知人者智：外境之智，分別之明 「知人」謂識別他人、察人際，屬外在認知與分別智。王弼...">
     <link rel="canonical" href="https://taoism.com.tw/articles/bf3f8d7fefea.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="道德經第三十三章與佛教經典互證詳解｜圓安道語公開預覽">
+    <meta property="og:description" content="道德經第三十三章與佛教經典互證詳解 第三十三章原文（王弼通行本） 知人者智，自知者明。勝人者有力，自勝者強。知足者富，強行者有志。不失其所者久，死而不亡者壽。 一、知人者智，自知者明——外識與內明，智與般若之會 1. 知人者智：外境之智，分別之明 「知人」謂識別他人、察人際，屬外在認知與分別智。王弼...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/bf3f8d7fefea.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="道德經第三十三章與佛教經典互證詳解｜圓安道語公開預覽">
+    <meta name="twitter:description" content="道德經第三十三章與佛教經典互證詳解 第三十三章原文（王弼通行本） 知人者智，自知者明。勝人者有力，自勝者強。知足者富，強行者有志。不失其所者久，死而不亡者壽。 一、知人者智，自知者明——外識與內明，智與般若之會 1. 知人者智：外境之智，分別之明 「知人」謂識別他人、察人際，屬外在認知與分別智。王弼...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-07">2026-05-07</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/bf3f8d7fefea.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/bf3f8d7fefea.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -75,5 +91,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

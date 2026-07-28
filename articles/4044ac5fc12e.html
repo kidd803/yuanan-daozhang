@@ -17,7 +17,18 @@
     <title>介紹五術：｜圓安道語公開預覽</title>
     <meta name="description" content="介紹五術： 所謂「五術」，是中國傳統文化中一套龐大的方術體系，旨在探究天、地、人之間的關係，並用以趨吉避凶、解決人生諸多問題。它源自上古的「山、醫、命、相、卜」之學，統稱為「玄學五術」。 下面將詳細論述這五術的內涵、流派與其核心思想。 總論：五術的哲學基礎 五術的共同哲學根基是建立在陰陽五行（金、木...">
     <link rel="canonical" href="https://taoism.com.tw/articles/4044ac5fc12e.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="介紹五術：｜圓安道語公開預覽">
+    <meta property="og:description" content="介紹五術： 所謂「五術」，是中國傳統文化中一套龐大的方術體系，旨在探究天、地、人之間的關係，並用以趨吉避凶、解決人生諸多問題。它源自上古的「山、醫、命、相、卜」之學，統稱為「玄學五術」。 下面將詳細論述這五術的內涵、流派與其核心思想。 總論：五術的哲學基礎 五術的共同哲學根基是建立在陰陽五行（金、木...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/4044ac5fc12e.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="介紹五術：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="介紹五術： 所謂「五術」，是中國傳統文化中一套龐大的方術體系，旨在探究天、地、人之間的關係，並用以趨吉避凶、解決人生諸多問題。它源自上古的「山、醫、命、相、卜」之學，統稱為「玄學五術」。 下面將詳細論述這五術的內涵、流派與其核心思想。 總論：五術的哲學基礎 五術的共同哲學根基是建立在陰陽五行（金、木...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-11-23">2025-11-23</time>
             <span class="category">處世立命</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/4044ac5fc12e.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/4044ac5fc12e.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -74,5 +90,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

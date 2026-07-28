@@ -17,7 +17,18 @@
     <title>2026丙午馬年流年吉位詳解與道教佈局方案｜圓安道語公開預覽</title>
     <meta name="description" content="2026丙午馬年流年吉位詳解與道教佈局方案 2026年為丙午馬年，五行屬火，流年吉位依據九宮飛星與太歲方位推演而定，正南方為太歲方，東北為文昌方，東方為正財方等。以下詳解各吉位佈局，搭配道教法器與原則，同時補充對應法器選購供奉要點，助宅主趨吉避凶、旺運安宅。 一、2026年陽宅流年核心吉位詳解與佈局...">
     <link rel="canonical" href="https://taoism.com.tw/articles/75179169379f.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="2026丙午馬年流年吉位詳解與道教佈局方案｜圓安道語公開預覽">
+    <meta property="og:description" content="2026丙午馬年流年吉位詳解與道教佈局方案 2026年為丙午馬年，五行屬火，流年吉位依據九宮飛星與太歲方位推演而定，正南方為太歲方，東北為文昌方，東方為正財方等。以下詳解各吉位佈局，搭配道教法器與原則，同時補充對應法器選購供奉要點，助宅主趨吉避凶、旺運安宅。 一、2026年陽宅流年核心吉位詳解與佈局...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/75179169379f.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="2026丙午馬年流年吉位詳解與道教佈局方案｜圓安道語公開預覽">
+    <meta name="twitter:description" content="2026丙午馬年流年吉位詳解與道教佈局方案 2026年為丙午馬年，五行屬火，流年吉位依據九宮飛星與太歲方位推演而定，正南方為太歲方，東北為文昌方，東方為正財方等。以下詳解各吉位佈局，搭配道教法器與原則，同時補充對應法器選購供奉要點，助宅主趨吉避凶、旺運安宅。 一、2026年陽宅流年核心吉位詳解與佈局...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-11-25">2025-11-25</time>
             <span class="category">處世立命</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/75179169379f.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/75179169379f.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -50,5 +66,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

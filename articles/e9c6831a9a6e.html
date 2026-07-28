@@ -17,7 +17,18 @@
     <title>書店老闆讀全真道《龍門心法》｜圓安道語公開預覽</title>
     <meta name="description" content="書店老闆讀全真道《龍門心法》 清淨身心（第四章） 清淨身體之功夫 原文： 大眾，今對你們說明清淨之功。若要此身清淨，先將俗務丟開，坐情運想，一切不同世法。甘淡薄而樂清閒，飽肥甘而齋虹節。皈依三寶，刻守一真。 性情涵養和平，手足端正整齊，眼目不可偏邪，意念不可散亂，心不可存思想，口不可高談誇詡。 收兩...">
     <link rel="canonical" href="https://taoism.com.tw/articles/e9c6831a9a6e.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="書店老闆讀全真道《龍門心法》｜圓安道語公開預覽">
+    <meta property="og:description" content="書店老闆讀全真道《龍門心法》 清淨身心（第四章） 清淨身體之功夫 原文： 大眾，今對你們說明清淨之功。若要此身清淨，先將俗務丟開，坐情運想，一切不同世法。甘淡薄而樂清閒，飽肥甘而齋虹節。皈依三寶，刻守一真。 性情涵養和平，手足端正整齊，眼目不可偏邪，意念不可散亂，心不可存思想，口不可高談誇詡。 收兩...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/e9c6831a9a6e.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="書店老闆讀全真道《龍門心法》｜圓安道語公開預覽">
+    <meta name="twitter:description" content="書店老闆讀全真道《龍門心法》 清淨身心（第四章） 清淨身體之功夫 原文： 大眾，今對你們說明清淨之功。若要此身清淨，先將俗務丟開，坐情運想，一切不同世法。甘淡薄而樂清閒，飽肥甘而齋虹節。皈依三寶，刻守一真。 性情涵養和平，手足端正整齊，眼目不可偏邪，意念不可散亂，心不可存思想，口不可高談誇詡。 收兩...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-07-25">2026-07-25</time>
             <span class="category">道教經典</span>
             <span class="series-badge">龍門心法</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/e9c6831a9a6e.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/e9c6831a9a6e.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -59,5 +75,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

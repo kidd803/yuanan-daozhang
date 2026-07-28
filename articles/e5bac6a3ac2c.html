@@ -17,7 +17,18 @@
     <title>黃元吉註 道德經第二十四章｜圓安道語公開預覽</title>
     <meta name="description" content="黃元吉註 道德經第二十四章 一、原文（通行本） 企者不立，跨者不行； 自見者不明，自是者不彰； 自伐者無功，自矜者不長。 其在道也，曰：餘食贅形。 物或惡之，故有道者不處。 二、黃元吉註 逐句詳解 1. 企者不立，跨者不行 - 企：踮起腳尖，想站得更高。 - 跨：邁大步，想走得更快。 黃元吉註： 凡...">
     <link rel="canonical" href="https://taoism.com.tw/articles/e5bac6a3ac2c.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="黃元吉註 道德經第二十四章｜圓安道語公開預覽">
+    <meta property="og:description" content="黃元吉註 道德經第二十四章 一、原文（通行本） 企者不立，跨者不行； 自見者不明，自是者不彰； 自伐者無功，自矜者不長。 其在道也，曰：餘食贅形。 物或惡之，故有道者不處。 二、黃元吉註 逐句詳解 1. 企者不立，跨者不行 - 企：踮起腳尖，想站得更高。 - 跨：邁大步，想走得更快。 黃元吉註： 凡...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/e5bac6a3ac2c.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="黃元吉註 道德經第二十四章｜圓安道語公開預覽">
+    <meta name="twitter:description" content="黃元吉註 道德經第二十四章 一、原文（通行本） 企者不立，跨者不行； 自見者不明，自是者不彰； 自伐者無功，自矜者不長。 其在道也，曰：餘食贅形。 物或惡之，故有道者不處。 二、黃元吉註 逐句詳解 1. 企者不立，跨者不行 - 企：踮起腳尖，想站得更高。 - 跨：邁大步，想走得更快。 黃元吉註： 凡...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-28">2026-03-28</time>
             <span class="category">道教經典</span>
             <span class="series-badge">黃元吉 道德經 81章 24章</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/e5bac6a3ac2c.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/e5bac6a3ac2c.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -71,5 +87,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>正月十九，邱長春祖師聖誕。｜圓安道語公開預覽</title>
     <meta name="description" content="正月十九，邱長春祖師聖誕。 燕九節會神仙！ 農曆正月十九， 是道教全真龍門派邱祖師聖誕。 恭賀廣援普度天尊邱大真人聖誕。 邱祖（西元1148－1227年）字通密， 道號長春子，山東棲霞人， 中國金朝末年全真道道士。 金元時期，道教全真龍門派創派祖師，在道教歷史和信仰中，與馬丹陽、譚處端、王玉陽、劉處...">
     <link rel="canonical" href="https://taoism.com.tw/articles/535a1bd36c15.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="正月十九，邱長春祖師聖誕。｜圓安道語公開預覽">
+    <meta property="og:description" content="正月十九，邱長春祖師聖誕。 燕九節會神仙！ 農曆正月十九， 是道教全真龍門派邱祖師聖誕。 恭賀廣援普度天尊邱大真人聖誕。 邱祖（西元1148－1227年）字通密， 道號長春子，山東棲霞人， 中國金朝末年全真道道士。 金元時期，道教全真龍門派創派祖師，在道教歷史和信仰中，與馬丹陽、譚處端、王玉陽、劉處...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/535a1bd36c15.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="正月十九，邱長春祖師聖誕。｜圓安道語公開預覽">
+    <meta name="twitter:description" content="正月十九，邱長春祖師聖誕。 燕九節會神仙！ 農曆正月十九， 是道教全真龍門派邱祖師聖誕。 恭賀廣援普度天尊邱大真人聖誕。 邱祖（西元1148－1227年）字通密， 道號長春子，山東棲霞人， 中國金朝末年全真道道士。 金元時期，道教全真龍門派創派祖師，在道教歷史和信仰中，與馬丹陽、譚處端、王玉陽、劉處...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2019-02-23">2019-02-23</time>
             <span class="category">龍門丹道</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/535a1bd36c15.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/535a1bd36c15.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -85,5 +101,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

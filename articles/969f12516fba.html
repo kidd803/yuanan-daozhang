@@ -17,7 +17,18 @@
     <title>第十章｜立教十五論與祖師著述｜圓安道語公開預覽</title>
     <meta name="description" content="第十章｜立教十五論與祖師著述 在弘道過程之中，祖師逐漸提出修行原則。 其中最重要者，便是： 《全真立教十五論》 此文為全真修行的重要綱領。 祖師以十五條簡要論述，規範修道人之行。 其中核心精神包括： 清靜 寡欲 修德 守一 節飲食 慎言語 遠名利 祖師認為： 修道之本，不在符籙術法。 而在於： 去情...">
     <link rel="canonical" href="https://taoism.com.tw/articles/969f12516fba.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="第十章｜立教十五論與祖師著述｜圓安道語公開預覽">
+    <meta property="og:description" content="第十章｜立教十五論與祖師著述 在弘道過程之中，祖師逐漸提出修行原則。 其中最重要者，便是： 《全真立教十五論》 此文為全真修行的重要綱領。 祖師以十五條簡要論述，規範修道人之行。 其中核心精神包括： 清靜 寡欲 修德 守一 節飲食 慎言語 遠名利 祖師認為： 修道之本，不在符籙術法。 而在於： 去情...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/969f12516fba.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="第十章｜立教十五論與祖師著述｜圓安道語公開預覽">
+    <meta name="twitter:description" content="第十章｜立教十五論與祖師著述 在弘道過程之中，祖師逐漸提出修行原則。 其中最重要者，便是： 《全真立教十五論》 此文為全真修行的重要綱領。 祖師以十五條簡要論述，規範修道人之行。 其中核心精神包括： 清靜 寡欲 修德 守一 節飲食 慎言語 遠名利 祖師認為： 修道之本，不在符籙術法。 而在於： 去情...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-10">2026-03-10</time>
             <span class="category">全真道脈</span>
             <span class="series-badge">全真道法統 10章</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/969f12516fba.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/969f12516fba.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -60,5 +76,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

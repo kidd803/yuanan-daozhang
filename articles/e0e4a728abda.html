@@ -17,7 +17,18 @@
     <title>《知命吟》道門全考釋｜圓安道語公開預覽</title>
     <meta name="description" content="《知命吟》道門全考釋 一、典籍源流考辨 《知命吟》並非獨立刊刻之官修古籍，不見於《正統道藏》《四庫全書》術數、丹道類總目，屬明清以降民間全真道、江湖命理師傳抄七言吟訣，多附載於內丹雜鈔、子平八字手抄冊後，無確切單一祖師署名，舊時道壇多託為呂純陽、邵康節隱道所作，實為歷代修真之士融合《道德經》「復命」...">
     <link rel="canonical" href="https://taoism.com.tw/articles/e0e4a728abda.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="《知命吟》道門全考釋｜圓安道語公開預覽">
+    <meta property="og:description" content="《知命吟》道門全考釋 一、典籍源流考辨 《知命吟》並非獨立刊刻之官修古籍，不見於《正統道藏》《四庫全書》術數、丹道類總目，屬明清以降民間全真道、江湖命理師傳抄七言吟訣，多附載於內丹雜鈔、子平八字手抄冊後，無確切單一祖師署名，舊時道壇多託為呂純陽、邵康節隱道所作，實為歷代修真之士融合《道德經》「復命」...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/e0e4a728abda.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="《知命吟》道門全考釋｜圓安道語公開預覽">
+    <meta name="twitter:description" content="《知命吟》道門全考釋 一、典籍源流考辨 《知命吟》並非獨立刊刻之官修古籍，不見於《正統道藏》《四庫全書》術數、丹道類總目，屬明清以降民間全真道、江湖命理師傳抄七言吟訣，多附載於內丹雜鈔、子平八字手抄冊後，無確切單一祖師署名，舊時道壇多託為呂純陽、邵康節隱道所作，實為歷代修真之士融合《道德經》「復命」...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-19">2026-06-19</time>
             <span class="category">處世立命</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/e0e4a728abda.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/e0e4a728abda.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -59,5 +75,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

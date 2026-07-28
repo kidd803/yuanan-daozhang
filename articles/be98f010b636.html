@@ -17,7 +17,18 @@
     <title>再論道教信眾祈禱文昌帝君｜圓安道語公開預覽</title>
     <meta name="description" content="再論道教信眾祈禱文昌帝君 一、文昌本旨：非僅求功名，乃修身開慧 文昌帝君，道家九天定祿、司文掌運、護佑智識、安撫心靈之至尊聖真。世俗多以文昌專司科舉、考試、學業功名，淺解祈福；道门正法祈禱，文昌主天靈慧根、心性澄澈、記憶通達、思維明朗、煩惑頓開、福祿善緣，不只應試求第，更求一念通透、事理圓融、智慧開...">
     <link rel="canonical" href="https://taoism.com.tw/articles/be98f010b636.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="再論道教信眾祈禱文昌帝君｜圓安道語公開預覽">
+    <meta property="og:description" content="再論道教信眾祈禱文昌帝君 一、文昌本旨：非僅求功名，乃修身開慧 文昌帝君，道家九天定祿、司文掌運、護佑智識、安撫心靈之至尊聖真。世俗多以文昌專司科舉、考試、學業功名，淺解祈福；道门正法祈禱，文昌主天靈慧根、心性澄澈、記憶通達、思維明朗、煩惑頓開、福祿善緣，不只應試求第，更求一念通透、事理圓融、智慧開...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/be98f010b636.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="再論道教信眾祈禱文昌帝君｜圓安道語公開預覽">
+    <meta name="twitter:description" content="再論道教信眾祈禱文昌帝君 一、文昌本旨：非僅求功名，乃修身開慧 文昌帝君，道家九天定祿、司文掌運、護佑智識、安撫心靈之至尊聖真。世俗多以文昌專司科舉、考試、學業功名，淺解祈福；道门正法祈禱，文昌主天靈慧根、心性澄澈、記憶通達、思維明朗、煩惑頓開、福祿善緣，不只應試求第，更求一念通透、事理圓融、智慧開...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-31">2026-05-31</time>
             <span class="category">人間修行</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/be98f010b636.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/be98f010b636.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -49,5 +65,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

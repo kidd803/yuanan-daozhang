@@ -17,7 +17,18 @@
     <title>易經（周易）詳細介紹｜圓安道語公開預覽</title>
     <meta name="description" content="易經（周易）詳細介紹 《易經》，亦稱《周易》，為中華文化「群經之首，大道之源」，是華夏文明最古老、最深邃的經典之一。其內容涵蓋宇宙規律、人生哲理、占筮方法與道德修養，歷經三古、三聖而成，影響中華文化數千年，遍及哲學、宗教、醫學、術數、文學、藝術等諸多領域。 一、名稱與由來 「易」有三義： 變易（萬物...">
     <link rel="canonical" href="https://taoism.com.tw/articles/040dcd42dfd1.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="易經（周易）詳細介紹｜圓安道語公開預覽">
+    <meta property="og:description" content="易經（周易）詳細介紹 《易經》，亦稱《周易》，為中華文化「群經之首，大道之源」，是華夏文明最古老、最深邃的經典之一。其內容涵蓋宇宙規律、人生哲理、占筮方法與道德修養，歷經三古、三聖而成，影響中華文化數千年，遍及哲學、宗教、醫學、術數、文學、藝術等諸多領域。 一、名稱與由來 「易」有三義： 變易（萬物...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/040dcd42dfd1.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="易經（周易）詳細介紹｜圓安道語公開預覽">
+    <meta name="twitter:description" content="易經（周易）詳細介紹 《易經》，亦稱《周易》，為中華文化「群經之首，大道之源」，是華夏文明最古老、最深邃的經典之一。其內容涵蓋宇宙規律、人生哲理、占筮方法與道德修養，歷經三古、三聖而成，影響中華文化數千年，遍及哲學、宗教、醫學、術數、文學、藝術等諸多領域。 一、名稱與由來 「易」有三義： 變易（萬物...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-22">2026-03-22</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/040dcd42dfd1.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/040dcd42dfd1.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -68,5 +84,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>讀書，立身；經營，養命｜圓安道語公開預覽</title>
     <meta name="description" content="讀書，立身；經營，養命 莫以謀財為俗，細觀大道修行，不過二事：一修其性，一養其命。 性功在讀書，以澄心明慧；命功在經營，以安身立世。除此二者，皆為浮華虛妄。 世人多將修道看得玄奧難測，以為靜坐冥思、茹素持齋便是真修。然問其真性何煉、本心何定，皆茫然無語；問其立身之資、濟世之力，皆一無所成。心未歸寧，...">
     <link rel="canonical" href="https://taoism.com.tw/articles/ae90d62bab8f.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="讀書，立身；經營，養命｜圓安道語公開預覽">
+    <meta property="og:description" content="讀書，立身；經營，養命 莫以謀財為俗，細觀大道修行，不過二事：一修其性，一養其命。 性功在讀書，以澄心明慧；命功在經營，以安身立世。除此二者，皆為浮華虛妄。 世人多將修道看得玄奧難測，以為靜坐冥思、茹素持齋便是真修。然問其真性何煉、本心何定，皆茫然無語；問其立身之資、濟世之力，皆一無所成。心未歸寧，...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/ae90d62bab8f.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="讀書，立身；經營，養命｜圓安道語公開預覽">
+    <meta name="twitter:description" content="讀書，立身；經營，養命 莫以謀財為俗，細觀大道修行，不過二事：一修其性，一養其命。 性功在讀書，以澄心明慧；命功在經營，以安身立世。除此二者，皆為浮華虛妄。 世人多將修道看得玄奧難測，以為靜坐冥思、茹素持齋便是真修。然問其真性何煉、本心何定，皆茫然無語；問其立身之資、濟世之力，皆一無所成。心未歸寧，...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-18">2026-05-18</time>
             <span class="category">修身養性</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/ae90d62bab8f.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/ae90d62bab8f.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -48,5 +64,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

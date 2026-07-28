@@ -17,7 +17,18 @@
     <title>命理術數教學(十九)｜圓安道語公開預覽</title>
     <meta name="description" content="命理術數教學(十九) 紫微斗數十天干四化·七言訣： 甲干（甲廉破武陽） 甲廉化祿貴人來，破權變革展雄才。 武科穩財名實副，陽忌勞心防口災。 乙干（乙機梁紫陰） 乙機化祿智謀開，梁權蔭護貴登台。 紫科顯達聲名遠，陰忌財家慎防哀。 丙干（丙同機昌廉） 丙同化祿福悠哉，機權謀斷事能裁。 昌科文運逢師喜，廉...">
     <link rel="canonical" href="https://taoism.com.tw/articles/245bf2106ca4.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="命理術數教學(十九)｜圓安道語公開預覽">
+    <meta property="og:description" content="命理術數教學(十九) 紫微斗數十天干四化·七言訣： 甲干（甲廉破武陽） 甲廉化祿貴人來，破權變革展雄才。 武科穩財名實副，陽忌勞心防口災。 乙干（乙機梁紫陰） 乙機化祿智謀開，梁權蔭護貴登台。 紫科顯達聲名遠，陰忌財家慎防哀。 丙干（丙同機昌廉） 丙同化祿福悠哉，機權謀斷事能裁。 昌科文運逢師喜，廉...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/245bf2106ca4.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="命理術數教學(十九)｜圓安道語公開預覽">
+    <meta name="twitter:description" content="命理術數教學(十九) 紫微斗數十天干四化·七言訣： 甲干（甲廉破武陽） 甲廉化祿貴人來，破權變革展雄才。 武科穩財名實副，陽忌勞心防口災。 乙干（乙機梁紫陰） 乙機化祿智謀開，梁權蔭護貴登台。 紫科顯達聲名遠，陰忌財家慎防哀。 丙干（丙同機昌廉） 丙同化祿福悠哉，機權謀斷事能裁。 昌科文運逢師喜，廉...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-02-18">2026-02-18</time>
             <span class="category">處世立命</span>
             <span class="series-badge">紫微斗數推演 19講</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/245bf2106ca4.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/245bf2106ca4.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -59,5 +75,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

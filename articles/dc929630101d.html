@@ -17,7 +17,18 @@
     <title>《道德經》之所以被譽為「萬經之王」，核心在於其思想的本源性、普適性與...｜圓安道語公開預覽</title>
     <meta name="description" content="《道德經》之所以被譽為「萬經之王」，核心在於其思想的本源性、普適性與穿透性，深刻影響了中國傳統文化的精神底蘊。 一、思想本源：闡發宇宙人生的根本規律 《道德經》僅五千言，卻以「道」為核心，揭示了宇宙生成、萬物運行的終極法則——「道生一，一生二，二生三，三生萬物」 （第四十二章），將天地萬物的本質歸於...">
     <link rel="canonical" href="https://taoism.com.tw/articles/dc929630101d.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="《道德經》之所以被譽為「萬經之王」，核心在於其思想的本源性、普適性與...｜圓安道語公開預覽">
+    <meta property="og:description" content="《道德經》之所以被譽為「萬經之王」，核心在於其思想的本源性、普適性與穿透性，深刻影響了中國傳統文化的精神底蘊。 一、思想本源：闡發宇宙人生的根本規律 《道德經》僅五千言，卻以「道」為核心，揭示了宇宙生成、萬物運行的終極法則——「道生一，一生二，二生三，三生萬物」 （第四十二章），將天地萬物的本質歸於...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/dc929630101d.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="《道德經》之所以被譽為「萬經之王」，核心在於其思想的本源性、普適性與...｜圓安道語公開預覽">
+    <meta name="twitter:description" content="《道德經》之所以被譽為「萬經之王」，核心在於其思想的本源性、普適性與穿透性，深刻影響了中國傳統文化的精神底蘊。 一、思想本源：闡發宇宙人生的根本規律 《道德經》僅五千言，卻以「道」為核心，揭示了宇宙生成、萬物運行的終極法則——「道生一，一生二，二生三，三生萬物」 （第四十二章），將天地萬物的本質歸於...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-02">2025-12-02</time>
             <span class="category">悟道真詮</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/dc929630101d.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/dc929630101d.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -50,5 +66,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

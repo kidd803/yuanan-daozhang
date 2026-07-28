@@ -17,7 +17,18 @@
     <title>圓安論道：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論道： 南宗丹道五祖傳承譜系與核心思想梳理 南宗丹道尊張伯端為初祖，其傳承譜系以「單傳直指」為特色，五祖依次傳承，逐步完善南宗「先命後性」的丹道體系，具體如下： 一、 初祖：張伯端（字平叔，號紫陽真人） - 時代：北宋 - 核心著作： 《悟真篇》《金丹四百字》《青華秘文》 - 核心思想： 1. ...">
     <link rel="canonical" href="https://taoism.com.tw/articles/f5b5681ec311.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論道： 南宗丹道五祖傳承譜系與核心思想梳理 南宗丹道尊張伯端為初祖，其傳承譜系以「單傳直指」為特色，五祖依次傳承，逐步完善南宗「先命後性」的丹道體系，具體如下： 一、 初祖：張伯端（字平叔，號紫陽真人） - 時代：北宋 - 核心著作： 《悟真篇》《金丹四百字》《青華秘文》 - 核心思想： 1. ...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/f5b5681ec311.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論道： 南宗丹道五祖傳承譜系與核心思想梳理 南宗丹道尊張伯端為初祖，其傳承譜系以「單傳直指」為特色，五祖依次傳承，逐步完善南宗「先命後性」的丹道體系，具體如下： 一、 初祖：張伯端（字平叔，號紫陽真人） - 時代：北宋 - 核心著作： 《悟真篇》《金丹四百字》《青華秘文》 - 核心思想： 1. ...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-24">2025-12-24</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/f5b5681ec311.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/f5b5681ec311.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -63,5 +79,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

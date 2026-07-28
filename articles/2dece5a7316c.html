@@ -17,7 +17,18 @@
     <title>【修心煉性】｜圓安道語公開預覽</title>
     <meta name="description" content="【修心煉性】 身處塵寰靜心悟道論 身居凡塵是非多，誰人背後無人說。 看開放下隨他去，莫使心海起風波。 江河不語流千古，日月無聲照萬年。 道祖《道德經》有言：「道常無名，萬物作焉而不辭，生而不有，為而不恃，長而不宰。」天地大道本自沉寂無爭，獨世人落於紅塵，被七情六欲牽縛，困於人言毀譽，方生出無數煩擾，...">
     <link rel="canonical" href="https://taoism.com.tw/articles/2dece5a7316c.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="【修心煉性】｜圓安道語公開預覽">
+    <meta property="og:description" content="【修心煉性】 身處塵寰靜心悟道論 身居凡塵是非多，誰人背後無人說。 看開放下隨他去，莫使心海起風波。 江河不語流千古，日月無聲照萬年。 道祖《道德經》有言：「道常無名，萬物作焉而不辭，生而不有，為而不恃，長而不宰。」天地大道本自沉寂無爭，獨世人落於紅塵，被七情六欲牽縛，困於人言毀譽，方生出無數煩擾，...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/2dece5a7316c.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="【修心煉性】｜圓安道語公開預覽">
+    <meta name="twitter:description" content="【修心煉性】 身處塵寰靜心悟道論 身居凡塵是非多，誰人背後無人說。 看開放下隨他去，莫使心海起風波。 江河不語流千古，日月無聲照萬年。 道祖《道德經》有言：「道常無名，萬物作焉而不辭，生而不有，為而不恃，長而不宰。」天地大道本自沉寂無爭，獨世人落於紅塵，被七情六欲牽縛，困於人言毀譽，方生出無數煩擾，...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-24">2026-06-24</time>
             <span class="category">修心煉性</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/2dece5a7316c.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/2dece5a7316c.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -53,5 +69,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

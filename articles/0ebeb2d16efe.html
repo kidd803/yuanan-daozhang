@@ -17,7 +17,18 @@
     <title>老子與莊子思想差異總覽｜圓安道語公開預覽</title>
     <meta name="description" content="老子與莊子思想差異總覽 老子與莊子同屬道家思想體系，然二者在核心旨趣、修行路徑與現實關照上差異顯著，以下據《道德經》《莊子》典籍原文，結合學術通說，系統梳理： 一、核心宗旨：「治世」與「安身」之別 - 老子：以「道」為宇宙本源與治世準則，核心在「無為而治」。《道德經》五十七章言「我無為而民自化，我好...">
     <link rel="canonical" href="https://taoism.com.tw/articles/0ebeb2d16efe.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="老子與莊子思想差異總覽｜圓安道語公開預覽">
+    <meta property="og:description" content="老子與莊子思想差異總覽 老子與莊子同屬道家思想體系，然二者在核心旨趣、修行路徑與現實關照上差異顯著，以下據《道德經》《莊子》典籍原文，結合學術通說，系統梳理： 一、核心宗旨：「治世」與「安身」之別 - 老子：以「道」為宇宙本源與治世準則，核心在「無為而治」。《道德經》五十七章言「我無為而民自化，我好...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/0ebeb2d16efe.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="老子與莊子思想差異總覽｜圓安道語公開預覽">
+    <meta name="twitter:description" content="老子與莊子思想差異總覽 老子與莊子同屬道家思想體系，然二者在核心旨趣、修行路徑與現實關照上差異顯著，以下據《道德經》《莊子》典籍原文，結合學術通說，系統梳理： 一、核心宗旨：「治世」與「安身」之別 - 老子：以「道」為宇宙本源與治世準則，核心在「無為而治」。《道德經》五十七章言「我無為而民自化，我好...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-01">2025-12-01</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/0ebeb2d16efe.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/0ebeb2d16efe.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -51,5 +67,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

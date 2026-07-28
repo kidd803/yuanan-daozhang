@@ -17,7 +17,18 @@
     <title>下士養身，中士養氣，上士養心。｜圓安道語公開預覽</title>
     <meta name="description" content="下士養身，中士養氣，上士養心。 大道生人，備具形、氣、心三層體用。形為載道之器，氣為運道之機，心為體道之本。世人修持，根器淺深不同，用功落處遂分三等：下士執於軀殼，專務養身；中士知氣為樞，勤修養氣；上士直探根源，唯貴養心。層次高下，皆由見道遠近而分，今以老莊、內丹諸義分疏其理。 一、下士養身，滯於形...">
     <link rel="canonical" href="https://taoism.com.tw/articles/261ef0128c36.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="下士養身，中士養氣，上士養心。｜圓安道語公開預覽">
+    <meta property="og:description" content="下士養身，中士養氣，上士養心。 大道生人，備具形、氣、心三層體用。形為載道之器，氣為運道之機，心為體道之本。世人修持，根器淺深不同，用功落處遂分三等：下士執於軀殼，專務養身；中士知氣為樞，勤修養氣；上士直探根源，唯貴養心。層次高下，皆由見道遠近而分，今以老莊、內丹諸義分疏其理。 一、下士養身，滯於形...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/261ef0128c36.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="下士養身，中士養氣，上士養心。｜圓安道語公開預覽">
+    <meta name="twitter:description" content="下士養身，中士養氣，上士養心。 大道生人，備具形、氣、心三層體用。形為載道之器，氣為運道之機，心為體道之本。世人修持，根器淺深不同，用功落處遂分三等：下士執於軀殼，專務養身；中士知氣為樞，勤修養氣；上士直探根源，唯貴養心。層次高下，皆由見道遠近而分，今以老莊、內丹諸義分疏其理。 一、下士養身，滯於形...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-20">2026-06-20</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/261ef0128c36.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/261ef0128c36.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -50,5 +66,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>道門十悟：破執觀心，洞徹浮生真象｜圓安道語公開預覽</title>
     <meta name="description" content="道門十悟：破執觀心，洞徹浮生真象 世人窮其一生難參透者，莫過於本心、無常、人性、嗜欲四大底層真道。此理暗藏日用尋常之間，眾生卻終日執相較量、自縛自困，難得清寧。 一、最難放下：一己妄執 所謂執念，非執於世事，乃執於「自我」之妄望。 世人常執世俗定規，固守「理當如是」：施恩必望回報、真心必被珍重、勤勉...">
     <link rel="canonical" href="https://taoism.com.tw/articles/542b6e1c2d4d.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="道門十悟：破執觀心，洞徹浮生真象｜圓安道語公開預覽">
+    <meta property="og:description" content="道門十悟：破執觀心，洞徹浮生真象 世人窮其一生難參透者，莫過於本心、無常、人性、嗜欲四大底層真道。此理暗藏日用尋常之間，眾生卻終日執相較量、自縛自困，難得清寧。 一、最難放下：一己妄執 所謂執念，非執於世事，乃執於「自我」之妄望。 世人常執世俗定規，固守「理當如是」：施恩必望回報、真心必被珍重、勤勉...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/542b6e1c2d4d.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="道門十悟：破執觀心，洞徹浮生真象｜圓安道語公開預覽">
+    <meta name="twitter:description" content="道門十悟：破執觀心，洞徹浮生真象 世人窮其一生難參透者，莫過於本心、無常、人性、嗜欲四大底層真道。此理暗藏日用尋常之間，眾生卻終日執相較量、自縛自困，難得清寧。 一、最難放下：一己妄執 所謂執念，非執於世事，乃執於「自我」之妄望。 世人常執世俗定規，固守「理當如是」：施恩必望回報、真心必被珍重、勤勉...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-26">2026-05-26</time>
             <span class="category">處世立命</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/542b6e1c2d4d.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/542b6e1c2d4d.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -62,5 +78,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

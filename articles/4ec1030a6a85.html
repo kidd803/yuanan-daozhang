@@ -17,7 +17,18 @@
     <title>真偽修行與生命三境｜圓安道語公開預覽</title>
     <meta name="description" content="真偽修行與生命三境 偽修者，修行做態以悅旁人，盼師長褒獎、同門稱譽，汲汲於世間點贊虛名；真修者，煉心證道獨向己身，修持進益自知即可，世人知與不知，毫無掛礙。 人生本是煉養心性之道，性命演化分作冰、水、炁三層境地，三種形態對應三種心境，亦是人生修為層次的分野。《雲笈七籤·元氣論》有言：元氣為萬物本源，...">
     <link rel="canonical" href="https://taoism.com.tw/articles/4ec1030a6a85.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="真偽修行與生命三境｜圓安道語公開預覽">
+    <meta property="og:description" content="真偽修行與生命三境 偽修者，修行做態以悅旁人，盼師長褒獎、同門稱譽，汲汲於世間點贊虛名；真修者，煉心證道獨向己身，修持進益自知即可，世人知與不知，毫無掛礙。 人生本是煉養心性之道，性命演化分作冰、水、炁三層境地，三種形態對應三種心境，亦是人生修為層次的分野。《雲笈七籤·元氣論》有言：元氣為萬物本源，...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/4ec1030a6a85.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="真偽修行與生命三境｜圓安道語公開預覽">
+    <meta name="twitter:description" content="真偽修行與生命三境 偽修者，修行做態以悅旁人，盼師長褒獎、同門稱譽，汲汲於世間點贊虛名；真修者，煉心證道獨向己身，修持進益自知即可，世人知與不知，毫無掛礙。 人生本是煉養心性之道，性命演化分作冰、水、炁三層境地，三種形態對應三種心境，亦是人生修為層次的分野。《雲笈七籤·元氣論》有言：元氣為萬物本源，...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-05">2026-06-05</time>
             <span class="category">養生性命</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/4ec1030a6a85.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/4ec1030a6a85.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -50,5 +66,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

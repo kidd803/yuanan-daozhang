@@ -17,7 +17,18 @@
     <title>圓安論道：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論道： 全真道「金液還丹」之基礎丹理與修持前提 此丹理本於《鐘呂傳道集·論金液還丹》 《大丹直指·金液還丹篇》，承接玉液還丹之階段，為內丹「煉炁化神」之關鍵層次，其義蘊深遠、修持匪易，須以玉液還丹圓成、形神俱養為先決，核心在「取先天真陽之炁，凝結金液，還歸泥丸，煉神合道」。 一、金液還丹之丹理本...">
     <link rel="canonical" href="https://taoism.com.tw/articles/788b11715cee.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論道： 全真道「金液還丹」之基礎丹理與修持前提 此丹理本於《鐘呂傳道集·論金液還丹》 《大丹直指·金液還丹篇》，承接玉液還丹之階段，為內丹「煉炁化神」之關鍵層次，其義蘊深遠、修持匪易，須以玉液還丹圓成、形神俱養為先決，核心在「取先天真陽之炁，凝結金液，還歸泥丸，煉神合道」。 一、金液還丹之丹理本...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/788b11715cee.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論道： 全真道「金液還丹」之基礎丹理與修持前提 此丹理本於《鐘呂傳道集·論金液還丹》 《大丹直指·金液還丹篇》，承接玉液還丹之階段，為內丹「煉炁化神」之關鍵層次，其義蘊深遠、修持匪易，須以玉液還丹圓成、形神俱養為先決，核心在「取先天真陽之炁，凝結金液，還歸泥丸，煉神合道」。 一、金液還丹之丹理本...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-06">2025-12-06</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/788b11715cee.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/788b11715cee.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -65,5 +81,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

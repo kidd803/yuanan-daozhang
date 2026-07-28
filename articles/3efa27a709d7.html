@@ -17,7 +17,18 @@
     <title>第六章｜離山：道脈流傳｜圓安道語公開預覽</title>
     <meta name="description" content="第六章｜離山：道脈流傳 昆嵛山中。 祖師傳道數年。 弟子既聚。 教門既立。 ⸻ 全真之道。 已不再只屬一人。 ⸻ 金大定九年（1169）。 祖師決意離開昆嵛山。 西返終南。 ⸻ 隨行者。 馬鈺。 譚處端。 劉處玄。 丘處機。 ⸻ 四人隨師而行。 其餘弟子。 各守修行。 ⸻ 祖師一路西行。 講道傳法。...">
     <link rel="canonical" href="https://taoism.com.tw/articles/3efa27a709d7.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="第六章｜離山：道脈流傳｜圓安道語公開預覽">
+    <meta property="og:description" content="第六章｜離山：道脈流傳 昆嵛山中。 祖師傳道數年。 弟子既聚。 教門既立。 ⸻ 全真之道。 已不再只屬一人。 ⸻ 金大定九年（1169）。 祖師決意離開昆嵛山。 西返終南。 ⸻ 隨行者。 馬鈺。 譚處端。 劉處玄。 丘處機。 ⸻ 四人隨師而行。 其餘弟子。 各守修行。 ⸻ 祖師一路西行。 講道傳法。...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/3efa27a709d7.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="第六章｜離山：道脈流傳｜圓安道語公開預覽">
+    <meta name="twitter:description" content="第六章｜離山：道脈流傳 昆嵛山中。 祖師傳道數年。 弟子既聚。 教門既立。 ⸻ 全真之道。 已不再只屬一人。 ⸻ 金大定九年（1169）。 祖師決意離開昆嵛山。 西返終南。 ⸻ 隨行者。 馬鈺。 譚處端。 劉處玄。 丘處機。 ⸻ 四人隨師而行。 其餘弟子。 各守修行。 ⸻ 祖師一路西行。 講道傳法。...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-22">2026-03-22</time>
             <span class="category">全真道脈</span>
             <span class="series-badge">全真道法統 6章</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/3efa27a709d7.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/3efa27a709d7.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -72,5 +88,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

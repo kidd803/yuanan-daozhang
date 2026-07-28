@@ -17,7 +17,18 @@
     <title>一個重要的暗示—相信身體的自癒力量｜圓安道語公開預覽</title>
     <meta name="description" content="一個重要的暗示—相信身體的自癒力量 我們的身體，從來不是被動承受傷害的容器，而是蘊藏無窮智慧、能夠自我修復的生命共同體。它時刻默默守護著我們，並忠實地回應我們內心傳遞的每一個心念暗示。 有時我們過度依賴外在藥物與醫療介入，表面上是積極對抗病痛，潛意識裡卻傳遞出一則訊息：我不相信自己身體的自癒能力。一...">
     <link rel="canonical" href="https://taoism.com.tw/articles/544083b8e2ab.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="一個重要的暗示—相信身體的自癒力量｜圓安道語公開預覽">
+    <meta property="og:description" content="一個重要的暗示—相信身體的自癒力量 我們的身體，從來不是被動承受傷害的容器，而是蘊藏無窮智慧、能夠自我修復的生命共同體。它時刻默默守護著我們，並忠實地回應我們內心傳遞的每一個心念暗示。 有時我們過度依賴外在藥物與醫療介入，表面上是積極對抗病痛，潛意識裡卻傳遞出一則訊息：我不相信自己身體的自癒能力。一...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/544083b8e2ab.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="一個重要的暗示—相信身體的自癒力量｜圓安道語公開預覽">
+    <meta name="twitter:description" content="一個重要的暗示—相信身體的自癒力量 我們的身體，從來不是被動承受傷害的容器，而是蘊藏無窮智慧、能夠自我修復的生命共同體。它時刻默默守護著我們，並忠實地回應我們內心傳遞的每一個心念暗示。 有時我們過度依賴外在藥物與醫療介入，表面上是積極對抗病痛，潛意識裡卻傳遞出一則訊息：我不相信自己身體的自癒能力。一...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-16">2026-05-16</time>
             <span class="category">養生性命</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/544083b8e2ab.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/544083b8e2ab.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -48,5 +64,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

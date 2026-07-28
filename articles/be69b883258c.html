@@ -17,7 +17,18 @@
     <title>圓安論道：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論道： 道家坐忘與佛家禪定的難易沒有絕對標準，取決於修持者的根基、心性與門徑認知，二者難點側重不同。 一、 道家坐忘的難點 坐忘出自《莊子·大宗師》，核心是「墮肢體，黜聰明，離形去知，同於大通」，是一種遺忘形軀、拋棄智慮、與道合一的精神境界。 其難點在於**「無為而無不為」的體悟與踐行**： 1...">
     <link rel="canonical" href="https://taoism.com.tw/articles/be69b883258c.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論道： 道家坐忘與佛家禪定的難易沒有絕對標準，取決於修持者的根基、心性與門徑認知，二者難點側重不同。 一、 道家坐忘的難點 坐忘出自《莊子·大宗師》，核心是「墮肢體，黜聰明，離形去知，同於大通」，是一種遺忘形軀、拋棄智慮、與道合一的精神境界。 其難點在於**「無為而無不為」的體悟與踐行**： 1...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/be69b883258c.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論道： 道家坐忘與佛家禪定的難易沒有絕對標準，取決於修持者的根基、心性與門徑認知，二者難點側重不同。 一、 道家坐忘的難點 坐忘出自《莊子·大宗師》，核心是「墮肢體，黜聰明，離形去知，同於大通」，是一種遺忘形軀、拋棄智慮、與道合一的精神境界。 其難點在於**「無為而無不為」的體悟與踐行**： 1...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-01-10">2026-01-10</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/be69b883258c.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/be69b883258c.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -49,5 +65,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

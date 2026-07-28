@@ -17,7 +17,18 @@
     <title>劉一明（悟元子）龍門清修丹道完整修煉次第（依《修真九要》《修真辨難》...｜圓安道語公開預覽</title>
     <meta name="description" content="劉一明（悟元子）龍門清修丹道完整修煉次第（依《修真九要》《修真辨難》《悟真直指》正宗體系） 總綱：龍門第十一代大宗師，立「修真九要」為全功綱領，分上德無為、下德有為兩大路徑，純獨身清修、性命循序雙修 劉一明（1734—1821），道號悟元子、素朴散人，全真龍門派北支第十一代祖師，隱甘肅棲雲山、白雲山...">
     <link rel="canonical" href="https://taoism.com.tw/articles/5db127904f12.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="劉一明（悟元子）龍門清修丹道完整修煉次第（依《修真九要》《修真辨難》...｜圓安道語公開預覽">
+    <meta property="og:description" content="劉一明（悟元子）龍門清修丹道完整修煉次第（依《修真九要》《修真辨難》《悟真直指》正宗體系） 總綱：龍門第十一代大宗師，立「修真九要」為全功綱領，分上德無為、下德有為兩大路徑，純獨身清修、性命循序雙修 劉一明（1734—1821），道號悟元子、素朴散人，全真龍門派北支第十一代祖師，隱甘肅棲雲山、白雲山...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/5db127904f12.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="劉一明（悟元子）龍門清修丹道完整修煉次第（依《修真九要》《修真辨難》...｜圓安道語公開預覽">
+    <meta name="twitter:description" content="劉一明（悟元子）龍門清修丹道完整修煉次第（依《修真九要》《修真辨難》《悟真直指》正宗體系） 總綱：龍門第十一代大宗師，立「修真九要」為全功綱領，分上德無為、下德有為兩大路徑，純獨身清修、性命循序雙修 劉一明（1734—1821），道號悟元子、素朴散人，全真龍門派北支第十一代祖師，隱甘肅棲雲山、白雲山...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-28">2026-06-28</time>
             <span class="category">龍門丹道</span>
             <span class="series-badge">黃元吉 道德經 81章 1章</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/5db127904f12.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/5db127904f12.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -101,5 +117,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>莊子思想與全真內丹修持的契合點簡要筆記｜圓安道語公開預覽</title>
     <meta name="description" content="莊子思想與全真內丹修持的契合點簡要筆記 一、核心思想與修持理念的對應 1. 逍遙遊「無待」精神：與全真派「性命雙修、離塵去執」相通，內丹修持中「煉神還虛」的終極目標，即是超越形體與外物束縛，實現精神與「道」合一的絕對自由，契合《莊子》「乘天地之正，而禦六氣之辯」的境界。 2. 齊物論「萬物齊一」：為...">
     <link rel="canonical" href="https://taoism.com.tw/articles/bb51a3781e39.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="莊子思想與全真內丹修持的契合點簡要筆記｜圓安道語公開預覽">
+    <meta property="og:description" content="莊子思想與全真內丹修持的契合點簡要筆記 一、核心思想與修持理念的對應 1. 逍遙遊「無待」精神：與全真派「性命雙修、離塵去執」相通，內丹修持中「煉神還虛」的終極目標，即是超越形體與外物束縛，實現精神與「道」合一的絕對自由，契合《莊子》「乘天地之正，而禦六氣之辯」的境界。 2. 齊物論「萬物齊一」：為...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/bb51a3781e39.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="莊子思想與全真內丹修持的契合點簡要筆記｜圓安道語公開預覽">
+    <meta name="twitter:description" content="莊子思想與全真內丹修持的契合點簡要筆記 一、核心思想與修持理念的對應 1. 逍遙遊「無待」精神：與全真派「性命雙修、離塵去執」相通，內丹修持中「煉神還虛」的終極目標，即是超越形體與外物束縛，實現精神與「道」合一的絕對自由，契合《莊子》「乘天地之正，而禦六氣之辯」的境界。 2. 齊物論「萬物齊一」：為...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-11-28">2025-11-28</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/bb51a3781e39.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/bb51a3781e39.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -48,5 +64,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

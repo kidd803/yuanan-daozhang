@@ -17,7 +17,18 @@
     <title>第五章｜立名於世｜圓安道語公開預覽</title>
     <meta name="description" content="第五章｜立名於世 拜師儀式結束後， 行程並未停止。 石永田師父一行， 依既定安排走訪多處宮觀與道教團體。 橫幅在殿外懸起—— 「全真龍門傳道宗拜師大典」。 字樣清晰。 署名明確。 這些布條並非裝飾。 它們標示了一件事： 宗脈不再只存在於壇前。 拜訪過程中， 沒有大型宣講。 多數時間，是寒暄與觀察。 ...">
     <link rel="canonical" href="https://taoism.com.tw/articles/2867f2874e6e.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="第五章｜立名於世｜圓安道語公開預覽">
+    <meta property="og:description" content="第五章｜立名於世 拜師儀式結束後， 行程並未停止。 石永田師父一行， 依既定安排走訪多處宮觀與道教團體。 橫幅在殿外懸起—— 「全真龍門傳道宗拜師大典」。 字樣清晰。 署名明確。 這些布條並非裝飾。 它們標示了一件事： 宗脈不再只存在於壇前。 拜訪過程中， 沒有大型宣講。 多數時間，是寒暄與觀察。 ...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/2867f2874e6e.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="第五章｜立名於世｜圓安道語公開預覽">
+    <meta name="twitter:description" content="第五章｜立名於世 拜師儀式結束後， 行程並未停止。 石永田師父一行， 依既定安排走訪多處宮觀與道教團體。 橫幅在殿外懸起—— 「全真龍門傳道宗拜師大典」。 字樣清晰。 署名明確。 這些布條並非裝飾。 它們標示了一件事： 宗脈不再只存在於壇前。 拜訪過程中， 沒有大型宣講。 多數時間，是寒暄與觀察。 ...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-02">2026-03-02</time>
             <span class="category">人間修行</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/2867f2874e6e.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/2867f2874e6e.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -61,5 +77,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>大道至簡，繁在人心｜四字修真，返璞歸真｜圓安道語公開預覽</title>
     <meta name="description" content="大道至簡，繁在人心｜四字修真，返璞歸真 道家終極修真，無外返璞歸真、復歸自然。 世間天道至理，本自清淨簡樸，萬般紛擾紛繁，皆起於人心妄執、欲念叢生。 修道一生，只在四字：靜、鏡、境、淨。 一字一功法，一步一層次，念念精修，步步歸真。 一、靜｜守心定氣，以靜制躁 道家貴靜，靜為萬道之根。 心能清靜，則...">
     <link rel="canonical" href="https://taoism.com.tw/articles/10d450bf97a5.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="大道至簡，繁在人心｜四字修真，返璞歸真｜圓安道語公開預覽">
+    <meta property="og:description" content="大道至簡，繁在人心｜四字修真，返璞歸真 道家終極修真，無外返璞歸真、復歸自然。 世間天道至理，本自清淨簡樸，萬般紛擾紛繁，皆起於人心妄執、欲念叢生。 修道一生，只在四字：靜、鏡、境、淨。 一字一功法，一步一層次，念念精修，步步歸真。 一、靜｜守心定氣，以靜制躁 道家貴靜，靜為萬道之根。 心能清靜，則...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/10d450bf97a5.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="大道至簡，繁在人心｜四字修真，返璞歸真｜圓安道語公開預覽">
+    <meta name="twitter:description" content="大道至簡，繁在人心｜四字修真，返璞歸真 道家終極修真，無外返璞歸真、復歸自然。 世間天道至理，本自清淨簡樸，萬般紛擾紛繁，皆起於人心妄執、欲念叢生。 修道一生，只在四字：靜、鏡、境、淨。 一字一功法，一步一層次，念念精修，步步歸真。 一、靜｜守心定氣，以靜制躁 道家貴靜，靜為萬道之根。 心能清靜，則...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-19">2026-05-19</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/10d450bf97a5.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/10d450bf97a5.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -59,5 +75,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

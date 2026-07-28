@@ -17,7 +17,18 @@
     <title>圓安講道（第四十五講）☯️🤗｜圓安道語公開預覽</title>
     <meta name="description" content="圓安講道（第四十五講）☯️🤗 從今日起，於線上宣講 全真龍門方便法門 《讀呂祖師三尼醫世說述管窺》核心誦讀口訣（八句） 1. 三尼同源儒釋道，文尼統合醫世綱 2. 天地人身互相應，即身治世是樞樞 3. 先治其身次治心，內修外濟兩相彰 4....">
     <link rel="canonical" href="https://taoism.com.tw/articles/029e3b8c9a4f.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安講道（第四十五講）☯️🤗｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安講道（第四十五講）☯️🤗 從今日起，於線上宣講 全真龍門方便法門 《讀呂祖師三尼醫世說述管窺》核心誦讀口訣（八句） 1. 三尼同源儒釋道，文尼統合醫世綱 2. 天地人身互相應，即身治世是樞樞 3. 先治其身次治心，內修外濟兩相彰 4....">
+    <meta property="og:url" content="https://taoism.com.tw/articles/029e3b8c9a4f.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安講道（第四十五講）☯️🤗｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安講道（第四十五講）☯️🤗 從今日起，於線上宣講 全真龍門方便法門 《讀呂祖師三尼醫世說述管窺》核心誦讀口訣（八句） 1. 三尼同源儒釋道，文尼統合醫世綱 2. 天地人身互相應，即身治世是樞樞 3. 先治其身次治心，內修外濟兩相彰 4....">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-01-25">2026-01-25</time>
             <span class="category">龍門丹道</span>
             <span class="series-badge">全真龍門方便法門 45講</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/029e3b8c9a4f.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/029e3b8c9a4f.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -47,5 +63,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

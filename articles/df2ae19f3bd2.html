@@ -17,7 +17,18 @@
     <title>圓安論道：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論道： 道家核心修持概念的源流演變 道家修持概念的發展，始於先秦道家哲學的理論奠基，經兩漢道教的宗教化轉化，再到唐宋內丹道的體系化建構，金元時期隨宗派分化而呈現差異化發展，其內涵與實踐方式均隨時代不斷豐富。 1. 先秦時期：哲學層面的概念奠基 以老子《道德經》、莊子《南華經》為核心，此階段的修持...">
     <link rel="canonical" href="https://taoism.com.tw/articles/df2ae19f3bd2.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論道： 道家核心修持概念的源流演變 道家修持概念的發展，始於先秦道家哲學的理論奠基，經兩漢道教的宗教化轉化，再到唐宋內丹道的體系化建構，金元時期隨宗派分化而呈現差異化發展，其內涵與實踐方式均隨時代不斷豐富。 1. 先秦時期：哲學層面的概念奠基 以老子《道德經》、莊子《南華經》為核心，此階段的修持...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/df2ae19f3bd2.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論道： 道家核心修持概念的源流演變 道家修持概念的發展，始於先秦道家哲學的理論奠基，經兩漢道教的宗教化轉化，再到唐宋內丹道的體系化建構，金元時期隨宗派分化而呈現差異化發展，其內涵與實踐方式均隨時代不斷豐富。 1. 先秦時期：哲學層面的概念奠基 以老子《道德經》、莊子《南華經》為核心，此階段的修持...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-29">2025-12-29</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/df2ae19f3bd2.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/df2ae19f3bd2.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -58,5 +74,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

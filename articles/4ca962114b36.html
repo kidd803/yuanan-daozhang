@@ -17,7 +17,18 @@
     <title>書店老闆讀全真道《龍門心法》｜圓安道語公開預覽</title>
     <meta name="description" content="書店老闆讀全真道《龍門心法》 忍辱降心（第六章） 不能忍辱，終難成道 原文： 若不能忍， 則心便不虛， 神便不靈， 氣便不壯， 量便不洪， 胸便不開， 願便不大， 功便不圓， 行便不滿， 見便不透， 思便不深， 智慧便小，福德便淺，根基便薄，聞道不明， 行道有礙，被人憎嫌，招人嫉妒，受人厭惡， 惹人...">
     <link rel="canonical" href="https://taoism.com.tw/articles/4ca962114b36.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="書店老闆讀全真道《龍門心法》｜圓安道語公開預覽">
+    <meta property="og:description" content="書店老闆讀全真道《龍門心法》 忍辱降心（第六章） 不能忍辱，終難成道 原文： 若不能忍， 則心便不虛， 神便不靈， 氣便不壯， 量便不洪， 胸便不開， 願便不大， 功便不圓， 行便不滿， 見便不透， 思便不深， 智慧便小，福德便淺，根基便薄，聞道不明， 行道有礙，被人憎嫌，招人嫉妒，受人厭惡， 惹人...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/4ca962114b36.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="書店老闆讀全真道《龍門心法》｜圓安道語公開預覽">
+    <meta name="twitter:description" content="書店老闆讀全真道《龍門心法》 忍辱降心（第六章） 不能忍辱，終難成道 原文： 若不能忍， 則心便不虛， 神便不靈， 氣便不壯， 量便不洪， 胸便不開， 願便不大， 功便不圓， 行便不滿， 見便不透， 思便不深， 智慧便小，福德便淺，根基便薄，聞道不明， 行道有礙，被人憎嫌，招人嫉妒，受人厭惡， 惹人...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-07-23">2026-07-23</time>
             <span class="category">道教經典</span>
             <span class="series-badge">龍門心法</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/4ca962114b36.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/4ca962114b36.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -86,5 +102,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

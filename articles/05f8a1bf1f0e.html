@@ -17,7 +17,18 @@
     <title>圓安論氣功與丹道問與答(29)｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論氣功與丹道問與答(29) 問： 何為先天真炁，如何判斷自身真炁發動？ 答： 先天真炁是生命本源能量，非後天呼吸之氣、血氣。真炁發動時，身心會自然生出溫暖、舒泰、渾厚之感，無需意念驅動，氣機自會緩慢流動，心神格外清寧，無雜思紛擾，是一種自然的、被動的身心體感，絕非刻意追求出來的氣感。">
     <link rel="canonical" href="https://taoism.com.tw/articles/05f8a1bf1f0e.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論氣功與丹道問與答(29)｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論氣功與丹道問與答(29) 問： 何為先天真炁，如何判斷自身真炁發動？ 答： 先天真炁是生命本源能量，非後天呼吸之氣、血氣。真炁發動時，身心會自然生出溫暖、舒泰、渾厚之感，無需意念驅動，氣機自會緩慢流動，心神格外清寧，無雜思紛擾，是一種自然的、被動的身心體感，絕非刻意追求出來的氣感。">
+    <meta property="og:url" content="https://taoism.com.tw/articles/05f8a1bf1f0e.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論氣功與丹道問與答(29)｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論氣功與丹道問與答(29) 問： 何為先天真炁，如何判斷自身真炁發動？ 答： 先天真炁是生命本源能量，非後天呼吸之氣、血氣。真炁發動時，身心會自然生出溫暖、舒泰、渾厚之感，無需意念驅動，氣機自會緩慢流動，心神格外清寧，無雜思紛擾，是一種自然的、被動的身心體感，絕非刻意追求出來的氣感。">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-04">2026-06-04</time>
             <span class="category">丹道修真</span>
             <span class="series-badge">圓安論氣功 29篇</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/05f8a1bf1f0e.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/05f8a1bf1f0e.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -45,5 +61,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

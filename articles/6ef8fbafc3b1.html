@@ -17,7 +17,18 @@
     <title>道德經第七十七章｜圓安道語公開預覽</title>
     <meta name="description" content="道德經第七十七章 【原文】 天之道，其猶張弓與！高者抑之，下者舉之；有餘者損之，不足者補之。 天之道，損有餘而補不足。人之道則不然，損不足以奉有餘。 孰能有餘以奉天下？唯有道者。 是以聖人為而不恃，功成而不處，其不欲見賢。 【要旨】 本章以張弓為喻，明天道均平、損盈補虛之理；斥人道反其道而行，唯有道...">
     <link rel="canonical" href="https://taoism.com.tw/articles/6ef8fbafc3b1.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="道德經第七十七章｜圓安道語公開預覽">
+    <meta property="og:description" content="道德經第七十七章 【原文】 天之道，其猶張弓與！高者抑之，下者舉之；有餘者損之，不足者補之。 天之道，損有餘而補不足。人之道則不然，損不足以奉有餘。 孰能有餘以奉天下？唯有道者。 是以聖人為而不恃，功成而不處，其不欲見賢。 【要旨】 本章以張弓為喻，明天道均平、損盈補虛之理；斥人道反其道而行，唯有道...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/6ef8fbafc3b1.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="道德經第七十七章｜圓安道語公開預覽">
+    <meta name="twitter:description" content="道德經第七十七章 【原文】 天之道，其猶張弓與！高者抑之，下者舉之；有餘者損之，不足者補之。 天之道，損有餘而補不足。人之道則不然，損不足以奉有餘。 孰能有餘以奉天下？唯有道者。 是以聖人為而不恃，功成而不處，其不欲見賢。 【要旨】 本章以張弓為喻，明天道均平、損盈補虛之理；斥人道反其道而行，唯有道...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-04-29">2026-04-29</time>
             <span class="category">道教經典</span>
             <span class="series-badge">淺譯 道德經 81章 77章</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/6ef8fbafc3b1.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/6ef8fbafc3b1.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -48,5 +64,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

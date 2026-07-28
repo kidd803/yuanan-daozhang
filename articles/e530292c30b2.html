@@ -17,7 +17,18 @@
     <title>【修心煉性】｜圓安道語公開預覽</title>
     <meta name="description" content="【修心煉性】 心妄耗神，靜守當下 真正摧損人身的，從非外來災禍，而是心中反覆臆想的凶險結局。 不少人事跡未萌，便在腦中數度推演最壞光景：事業啟步，先憂挫敗；身體稍有不適，便妄思重疾；長官神色微變，便心生惶懼，自以為將遭疏遠。待到時日流轉回頭再看，當初令人寢食難安的憂慮，大半終是虛驚一場。 道家最重元...">
     <link rel="canonical" href="https://taoism.com.tw/articles/e530292c30b2.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="【修心煉性】｜圓安道語公開預覽">
+    <meta property="og:description" content="【修心煉性】 心妄耗神，靜守當下 真正摧損人身的，從非外來災禍，而是心中反覆臆想的凶險結局。 不少人事跡未萌，便在腦中數度推演最壞光景：事業啟步，先憂挫敗；身體稍有不適，便妄思重疾；長官神色微變，便心生惶懼，自以為將遭疏遠。待到時日流轉回頭再看，當初令人寢食難安的憂慮，大半終是虛驚一場。 道家最重元...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/e530292c30b2.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="【修心煉性】｜圓安道語公開預覽">
+    <meta name="twitter:description" content="【修心煉性】 心妄耗神，靜守當下 真正摧損人身的，從非外來災禍，而是心中反覆臆想的凶險結局。 不少人事跡未萌，便在腦中數度推演最壞光景：事業啟步，先憂挫敗；身體稍有不適，便妄思重疾；長官神色微變，便心生惶懼，自以為將遭疏遠。待到時日流轉回頭再看，當初令人寢食難安的憂慮，大半終是虛驚一場。 道家最重元...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-10">2026-06-10</time>
             <span class="category">修心煉性</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/e530292c30b2.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/e530292c30b2.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -48,5 +64,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

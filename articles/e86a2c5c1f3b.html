@@ -17,7 +17,18 @@
     <title>道家智慧名句，讀一句即心平氣和｜圓安道語公開預覽</title>
     <meta name="description" content="道家智慧名句，讀一句即心平氣和 大智閒閒，放蕩無拘，任其自然。 ——丘處機《沁園春·景金本题作》 【釋義】具大道智慧之人，心神從容清閒，不為世規俗矩束縛，萬事順天合道、隨其自然。 世人多困於人情眼光、俗世框架，終日逐名逐利、勞神耗氣，妄求外境圓滿。殊不知，道門真智，在於無拘無滯。此般自在，非恣意妄為...">
     <link rel="canonical" href="https://taoism.com.tw/articles/e86a2c5c1f3b.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="道家智慧名句，讀一句即心平氣和｜圓安道語公開預覽">
+    <meta property="og:description" content="道家智慧名句，讀一句即心平氣和 大智閒閒，放蕩無拘，任其自然。 ——丘處機《沁園春·景金本题作》 【釋義】具大道智慧之人，心神從容清閒，不為世規俗矩束縛，萬事順天合道、隨其自然。 世人多困於人情眼光、俗世框架，終日逐名逐利、勞神耗氣，妄求外境圓滿。殊不知，道門真智，在於無拘無滯。此般自在，非恣意妄為...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/e86a2c5c1f3b.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="道家智慧名句，讀一句即心平氣和｜圓安道語公開預覽">
+    <meta name="twitter:description" content="道家智慧名句，讀一句即心平氣和 大智閒閒，放蕩無拘，任其自然。 ——丘處機《沁園春·景金本题作》 【釋義】具大道智慧之人，心神從容清閒，不為世規俗矩束縛，萬事順天合道、隨其自然。 世人多困於人情眼光、俗世框架，終日逐名逐利、勞神耗氣，妄求外境圓滿。殊不知，道門真智，在於無拘無滯。此般自在，非恣意妄為...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-26">2026-05-26</time>
             <span class="category">全真道脈</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/e86a2c5c1f3b.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/e86a2c5c1f3b.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -51,5 +67,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

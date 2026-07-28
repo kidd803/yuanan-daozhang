@@ -17,7 +17,18 @@
     <title>《道德經》第四章詳解（王弼注）｜圓安道語公開預覽</title>
     <meta name="description" content="《道德經》第四章詳解（王弼注） 一、通行本原文（王弼本） 道沖，而用之或不盈。淵兮，似萬物之宗。挫其銳，解其紛，和其光，同其塵。湛兮，似或存。吾不知誰之子，象帝之先。 二、王弼注原文（節錄） 夫執一家之量者，不能全家；執一國之量者，不能成國；窮力舉重，不能為用。故人雖知萬物治也，治而不以二儀之道，則...">
     <link rel="canonical" href="https://taoism.com.tw/articles/d73c18b042dc.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="《道德經》第四章詳解（王弼注）｜圓安道語公開預覽">
+    <meta property="og:description" content="《道德經》第四章詳解（王弼注） 一、通行本原文（王弼本） 道沖，而用之或不盈。淵兮，似萬物之宗。挫其銳，解其紛，和其光，同其塵。湛兮，似或存。吾不知誰之子，象帝之先。 二、王弼注原文（節錄） 夫執一家之量者，不能全家；執一國之量者，不能成國；窮力舉重，不能為用。故人雖知萬物治也，治而不以二儀之道，則...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/d73c18b042dc.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="《道德經》第四章詳解（王弼注）｜圓安道語公開預覽">
+    <meta name="twitter:description" content="《道德經》第四章詳解（王弼注） 一、通行本原文（王弼本） 道沖，而用之或不盈。淵兮，似萬物之宗。挫其銳，解其紛，和其光，同其塵。湛兮，似或存。吾不知誰之子，象帝之先。 二、王弼注原文（節錄） 夫執一家之量者，不能全家；執一國之量者，不能成國；窮力舉重，不能為用。故人雖知萬物治也，治而不以二儀之道，則...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-16">2026-03-16</time>
             <span class="category">道教經典</span>
             <span class="series-badge">淺譯 道德經 81章 4章</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/d73c18b042dc.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/d73c18b042dc.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -54,5 +70,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

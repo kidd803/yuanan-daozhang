@@ -17,7 +17,18 @@
     <title>觀落陰 陰境幻象辨識＋迷失陰途急救＋年限禁忌規範｜圓安道語公開預覽</title>
     <meta name="description" content="觀落陰 陰境幻象辨識＋迷失陰途急救＋年限禁忌規範 一、陰境真假幻象．分辨口訣 1. 真陰地府景象（靈境真實） - 光影深邃、霧氣清冷、色調灰青幽暗、無鮮艷雜色 - 道路綿長無盡、關隘森嚴、橋樑陰冷、建築古樸莊肅 - 亡魂容貌清晰、語氣平和、神情哀靜、不追逐、不引誘 - 元辰花樹色澤自然、枯榮分明、根...">
     <link rel="canonical" href="https://taoism.com.tw/articles/2378885d43f8.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="觀落陰 陰境幻象辨識＋迷失陰途急救＋年限禁忌規範｜圓安道語公開預覽">
+    <meta property="og:description" content="觀落陰 陰境幻象辨識＋迷失陰途急救＋年限禁忌規範 一、陰境真假幻象．分辨口訣 1. 真陰地府景象（靈境真實） - 光影深邃、霧氣清冷、色調灰青幽暗、無鮮艷雜色 - 道路綿長無盡、關隘森嚴、橋樑陰冷、建築古樸莊肅 - 亡魂容貌清晰、語氣平和、神情哀靜、不追逐、不引誘 - 元辰花樹色澤自然、枯榮分明、根...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/2378885d43f8.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="觀落陰 陰境幻象辨識＋迷失陰途急救＋年限禁忌規範｜圓安道語公開預覽">
+    <meta name="twitter:description" content="觀落陰 陰境幻象辨識＋迷失陰途急救＋年限禁忌規範 一、陰境真假幻象．分辨口訣 1. 真陰地府景象（靈境真實） - 光影深邃、霧氣清冷、色調灰青幽暗、無鮮艷雜色 - 道路綿長無盡、關隘森嚴、橋樑陰冷、建築古樸莊肅 - 亡魂容貌清晰、語氣平和、神情哀靜、不追逐、不引誘 - 元辰花樹色澤自然、枯榮分明、根...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-29">2026-05-29</time>
             <span class="category">人間修行</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/2378885d43f8.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/2378885d43f8.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -63,5 +79,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>1.金融、業務人員必修。從手機瞭解您的客戶傾向。｜圓安道語公開預覽</title>
     <meta name="description" content="1.金融、業務人員必修。從手機瞭解您的客戶傾向。 2.白領階級可從手機知道您的長官、下屬。促進人際關係。 3.如何從手機號碼完善您的人際關係？">
     <link rel="canonical" href="https://taoism.com.tw/articles/05de9546c95c.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="1.金融、業務人員必修。從手機瞭解您的客戶傾向。｜圓安道語公開預覽">
+    <meta property="og:description" content="1.金融、業務人員必修。從手機瞭解您的客戶傾向。 2.白領階級可從手機知道您的長官、下屬。促進人際關係。 3.如何從手機號碼完善您的人際關係？">
+    <meta property="og:url" content="https://taoism.com.tw/articles/05de9546c95c.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="1.金融、業務人員必修。從手機瞭解您的客戶傾向。｜圓安道語公開預覽">
+    <meta name="twitter:description" content="1.金融、業務人員必修。從手機瞭解您的客戶傾向。 2.白領階級可從手機知道您的長官、下屬。促進人際關係。 3.如何從手機號碼完善您的人際關係？">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -31,6 +42,11 @@
             <span class="category">處世立命</span>
             
           </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/05de9546c95c.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/05de9546c95c.html">複製網址</button>
+          </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
         <p>1.金融、業務人員必修。從手機瞭解您的客戶傾向。
@@ -43,5 +59,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>道德經第三十章 淺釋｜圓安道語公開預覽</title>
     <meta name="description" content="道德經第三十章 淺釋 【原文】 以道佐人主者，不以兵強天下，其事好還。師之所處，荊棘生焉；大軍之後，必有凶年。善有果而已，不敢以取強。果而勿矜，果而勿伐，果而勿驕，果而不得已，果而勿強。物壯則老，是謂不道，不道早已。 【要旨】 本章戒強兵尚武，主張以道輔國，用兵止於救難，不恃強凌弱；功成不驕...">
     <link rel="canonical" href="https://taoism.com.tw/articles/f80aa5fe0486.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="道德經第三十章 淺釋｜圓安道語公開預覽">
+    <meta property="og:description" content="道德經第三十章 淺釋 【原文】 以道佐人主者，不以兵強天下，其事好還。師之所處，荊棘生焉；大軍之後，必有凶年。善有果而已，不敢以取強。果而勿矜，果而勿伐，果而勿驕，果而不得已，果而勿強。物壯則老，是謂不道，不道早已。 【要旨】 本章戒強兵尚武，主張以道輔國，用兵止於救難，不恃強凌弱；功成不驕...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/f80aa5fe0486.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="道德經第三十章 淺釋｜圓安道語公開預覽">
+    <meta name="twitter:description" content="道德經第三十章 淺釋 【原文】 以道佐人主者，不以兵強天下，其事好還。師之所處，荊棘生焉；大軍之後，必有凶年。善有果而已，不敢以取強。果而勿矜，果而勿伐，果而勿驕，果而不得已，果而勿強。物壯則老，是謂不道，不道早已。 【要旨】 本章戒強兵尚武，主張以道輔國，用兵止於救難，不恃強凌弱；功成不驕...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-30">2026-03-30</time>
             <span class="category">道教經典</span>
             <span class="series-badge">淺譯 道德經 81章 30章</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/f80aa5fe0486.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/f80aa5fe0486.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -45,5 +61,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>紫微斗數推演(八十六)｜圓安道語公開預覽</title>
     <meta name="description" content="紫微斗數推演(八十六) （三）昌曲與煞星同宮（凶組合） - 昌曲+擎羊：主文書爭執、合約訴訟、考試失利、才藝受壓、口舌是非。 - 昌曲+陀羅：主才藝遲滯、學業拖延、文書糾纏、感情拖泥帶水、桃花糾紛。 - 昌曲+火星/鈴星：主心浮氣躁、才藝難精、口舌招禍、文書火災/損毀、感情突發變數。 - 昌曲+地空...">
     <link rel="canonical" href="https://taoism.com.tw/articles/8c5b84dd5b4b.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="紫微斗數推演(八十六)｜圓安道語公開預覽">
+    <meta property="og:description" content="紫微斗數推演(八十六) （三）昌曲與煞星同宮（凶組合） - 昌曲+擎羊：主文書爭執、合約訴訟、考試失利、才藝受壓、口舌是非。 - 昌曲+陀羅：主才藝遲滯、學業拖延、文書糾纏、感情拖泥帶水、桃花糾紛。 - 昌曲+火星/鈴星：主心浮氣躁、才藝難精、口舌招禍、文書火災/損毀、感情突發變數。 - 昌曲+地空...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/8c5b84dd5b4b.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="紫微斗數推演(八十六)｜圓安道語公開預覽">
+    <meta name="twitter:description" content="紫微斗數推演(八十六) （三）昌曲與煞星同宮（凶組合） - 昌曲+擎羊：主文書爭執、合約訴訟、考試失利、才藝受壓、口舌是非。 - 昌曲+陀羅：主才藝遲滯、學業拖延、文書糾纏、感情拖泥帶水、桃花糾紛。 - 昌曲+火星/鈴星：主心浮氣躁、才藝難精、口舌招禍、文書火災/損毀、感情突發變數。 - 昌曲+地空...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-13">2026-03-13</time>
             <span class="category">處世立命</span>
             <span class="series-badge">紫微斗數推演 86講</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/8c5b84dd5b4b.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/8c5b84dd5b4b.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -51,5 +67,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>鄭興華｜圓安道語公開預覽</title>
     <meta name="description" content="鄭興華 圆安修行極短篇(8) 《傷人一刀身留痕。》 《傷人一言心留恨。》 傷人一刀身留痕。傷人一言心留恨。 說好話是現代人必需學習的， 「說者無心，聽者有意。」尤其對最親近的人常因一句話，就抹殺了您的苦心，讓關心變傷心。 有一位朋友的老婆，有天下樓梯時，不小心跌了下來，老公緊張的不得了，馬上衝過去扶...">
     <link rel="canonical" href="https://taoism.com.tw/articles/f3eba93295c7.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="鄭興華｜圓安道語公開預覽">
+    <meta property="og:description" content="鄭興華 圆安修行極短篇(8) 《傷人一刀身留痕。》 《傷人一言心留恨。》 傷人一刀身留痕。傷人一言心留恨。 說好話是現代人必需學習的， 「說者無心，聽者有意。」尤其對最親近的人常因一句話，就抹殺了您的苦心，讓關心變傷心。 有一位朋友的老婆，有天下樓梯時，不小心跌了下來，老公緊張的不得了，馬上衝過去扶...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/f3eba93295c7.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="鄭興華｜圓安道語公開預覽">
+    <meta name="twitter:description" content="鄭興華 圆安修行極短篇(8) 《傷人一刀身留痕。》 《傷人一言心留恨。》 傷人一刀身留痕。傷人一言心留恨。 說好話是現代人必需學習的， 「說者無心，聽者有意。」尤其對最親近的人常因一句話，就抹殺了您的苦心，讓關心變傷心。 有一位朋友的老婆，有天下樓梯時，不小心跌了下來，老公緊張的不得了，馬上衝過去扶...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2019-06-06">2019-06-06</time>
             <span class="category">人間修行</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/f3eba93295c7.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/f3eba93295c7.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -50,5 +66,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

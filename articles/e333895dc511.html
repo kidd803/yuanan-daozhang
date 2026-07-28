@@ -17,7 +17,18 @@
     <title>圓安論氣功與丹道問與答(31)｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論氣功與丹道問與答(31) 問： 丹道修煉是否要學習各種法訣、招式？ 答： 丹道修煉重神不重形，重內不重外， 無需執著繁雜法訣、招式。 後天一切有形有相的功法， 皆是輔助入靜的手段， 核心依舊是培養先天真炁、抱元守一。 執著於法訣招式，便是捨本逐末， 落入後天造作，偏離大道正途。">
     <link rel="canonical" href="https://taoism.com.tw/articles/e333895dc511.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論氣功與丹道問與答(31)｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論氣功與丹道問與答(31) 問： 丹道修煉是否要學習各種法訣、招式？ 答： 丹道修煉重神不重形，重內不重外， 無需執著繁雜法訣、招式。 後天一切有形有相的功法， 皆是輔助入靜的手段， 核心依舊是培養先天真炁、抱元守一。 執著於法訣招式，便是捨本逐末， 落入後天造作，偏離大道正途。">
+    <meta property="og:url" content="https://taoism.com.tw/articles/e333895dc511.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論氣功與丹道問與答(31)｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論氣功與丹道問與答(31) 問： 丹道修煉是否要學習各種法訣、招式？ 答： 丹道修煉重神不重形，重內不重外， 無需執著繁雜法訣、招式。 後天一切有形有相的功法， 皆是輔助入靜的手段， 核心依舊是培養先天真炁、抱元守一。 執著於法訣招式，便是捨本逐末， 落入後天造作，偏離大道正途。">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-10">2026-06-10</time>
             <span class="category">丹道修真</span>
             <span class="series-badge">圓安論氣功 31篇</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/e333895dc511.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/e333895dc511.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -51,5 +67,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

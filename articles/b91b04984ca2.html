@@ -17,7 +17,18 @@
     <title>全真教後世祖師丹訣與老莊思想延續解析（王玉陽、劉處玄篇）｜圓安道語公開預覽</title>
     <meta name="description" content="全真教後世祖師丹訣與老莊思想延續解析（王玉陽、劉處玄篇） 本部分延續「經訣對照、以詩解道」的核心框架，補選全真七子中王玉陽、劉處玄的代表性丹訣（出自《雲光集》《仙樂集》），進一步挖掘二人在「性命雙修」中對老莊思想的繼承與發展——王玉陽重「煉氣凝神」的實修步驟，劉處玄強「清靜存心」的性功修養，共同完善...">
     <link rel="canonical" href="https://taoism.com.tw/articles/b91b04984ca2.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="全真教後世祖師丹訣與老莊思想延續解析（王玉陽、劉處玄篇）｜圓安道語公開預覽">
+    <meta property="og:description" content="全真教後世祖師丹訣與老莊思想延續解析（王玉陽、劉處玄篇） 本部分延續「經訣對照、以詩解道」的核心框架，補選全真七子中王玉陽、劉處玄的代表性丹訣（出自《雲光集》《仙樂集》），進一步挖掘二人在「性命雙修」中對老莊思想的繼承與發展——王玉陽重「煉氣凝神」的實修步驟，劉處玄強「清靜存心」的性功修養，共同完善...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/b91b04984ca2.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="全真教後世祖師丹訣與老莊思想延續解析（王玉陽、劉處玄篇）｜圓安道語公開預覽">
+    <meta name="twitter:description" content="全真教後世祖師丹訣與老莊思想延續解析（王玉陽、劉處玄篇） 本部分延續「經訣對照、以詩解道」的核心框架，補選全真七子中王玉陽、劉處玄的代表性丹訣（出自《雲光集》《仙樂集》），進一步挖掘二人在「性命雙修」中對老莊思想的繼承與發展——王玉陽重「煉氣凝神」的實修步驟，劉處玄強「清靜存心」的性功修養，共同完善...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-02">2025-12-02</time>
             <span class="category">全真道脈</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/b91b04984ca2.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/b91b04984ca2.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -76,5 +92,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

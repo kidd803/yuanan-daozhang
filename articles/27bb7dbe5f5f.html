@@ -17,7 +17,18 @@
     <title>圓安論道：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論道： 全真派采日精月华之具體儀軌與時辰宜忌 此儀軌本於丘處機《大丹直指》與龍門派傳統丹經，須以築基完備、心神清靜為先決，其要旨在「外應天象，內合真炁」，非徒重形式也。 一、時辰擇定 1. 采日精之時： 擇卯時（平旦，約寅末卯初，天將明而日未出之際），此時天地陽炁始升而未盛，柔而不烈，無傷體之弊...">
     <link rel="canonical" href="https://taoism.com.tw/articles/27bb7dbe5f5f.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論道： 全真派采日精月华之具體儀軌與時辰宜忌 此儀軌本於丘處機《大丹直指》與龍門派傳統丹經，須以築基完備、心神清靜為先決，其要旨在「外應天象，內合真炁」，非徒重形式也。 一、時辰擇定 1. 采日精之時： 擇卯時（平旦，約寅末卯初，天將明而日未出之際），此時天地陽炁始升而未盛，柔而不烈，無傷體之弊...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/27bb7dbe5f5f.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論道： 全真派采日精月华之具體儀軌與時辰宜忌 此儀軌本於丘處機《大丹直指》與龍門派傳統丹經，須以築基完備、心神清靜為先決，其要旨在「外應天象，內合真炁」，非徒重形式也。 一、時辰擇定 1. 采日精之時： 擇卯時（平旦，約寅末卯初，天將明而日未出之際），此時天地陽炁始升而未盛，柔而不烈，無傷體之弊...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-05">2025-12-05</time>
             <span class="category">龍門丹道</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/27bb7dbe5f5f.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/27bb7dbe5f5f.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -59,5 +75,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

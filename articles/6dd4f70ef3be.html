@@ -17,7 +17,18 @@
     <title>人漸黃昏｜圓安道語公開預覽</title>
     <meta name="description" content="人漸黃昏 人漸黃昏水漸窮， 繁華落盡草叢叢。 從來好景不常在， 自古花無百日紅。 天地循環，本乎陰陽消長之天道。水流有竭，暮色將臨，是物勢盈極而虧之象；繁華歸於蕪草，盛極轉衰，乃自然不易之定數，合《道德經》「物壯則老，是謂不道，不道早已」之旨。 世間艷景、榮華，皆是氣聚而成之幻象...">
     <link rel="canonical" href="https://taoism.com.tw/articles/6dd4f70ef3be.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="人漸黃昏｜圓安道語公開預覽">
+    <meta property="og:description" content="人漸黃昏 人漸黃昏水漸窮， 繁華落盡草叢叢。 從來好景不常在， 自古花無百日紅。 天地循環，本乎陰陽消長之天道。水流有竭，暮色將臨，是物勢盈極而虧之象；繁華歸於蕪草，盛極轉衰，乃自然不易之定數，合《道德經》「物壯則老，是謂不道，不道早已」之旨。 世間艷景、榮華，皆是氣聚而成之幻象...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/6dd4f70ef3be.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="人漸黃昏｜圓安道語公開預覽">
+    <meta name="twitter:description" content="人漸黃昏 人漸黃昏水漸窮， 繁華落盡草叢叢。 從來好景不常在， 自古花無百日紅。 天地循環，本乎陰陽消長之天道。水流有竭，暮色將臨，是物勢盈極而虧之象；繁華歸於蕪草，盛極轉衰，乃自然不易之定數，合《道德經》「物壯則老，是謂不道，不道早已」之旨。 世間艷景、榮華，皆是氣聚而成之幻象...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-29">2026-06-29</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/6dd4f70ef3be.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/6dd4f70ef3be.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -47,5 +63,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

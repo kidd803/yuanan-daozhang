@@ -17,7 +17,18 @@
     <title>論梅花易數｜圓安道語公開預覽</title>
     <meta name="description" content="論梅花易數 一、源流與立學本旨 梅花易數，亦稱「梅花心易」，為宋代大儒邵雍（康節先生） 所創，是植根於《周易》象數、義理，融會先天易學的獨特占斷體系。此術脫離繁瑣干支規則、複雜盤式推演，以心易為本、觀物取象、隨機起卦為特色，簡約靈活、觸類旁通，在諸多術數之中獨樹一幟，歷來被視為「易道入門之捷徑，心象...">
     <link rel="canonical" href="https://taoism.com.tw/articles/2eb0ef230902.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="論梅花易數｜圓安道語公開預覽">
+    <meta property="og:description" content="論梅花易數 一、源流與立學本旨 梅花易數，亦稱「梅花心易」，為宋代大儒邵雍（康節先生） 所創，是植根於《周易》象數、義理，融會先天易學的獨特占斷體系。此術脫離繁瑣干支規則、複雜盤式推演，以心易為本、觀物取象、隨機起卦為特色，簡約靈活、觸類旁通，在諸多術數之中獨樹一幟，歷來被視為「易道入門之捷徑，心象...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/2eb0ef230902.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="論梅花易數｜圓安道語公開預覽">
+    <meta name="twitter:description" content="論梅花易數 一、源流與立學本旨 梅花易數，亦稱「梅花心易」，為宋代大儒邵雍（康節先生） 所創，是植根於《周易》象數、義理，融會先天易學的獨特占斷體系。此術脫離繁瑣干支規則、複雜盤式推演，以心易為本、觀物取象、隨機起卦為特色，簡約靈活、觸類旁通，在諸多術數之中獨樹一幟，歷來被視為「易道入門之捷徑，心象...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-31">2026-05-31</time>
             <span class="category">處世立命</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/2eb0ef230902.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/2eb0ef230902.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -102,5 +118,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

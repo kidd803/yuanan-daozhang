@@ -17,7 +17,18 @@
     <title>九成修丹者皆走偏：丹道最大阻礙，從非功法，唯是執心｜圓安道語公開預覽</title>
     <meta name="description" content="九成修丹者皆走偏：丹道最大阻礙，從非功法，唯是執心 世間修丹道者，十有八九皆入歧途。 常有老修行，執守清規、死摳法訣，執於齋戒苦行、拘於形式條文，日日束縛自身，將清虛修真之路，活成自我桎梏的苦刑。終日苦修不輟，非但道氣不生，反倒身心耗損、神疲氣弱，越修越偏、越煉越乏。 多數修士終究認錯丹道根本，總以...">
     <link rel="canonical" href="https://taoism.com.tw/articles/df299d030738.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="九成修丹者皆走偏：丹道最大阻礙，從非功法，唯是執心｜圓安道語公開預覽">
+    <meta property="og:description" content="九成修丹者皆走偏：丹道最大阻礙，從非功法，唯是執心 世間修丹道者，十有八九皆入歧途。 常有老修行，執守清規、死摳法訣，執於齋戒苦行、拘於形式條文，日日束縛自身，將清虛修真之路，活成自我桎梏的苦刑。終日苦修不輟，非但道氣不生，反倒身心耗損、神疲氣弱，越修越偏、越煉越乏。 多數修士終究認錯丹道根本，總以...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/df299d030738.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="九成修丹者皆走偏：丹道最大阻礙，從非功法，唯是執心｜圓安道語公開預覽">
+    <meta name="twitter:description" content="九成修丹者皆走偏：丹道最大阻礙，從非功法，唯是執心 世間修丹道者，十有八九皆入歧途。 常有老修行，執守清規、死摳法訣，執於齋戒苦行、拘於形式條文，日日束縛自身，將清虛修真之路，活成自我桎梏的苦刑。終日苦修不輟，非但道氣不生，反倒身心耗損、神疲氣弱，越修越偏、越煉越乏。 多數修士終究認錯丹道根本，總以...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-23">2026-05-23</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/df299d030738.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/df299d030738.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -50,5 +66,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

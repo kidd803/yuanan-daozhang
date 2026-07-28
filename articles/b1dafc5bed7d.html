@@ -17,7 +17,18 @@
     <title>道德經第六十一章｜圓安道語公開預覽</title>
     <meta name="description" content="道德經第六十一章 【原文】 大國者下流，天下之牝，天下之交也。牝常以靜勝牡，以靜為下。故大國以下小國，則取小國；小國以下大國，則取大國。故或下以取，或下而取。大國不過欲兼畜人，小國不過欲入事人。夫兩者各得其所欲，大者宜為下。 【要旨】 本章以水之就下、牝以靜勝為喻，闡明大國宜謙卑處下，小國亦宜謙順....">
     <link rel="canonical" href="https://taoism.com.tw/articles/b1dafc5bed7d.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="道德經第六十一章｜圓安道語公開預覽">
+    <meta property="og:description" content="道德經第六十一章 【原文】 大國者下流，天下之牝，天下之交也。牝常以靜勝牡，以靜為下。故大國以下小國，則取小國；小國以下大國，則取大國。故或下以取，或下而取。大國不過欲兼畜人，小國不過欲入事人。夫兩者各得其所欲，大者宜為下。 【要旨】 本章以水之就下、牝以靜勝為喻，闡明大國宜謙卑處下，小國亦宜謙順....">
+    <meta property="og:url" content="https://taoism.com.tw/articles/b1dafc5bed7d.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="道德經第六十一章｜圓安道語公開預覽">
+    <meta name="twitter:description" content="道德經第六十一章 【原文】 大國者下流，天下之牝，天下之交也。牝常以靜勝牡，以靜為下。故大國以下小國，則取小國；小國以下大國，則取大國。故或下以取，或下而取。大國不過欲兼畜人，小國不過欲入事人。夫兩者各得其所欲，大者宜為下。 【要旨】 本章以水之就下、牝以靜勝為喻，闡明大國宜謙卑處下，小國亦宜謙順....">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-04-15">2026-04-15</time>
             <span class="category">道教經典</span>
             <span class="series-badge">淺譯 道德經 81章 61章</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/b1dafc5bed7d.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/b1dafc5bed7d.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -45,5 +61,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

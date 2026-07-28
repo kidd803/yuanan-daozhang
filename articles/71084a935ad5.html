@@ -17,7 +17,18 @@
     <title>邱祖垂訓文｜圓安道語公開預覽</title>
     <meta name="description" content="邱祖垂訓文 磻溪龍門苦功行。 成吉思汗聞祖名。 下詔西行迢迢路。 十八弟子護祖行。 一言止殺濟世功。 天賜仙翁悟朕志。 諄諄告誡垂訊文 。 全真道以邱祖功德，再度興顯於世，故有 「道不分南北，教不分宗派」， 皆以邱祖之《垂訓文》為修道、立德及宮觀、教派之大綱。 《邱祖垂訓文》全文 吾教後輩門人知悉：...">
     <link rel="canonical" href="https://taoism.com.tw/articles/71084a935ad5.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="邱祖垂訓文｜圓安道語公開預覽">
+    <meta property="og:description" content="邱祖垂訓文 磻溪龍門苦功行。 成吉思汗聞祖名。 下詔西行迢迢路。 十八弟子護祖行。 一言止殺濟世功。 天賜仙翁悟朕志。 諄諄告誡垂訊文 。 全真道以邱祖功德，再度興顯於世，故有 「道不分南北，教不分宗派」， 皆以邱祖之《垂訓文》為修道、立德及宮觀、教派之大綱。 《邱祖垂訓文》全文 吾教後輩門人知悉：...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/71084a935ad5.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="邱祖垂訓文｜圓安道語公開預覽">
+    <meta name="twitter:description" content="邱祖垂訓文 磻溪龍門苦功行。 成吉思汗聞祖名。 下詔西行迢迢路。 十八弟子護祖行。 一言止殺濟世功。 天賜仙翁悟朕志。 諄諄告誡垂訊文 。 全真道以邱祖功德，再度興顯於世，故有 「道不分南北，教不分宗派」， 皆以邱祖之《垂訓文》為修道、立德及宮觀、教派之大綱。 《邱祖垂訓文》全文 吾教後輩門人知悉：...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2018-11-12">2018-11-12</time>
             <span class="category">全真道脈</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/71084a935ad5.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/71084a935ad5.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -77,5 +93,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

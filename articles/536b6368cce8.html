@@ -17,7 +17,18 @@
     <title>圓安講道（第十一講）☯️🤗🧎｜圓安道語公開預覽</title>
     <meta name="description" content="圓安講道（第十一講）☯️🤗🧎 從今日起，於線上宣講 全真龍門方便法門 問：過去修行時，是否有過「越修越苦」的體驗？問題大概出在哪些地方？ 回答：很多同修都有過這種經歷，其實問題往往不在修行本身，而在方法偏了。 比如有人覺得修行就要捨棄一切，跟家人斷了聯繫，跟生活脫了軌，自然會苦。我們龍門方便法門...">
     <link rel="canonical" href="https://taoism.com.tw/articles/536b6368cce8.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安講道（第十一講）☯️🤗🧎｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安講道（第十一講）☯️🤗🧎 從今日起，於線上宣講 全真龍門方便法門 問：過去修行時，是否有過「越修越苦」的體驗？問題大概出在哪些地方？ 回答：很多同修都有過這種經歷，其實問題往往不在修行本身，而在方法偏了。 比如有人覺得修行就要捨棄一切，跟家人斷了聯繫，跟生活脫了軌，自然會苦。我們龍門方便法門...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/536b6368cce8.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安講道（第十一講）☯️🤗🧎｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安講道（第十一講）☯️🤗🧎 從今日起，於線上宣講 全真龍門方便法門 問：過去修行時，是否有過「越修越苦」的體驗？問題大概出在哪些地方？ 回答：很多同修都有過這種經歷，其實問題往往不在修行本身，而在方法偏了。 比如有人覺得修行就要捨棄一切，跟家人斷了聯繫，跟生活脫了軌，自然會苦。我們龍門方便法門...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-01-14">2026-01-14</time>
             <span class="category">龍門丹道</span>
             <span class="series-badge">全真龍門方便法門 11講</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/536b6368cce8.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/536b6368cce8.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -45,5 +61,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -24,6 +24,7 @@ const ARTICLE_UNLOCK_KEY = 'yuanan-article-unlocked';
 const SITE_URL = 'https://taoism.com.tw';
 const PUBLIC_MEDIA_LIMIT = 6;
 const SEARCH_TRACK_DELAY = 900;
+const COPY_FEEDBACK_DELAY = 1400;
 const PUBLIC_PHOTO_KEYWORDS = ['照片', '參訪', '参访', '法會', '法会', '生日', '花', '樹', '树', '宮', '宫', '廟', '庙', '山', '海', '道場', '道场', '祖庭', '鹿邑', '青羊宮', '青羊宫', '崑崙', '昆仑', '華陽觀', '华阳观'];
 const SENSITIVE_MEDIA_KEYWORDS = ['符', '咒', '口訣', '口诀', '真訣', '真诀', '講義', '讲义', '教材', '架構', '架构', '圖解', '图解', '紫微', '斗數', '斗数', '命盤', '命盘', '生肖', '手印'];
 const SERIES_DISPLAY_NAMES = {
@@ -410,6 +411,13 @@ function postCard(post, selected) {
     tagNodes.push(mediaBadge);
   }
   tags.replaceChildren(...tagNodes);
+  const actions = document.createElement('div');
+  actions.className = 'post-card-actions';
+  actions.append(articleShareButton(post, {
+    className: 'post-share-button',
+    successLabel: '網址已複製'
+  }));
+  node.append(actions);
   node.addEventListener('click', () => selectPost(post.id, 'post_list'));
   node.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -444,7 +452,7 @@ function renderReader(post) {
   appendSeriesBadges(meta, post, true);
   const title = document.createElement('h2');
   title.textContent = post.title;
-  header.append(meta, title, readerActions(post));
+  header.append(meta, title, readerActions(post, { includeText: true }));
 
   const body = document.createElement('div');
   body.className = 'reader-body';
@@ -459,7 +467,8 @@ function renderReader(post) {
   details.append(
     detailItem('文章 ID', post.id),
     detailItem('系列', postSeriesNames(post).map((seriesName) => seriesLabel(post, seriesName)).join('、') || '-'),
-    detailItem('原附件數', formatCount(post.mediaCount || 0))
+    detailItem('原附件數', formatCount(post.mediaCount || 0)),
+    detailItem('文章網址', publicArticleUrl(post))
   );
 
   const sections = [header];
@@ -541,7 +550,7 @@ function renderLockedReader(post) {
   appendSeriesBadges(meta, post, true);
   const title = document.createElement('h2');
   title.textContent = post.title;
-  header.append(meta, title);
+  header.append(meta, title, readerActions(post, { includeText: false }));
 
   const preview = document.createElement('section');
   preview.className = 'public-preview';
@@ -644,7 +653,8 @@ function publicPhotoMedia(post) {
   return (post.media || []).filter((item) => item?.src).slice(0, PUBLIC_MEDIA_LIMIT);
 }
 
-function readerActions(post) {
+function readerActions(post, options = {}) {
+  const includeText = options.includeText !== false;
   const actions = document.createElement('div');
   actions.className = 'reader-actions';
   const searchButton = document.createElement('button');
@@ -653,6 +663,15 @@ function readerActions(post) {
   searchButton.textContent = '回到搜尋';
   searchButton.addEventListener('click', returnToSearch);
 
+  const shareButton = articleShareButton(post, {
+    className: 'reader-share-button',
+    label: '複製網址',
+    successLabel: '已複製網址'
+  });
+
+  actions.append(searchButton, shareButton);
+  if (!includeText) return actions;
+
   const copyButton = document.createElement('button');
   copyButton.type = 'button';
   copyButton.textContent = '複製文字';
@@ -660,10 +679,29 @@ function readerActions(post) {
     const ok = await copyText(`${post.title}\n\n${post.body}`.trim());
     copyButton.textContent = ok ? '已複製' : '複製失敗';
     trackArticleEvent(ok ? 'copy_article_text' : 'copy_article_text_failed', post);
-    setTimeout(() => { copyButton.textContent = '複製文字'; }, 1300);
+    setTimeout(() => { copyButton.textContent = '複製文字'; }, COPY_FEEDBACK_DELAY);
   });
-  actions.append(searchButton, copyButton);
+  actions.append(copyButton);
   return actions;
+}
+
+function articleShareButton(post, options = {}) {
+  const button = document.createElement('button');
+  const label = options.label || '複製網址';
+  button.type = 'button';
+  button.className = options.className || '';
+  button.textContent = label;
+  button.addEventListener('click', async (event) => {
+    event.stopPropagation();
+    const ok = await copyText(publicArticleUrl(post));
+    button.textContent = ok ? (options.successLabel || '已複製') : '複製失敗';
+    trackArticleEvent(ok ? 'copy_article_url' : 'copy_article_url_failed', post);
+    setTimeout(() => { button.textContent = label; }, COPY_FEEDBACK_DELAY);
+  });
+  button.addEventListener('keydown', (event) => {
+    event.stopPropagation();
+  });
+  return button;
 }
 
 function linkList(links) {
@@ -1058,9 +1096,28 @@ function formatCount(value) {
 
 async function copyText(text) {
   try {
-    await navigator.clipboard.writeText(text);
-    return true;
+    if (navigator.clipboard?.writeText && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch {
+    // Fall back to a temporary textarea below.
+  }
+
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'fixed';
+  textarea.style.top = '-1000px';
+  textarea.style.left = '-1000px';
+  document.body.append(textarea);
+  textarea.select();
+  textarea.setSelectionRange(0, textarea.value.length);
+  try {
+    return document.execCommand('copy');
   } catch {
     return false;
+  } finally {
+    textarea.remove();
   }
 }

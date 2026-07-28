@@ -17,7 +17,18 @@
     <title>《圓安論道》☯️🧎｜圓安道語公開預覽</title>
     <meta name="description" content="《圓安論道》☯️🧎 祝由術是核心的原始技藝，祝由科是其發展而來的官方化、體系化的醫學分科，二者核心內涵相通但在形態、定位上差異顯著，具體區別如下： 1. 概念與形態不同： 祝由術是上古巫文化衍生的原始技藝，核心是透過祝告、符咒等方式說明病由以驅疾，形式更零散自由，無固定分科與規範流程，早期多流傳於...">
     <link rel="canonical" href="https://taoism.com.tw/articles/5bc994d4a8d9.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="《圓安論道》☯️🧎｜圓安道語公開預覽">
+    <meta property="og:description" content="《圓安論道》☯️🧎 祝由術是核心的原始技藝，祝由科是其發展而來的官方化、體系化的醫學分科，二者核心內涵相通但在形態、定位上差異顯著，具體區別如下： 1. 概念與形態不同： 祝由術是上古巫文化衍生的原始技藝，核心是透過祝告、符咒等方式說明病由以驅疾，形式更零散自由，無固定分科與規範流程，早期多流傳於...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/5bc994d4a8d9.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="《圓安論道》☯️🧎｜圓安道語公開預覽">
+    <meta name="twitter:description" content="《圓安論道》☯️🧎 祝由術是核心的原始技藝，祝由科是其發展而來的官方化、體系化的醫學分科，二者核心內涵相通但在形態、定位上差異顯著，具體區別如下： 1. 概念與形態不同： 祝由術是上古巫文化衍生的原始技藝，核心是透過祝告、符咒等方式說明病由以驅疾，形式更零散自由，無固定分科與規範流程，早期多流傳於...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-04">2025-12-04</time>
             <span class="category">養生性命</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/5bc994d4a8d9.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/5bc994d4a8d9.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -45,5 +61,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

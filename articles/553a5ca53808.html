@@ -17,7 +17,18 @@
     <title>道德經第一章（精簡版）｜圓安道語公開預覽</title>
     <meta name="description" content="道德經第一章（精簡版） 原文：道可道，非常道；名可名，非常名。無，名天地之始；有，名萬物之母。故常無，欲以觀其妙；常有，欲以觀其徼。此兩者，同出而異名，同謂之玄。玄之又玄，衆妙之門。 釋要：首句開宗明義，區分「道」的兩重義涵：第一個「道」為宇宙本根、恆常规律，是形上之本體；第二個「道」為言說、表述，...">
     <link rel="canonical" href="https://taoism.com.tw/articles/553a5ca53808.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="道德經第一章（精簡版）｜圓安道語公開預覽">
+    <meta property="og:description" content="道德經第一章（精簡版） 原文：道可道，非常道；名可名，非常名。無，名天地之始；有，名萬物之母。故常無，欲以觀其妙；常有，欲以觀其徼。此兩者，同出而異名，同謂之玄。玄之又玄，衆妙之門。 釋要：首句開宗明義，區分「道」的兩重義涵：第一個「道」為宇宙本根、恆常规律，是形上之本體；第二個「道」為言說、表述，...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/553a5ca53808.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="道德經第一章（精簡版）｜圓安道語公開預覽">
+    <meta name="twitter:description" content="道德經第一章（精簡版） 原文：道可道，非常道；名可名，非常名。無，名天地之始；有，名萬物之母。故常無，欲以觀其妙；常有，欲以觀其徼。此兩者，同出而異名，同謂之玄。玄之又玄，衆妙之門。 釋要：首句開宗明義，區分「道」的兩重義涵：第一個「道」為宇宙本根、恆常规律，是形上之本體；第二個「道」為言說、表述，...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-13">2026-03-13</time>
             <span class="category">道教經典</span>
             <span class="series-badge">淺譯 道德經 81章 1章</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/553a5ca53808.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/553a5ca53808.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -44,5 +60,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

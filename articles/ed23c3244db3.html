@@ -17,7 +17,18 @@
     <title>圓安論道：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論道： 伍守陽《天仙正理直論》重點章節與精讀提綱 《天仙正理直論》是伍柳派丹法的奠基之作，全書以「先天祖炁」為核心，闡發清修丹道的次第與要義，語言淺近卻義理精深，以下梳理重點章節與精讀方向。 一、 核心重點章節（按閱讀優先級排序） 1. 《先天後天二氣論》： 全書理論基礎，伍柳派立論的核心章節。...">
     <link rel="canonical" href="https://taoism.com.tw/articles/ed23c3244db3.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論道： 伍守陽《天仙正理直論》重點章節與精讀提綱 《天仙正理直論》是伍柳派丹法的奠基之作，全書以「先天祖炁」為核心，闡發清修丹道的次第與要義，語言淺近卻義理精深，以下梳理重點章節與精讀方向。 一、 核心重點章節（按閱讀優先級排序） 1. 《先天後天二氣論》： 全書理論基礎，伍柳派立論的核心章節。...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/ed23c3244db3.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論道： 伍守陽《天仙正理直論》重點章節與精讀提綱 《天仙正理直論》是伍柳派丹法的奠基之作，全書以「先天祖炁」為核心，闡發清修丹道的次第與要義，語言淺近卻義理精深，以下梳理重點章節與精讀方向。 一、 核心重點章節（按閱讀優先級排序） 1. 《先天後天二氣論》： 全書理論基礎，伍柳派立論的核心章節。...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-01-01">2026-01-01</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/ed23c3244db3.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/ed23c3244db3.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -69,5 +85,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

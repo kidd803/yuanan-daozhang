@@ -17,7 +17,18 @@
     <title>第三章｜由海入道，借景明心｜圓安道語公開預覽</title>
     <meta name="description" content="第三章｜由海入道，借景明心 《蓬萊閣》這首詞。 到這裡。 便不能只看詞句之巧。 ⸻ 終究還要回到： 它到底在說什麼。 ￼ ⸻ 依本卷所整理。 這首詞的白話大意。 其實已很分明。 ⸻ 「溟漠」。 是說滄海浩渺。 也是說道境虛玄。 使人一時忘卻凡塵。 登上飛閣。 ￼ ⸻ 到了「登飛閣」。 便不是只看樓高...">
     <link rel="canonical" href="https://taoism.com.tw/articles/3fce1e37af1a.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="第三章｜由海入道，借景明心｜圓安道語公開預覽">
+    <meta property="og:description" content="第三章｜由海入道，借景明心 《蓬萊閣》這首詞。 到這裡。 便不能只看詞句之巧。 ⸻ 終究還要回到： 它到底在說什麼。 ￼ ⸻ 依本卷所整理。 這首詞的白話大意。 其實已很分明。 ⸻ 「溟漠」。 是說滄海浩渺。 也是說道境虛玄。 使人一時忘卻凡塵。 登上飛閣。 ￼ ⸻ 到了「登飛閣」。 便不是只看樓高...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/3fce1e37af1a.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="第三章｜由海入道，借景明心｜圓安道語公開預覽">
+    <meta name="twitter:description" content="第三章｜由海入道，借景明心 《蓬萊閣》這首詞。 到這裡。 便不能只看詞句之巧。 ⸻ 終究還要回到： 它到底在說什麼。 ￼ ⸻ 依本卷所整理。 這首詞的白話大意。 其實已很分明。 ⸻ 「溟漠」。 是說滄海浩渺。 也是說道境虛玄。 使人一時忘卻凡塵。 登上飛閣。 ￼ ⸻ 到了「登飛閣」。 便不是只看樓高...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-04-22">2026-04-22</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/3fce1e37af1a.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/3fce1e37af1a.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -95,5 +111,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

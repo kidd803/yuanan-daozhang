@@ -17,7 +17,18 @@
     <title>命理術數教學(二)｜圓安道語公開預覽</title>
     <meta name="description" content="命理術數教學(二) 今天介紹 十天干與十二地支 天干地支，簡稱「干支」，是中國傳統文化中用以紀年、紀月、紀日、紀時的核心符號體系，亦為命理學（如紫微斗數、八字）、術數與道教丹道理論的基礎工具，其源遠流長，貫穿諸多古籍典章。 一、十天干 十天干又稱「十干」，象徵天地間陰陽之氣的週期性消長，分為陽干與陰...">
     <link rel="canonical" href="https://taoism.com.tw/articles/72f31d50914a.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="命理術數教學(二)｜圓安道語公開預覽">
+    <meta property="og:description" content="命理術數教學(二) 今天介紹 十天干與十二地支 天干地支，簡稱「干支」，是中國傳統文化中用以紀年、紀月、紀日、紀時的核心符號體系，亦為命理學（如紫微斗數、八字）、術數與道教丹道理論的基礎工具，其源遠流長，貫穿諸多古籍典章。 一、十天干 十天干又稱「十干」，象徵天地間陰陽之氣的週期性消長，分為陽干與陰...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/72f31d50914a.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="命理術數教學(二)｜圓安道語公開預覽">
+    <meta name="twitter:description" content="命理術數教學(二) 今天介紹 十天干與十二地支 天干地支，簡稱「干支」，是中國傳統文化中用以紀年、紀月、紀日、紀時的核心符號體系，亦為命理學（如紫微斗數、八字）、術數與道教丹道理論的基礎工具，其源遠流長，貫穿諸多古籍典章。 一、十天干 十天干又稱「十干」，象徵天地間陰陽之氣的週期性消長，分為陽干與陰...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-02-13">2026-02-13</time>
             <span class="category">處世立命</span>
             <span class="series-badge">紫微斗數推演 2講</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/72f31d50914a.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/72f31d50914a.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -54,5 +70,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

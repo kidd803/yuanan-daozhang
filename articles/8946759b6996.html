@@ -17,7 +17,18 @@
     <title>圓安論道：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論道： 道家「采日精月华」之本義與修持： 道家所言之采日精月华，非世俗所臆想的「攝取外在星斗日月之精氣」，其核心本旨是內丹修煉中「以天地陰陽二炁調和身中真炁」的煉養法門，兼具外象觀想與內炁運化的雙重義涵，其源流可溯至先秦方術與早期道教丹法。 一、本義溯源 此說最早見於《抱朴子·內篇·雜應》：「或...">
     <link rel="canonical" href="https://taoism.com.tw/articles/8946759b6996.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論道： 道家「采日精月华」之本義與修持： 道家所言之采日精月华，非世俗所臆想的「攝取外在星斗日月之精氣」，其核心本旨是內丹修煉中「以天地陰陽二炁調和身中真炁」的煉養法門，兼具外象觀想與內炁運化的雙重義涵，其源流可溯至先秦方術與早期道教丹法。 一、本義溯源 此說最早見於《抱朴子·內篇·雜應》：「或...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/8946759b6996.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論道： 道家「采日精月华」之本義與修持： 道家所言之采日精月华，非世俗所臆想的「攝取外在星斗日月之精氣」，其核心本旨是內丹修煉中「以天地陰陽二炁調和身中真炁」的煉養法門，兼具外象觀想與內炁運化的雙重義涵，其源流可溯至先秦方術與早期道教丹法。 一、本義溯源 此說最早見於《抱朴子·內篇·雜應》：「或...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-05">2025-12-05</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/8946759b6996.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/8946759b6996.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -49,5 +65,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

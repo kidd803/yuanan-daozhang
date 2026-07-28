@@ -17,7 +17,18 @@
     <title>紫微斗數推演(九十五)｜圓安道語公開預覽</title>
     <meta name="description" content="紫微斗數推演(九十五) 紫微斗數 四化（祿、權、科、忌）速記口訣 一、四化總綱 祿權科忌是天機，吉凶禍福由此移。 一祿一權一科一忌，生克制化看高低。 祿主增添權主勢，科主名聲忌主迷。 會吉會煞分輕重，斷命先看四化機。 二、化祿星（福、祿、財、喜） 化祿屬水主福祿，財祿增添喜氣足。 人緣順遂多機遇，凡...">
     <link rel="canonical" href="https://taoism.com.tw/articles/475da6c258a2.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="紫微斗數推演(九十五)｜圓安道語公開預覽">
+    <meta property="og:description" content="紫微斗數推演(九十五) 紫微斗數 四化（祿、權、科、忌）速記口訣 一、四化總綱 祿權科忌是天機，吉凶禍福由此移。 一祿一權一科一忌，生克制化看高低。 祿主增添權主勢，科主名聲忌主迷。 會吉會煞分輕重，斷命先看四化機。 二、化祿星（福、祿、財、喜） 化祿屬水主福祿，財祿增添喜氣足。 人緣順遂多機遇，凡...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/475da6c258a2.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="紫微斗數推演(九十五)｜圓安道語公開預覽">
+    <meta name="twitter:description" content="紫微斗數推演(九十五) 紫微斗數 四化（祿、權、科、忌）速記口訣 一、四化總綱 祿權科忌是天機，吉凶禍福由此移。 一祿一權一科一忌，生克制化看高低。 祿主增添權主勢，科主名聲忌主迷。 會吉會煞分輕重，斷命先看四化機。 二、化祿星（福、祿、財、喜） 化祿屬水主福祿，財祿增添喜氣足。 人緣順遂多機遇，凡...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-16">2026-03-16</time>
             <span class="category">處世立命</span>
             <span class="series-badge">紫微斗數推演 95講</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/475da6c258a2.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/475da6c258a2.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -68,5 +84,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

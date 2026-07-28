@@ -17,7 +17,18 @@
     <title>道家修心：破我執，得自在｜圓安道語公開預覽</title>
     <meta name="description" content="道家修心：破我執，得自在 道家修真之要，首在破我執。 所謂我執者，乃執己見、困己私、重己得失、滯己情懷。執於自我之相，以一己好惡衡萬事，牽於榮辱、縛於过往、困於愛憎，是人間煩惱、心神勞苦之根源。 《道德經》云：「自見者不明，自是者不彰。」 大道無私，萬物同源、天地一氣。人心一旦立「我」為界，便生分別...">
     <link rel="canonical" href="https://taoism.com.tw/articles/dfc9fc6b9cb8.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="道家修心：破我執，得自在｜圓安道語公開預覽">
+    <meta property="og:description" content="道家修心：破我執，得自在 道家修真之要，首在破我執。 所謂我執者，乃執己見、困己私、重己得失、滯己情懷。執於自我之相，以一己好惡衡萬事，牽於榮辱、縛於过往、困於愛憎，是人間煩惱、心神勞苦之根源。 《道德經》云：「自見者不明，自是者不彰。」 大道無私，萬物同源、天地一氣。人心一旦立「我」為界，便生分別...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/dfc9fc6b9cb8.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="道家修心：破我執，得自在｜圓安道語公開預覽">
+    <meta name="twitter:description" content="道家修心：破我執，得自在 道家修真之要，首在破我執。 所謂我執者，乃執己見、困己私、重己得失、滯己情懷。執於自我之相，以一己好惡衡萬事，牽於榮辱、縛於过往、困於愛憎，是人間煩惱、心神勞苦之根源。 《道德經》云：「自見者不明，自是者不彰。」 大道無私，萬物同源、天地一氣。人心一旦立「我」為界，便生分別...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-20">2026-05-20</time>
             <span class="category">修心煉性</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/dfc9fc6b9cb8.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/dfc9fc6b9cb8.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -46,5 +62,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

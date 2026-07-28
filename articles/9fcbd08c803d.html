@@ -17,7 +17,18 @@
     <title>圓安論道：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論道： 《天仙正理直論》易混淆丹道術語辨析清單 本清單針對書中與其他丹法流派義理相異、且易產生誤讀的核心術語，結合伍柳派清修立場逐一辨析，厘清內涵與邊界。 1. 先天祖炁 / 後天陰陽氣 - 先天祖炁：伍守陽界定為「生天生地生萬物的本源之炁」，無形無質，不屬於形體臟腑所生，是丹道修持的唯一真種，...">
     <link rel="canonical" href="https://taoism.com.tw/articles/9fcbd08c803d.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論道： 《天仙正理直論》易混淆丹道術語辨析清單 本清單針對書中與其他丹法流派義理相異、且易產生誤讀的核心術語，結合伍柳派清修立場逐一辨析，厘清內涵與邊界。 1. 先天祖炁 / 後天陰陽氣 - 先天祖炁：伍守陽界定為「生天生地生萬物的本源之炁」，無形無質，不屬於形體臟腑所生，是丹道修持的唯一真種，...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/9fcbd08c803d.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論道： 《天仙正理直論》易混淆丹道術語辨析清單 本清單針對書中與其他丹法流派義理相異、且易產生誤讀的核心術語，結合伍柳派清修立場逐一辨析，厘清內涵與邊界。 1. 先天祖炁 / 後天陰陽氣 - 先天祖炁：伍守陽界定為「生天生地生萬物的本源之炁」，無形無質，不屬於形體臟腑所生，是丹道修持的唯一真種，...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-01-01">2026-01-01</time>
             <span class="category">人間修行</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/9fcbd08c803d.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/9fcbd08c803d.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -54,5 +70,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

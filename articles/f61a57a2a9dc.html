@@ -17,7 +17,18 @@
     <title>秋季修煉功法動作圖解與女性常見健康問題應對方案｜圓安道語公開預覽</title>
     <meta name="description" content="秋季修煉功法動作圖解與女性常見健康問題應對方案 以下秉持《靈樞·四時調神大論》「秋容平，斂氣養肺」之旨，融合全真教「清靜斂神、潤燥養陰」的修煉傳統，詳解秋季核心養肺導引操（附通俗圖解與醫道依據），並針對女性高發的痛經、更年期失眠等健康問題，制定對應的修煉調整與道醫藥方，兼顧實踐性與療效性。 一、秋季...">
     <link rel="canonical" href="https://taoism.com.tw/articles/f61a57a2a9dc.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="秋季修煉功法動作圖解與女性常見健康問題應對方案｜圓安道語公開預覽">
+    <meta property="og:description" content="秋季修煉功法動作圖解與女性常見健康問題應對方案 以下秉持《靈樞·四時調神大論》「秋容平，斂氣養肺」之旨，融合全真教「清靜斂神、潤燥養陰」的修煉傳統，詳解秋季核心養肺導引操（附通俗圖解與醫道依據），並針對女性高發的痛經、更年期失眠等健康問題，制定對應的修煉調整與道醫藥方，兼顧實踐性與療效性。 一、秋季...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/f61a57a2a9dc.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="秋季修煉功法動作圖解與女性常見健康問題應對方案｜圓安道語公開預覽">
+    <meta name="twitter:description" content="秋季修煉功法動作圖解與女性常見健康問題應對方案 以下秉持《靈樞·四時調神大論》「秋容平，斂氣養肺」之旨，融合全真教「清靜斂神、潤燥養陰」的修煉傳統，詳解秋季核心養肺導引操（附通俗圖解與醫道依據），並針對女性高發的痛經、更年期失眠等健康問題，制定對應的修煉調整與道醫藥方，兼顧實踐性與療效性。 一、秋季...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-11-30">2025-11-30</time>
             <span class="category">養生性命</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/f61a57a2a9dc.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/f61a57a2a9dc.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -66,5 +82,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

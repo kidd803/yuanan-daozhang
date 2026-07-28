@@ -17,7 +17,18 @@
     <title>老子與莊子核心思想異同（簡明梳理）｜圓安道語公開預覽</title>
     <meta name="description" content="老子與莊子核心思想異同（簡明梳理） 一、相同點 1. 本源一致：皆以道為宇宙萬物本源，主張順道而行、自然為本。 2. 價值取向：反對人為矯飾、繁文禮教，輕名利、遠權勢，追求精神自在。 3. 處世原則：推崇無為，不強求、不妄為，主張順應天性與客觀規律。 4. 人生態度：看淡生死、貧富、榮辱，消解執念，...">
     <link rel="canonical" href="https://taoism.com.tw/articles/14858fcebd2f.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="老子與莊子核心思想異同（簡明梳理）｜圓安道語公開預覽">
+    <meta property="og:description" content="老子與莊子核心思想異同（簡明梳理） 一、相同點 1. 本源一致：皆以道為宇宙萬物本源，主張順道而行、自然為本。 2. 價值取向：反對人為矯飾、繁文禮教，輕名利、遠權勢，追求精神自在。 3. 處世原則：推崇無為，不強求、不妄為，主張順應天性與客觀規律。 4. 人生態度：看淡生死、貧富、榮辱，消解執念，...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/14858fcebd2f.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="老子與莊子核心思想異同（簡明梳理）｜圓安道語公開預覽">
+    <meta name="twitter:description" content="老子與莊子核心思想異同（簡明梳理） 一、相同點 1. 本源一致：皆以道為宇宙萬物本源，主張順道而行、自然為本。 2. 價值取向：反對人為矯飾、繁文禮教，輕名利、遠權勢，追求精神自在。 3. 處世原則：推崇無為，不強求、不妄為，主張順應天性與客觀規律。 4. 人生態度：看淡生死、貧富、榮辱，消解執念，...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-18">2026-06-18</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/14858fcebd2f.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/14858fcebd2f.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -53,5 +69,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

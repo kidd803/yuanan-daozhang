@@ -17,7 +17,18 @@
     <title>圆安论道：｜圓安道語公開預覽</title>
     <meta name="description" content="圆安论道： 三清道祖的信仰在民間的體現，滲透於宮觀祀奉、民俗儀式、日常敬拜乃至文化符號等諸多層面，與百姓的精神寄托、生活習俗深度交融，具體表現如下： 其一，宮觀殿宇的核心祀奉。民間絕大多數正統道教宮觀都設有「三清殿」，作為整座宮觀的核心建築，殿內正中供奉元始天尊、靈寶天尊、道德天尊的塑像或畫像，通常...">
     <link rel="canonical" href="https://taoism.com.tw/articles/00a6e1ef48ac.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圆安论道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圆安论道： 三清道祖的信仰在民間的體現，滲透於宮觀祀奉、民俗儀式、日常敬拜乃至文化符號等諸多層面，與百姓的精神寄托、生活習俗深度交融，具體表現如下： 其一，宮觀殿宇的核心祀奉。民間絕大多數正統道教宮觀都設有「三清殿」，作為整座宮觀的核心建築，殿內正中供奉元始天尊、靈寶天尊、道德天尊的塑像或畫像，通常...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/00a6e1ef48ac.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圆安论道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圆安论道： 三清道祖的信仰在民間的體現，滲透於宮觀祀奉、民俗儀式、日常敬拜乃至文化符號等諸多層面，與百姓的精神寄托、生活習俗深度交融，具體表現如下： 其一，宮觀殿宇的核心祀奉。民間絕大多數正統道教宮觀都設有「三清殿」，作為整座宮觀的核心建築，殿內正中供奉元始天尊、靈寶天尊、道德天尊的塑像或畫像，通常...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-13">2025-12-13</time>
             <span class="category">修心煉性</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/00a6e1ef48ac.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/00a6e1ef48ac.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -44,5 +60,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>三官大帝｜圓安道語公開預覽</title>
     <meta name="description" content="三官大帝 三官大帝亦太極界之神。在玄黃判分， 天地肇定後， 乃有天官、地官、水官三帝出， 而為治理天、地、水三界。 考校天人功過，而司眾生禍福之神。 又稱為上元、中元、下元三元也。 集仙錄以： 「張道陵於龍虎山，修三元默朝之道」。 所以人間祀奉三官，係自漢張道陵始。 至元魏時，乃以三官配為三元節: ...">
     <link rel="canonical" href="https://taoism.com.tw/articles/a21d5ac9b191.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="三官大帝｜圓安道語公開預覽">
+    <meta property="og:description" content="三官大帝 三官大帝亦太極界之神。在玄黃判分， 天地肇定後， 乃有天官、地官、水官三帝出， 而為治理天、地、水三界。 考校天人功過，而司眾生禍福之神。 又稱為上元、中元、下元三元也。 集仙錄以： 「張道陵於龍虎山，修三元默朝之道」。 所以人間祀奉三官，係自漢張道陵始。 至元魏時，乃以三官配為三元節: ...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/a21d5ac9b191.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="三官大帝｜圓安道語公開預覽">
+    <meta name="twitter:description" content="三官大帝 三官大帝亦太極界之神。在玄黃判分， 天地肇定後， 乃有天官、地官、水官三帝出， 而為治理天、地、水三界。 考校天人功過，而司眾生禍福之神。 又稱為上元、中元、下元三元也。 集仙錄以： 「張道陵於龍虎山，修三元默朝之道」。 所以人間祀奉三官，係自漢張道陵始。 至元魏時，乃以三官配為三元節: ...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2019-12-07">2019-12-07</time>
             <span class="category">人間修行</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/a21d5ac9b191.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/a21d5ac9b191.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -88,5 +104,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

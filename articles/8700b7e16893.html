@@ -17,7 +17,18 @@
     <title>第二章｜昆嵛：七真齊聚｜圓安道語公開預覽</title>
     <meta name="description" content="第二章｜昆嵛：七真齊聚 寧海之後。 祖師未停。 ⸻ 帶馬鈺。 譚處端。 入山。 ⸻ 入： 昆嵛山。 ⸻ 山中靜。 人心定。 ⸻ 祖師不多言。 只教一事： 如何修。 ⸻ 未久。 又有人來。 ⸻ 丘處機。 年未及二十。 ⸻ 遠自棲霞。 入山求道。 ⸻ 祖師見之。 與語終夕。 ⸻ 知其志。 可承其法。 ⸻...">
     <link rel="canonical" href="https://taoism.com.tw/articles/8700b7e16893.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="第二章｜昆嵛：七真齊聚｜圓安道語公開預覽">
+    <meta property="og:description" content="第二章｜昆嵛：七真齊聚 寧海之後。 祖師未停。 ⸻ 帶馬鈺。 譚處端。 入山。 ⸻ 入： 昆嵛山。 ⸻ 山中靜。 人心定。 ⸻ 祖師不多言。 只教一事： 如何修。 ⸻ 未久。 又有人來。 ⸻ 丘處機。 年未及二十。 ⸻ 遠自棲霞。 入山求道。 ⸻ 祖師見之。 與語終夕。 ⸻ 知其志。 可承其法。 ⸻...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/8700b7e16893.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="第二章｜昆嵛：七真齊聚｜圓安道語公開預覽">
+    <meta name="twitter:description" content="第二章｜昆嵛：七真齊聚 寧海之後。 祖師未停。 ⸻ 帶馬鈺。 譚處端。 入山。 ⸻ 入： 昆嵛山。 ⸻ 山中靜。 人心定。 ⸻ 祖師不多言。 只教一事： 如何修。 ⸻ 未久。 又有人來。 ⸻ 丘處機。 年未及二十。 ⸻ 遠自棲霞。 入山求道。 ⸻ 祖師見之。 與語終夕。 ⸻ 知其志。 可承其法。 ⸻...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-04-01">2026-04-01</time>
             <span class="category">全真道脈</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/8700b7e16893.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/8700b7e16893.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -98,5 +114,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

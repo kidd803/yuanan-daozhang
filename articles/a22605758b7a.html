@@ -17,7 +17,18 @@
     <title>論道容易，修道難。｜圓安道語公開預覽</title>
     <meta name="description" content="論道容易，修道難。 談陰陽造化、性命玄機、無為清靜、天地升降、三才五行、丹法真詮，引經據典，旁徵博引，縱論天人一體，辨析虛實動靜，口舌縱橫，洋洋灑灑。閱經一卷便知玄理，聞道一言便曉真機，紙上談玄不費心力，淺悟義理人人可為。世間伶牙俐齒之士，高談大道幽微，暢述修真奧妙，言詞圓滿，義理通透，聽者莫不欽服...">
     <link rel="canonical" href="https://taoism.com.tw/articles/a22605758b7a.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="論道容易，修道難。｜圓安道語公開預覽">
+    <meta property="og:description" content="論道容易，修道難。 談陰陽造化、性命玄機、無為清靜、天地升降、三才五行、丹法真詮，引經據典，旁徵博引，縱論天人一體，辨析虛實動靜，口舌縱橫，洋洋灑灑。閱經一卷便知玄理，聞道一言便曉真機，紙上談玄不費心力，淺悟義理人人可為。世間伶牙俐齒之士，高談大道幽微，暢述修真奧妙，言詞圓滿，義理通透，聽者莫不欽服...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/a22605758b7a.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="論道容易，修道難。｜圓安道語公開預覽">
+    <meta name="twitter:description" content="論道容易，修道難。 談陰陽造化、性命玄機、無為清靜、天地升降、三才五行、丹法真詮，引經據典，旁徵博引，縱論天人一體，辨析虛實動靜，口舌縱橫，洋洋灑灑。閱經一卷便知玄理，聞道一言便曉真機，紙上談玄不費心力，淺悟義理人人可為。世間伶牙俐齒之士，高談大道幽微，暢述修真奧妙，言詞圓滿，義理通透，聽者莫不欽服...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-27">2026-05-27</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/a22605758b7a.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/a22605758b7a.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -75,5 +91,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

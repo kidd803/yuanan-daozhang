@@ -17,7 +17,18 @@
     <title>全真丹道吐納養生口訣（現代通俗版）｜圓安道語公開預覽</title>
     <meta name="description" content="全真丹道吐納養生口訣（現代通俗版） 核心口訣： 「卯時吸清，丹田藏炁； 緩吐濁氣，神形合一」 具體步驟（適合日常養元） 1. 時機與姿勢： 每日清晨日出時（卯時），找安靜處坐直，雙手疊放小腹（丹田），舌抵上齶、雙目微閉，全身放鬆。 2. 吸清納炁： 用鼻子緩吸新鮮空氣，意念隨氣沉入小腹...">
     <link rel="canonical" href="https://taoism.com.tw/articles/51c3428062e2.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="全真丹道吐納養生口訣（現代通俗版）｜圓安道語公開預覽">
+    <meta property="og:description" content="全真丹道吐納養生口訣（現代通俗版） 核心口訣： 「卯時吸清，丹田藏炁； 緩吐濁氣，神形合一」 具體步驟（適合日常養元） 1. 時機與姿勢： 每日清晨日出時（卯時），找安靜處坐直，雙手疊放小腹（丹田），舌抵上齶、雙目微閉，全身放鬆。 2. 吸清納炁： 用鼻子緩吸新鮮空氣，意念隨氣沉入小腹...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/51c3428062e2.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="全真丹道吐納養生口訣（現代通俗版）｜圓安道語公開預覽">
+    <meta name="twitter:description" content="全真丹道吐納養生口訣（現代通俗版） 核心口訣： 「卯時吸清，丹田藏炁； 緩吐濁氣，神形合一」 具體步驟（適合日常養元） 1. 時機與姿勢： 每日清晨日出時（卯時），找安靜處坐直，雙手疊放小腹（丹田），舌抵上齶、雙目微閉，全身放鬆。 2. 吸清納炁： 用鼻子緩吸新鮮空氣，意念隨氣沉入小腹...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-04">2025-12-04</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/51c3428062e2.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/51c3428062e2.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -49,5 +65,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

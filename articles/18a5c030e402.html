@@ -17,7 +17,18 @@
     <title>支持圓安臉書發展（9）｜圓安道語公開預覽</title>
     <meta name="description" content="支持圓安臉書發展（9） 多年賣書，只願好書有人讀。 歡迎臉書私訊購買。 易學經典 79折–85折。 📚 購書方式說明： ✔ 超商取貨滿1000元免運 ✔ 未滿1000元運費60元 請私訊留下： 1️⃣ 聯絡人姓名 2️⃣ 手機號碼 3️⃣ 超商店名 即可辦理超商取貨付款。 感謝大家長久支持 需要點...">
     <link rel="canonical" href="https://taoism.com.tw/articles/18a5c030e402.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="支持圓安臉書發展（9）｜圓安道語公開預覽">
+    <meta property="og:description" content="支持圓安臉書發展（9） 多年賣書，只願好書有人讀。 歡迎臉書私訊購買。 易學經典 79折–85折。 📚 購書方式說明： ✔ 超商取貨滿1000元免運 ✔ 未滿1000元運費60元 請私訊留下： 1️⃣ 聯絡人姓名 2️⃣ 手機號碼 3️⃣ 超商店名 即可辦理超商取貨付款。 感謝大家長久支持 需要點...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/18a5c030e402.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="支持圓安臉書發展（9）｜圓安道語公開預覽">
+    <meta name="twitter:description" content="支持圓安臉書發展（9） 多年賣書，只願好書有人讀。 歡迎臉書私訊購買。 易學經典 79折–85折。 📚 購書方式說明： ✔ 超商取貨滿1000元免運 ✔ 未滿1000元運費60元 請私訊留下： 1️⃣ 聯絡人姓名 2️⃣ 手機號碼 3️⃣ 超商店名 即可辦理超商取貨付款。 感謝大家長久支持 需要點...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-21">2026-03-21</time>
             <span class="category">悟道真詮</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/18a5c030e402.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/18a5c030e402.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -54,5 +70,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

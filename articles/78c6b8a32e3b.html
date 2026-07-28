@@ -17,7 +17,18 @@
     <title>修心最大劫難，非生死離別，乃身邊日日耗神之陰妄｜圓安道語公開預覽</title>
     <meta name="description" content="修心最大劫難，非生死離別，乃身邊日日耗神之陰妄 修道養性之人當知：人生最大劫障，從非生死離別、天災橫禍。真正困鎖靈臺、耗損元炁、磨蝕道行的，是潛藏於日用之間、日夜纏身、無形無相的「心間陰妄」。 多數人修身養性、調馭心神，終日用力卻不得其門，皆因認知偏誤。世人總以為：人間至苦，是禍患突至；世間至難，是...">
     <link rel="canonical" href="https://taoism.com.tw/articles/78c6b8a32e3b.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="修心最大劫難，非生死離別，乃身邊日日耗神之陰妄｜圓安道語公開預覽">
+    <meta property="og:description" content="修心最大劫難，非生死離別，乃身邊日日耗神之陰妄 修道養性之人當知：人生最大劫障，從非生死離別、天災橫禍。真正困鎖靈臺、耗損元炁、磨蝕道行的，是潛藏於日用之間、日夜纏身、無形無相的「心間陰妄」。 多數人修身養性、調馭心神，終日用力卻不得其門，皆因認知偏誤。世人總以為：人間至苦，是禍患突至；世間至難，是...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/78c6b8a32e3b.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="修心最大劫難，非生死離別，乃身邊日日耗神之陰妄｜圓安道語公開預覽">
+    <meta name="twitter:description" content="修心最大劫難，非生死離別，乃身邊日日耗神之陰妄 修道養性之人當知：人生最大劫障，從非生死離別、天災橫禍。真正困鎖靈臺、耗損元炁、磨蝕道行的，是潛藏於日用之間、日夜纏身、無形無相的「心間陰妄」。 多數人修身養性、調馭心神，終日用力卻不得其門，皆因認知偏誤。世人總以為：人間至苦，是禍患突至；世間至難，是...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-02">2026-06-02</time>
             <span class="category">修心煉性</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/78c6b8a32e3b.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/78c6b8a32e3b.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -67,5 +83,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

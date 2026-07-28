@@ -17,7 +17,18 @@
     <title>圓安論道：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論道： 伍柳派與東派丹法的當代研究價值與傳承現狀 兩派丹法作為明清內丹學的重要分支，在當代既承載著傳統道家修持文化的研究意義，也面臨著傳承與詮釋的新課題，二者的發展態勢因歷史定位與理論特質的差異而有所區分。 一、 伍柳派：研究體系成熟，傳承多元普及 （一） 當代研究價值： 1. 實踐指導價值：伍...">
     <link rel="canonical" href="https://taoism.com.tw/articles/4a8a7398c24c.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論道： 伍柳派與東派丹法的當代研究價值與傳承現狀 兩派丹法作為明清內丹學的重要分支，在當代既承載著傳統道家修持文化的研究意義，也面臨著傳承與詮釋的新課題，二者的發展態勢因歷史定位與理論特質的差異而有所區分。 一、 伍柳派：研究體系成熟，傳承多元普及 （一） 當代研究價值： 1. 實踐指導價值：伍...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/4a8a7398c24c.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論道： 伍柳派與東派丹法的當代研究價值與傳承現狀 兩派丹法作為明清內丹學的重要分支，在當代既承載著傳統道家修持文化的研究意義，也面臨著傳承與詮釋的新課題，二者的發展態勢因歷史定位與理論特質的差異而有所區分。 一、 伍柳派：研究體系成熟，傳承多元普及 （一） 當代研究價值： 1. 實踐指導價值：伍...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-31">2025-12-31</time>
             <span class="category">人間修行</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/4a8a7398c24c.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/4a8a7398c24c.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -57,5 +73,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

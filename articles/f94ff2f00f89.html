@@ -17,7 +17,18 @@
     <title>圓安道长在線講道：《列子》八篇通講｜圓安道語公開預覽</title>
     <meta name="description" content="圓安道长在線講道：《列子》八篇通講 （圓安道长 主講） 沖虛明道、全性保真、修身安心 主講師資： 圓安道长 潛心道學多年，專研丹道經典、道家義理、 心性修持與傳統文化教學， 以淺白貼心之語，闡發玄微至道， 引導後學明理、修心、實踐、證道。 課程緣起： 《列子》一書，古稱《沖虛至德真經》， 與《老子》...">
     <link rel="canonical" href="https://taoism.com.tw/articles/f94ff2f00f89.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安道长在線講道：《列子》八篇通講｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安道长在線講道：《列子》八篇通講 （圓安道长 主講） 沖虛明道、全性保真、修身安心 主講師資： 圓安道长 潛心道學多年，專研丹道經典、道家義理、 心性修持與傳統文化教學， 以淺白貼心之語，闡發玄微至道， 引導後學明理、修心、實踐、證道。 課程緣起： 《列子》一書，古稱《沖虛至德真經》， 與《老子》...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/f94ff2f00f89.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安道长在線講道：《列子》八篇通講｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安道长在線講道：《列子》八篇通講 （圓安道长 主講） 沖虛明道、全性保真、修身安心 主講師資： 圓安道长 潛心道學多年，專研丹道經典、道家義理、 心性修持與傳統文化教學， 以淺白貼心之語，闡發玄微至道， 引導後學明理、修心、實踐、證道。 課程緣起： 《列子》一書，古稱《沖虛至德真經》， 與《老子》...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-22">2026-03-22</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/f94ff2f00f89.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/f94ff2f00f89.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -66,5 +82,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>《常清靜經参道德经》「經文-注釋-修持要點」三合一誦讀手冊｜圓安道語公開預覽</title>
     <meta name="description" content="《常清靜經参道德经》「經文-注釋-修持要點」三合一誦讀手冊 說明 本手冊以全真派核心修持為導向，拆分為7日誦讀計畫，每日內容包含「經文精選」「祖師注釋」「當日修持要點」，搭配「祖師語錄備忘」，便於日常積累、逐步悟透經義。所有內容均源自《重陽全真集》《長春真人內丹詩注》等權威典籍，確保學理正統。 第一...">
     <link rel="canonical" href="https://taoism.com.tw/articles/43fbd51c9fec.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="《常清靜經参道德经》「經文-注釋-修持要點」三合一誦讀手冊｜圓安道語公開預覽">
+    <meta property="og:description" content="《常清靜經参道德经》「經文-注釋-修持要點」三合一誦讀手冊 說明 本手冊以全真派核心修持為導向，拆分為7日誦讀計畫，每日內容包含「經文精選」「祖師注釋」「當日修持要點」，搭配「祖師語錄備忘」，便於日常積累、逐步悟透經義。所有內容均源自《重陽全真集》《長春真人內丹詩注》等權威典籍，確保學理正統。 第一...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/43fbd51c9fec.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="《常清靜經参道德经》「經文-注釋-修持要點」三合一誦讀手冊｜圓安道語公開預覽">
+    <meta name="twitter:description" content="《常清靜經参道德经》「經文-注釋-修持要點」三合一誦讀手冊 說明 本手冊以全真派核心修持為導向，拆分為7日誦讀計畫，每日內容包含「經文精選」「祖師注釋」「當日修持要點」，搭配「祖師語錄備忘」，便於日常積累、逐步悟透經義。所有內容均源自《重陽全真集》《長春真人內丹詩注》等權威典籍，確保學理正統。 第一...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-11-30">2025-11-30</time>
             <span class="category">修心煉性</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/43fbd51c9fec.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/43fbd51c9fec.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -81,5 +97,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

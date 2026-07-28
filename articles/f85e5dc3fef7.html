@@ -17,7 +17,18 @@
     <title>圓安論道：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安論道： 太乙救苦天尊信仰在全真派與民間信仰中的差異 太乙救苦天尊信仰流傳既廣，在全真派教門修持與民間世俗奉祀中，因立足點與實踐方式不同，形成了明顯差異，核心區別體現在以下數端： 一、 信仰核心：內修性命與外求護佑之分 全真派奉天尊為內丹修持的「炁體象徵」與「功行導引」，其核心不在於祈求天尊消災賜...">
     <link rel="canonical" href="https://taoism.com.tw/articles/f85e5dc3fef7.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安論道： 太乙救苦天尊信仰在全真派與民間信仰中的差異 太乙救苦天尊信仰流傳既廣，在全真派教門修持與民間世俗奉祀中，因立足點與實踐方式不同，形成了明顯差異，核心區別體現在以下數端： 一、 信仰核心：內修性命與外求護佑之分 全真派奉天尊為內丹修持的「炁體象徵」與「功行導引」，其核心不在於祈求天尊消災賜...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/f85e5dc3fef7.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安論道：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安論道： 太乙救苦天尊信仰在全真派與民間信仰中的差異 太乙救苦天尊信仰流傳既廣，在全真派教門修持與民間世俗奉祀中，因立足點與實踐方式不同，形成了明顯差異，核心區別體現在以下數端： 一、 信仰核心：內修性命與外求護佑之分 全真派奉天尊為內丹修持的「炁體象徵」與「功行導引」，其核心不在於祈求天尊消災賜...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-12-12">2025-12-12</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/f85e5dc3fef7.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/f85e5dc3fef7.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -49,5 +65,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

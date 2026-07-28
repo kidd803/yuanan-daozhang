@@ -17,7 +17,18 @@
     <title>介紹祝由術：｜圓安道語公開預覽</title>
     <meta name="description" content="介紹祝由術： 「祝由術」這門古老而神秘的醫術。它屬於傳統五術中「醫」的範疇，是其中最富玄學色彩的一支。 祝由術綜論 祝由術，又稱為「咒禁科」或「祝由科」，是一種起源於上古的巫醫療法，其核心在於透過符咒、儀式、祈禱、語言等「信息」手段，來調動人體與自然的能量（氣），從而達到治療疾病的目的。它並非單純的...">
     <link rel="canonical" href="https://taoism.com.tw/articles/13413afd7dfc.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="介紹祝由術：｜圓安道語公開預覽">
+    <meta property="og:description" content="介紹祝由術： 「祝由術」這門古老而神秘的醫術。它屬於傳統五術中「醫」的範疇，是其中最富玄學色彩的一支。 祝由術綜論 祝由術，又稱為「咒禁科」或「祝由科」，是一種起源於上古的巫醫療法，其核心在於透過符咒、儀式、祈禱、語言等「信息」手段，來調動人體與自然的能量（氣），從而達到治療疾病的目的。它並非單純的...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/13413afd7dfc.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="介紹祝由術：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="介紹祝由術： 「祝由術」這門古老而神秘的醫術。它屬於傳統五術中「醫」的範疇，是其中最富玄學色彩的一支。 祝由術綜論 祝由術，又稱為「咒禁科」或「祝由科」，是一種起源於上古的巫醫療法，其核心在於透過符咒、儀式、祈禱、語言等「信息」手段，來調動人體與自然的能量（氣），從而達到治療疾病的目的。它並非單純的...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-11-23">2025-11-23</time>
             <span class="category">處世立命</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/13413afd7dfc.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/13413afd7dfc.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -73,5 +89,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

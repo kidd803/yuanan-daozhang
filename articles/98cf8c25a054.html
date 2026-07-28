@@ -17,7 +17,18 @@
     <title>通靈覺知五十條正見問答(4)｜圓安道語公開預覽</title>
     <meta name="description" content="通靈覺知五十條正見問答(4) 問：通靈感應是先天稟賦，還是後天修成？ 答：分為二種， 一為天生稟賦，先天氣場清透、 陰陽之門未封，自幼靈感敏銳； 二為後天修持，藉由清心寡欲、 靜坐養神，慢慢喚醒靈覺感知，皆為靈性覺醒之路。">
     <link rel="canonical" href="https://taoism.com.tw/articles/98cf8c25a054.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="通靈覺知五十條正見問答(4)｜圓安道語公開預覽">
+    <meta property="og:description" content="通靈覺知五十條正見問答(4) 問：通靈感應是先天稟賦，還是後天修成？ 答：分為二種， 一為天生稟賦，先天氣場清透、 陰陽之門未封，自幼靈感敏銳； 二為後天修持，藉由清心寡欲、 靜坐養神，慢慢喚醒靈覺感知，皆為靈性覺醒之路。">
+    <meta property="og:url" content="https://taoism.com.tw/articles/98cf8c25a054.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="通靈覺知五十條正見問答(4)｜圓安道語公開預覽">
+    <meta name="twitter:description" content="通靈覺知五十條正見問答(4) 問：通靈感應是先天稟賦，還是後天修成？ 答：分為二種， 一為天生稟賦，先天氣場清透、 陰陽之門未封，自幼靈感敏銳； 二為後天修持，藉由清心寡欲、 靜坐養神，慢慢喚醒靈覺感知，皆為靈性覺醒之路。">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-04">2026-05-04</time>
             <span class="category">人間修行</span>
             <span class="series-badge">通靈覺知 4篇</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/98cf8c25a054.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/98cf8c25a054.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -47,5 +63,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

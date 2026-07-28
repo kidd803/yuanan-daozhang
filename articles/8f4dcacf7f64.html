@@ -17,7 +17,18 @@
     <title>紫微斗術推演(九十六)｜圓安道語公開預覽</title>
     <meta name="description" content="紫微斗術推演(九十六) 紫微斗數 十四主星速記口訣（繁體完整版） 一、十四主星總綱 紫微天府號雙帝，日月同輝照命宮。 天機智巧武曲財，廉貞火烈氣如虹。 天同福厚天梁蔭，貪狼風火巨門凶。 七殺剛勇破軍變，十四主星定窮通。 二、紫微星（帝星、至尊、領導） 紫微至尊坐帝宮，威權領導氣如虹。 獨尊高傲心慈厚...">
     <link rel="canonical" href="https://taoism.com.tw/articles/8f4dcacf7f64.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="紫微斗術推演(九十六)｜圓安道語公開預覽">
+    <meta property="og:description" content="紫微斗術推演(九十六) 紫微斗數 十四主星速記口訣（繁體完整版） 一、十四主星總綱 紫微天府號雙帝，日月同輝照命宮。 天機智巧武曲財，廉貞火烈氣如虹。 天同福厚天梁蔭，貪狼風火巨門凶。 七殺剛勇破軍變，十四主星定窮通。 二、紫微星（帝星、至尊、領導） 紫微至尊坐帝宮，威權領導氣如虹。 獨尊高傲心慈厚...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/8f4dcacf7f64.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="紫微斗術推演(九十六)｜圓安道語公開預覽">
+    <meta name="twitter:description" content="紫微斗術推演(九十六) 紫微斗數 十四主星速記口訣（繁體完整版） 一、十四主星總綱 紫微天府號雙帝，日月同輝照命宮。 天機智巧武曲財，廉貞火烈氣如虹。 天同福厚天梁蔭，貪狼風火巨門凶。 七殺剛勇破軍變，十四主星定窮通。 二、紫微星（帝星、至尊、領導） 紫微至尊坐帝宮，威權領導氣如虹。 獨尊高傲心慈厚...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-17">2026-03-17</time>
             <span class="category">處世立命</span>
             <span class="series-badge">紫微斗數推演 96講</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/8f4dcacf7f64.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/8f4dcacf7f64.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -83,5 +99,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

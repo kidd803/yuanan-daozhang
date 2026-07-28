@@ -17,7 +17,18 @@
     <title>世間有言，造化從不輕易垂憐世人。｜圓安道語公開預覽</title>
     <meta name="description" content="世間有言，造化從不輕易垂憐世人。 天欲相扶，必先歷煉其身。磨人於生死得失之間，教人放下牽絆；困人於窮途潦倒之境，磨煉心魂幾近崩離；滌盡紛擾情絲，斬卻浮華貪念。這從非天譴，乃是天道對人心的洗煉與淬礪。 孟子云：「天將降大任於斯人也，必先苦其心志，勞其筋骨。」唯有歷經世事沉淪、墮入低谷之人，方能體會這句...">
     <link rel="canonical" href="https://taoism.com.tw/articles/1ffae65a023e.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="世間有言，造化從不輕易垂憐世人。｜圓安道語公開預覽">
+    <meta property="og:description" content="世間有言，造化從不輕易垂憐世人。 天欲相扶，必先歷煉其身。磨人於生死得失之間，教人放下牽絆；困人於窮途潦倒之境，磨煉心魂幾近崩離；滌盡紛擾情絲，斬卻浮華貪念。這從非天譴，乃是天道對人心的洗煉與淬礪。 孟子云：「天將降大任於斯人也，必先苦其心志，勞其筋骨。」唯有歷經世事沉淪、墮入低谷之人，方能體會這句...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/1ffae65a023e.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="世間有言，造化從不輕易垂憐世人。｜圓安道語公開預覽">
+    <meta name="twitter:description" content="世間有言，造化從不輕易垂憐世人。 天欲相扶，必先歷煉其身。磨人於生死得失之間，教人放下牽絆；困人於窮途潦倒之境，磨煉心魂幾近崩離；滌盡紛擾情絲，斬卻浮華貪念。這從非天譴，乃是天道對人心的洗煉與淬礪。 孟子云：「天將降大任於斯人也，必先苦其心志，勞其筋骨。」唯有歷經世事沉淪、墮入低谷之人，方能體會這句...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-14">2026-06-14</time>
             <span class="category">修心煉性</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/1ffae65a023e.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/1ffae65a023e.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -44,5 +60,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

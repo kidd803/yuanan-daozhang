@@ -17,7 +17,18 @@
     <title>論東方修行文化的內涵、體系與現代傳承｜圓安道語公開預覽</title>
     <meta name="description" content="論東方修行文化的內涵、體系與現代傳承 摘要 修行文化是中華傳統文化的核心精髓，貫穿儒、釋、道三教千年文脉，是古人安身立命、修心立德、悟道歸真的生命實踐體系。不同於外在的制度文化、物質文化，修行文化以「身心修證」為核心，講求內求諸己、知行合一，通過持續的自律、自省、修煉與踐行，實現心性淨化、人格完善與...">
     <link rel="canonical" href="https://taoism.com.tw/articles/ad1fe471014c.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="論東方修行文化的內涵、體系與現代傳承｜圓安道語公開預覽">
+    <meta property="og:description" content="論東方修行文化的內涵、體系與現代傳承 摘要 修行文化是中華傳統文化的核心精髓，貫穿儒、釋、道三教千年文脉，是古人安身立命、修心立德、悟道歸真的生命實踐體系。不同於外在的制度文化、物質文化，修行文化以「身心修證」為核心，講求內求諸己、知行合一，通過持續的自律、自省、修煉與踐行，實現心性淨化、人格完善與...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/ad1fe471014c.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="論東方修行文化的內涵、體系與現代傳承｜圓安道語公開預覽">
+    <meta name="twitter:description" content="論東方修行文化的內涵、體系與現代傳承 摘要 修行文化是中華傳統文化的核心精髓，貫穿儒、釋、道三教千年文脉，是古人安身立命、修心立德、悟道歸真的生命實踐體系。不同於外在的制度文化、物質文化，修行文化以「身心修證」為核心，講求內求諸己、知行合一，通過持續的自律、自省、修煉與踐行，實現心性淨化、人格完善與...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-22">2026-05-22</time>
             <span class="category">全真道脈</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/ad1fe471014c.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/ad1fe471014c.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -73,5 +89,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

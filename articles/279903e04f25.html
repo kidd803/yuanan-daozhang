@@ -17,7 +17,18 @@
     <title>書店老闆讀全真道｜《全真道歷史》第二十講｜圓安道語公開預覽</title>
     <meta name="description" content="書店老闆讀全真道｜《全真道歷史》第二十講 第一章｜傳戒授籙 第二節｜金元授籙史——籙與授籙 第一講｜經、符、籙：道教傳法的三個核心概念 金元全真道的授籙史，第一步不能急著問「誰授了什麼籙」，而是要先弄清楚：經、符、籙到底是什麼，它們彼此又是什麼關係。 因為在道教傳法體系裡，經、戒、符、籙本來就是彼此...">
     <link rel="canonical" href="https://taoism.com.tw/articles/279903e04f25.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="書店老闆讀全真道｜《全真道歷史》第二十講｜圓安道語公開預覽">
+    <meta property="og:description" content="書店老闆讀全真道｜《全真道歷史》第二十講 第一章｜傳戒授籙 第二節｜金元授籙史——籙與授籙 第一講｜經、符、籙：道教傳法的三個核心概念 金元全真道的授籙史，第一步不能急著問「誰授了什麼籙」，而是要先弄清楚：經、符、籙到底是什麼，它們彼此又是什麼關係。 因為在道教傳法體系裡，經、戒、符、籙本來就是彼此...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/279903e04f25.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="書店老闆讀全真道｜《全真道歷史》第二十講｜圓安道語公開預覽">
+    <meta name="twitter:description" content="書店老闆讀全真道｜《全真道歷史》第二十講 第一章｜傳戒授籙 第二節｜金元授籙史——籙與授籙 第一講｜經、符、籙：道教傳法的三個核心概念 金元全真道的授籙史，第一步不能急著問「誰授了什麼籙」，而是要先弄清楚：經、符、籙到底是什麼，它們彼此又是什麼關係。 因為在道教傳法體系裡，經、戒、符、籙本來就是彼此...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-25">2026-05-25</time>
             <span class="category">全真道脈</span>
             <span class="series-badge">全真道歷史 20講</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/279903e04f25.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/279903e04f25.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -53,5 +69,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

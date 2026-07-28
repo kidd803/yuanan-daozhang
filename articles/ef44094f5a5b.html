@@ -17,7 +17,18 @@
     <title>通靈覺知五十條正見問答(31)｜圓安道語公開預覽</title>
     <meta name="description" content="通靈覺知五十條正見問答(31) 問： 靈覺成熟後，會自然開啟天眼嗎？ 答： 靈性覺醒至一定層次，會伴生內視、 遙視、陰陽觀照之能，皆為修行附帶餘事。 不可執著貪求，沉迷神通必入歧途、耗散本心。">
     <link rel="canonical" href="https://taoism.com.tw/articles/ef44094f5a5b.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="通靈覺知五十條正見問答(31)｜圓安道語公開預覽">
+    <meta property="og:description" content="通靈覺知五十條正見問答(31) 問： 靈覺成熟後，會自然開啟天眼嗎？ 答： 靈性覺醒至一定層次，會伴生內視、 遙視、陰陽觀照之能，皆為修行附帶餘事。 不可執著貪求，沉迷神通必入歧途、耗散本心。">
+    <meta property="og:url" content="https://taoism.com.tw/articles/ef44094f5a5b.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="通靈覺知五十條正見問答(31)｜圓安道語公開預覽">
+    <meta name="twitter:description" content="通靈覺知五十條正見問答(31) 問： 靈覺成熟後，會自然開啟天眼嗎？ 答： 靈性覺醒至一定層次，會伴生內視、 遙視、陰陽觀照之能，皆為修行附帶餘事。 不可執著貪求，沉迷神通必入歧途、耗散本心。">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-08">2026-06-08</time>
             <span class="category">人間修行</span>
             <span class="series-badge">通靈覺知 31篇</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/ef44094f5a5b.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/ef44094f5a5b.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -47,5 +63,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

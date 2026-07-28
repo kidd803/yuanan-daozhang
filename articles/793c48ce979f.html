@@ -17,7 +17,18 @@
     <title>《列子·黃帝第二》全文＋白話譯文＋注釋｜圓安道語公開預覽</title>
     <meta name="description" content="《列子·黃帝第二》全文＋白話譯文＋注釋 一、本篇概要 《黃帝第二》是《列子》全書第二篇，專講修身、養神、悟道、入玄之法，以黃帝悟道為核心，闡明「虛心、靜氣、忘我、順物」即可與道合一，達到「神遊物外、不傷不懼、感化萬物」的至人境界。 二、原文（精選核心段落） 黃帝即位十有五年，喜天下戴己，養正命，娱耳...">
     <link rel="canonical" href="https://taoism.com.tw/articles/793c48ce979f.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="《列子·黃帝第二》全文＋白話譯文＋注釋｜圓安道語公開預覽">
+    <meta property="og:description" content="《列子·黃帝第二》全文＋白話譯文＋注釋 一、本篇概要 《黃帝第二》是《列子》全書第二篇，專講修身、養神、悟道、入玄之法，以黃帝悟道為核心，闡明「虛心、靜氣、忘我、順物」即可與道合一，達到「神遊物外、不傷不懼、感化萬物」的至人境界。 二、原文（精選核心段落） 黃帝即位十有五年，喜天下戴己，養正命，娱耳...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/793c48ce979f.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="《列子·黃帝第二》全文＋白話譯文＋注釋｜圓安道語公開預覽">
+    <meta name="twitter:description" content="《列子·黃帝第二》全文＋白話譯文＋注釋 一、本篇概要 《黃帝第二》是《列子》全書第二篇，專講修身、養神、悟道、入玄之法，以黃帝悟道為核心，闡明「虛心、靜氣、忘我、順物」即可與道合一，達到「神遊物外、不傷不懼、感化萬物」的至人境界。 二、原文（精選核心段落） 黃帝即位十有五年，喜天下戴己，養正命，娱耳...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-03-23">2026-03-23</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/793c48ce979f.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/793c48ce979f.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -87,5 +103,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

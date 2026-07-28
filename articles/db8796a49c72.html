@@ -17,7 +17,18 @@
     <title>論當今教丹道的現像｜圓安道語公開預覽</title>
     <meta name="description" content="論當今教丹道的現像 丹道肇自黃老，成於鍾呂，盛於全真，本以煉精化氣、煉氣化神、煉神還虛為次第，以德立基、以訣行功、以靜證道，為修真入聖之正途 。邇來世道變遷，丹道流傳魚龍混雜，真訣隱晦，偽學橫行，施教者良莠參差，習道者趨利躁進，故綜察時弊，辨析真偽，以明丹道授受之本旨。 一、今世傳丹之弊 （一）商業...">
     <link rel="canonical" href="https://taoism.com.tw/articles/db8796a49c72.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="論當今教丹道的現像｜圓安道語公開預覽">
+    <meta property="og:description" content="論當今教丹道的現像 丹道肇自黃老，成於鍾呂，盛於全真，本以煉精化氣、煉氣化神、煉神還虛為次第，以德立基、以訣行功、以靜證道，為修真入聖之正途 。邇來世道變遷，丹道流傳魚龍混雜，真訣隱晦，偽學橫行，施教者良莠參差，習道者趨利躁進，故綜察時弊，辨析真偽，以明丹道授受之本旨。 一、今世傳丹之弊 （一）商業...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/db8796a49c72.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="論當今教丹道的現像｜圓安道語公開預覽">
+    <meta name="twitter:description" content="論當今教丹道的現像 丹道肇自黃老，成於鍾呂，盛於全真，本以煉精化氣、煉氣化神、煉神還虛為次第，以德立基、以訣行功、以靜證道，為修真入聖之正途 。邇來世道變遷，丹道流傳魚龍混雜，真訣隱晦，偽學橫行，施教者良莠參差，習道者趨利躁進，故綜察時弊，辨析真偽，以明丹道授受之本旨。 一、今世傳丹之弊 （一）商業...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-05">2026-06-05</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/db8796a49c72.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/db8796a49c72.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -56,5 +72,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

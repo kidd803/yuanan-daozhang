@@ -17,7 +17,18 @@
     <title>📜 第一章｜拜師之日｜圓安道語公開預覽</title>
     <meta name="description" content="📜 第一章｜拜師之日 2013年7月19日， 河南鹿邑太清宮全真龍門派、 石永田道長一行五人抵達台灣。 隔日，7月20日， 拜師大典於彰化花壇長春道觀舉行。 儀式依科儀進行。 設壇。 啟請。 上香。 宣讀疏文。 弟子依序行禮。 跪拜、叩首、受名。 過程簡單而莊重。 沒有鋪張...">
     <link rel="canonical" href="https://taoism.com.tw/articles/74b75f5d9527.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="📜 第一章｜拜師之日｜圓安道語公開預覽">
+    <meta property="og:description" content="📜 第一章｜拜師之日 2013年7月19日， 河南鹿邑太清宮全真龍門派、 石永田道長一行五人抵達台灣。 隔日，7月20日， 拜師大典於彰化花壇長春道觀舉行。 儀式依科儀進行。 設壇。 啟請。 上香。 宣讀疏文。 弟子依序行禮。 跪拜、叩首、受名。 過程簡單而莊重。 沒有鋪張...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/74b75f5d9527.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="📜 第一章｜拜師之日｜圓安道語公開預覽">
+    <meta name="twitter:description" content="📜 第一章｜拜師之日 2013年7月19日， 河南鹿邑太清宮全真龍門派、 石永田道長一行五人抵達台灣。 隔日，7月20日， 拜師大典於彰化花壇長春道觀舉行。 儀式依科儀進行。 設壇。 啟請。 上香。 宣讀疏文。 弟子依序行禮。 跪拜、叩首、受名。 過程簡單而莊重。 沒有鋪張...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-02-23">2026-02-23</time>
             <span class="category">全真道脈</span>
             <span class="series-badge">全真道法統 1章</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/74b75f5d9527.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/74b75f5d9527.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -55,5 +71,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

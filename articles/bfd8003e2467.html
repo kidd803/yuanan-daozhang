@@ -17,7 +17,18 @@
     <title>《清靜經》四層體系深度詮釋：從道體到性命實修｜圓安道語公開預覽</title>
     <meta name="description" content="《清靜經》四層體系深度詮釋：從道體到性命實修 研讀《太上老君說常清靜經》，核心在把握宇宙論—心性論—修養論—境界論四層完整體系。將「清靜」從抽象文字義理，轉化為可體悟、可踐行、可證道的性命智慧，貫通道體、心性、修持與證果，盡顯道家清靜無為、返本歸真的修持真諦。 一、宇宙論：道本清靜，為萬化根元（本體...">
     <link rel="canonical" href="https://taoism.com.tw/articles/bfd8003e2467.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="《清靜經》四層體系深度詮釋：從道體到性命實修｜圓安道語公開預覽">
+    <meta property="og:description" content="《清靜經》四層體系深度詮釋：從道體到性命實修 研讀《太上老君說常清靜經》，核心在把握宇宙論—心性論—修養論—境界論四層完整體系。將「清靜」從抽象文字義理，轉化為可體悟、可踐行、可證道的性命智慧，貫通道體、心性、修持與證果，盡顯道家清靜無為、返本歸真的修持真諦。 一、宇宙論：道本清靜，為萬化根元（本體...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/bfd8003e2467.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="《清靜經》四層體系深度詮釋：從道體到性命實修｜圓安道語公開預覽">
+    <meta name="twitter:description" content="《清靜經》四層體系深度詮釋：從道體到性命實修 研讀《太上老君說常清靜經》，核心在把握宇宙論—心性論—修養論—境界論四層完整體系。將「清靜」從抽象文字義理，轉化為可體悟、可踐行、可證道的性命智慧，貫通道體、心性、修持與證果，盡顯道家清靜無為、返本歸真的修持真諦。 一、宇宙論：道本清靜，為萬化根元（本體...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-10">2026-06-10</time>
             <span class="category">養生性命</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/bfd8003e2467.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/bfd8003e2467.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -66,5 +82,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

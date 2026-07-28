@@ -17,7 +17,18 @@
     <title>丘處機祖師《莫愁詩》｜圓安道語公開預覽</title>
     <meta name="description" content="丘處機祖師《莫愁詩》 莫愁詩 元·丘處機 衣食無虧便好休，人生世上一蜉蝣。 石崇未享千年富，韓信空成十面謀。 花落三春鶯帶恨，菊開九月雁含愁。 山林多少幽閒趣，何必榮封萬戶侯？ 釋旨 此詩為全真道祖丘處機傳世之作，載《磻溪集》。以知足戒貪、看破名利、順應自然為核心，盡顯道家曠達胸懷。 - 首聯點明：...">
     <link rel="canonical" href="https://taoism.com.tw/articles/f873e516efda.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="丘處機祖師《莫愁詩》｜圓安道語公開預覽">
+    <meta property="og:description" content="丘處機祖師《莫愁詩》 莫愁詩 元·丘處機 衣食無虧便好休，人生世上一蜉蝣。 石崇未享千年富，韓信空成十面謀。 花落三春鶯帶恨，菊開九月雁含愁。 山林多少幽閒趣，何必榮封萬戶侯？ 釋旨 此詩為全真道祖丘處機傳世之作，載《磻溪集》。以知足戒貪、看破名利、順應自然為核心，盡顯道家曠達胸懷。 - 首聯點明：...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/f873e516efda.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="丘處機祖師《莫愁詩》｜圓安道語公開預覽">
+    <meta name="twitter:description" content="丘處機祖師《莫愁詩》 莫愁詩 元·丘處機 衣食無虧便好休，人生世上一蜉蝣。 石崇未享千年富，韓信空成十面謀。 花落三春鶯帶恨，菊開九月雁含愁。 山林多少幽閒趣，何必榮封萬戶侯？ 釋旨 此詩為全真道祖丘處機傳世之作，載《磻溪集》。以知足戒貪、看破名利、順應自然為核心，盡顯道家曠達胸懷。 - 首聯點明：...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-16">2026-06-16</time>
             <span class="category">全真道脈</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/f873e516efda.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/f873e516efda.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -50,5 +66,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

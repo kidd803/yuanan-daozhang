@@ -17,7 +17,18 @@
     <title>第十四卷｜祖師教典門徑｜圓安道語公開預覽</title>
     <meta name="description" content="第十四卷｜祖師教典門徑 第一章｜開經引言，先立教門 這一卷。 所講的。 已不只是王重陽祖師有哪些著作。 ⸻ 而是要把祖師全部著作。 整理成一套： 可教。 可講。 可學。 可依次而入的門徑。 ⸻ 所以本卷一開始。 先不急著分講各書。 ⸻ 而先立總論。 先明其宗。 ⸻ 依這份教學提綱來看。 祖師著作的地...">
     <link rel="canonical" href="https://taoism.com.tw/articles/3e9480a125f9.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="第十四卷｜祖師教典門徑｜圓安道語公開預覽">
+    <meta property="og:description" content="第十四卷｜祖師教典門徑 第一章｜開經引言，先立教門 這一卷。 所講的。 已不只是王重陽祖師有哪些著作。 ⸻ 而是要把祖師全部著作。 整理成一套： 可教。 可講。 可學。 可依次而入的門徑。 ⸻ 所以本卷一開始。 先不急著分講各書。 ⸻ 而先立總論。 先明其宗。 ⸻ 依這份教學提綱來看。 祖師著作的地...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/3e9480a125f9.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="第十四卷｜祖師教典門徑｜圓安道語公開預覽">
+    <meta name="twitter:description" content="第十四卷｜祖師教典門徑 第一章｜開經引言，先立教門 這一卷。 所講的。 已不只是王重陽祖師有哪些著作。 ⸻ 而是要把祖師全部著作。 整理成一套： 可教。 可講。 可學。 可依次而入的門徑。 ⸻ 所以本卷一開始。 先不急著分講各書。 ⸻ 而先立總論。 先明其宗。 ⸻ 依這份教學提綱來看。 祖師著作的地...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-05">2026-05-05</time>
             <span class="category">修心煉性</span>
             <span class="series-badge">全真道法統</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/3e9480a125f9.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/3e9480a125f9.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -88,5 +104,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

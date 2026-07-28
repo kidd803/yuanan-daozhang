@@ -17,7 +17,18 @@
     <title>命理術數教學(三十八)｜圓安道語公開預覽</title>
     <meta name="description" content="命理術數教學(三十八) 紫微斗數｜太陽星的星性與組合 太陽星為紫微斗數「四大主星」之一，屬丙火，中天陽星之精，化氣為「貴」，是官祿宮之主，司掌光明、博愛、聲名、權貴與公開事務。其核心特質為「主動散發」，如日經天，有照拂萬物之德，亦有過度操勞之虞；吉凶強弱高度依賴「廟旺落陷」與「晝夜生人」，是判斷時的...">
     <link rel="canonical" href="https://taoism.com.tw/articles/e1bbee07578e.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="命理術數教學(三十八)｜圓安道語公開預覽">
+    <meta property="og:description" content="命理術數教學(三十八) 紫微斗數｜太陽星的星性與組合 太陽星為紫微斗數「四大主星」之一，屬丙火，中天陽星之精，化氣為「貴」，是官祿宮之主，司掌光明、博愛、聲名、權貴與公開事務。其核心特質為「主動散發」，如日經天，有照拂萬物之德，亦有過度操勞之虞；吉凶強弱高度依賴「廟旺落陷」與「晝夜生人」，是判斷時的...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/e1bbee07578e.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="命理術數教學(三十八)｜圓安道語公開預覽">
+    <meta name="twitter:description" content="命理術數教學(三十八) 紫微斗數｜太陽星的星性與組合 太陽星為紫微斗數「四大主星」之一，屬丙火，中天陽星之精，化氣為「貴」，是官祿宮之主，司掌光明、博愛、聲名、權貴與公開事務。其核心特質為「主動散發」，如日經天，有照拂萬物之德，亦有過度操勞之虞；吉凶強弱高度依賴「廟旺落陷」與「晝夜生人」，是判斷時的...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-02-25">2026-02-25</time>
             <span class="category">處世立命</span>
             <span class="series-badge">紫微斗數推演 38講</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/e1bbee07578e.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/e1bbee07578e.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -49,5 +65,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

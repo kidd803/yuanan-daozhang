@@ -17,7 +17,18 @@
     <title>十二經絡流注與內丹修煉｜圓安道語公開預覽</title>
     <meta name="description" content="十二經絡流注與內丹修煉 一、流注總綱 經氣周流，如環無端；陰陽相貫，升降有常。 手三陰從胸走手，手三陽從手走頭，足三陽從頭走足，足三陰從足走腹，終而復始，维系臟腑之靈、氣血之運。《黃庭內景經·肝氣章》云：「肝氣周流終不息，灌溉五臟生榮華」，此之謂也。 二、流注順序（附內丹關聯） 1. 手太陰肺經：起...">
     <link rel="canonical" href="https://taoism.com.tw/articles/0e2c92bc39a3.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="十二經絡流注與內丹修煉｜圓安道語公開預覽">
+    <meta property="og:description" content="十二經絡流注與內丹修煉 一、流注總綱 經氣周流，如環無端；陰陽相貫，升降有常。 手三陰從胸走手，手三陽從手走頭，足三陽從頭走足，足三陰從足走腹，終而復始，维系臟腑之靈、氣血之運。《黃庭內景經·肝氣章》云：「肝氣周流終不息，灌溉五臟生榮華」，此之謂也。 二、流注順序（附內丹關聯） 1. 手太陰肺經：起...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/0e2c92bc39a3.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="十二經絡流注與內丹修煉｜圓安道語公開預覽">
+    <meta name="twitter:description" content="十二經絡流注與內丹修煉 一、流注總綱 經氣周流，如環無端；陰陽相貫，升降有常。 手三陰從胸走手，手三陽從手走頭，足三陽從頭走足，足三陰從足走腹，終而復始，维系臟腑之靈、氣血之運。《黃庭內景經·肝氣章》云：「肝氣周流終不息，灌溉五臟生榮華」，此之謂也。 二、流注順序（附內丹關聯） 1. 手太陰肺經：起...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-11-29">2025-11-29</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/0e2c92bc39a3.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/0e2c92bc39a3.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -52,5 +68,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

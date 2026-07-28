@@ -17,7 +17,18 @@
     <title>論靈寶派｜圓安道語公開預覽</title>
     <meta name="description" content="論靈寶派 靈寶派為道教三大主流宗脈之一，與上清派、天師道鼎足而立，淵源深遠，教法完備，科儀弘闊，歷千載而傳承不絕，既是中古道教發展之核心支脈，亦是世間齋醮度亡、祈禳禳解諸科儀之祖源，於道教教理、儀軌、修煉、濟度諸端皆有獨特體系，今綜其源流、教義、修持、科範、傳衍與宗風，詳為論述。 一、靈寶派之淵源與...">
     <link rel="canonical" href="https://taoism.com.tw/articles/e54c4d6ad981.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="論靈寶派｜圓安道語公開預覽">
+    <meta property="og:description" content="論靈寶派 靈寶派為道教三大主流宗脈之一，與上清派、天師道鼎足而立，淵源深遠，教法完備，科儀弘闊，歷千載而傳承不絕，既是中古道教發展之核心支脈，亦是世間齋醮度亡、祈禳禳解諸科儀之祖源，於道教教理、儀軌、修煉、濟度諸端皆有獨特體系，今綜其源流、教義、修持、科範、傳衍與宗風，詳為論述。 一、靈寶派之淵源與...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/e54c4d6ad981.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="論靈寶派｜圓安道語公開預覽">
+    <meta name="twitter:description" content="論靈寶派 靈寶派為道教三大主流宗脈之一，與上清派、天師道鼎足而立，淵源深遠，教法完備，科儀弘闊，歷千載而傳承不絕，既是中古道教發展之核心支脈，亦是世間齋醮度亡、祈禳禳解諸科儀之祖源，於道教教理、儀軌、修煉、濟度諸端皆有獨特體系，今綜其源流、教義、修持、科範、傳衍與宗風，詳為論述。 一、靈寶派之淵源與...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-30">2026-05-30</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/e54c4d6ad981.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/e54c4d6ad981.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -63,5 +79,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

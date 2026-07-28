@@ -17,7 +17,18 @@
     <title>道醫與中醫異同總述（文言體附經典引據）｜圓安道語公開預覽</title>
     <meta name="description" content="道醫與中醫異同總述（文言體附經典引據） 道醫與中醫，同源於中華聖哲之智，共契「陰陽調和」之旨，然其根脈、旨歸、方術各有攸殊，今循經典，撮其大要，以資弘法傳道之用： 一、根脈之別 - 道醫： 本於道家玄學，以《道德經》「道法自然」為綱，《黃庭經》「天人相應」為緒，視人身為「小玄穹」，必與天地氣化同頻。...">
     <link rel="canonical" href="https://taoism.com.tw/articles/32de6f83c909.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="道醫與中醫異同總述（文言體附經典引據）｜圓安道語公開預覽">
+    <meta property="og:description" content="道醫與中醫異同總述（文言體附經典引據） 道醫與中醫，同源於中華聖哲之智，共契「陰陽調和」之旨，然其根脈、旨歸、方術各有攸殊，今循經典，撮其大要，以資弘法傳道之用： 一、根脈之別 - 道醫： 本於道家玄學，以《道德經》「道法自然」為綱，《黃庭經》「天人相應」為緒，視人身為「小玄穹」，必與天地氣化同頻。...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/32de6f83c909.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="道醫與中醫異同總述（文言體附經典引據）｜圓安道語公開預覽">
+    <meta name="twitter:description" content="道醫與中醫異同總述（文言體附經典引據） 道醫與中醫，同源於中華聖哲之智，共契「陰陽調和」之旨，然其根脈、旨歸、方術各有攸殊，今循經典，撮其大要，以資弘法傳道之用： 一、根脈之別 - 道醫： 本於道家玄學，以《道德經》「道法自然」為綱，《黃庭經》「天人相應」為緒，視人身為「小玄穹」，必與天地氣化同頻。...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2025-11-29">2025-11-29</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/32de6f83c909.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/32de6f83c909.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -53,5 +69,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

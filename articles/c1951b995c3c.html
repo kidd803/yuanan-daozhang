@@ -17,7 +17,18 @@
     <title>蕭進銘教授之道教研究學術成就與學術貢獻專論｜圓安道語公開預覽</title>
     <meta name="description" content="蕭進銘教授之道教研究學術成就與學術貢獻專論 蕭進銘教授為當代臺灣極為重要、具代表性的道教文化與丹道學術研究者，長年專注於全真龍門派、伍柳丹法、臺灣內丹道脈傳承、近现代道教在地化發展、道門身體修養論等議題。不同於傳統民俗取向的道教研究，蕭進銘教授跳脫「廟會、科儀、祭祀」的表層觀察，深入道教內丹修證、道...">
     <link rel="canonical" href="https://taoism.com.tw/articles/c1951b995c3c.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="蕭進銘教授之道教研究學術成就與學術貢獻專論｜圓安道語公開預覽">
+    <meta property="og:description" content="蕭進銘教授之道教研究學術成就與學術貢獻專論 蕭進銘教授為當代臺灣極為重要、具代表性的道教文化與丹道學術研究者，長年專注於全真龍門派、伍柳丹法、臺灣內丹道脈傳承、近现代道教在地化發展、道門身體修養論等議題。不同於傳統民俗取向的道教研究，蕭進銘教授跳脫「廟會、科儀、祭祀」的表層觀察，深入道教內丹修證、道...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/c1951b995c3c.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="蕭進銘教授之道教研究學術成就與學術貢獻專論｜圓安道語公開預覽">
+    <meta name="twitter:description" content="蕭進銘教授之道教研究學術成就與學術貢獻專論 蕭進銘教授為當代臺灣極為重要、具代表性的道教文化與丹道學術研究者，長年專注於全真龍門派、伍柳丹法、臺灣內丹道脈傳承、近现代道教在地化發展、道門身體修養論等議題。不同於傳統民俗取向的道教研究，蕭進銘教授跳脫「廟會、科儀、祭祀」的表層觀察，深入道教內丹修證、道...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-06-01">2026-06-01</time>
             <span class="category">丹道修真</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/c1951b995c3c.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/c1951b995c3c.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -73,5 +89,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -17,7 +17,18 @@
     <title>《丘长春祖师语录》｜圓安道語公開預覽</title>
     <meta name="description" content="《丘长春祖师语录》 若好尚神通，便非大道。 或问曰：「北宗道法至吾师而大行，全真之盛，百古未有，亦尚神通变化否？」 师曰：「若好尚神通，便非大道，极平常，不作奇特想，只要心真，何事不办！吾侍重阳师三载，未沐一言之诲，若起嗔心，久为下类矣。惟鞭策之甚，真为爱我之切，故归化时，方有『此子可教，吾宗赖有大...">
     <link rel="canonical" href="https://taoism.com.tw/articles/27da91e1f998.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="《丘长春祖师语录》｜圓安道語公開預覽">
+    <meta property="og:description" content="《丘长春祖师语录》 若好尚神通，便非大道。 或问曰：「北宗道法至吾师而大行，全真之盛，百古未有，亦尚神通变化否？」 师曰：「若好尚神通，便非大道，极平常，不作奇特想，只要心真，何事不办！吾侍重阳师三载，未沐一言之诲，若起嗔心，久为下类矣。惟鞭策之甚，真为爱我之切，故归化时，方有『此子可教，吾宗赖有大...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/27da91e1f998.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="《丘长春祖师语录》｜圓安道語公開預覽">
+    <meta name="twitter:description" content="《丘长春祖师语录》 若好尚神通，便非大道。 或问曰：「北宗道法至吾师而大行，全真之盛，百古未有，亦尚神通变化否？」 师曰：「若好尚神通，便非大道，极平常，不作奇特想，只要心真，何事不办！吾侍重阳师三载，未沐一言之诲，若起嗔心，久为下类矣。惟鞭策之甚，真为爱我之切，故归化时，方有『此子可教，吾宗赖有大...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2018-10-31">2018-10-31</time>
             <span class="category">悟道真詮</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/27da91e1f998.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/27da91e1f998.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -45,5 +61,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

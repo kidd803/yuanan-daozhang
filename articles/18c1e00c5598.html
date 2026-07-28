@@ -17,7 +17,18 @@
     <title>圓安道長、守脈之人：｜圓安道語公開預覽</title>
     <meta name="description" content="圓安道長、守脈之人： 圓安道長為當代全真龍門法脈傳承者，深耕丹道修持、道脈考證、宮觀弘化與道學闡揚數十載，承全真祖師性命雙修之正旨，融全真龍門清靜修真之宗風，兼通內丹實修、經典註疏、道務實務與兩岸道脈交流。 其立身行道，上繼王重陽、丘長春全真薪火，下開海疆道門弘化之新局，於道脈傳承、經義闡釋、宮觀興...">
     <link rel="canonical" href="https://taoism.com.tw/articles/18c1e00c5598.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="圓安道長、守脈之人：｜圓安道語公開預覽">
+    <meta property="og:description" content="圓安道長、守脈之人： 圓安道長為當代全真龍門法脈傳承者，深耕丹道修持、道脈考證、宮觀弘化與道學闡揚數十載，承全真祖師性命雙修之正旨，融全真龍門清靜修真之宗風，兼通內丹實修、經典註疏、道務實務與兩岸道脈交流。 其立身行道，上繼王重陽、丘長春全真薪火，下開海疆道門弘化之新局，於道脈傳承、經義闡釋、宮觀興...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/18c1e00c5598.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="圓安道長、守脈之人：｜圓安道語公開預覽">
+    <meta name="twitter:description" content="圓安道長、守脈之人： 圓安道長為當代全真龍門法脈傳承者，深耕丹道修持、道脈考證、宮觀弘化與道學闡揚數十載，承全真祖師性命雙修之正旨，融全真龍門清靜修真之宗風，兼通內丹實修、經典註疏、道務實務與兩岸道脈交流。 其立身行道，上繼王重陽、丘長春全真薪火，下開海疆道門弘化之新局，於道脈傳承、經義闡釋、宮觀興...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-22">2026-05-22</time>
             <span class="category">龍門丹道</span>
             <span class="series-badge">全真龍門方便法門講</span><span class="series-badge">全真道法統</span>
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/18c1e00c5598.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/18c1e00c5598.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -61,5 +77,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

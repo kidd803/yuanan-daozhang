@@ -17,7 +17,18 @@
     <title>唯有當下活著，方為真我｜圓安道語公開預覽</title>
     <meta name="description" content="唯有當下活著，方為真我 天道無常，浮生脆薄。世間萬象皆為浮幻遷流，唯性命本真、當下一念，最為真實。 往歲前塵，皆為過影，執之不可留；來日未形，尚屬虛無，思之不可測。唯此時此刻之呼吸、萬物之見聞、本心之清寧，是吾人真實握有之造化。 修道立身，不追既往之憾、不憂未來之虛。順時安住、惜取當下，便是順道而行...">
     <link rel="canonical" href="https://taoism.com.tw/articles/9e2ba0065192.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="唯有當下活著，方為真我｜圓安道語公開預覽">
+    <meta property="og:description" content="唯有當下活著，方為真我 天道無常，浮生脆薄。世間萬象皆為浮幻遷流，唯性命本真、當下一念，最為真實。 往歲前塵，皆為過影，執之不可留；來日未形，尚屬虛無，思之不可測。唯此時此刻之呼吸、萬物之見聞、本心之清寧，是吾人真實握有之造化。 修道立身，不追既往之憾、不憂未來之虛。順時安住、惜取當下，便是順道而行...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/9e2ba0065192.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="唯有當下活著，方為真我｜圓安道語公開預覽">
+    <meta name="twitter:description" content="唯有當下活著，方為真我 天道無常，浮生脆薄。世間萬象皆為浮幻遷流，唯性命本真、當下一念，最為真實。 往歲前塵，皆為過影，執之不可留；來日未形，尚屬虛無，思之不可測。唯此時此刻之呼吸、萬物之見聞、本心之清寧，是吾人真實握有之造化。 修道立身，不追既往之憾、不憂未來之虛。順時安住、惜取當下，便是順道而行...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-25">2026-05-25</time>
             <span class="category">人間修行</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/9e2ba0065192.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/9e2ba0065192.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -46,5 +62,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>

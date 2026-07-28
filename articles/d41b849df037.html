@@ -17,7 +17,18 @@
     <title>心若不著相，自有大乾坤；人不困執念，萬事皆從容｜圓安道語公開預覽</title>
     <meta name="description" content="心若不著相，自有大乾坤；人不困執念，萬事皆從容 人世最大耗損，從非世途艱險、天道無常，乃是心為外相羈縛、神為妄念纏身。悟道通透之人，向來不執外境、不紛糾纏、不妄自內耗。 忘情逐相者，天道亦難解其困；離相守真者，萬物皆不可羈；虛心合道者，世間紛擾皆難相擾。 心若不著相，乾坤自澄明； 念起不隨轉，日月恆...">
     <link rel="canonical" href="https://taoism.com.tw/articles/d41b849df037.html">
-    <link rel="stylesheet" href="../styles.css?v=20260724-public-preview">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="圓安道語">
+    <meta property="og:title" content="心若不著相，自有大乾坤；人不困執念，萬事皆從容｜圓安道語公開預覽">
+    <meta property="og:description" content="心若不著相，自有大乾坤；人不困執念，萬事皆從容 人世最大耗損，從非世途艱險、天道無常，乃是心為外相羈縛、神為妄念纏身。悟道通透之人，向來不執外境、不紛糾纏、不妄自內耗。 忘情逐相者，天道亦難解其困；離相守真者，萬物皆不可羈；虛心合道者，世間紛擾皆難相擾。 心若不著相，乾坤自澄明； 念起不隨轉，日月恆...">
+    <meta property="og:url" content="https://taoism.com.tw/articles/d41b849df037.html">
+    <meta property="og:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="心若不著相，自有大乾坤；人不困執念，萬事皆從容｜圓安道語公開預覽">
+    <meta name="twitter:description" content="心若不著相，自有大乾坤；人不困執念，萬事皆從容 人世最大耗損，從非世途艱險、天道無常，乃是心為外相羈縛、神為妄念纏身。悟道通透之人，向來不執外境、不紛糾纏、不妄自內耗。 忘情逐相者，天道亦難解其困；離相守真者，萬物皆不可羈；虛心合道者，世間紛擾皆難相擾。 心若不著相，乾坤自澄明； 念起不隨轉，日月恆...">
+    <meta name="twitter:image" content="https://taoism.com.tw/assets/yuanan-ip-character.jpg">
+    <link rel="stylesheet" href="../styles.css?v=20260728-share-url">
   </head>
   <body class="preview-page">
     <main class="preview-shell">
@@ -30,6 +41,11 @@
             <time datetime="2026-05-21">2026-05-21</time>
             <span class="category">道教經典</span>
             
+          </div>
+          <div class="preview-share" aria-label="文章網址">
+            <span>文章網址</span>
+            <input type="text" value="https://taoism.com.tw/articles/d41b849df037.html" readonly>
+            <button type="button" data-copy-url="https://taoism.com.tw/articles/d41b849df037.html">複製網址</button>
           </div>
         </header>
         <section class="preview-body" aria-label="文章公開預覽">
@@ -57,5 +73,30 @@
         </footer>
       </article>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const share = button.closest('.preview-share');
+          const input = share?.querySelector('input');
+          const url = button.dataset.copyUrl || input?.value || location.href;
+          let copied = false;
+          try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              copied = true;
+            }
+          } catch {}
+          if (!copied && input) {
+            input.focus();
+            input.select();
+            try {
+              copied = document.execCommand('copy');
+            } catch {}
+          }
+          button.textContent = copied ? '已複製' : '請手動複製';
+          window.setTimeout(() => { button.textContent = '複製網址'; }, 1400);
+        });
+      });
+    </script>
   </body>
 </html>
