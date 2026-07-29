@@ -27,6 +27,8 @@ const SEARCH_TRACK_DELAY = 900;
 const COPY_FEEDBACK_DELAY = 1400;
 const DEFAULT_SORT = 'newest';
 const SERIES_SORT = 'oldest';
+const RECOMMENDATION_LIMIT = 3;
+const RECOMMENDATION_MIN_BODY_LENGTH = 160;
 const PUBLIC_PHOTO_KEYWORDS = ['照片', '參訪', '参访', '法會', '法会', '生日', '花', '樹', '树', '宮', '宫', '廟', '庙', '山', '海', '道場', '道场', '祖庭', '鹿邑', '青羊宮', '青羊宫', '崑崙', '昆仑', '華陽觀', '华阳观'];
 const SENSITIVE_MEDIA_KEYWORDS = ['符', '咒', '口訣', '口诀', '真訣', '真诀', '講義', '讲义', '教材', '架構', '架构', '圖解', '图解', '紫微', '斗數', '斗数', '命盤', '命盘', '生肖', '手印'];
 const SERIES_DISPLAY_NAMES = {
@@ -485,6 +487,8 @@ function renderReader(post) {
   sections.push(body);
   if ((post.links || []).length) sections.push(linkList(post.links));
   if ((post.tags || []).length) sections.push(tagList(post.tags));
+  const recommendations = renderReaderRecommendations(post);
+  if (recommendations) sections.push(recommendations);
   sections.push(details);
   reader.replaceChildren(...sections);
 }
@@ -506,7 +510,7 @@ function renderHourlyRecommendation() {
   header.className = 'hourly-pick-head';
   const kicker = document.createElement('p');
   kicker.className = 'eyebrow';
-  kicker.textContent = '本小時推薦道語';
+  kicker.textContent = '目前有人在讀';
   const title = document.createElement('h2');
   title.textContent = recommendation.title;
   const meta = document.createElement('div');
@@ -538,7 +542,7 @@ function renderHourlyRecommendation() {
 
   const note = document.createElement('p');
   note.className = 'hourly-pick-note';
-  note.textContent = '每小時自動換一篇；完整內文需輸入已登記道名。';
+  note.textContent = '本時段推薦文章；完整內文需輸入已登記道名。';
 
   section.append(header, preview, actions, note);
   reader.replaceChildren(section);
@@ -616,8 +620,84 @@ function renderLockedReader(post) {
     render();
   });
 
+  const recommendations = renderReaderRecommendations(post);
   panel.append(hint, label, error, button);
-  reader.replaceChildren(...[header, preview, publicMedia, panel].filter(Boolean));
+  reader.replaceChildren(...[header, preview, publicMedia, panel, recommendations].filter(Boolean));
+}
+
+function renderReaderRecommendations(post) {
+  const active = currentReadingRecommendation(post);
+  const related = seriesRecommendations(post, active?.post?.id);
+  if (!active && !related.length) return null;
+
+  const section = document.createElement('section');
+  section.className = 'reader-discovery';
+
+  if (active) {
+    section.append(recommendationBlock('目前有人在讀', [active], '本時段推薦文章'));
+  }
+
+  if (related.length) {
+    section.append(recommendationBlock('同系列接著讀', related, '依系列順序推薦'));
+  }
+
+  return section;
+}
+
+function recommendationBlock(title, items, subtitle) {
+  const block = document.createElement('section');
+  block.className = 'recommendation-block';
+  const header = document.createElement('header');
+  header.className = 'recommendation-head';
+  const heading = document.createElement('h3');
+  heading.textContent = title;
+  const note = document.createElement('p');
+  note.textContent = subtitle;
+  header.append(heading, note);
+
+  const list = document.createElement('div');
+  list.className = 'recommendation-list';
+  list.replaceChildren(...items.map(({ post, label }) => recommendationRow(post, label)));
+  block.append(header, list);
+  return block;
+}
+
+function recommendationRow(post, label) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'recommendation-row';
+  button.addEventListener('click', () => openRecommendedPost(post.id, 'reader_recommendation'));
+
+  const labelNode = document.createElement('span');
+  labelNode.className = 'recommendation-label';
+  labelNode.textContent = label;
+  const title = document.createElement('strong');
+  title.textContent = recommendationTitle(post);
+  const meta = document.createElement('span');
+  meta.className = 'recommendation-meta';
+  const seriesText = postSeriesNames(post).map((seriesName) => seriesDisplayName(seriesName)).join('、');
+  meta.textContent = [post.date, seriesText || post.category || '道語'].filter(Boolean).join(' · ');
+  const preview = document.createElement('span');
+  preview.className = 'recommendation-excerpt';
+  preview.textContent = publicExcerpt(post.body);
+
+  button.append(labelNode, title, meta, preview);
+  return button;
+}
+
+function recommendationTitle(post) {
+  const title = post.title || '未命名文章';
+  const lines = (post.body || '').split(/\n+/).map((line) => line.trim()).filter(Boolean);
+  const detail = lines.find((line) => {
+    if (line === title) return false;
+    if (/^(原文|內容解讀|書店老闆筆記|⸻)/.test(line)) return false;
+    return line.length >= 4 && line.length <= 42;
+  });
+  if (!detail) return title;
+  const compactTitle = title.replace(/[，,。！？!?；;：:、\s]+$/, '');
+  if (compactTitle.includes(detail)) return title;
+  if (/^書店老闆讀|^《[^》]+》$/.test(compactTitle)) return `${compactTitle}｜${detail}`;
+  return title;
 }
 
 function renderMedia(post) {
@@ -751,7 +831,7 @@ function selectPost(id, source = 'post_list') {
   if (window.matchMedia('(max-width: 860px)').matches) reader.scrollIntoView({ block: 'start' });
 }
 
-function openRecommendedPost(id) {
+function openRecommendedPost(id, source = 'hourly_recommendation') {
   blurActiveControl();
   state.category = '全部';
   state.year = '全部年份';
@@ -762,7 +842,11 @@ function openRecommendedPost(id) {
   state.selectedId = id;
   searchInput.value = '';
   render();
-  trackArticleEvent('select_hourly_recommendation', posts.find((post) => post.id === id));
+  trackArticleEvent(
+    source === 'hourly_recommendation' ? 'select_hourly_recommendation' : 'select_reader_recommendation',
+    posts.find((post) => post.id === id),
+    { source }
+  );
   reader.scrollIntoView({ block: 'start', behavior: 'smooth' });
 }
 
@@ -881,6 +965,67 @@ function hourlyRecommendation() {
   const candidates = posts.filter((post) => (post.body || '').replace(/\s+/g, '').length >= RECOMMENDATION_MIN_LENGTH);
   const pool = candidates.length ? candidates : posts;
   return pool[(state.recommendationHour * 37) % pool.length];
+}
+
+function currentReadingRecommendation(post) {
+  const pool = recommendationPool(post);
+  const candidates = pool.filter((item) => item.id !== post.id);
+  if (!candidates.length) {
+    const fallback = hourlyRecommendation();
+    return fallback && fallback.id !== post.id ? { post: fallback, label: '本時段推薦' } : null;
+  }
+  const index = seededIndex(`${post.id}-${state.recommendationHour}`, candidates.length);
+  return { post: candidates[index], label: '同修正在讀' };
+}
+
+function seriesRecommendations(post, excludedId = '') {
+  const seriesName = post.series || postSeriesNames(post)[0];
+  if (!seriesName) return [];
+
+  const seriesPosts = posts
+    .filter((item) => postHasSeries(item, seriesName))
+    .sort((a, b) => a.timestamp - b.timestamp || a.id.localeCompare(b.id));
+  const currentIndex = seriesPosts.findIndex((item) => item.id === post.id);
+  if (currentIndex < 0) return [];
+
+  const recommendations = [];
+  const add = (item, label) => {
+    if (!item || item.id === post.id || item.id === excludedId || recommendations.some((entry) => entry.post.id === item.id)) return;
+    recommendations.push({ post: item, label });
+  };
+
+  add(seriesPosts[currentIndex - 1], '上一篇');
+  add(seriesPosts[currentIndex + 1], '下一篇');
+
+  const rest = seriesPosts.filter((item) => item.id !== post.id && item.id !== excludedId && !recommendations.some((entry) => entry.post.id === item.id));
+  if (rest.length && recommendations.length < RECOMMENDATION_LIMIT) {
+    add(rest[seededIndex(`${post.id}-series-${state.recommendationHour}`, rest.length)], '同系列推薦');
+  }
+
+  return recommendations.slice(0, RECOMMENDATION_LIMIT);
+}
+
+function recommendationPool(post) {
+  const seriesName = post.series || postSeriesNames(post)[0];
+  const longEnough = (item) => (item.body || '').replace(/\s+/g, '').length >= RECOMMENDATION_MIN_BODY_LENGTH;
+  if (seriesName) {
+    const seriesPool = posts.filter((item) => item.id !== post.id && postHasSeries(item, seriesName) && longEnough(item));
+    if (seriesPool.length) return seriesPool;
+  }
+  if (post.category) {
+    const categoryPool = posts.filter((item) => item.id !== post.id && item.category === post.category && longEnough(item));
+    if (categoryPool.length) return categoryPool;
+  }
+  return posts.filter((item) => item.id !== post.id && longEnough(item));
+}
+
+function seededIndex(seed, length) {
+  if (!length) return 0;
+  let hash = 0;
+  for (let index = 0; index < seed.length; index += 1) {
+    hash = ((hash << 5) - hash + seed.charCodeAt(index)) | 0;
+  }
+  return Math.abs(hash) % length;
 }
 
 function currentHourKey() {
