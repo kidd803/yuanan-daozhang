@@ -1,23 +1,23 @@
 {
   "title": "圓安道長文章資料庫",
-  "generatedAt": "2026-07-29T00:00:00+08:00",
+  "generatedAt": "2026-07-30T00:00:00+08:00",
   "source": "林圓安 Facebook 官方匯出資料，本公開版保留文字文章與壓縮前 Facebook 中等品質圖片",
   "totalSourcePosts": 3402,
-  "publicPosts": 2055,
+  "publicPosts": 2099,
   "omittedImageOnlyPosts": 1074,
-  "publicImages": 4489,
-  "publicImageBytes": 562640998,
+  "publicImages": 4509,
+  "publicImageBytes": 567260774,
   "dateRange": {
     "from": "2015-12-11",
     "to": "2026-07-25"
   },
   "categories": {
-    "道教經典": 491,
     "人間修行": 494,
+    "道教經典": 491,
     "丹道修真": 259,
+    "全真道脈": 198,
     "處世立命": 187,
     "修心煉性": 180,
-    "全真道脈": 154,
     "龍門丹道": 114,
     "養生性命": 95,
     "悟道真詮": 56,
@@ -28,14 +28,14 @@
     "紫微斗數推演": 99,
     "黃元吉 道德經 81章": 93,
     "淺譯 道德經 81章": 89,
-    "龍門心法": 54,
+    "全真道歷史": 65,
     "聖濟總錄": 56,
+    "龍門心法": 54,
     "全真道法統": 53,
     "通靈覺知": 40,
     "乩童文化": 38,
     "圓安論氣功": 38,
     "畫符 100講": 27,
-    "全真道歷史": 21,
     "重陽立教十五論": 16
   },
   "categoryOrder": [
@@ -63,9 +63,14 @@
     "linyiyiHistory": {
       "title": "林宜毅｜書店老闆讀《全真道歷史》",
       "source": "林宜毅臉書內網",
-      "importedAt": "2026-07-26T00:00:00+08:00",
-      "posts": 21,
-      "series": "全真道歷史"
+      "importedAt": "2026-07-30T00:00:00+08:00",
+      "posts": 65,
+      "series": "全真道歷史",
+      "added": 44,
+      "duplicatesFiltered": 1,
+      "images": 20,
+      "imageFiles": 20,
+      "missingMedia": 0
     },
     "linyiyiFatong": {
       "title": "林宜毅｜全真教法統",
