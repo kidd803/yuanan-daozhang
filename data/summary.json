@@ -3,7 +3,7 @@
   "generatedAt": "2026-07-29T00:00:00+08:00",
   "source": "林圓安 Facebook 官方匯出資料，本公開版保留文字文章與壓縮前 Facebook 中等品質圖片",
   "totalSourcePosts": 3402,
-  "publicPosts": 2080,
+  "publicPosts": 2055,
   "omittedImageOnlyPosts": 1074,
   "publicImages": 4489,
   "publicImageBytes": 562640998,
@@ -12,7 +12,7 @@
     "to": "2026-07-25"
   },
   "categories": {
-    "道教經典": 516,
+    "道教經典": 491,
     "人間修行": 494,
     "丹道修真": 259,
     "處世立命": 187,
@@ -28,7 +28,7 @@
     "紫微斗數推演": 99,
     "黃元吉 道德經 81章": 93,
     "淺譯 道德經 81章": 89,
-    "龍門心法": 79,
+    "龍門心法": 54,
     "聖濟總錄": 56,
     "全真道法統": 53,
     "通靈覺知": 40,
@@ -88,13 +88,14 @@
       "title": "林宜毅｜龍門心法",
       "source": "林宜毅臉書內網",
       "importedAt": "2026-07-27T00:00:00+08:00",
-      "posts": 79,
+      "posts": 54,
       "series": "龍門心法",
       "duplicatesFiltered": 0,
       "images": 72,
       "imageFiles": 71,
       "linksFromMedia": 27,
-      "videosSkipped": 31
+      "videosSkipped": 31,
+      "emptyReelsRemoved": 25
     },
     "linyiyiShengjiZonglu": {
       "title": "林宜毅｜書店老闆讀《聖濟總錄》",
