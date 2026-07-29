@@ -25,6 +25,8 @@ const SITE_URL = 'https://taoism.com.tw';
 const PUBLIC_MEDIA_LIMIT = 6;
 const SEARCH_TRACK_DELAY = 900;
 const COPY_FEEDBACK_DELAY = 1400;
+const DEFAULT_SORT = 'newest';
+const SERIES_SORT = 'oldest';
 const PUBLIC_PHOTO_KEYWORDS = ['照片', '參訪', '参访', '法會', '法会', '生日', '花', '樹', '树', '宮', '宫', '廟', '庙', '山', '海', '道場', '道场', '祖庭', '鹿邑', '青羊宮', '青羊宫', '崑崙', '昆仑', '華陽觀', '华阳观'];
 const SENSITIVE_MEDIA_KEYWORDS = ['符', '咒', '口訣', '口诀', '真訣', '真诀', '講義', '讲义', '教材', '架構', '架构', '圖解', '图解', '紫微', '斗數', '斗数', '命盤', '命盘', '生肖', '手印'];
 const SERIES_DISPLAY_NAMES = {
@@ -69,7 +71,7 @@ const PILLAR_FILTERS = {
 const state = {
   category: '全部',
   query: '',
-  sort: 'newest',
+  sort: DEFAULT_SORT,
   year: '全部年份',
   series: '全部系列',
   pillar: '',
@@ -236,6 +238,8 @@ function render() {
   renderReader(selected);
   yearSelect.value = state.year;
   if (seriesSelect) seriesSelect.value = state.series;
+  sortSelect.value = currentSortOrder();
+  sortSelect.disabled = state.series !== '全部系列';
 }
 
 function matchPosts() {
@@ -263,8 +267,12 @@ function matchPosts() {
         const scoreDiff = pillarScore(b, state.pillar) - pillarScore(a, state.pillar);
         if (scoreDiff) return scoreDiff;
       }
-      return state.sort === 'oldest' ? a.timestamp - b.timestamp : b.timestamp - a.timestamp;
+      return currentSortOrder() === 'oldest' ? a.timestamp - b.timestamp : b.timestamp - a.timestamp;
     });
+}
+
+function currentSortOrder() {
+  return state.series === '全部系列' ? state.sort : SERIES_SORT;
 }
 
 function renderSummary(filtered) {
@@ -929,6 +937,7 @@ function selectSeries(series, source = 'series_tab') {
   state.series = state.series === series ? '全部系列' : series;
   state.category = '全部';
   state.pillar = '';
+  state.sort = state.series === '全部系列' ? DEFAULT_SORT : SERIES_SORT;
   state.visible = PAGE_SIZE;
   state.selectedId = null;
   render();
