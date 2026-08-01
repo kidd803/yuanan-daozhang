@@ -309,7 +309,7 @@ const ONE_PILLAR_MONTH_KEY = 'yuanan-one-pillar-month';
 const ONE_PILLAR_DAY_KEY = 'yuanan-one-pillar-day';
 const ONE_PILLAR_HOUR_KEY = 'yuanan-one-pillar-hour';
 const ONE_PILLAR_DEFAULT_YEAR = 1981;
-const ONE_PILLAR_CALCULATION_MS = 1100;
+const ONE_PILLAR_CALCULATION_MS = 1500;
 const LUNAR_MONTHS = ['正月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '冬月', '臘月'];
 const LUNAR_DAYS = [
   '初一', '初二', '初三', '初四', '初五', '初六', '初七', '初八', '初九', '初十',
@@ -600,6 +600,7 @@ function scheduleOnePillarCalculation() {
 
 function renderOnePillarCalculating() {
   if (!onePillarResult) return;
+  document.body.classList.add('is-one-pillar-active');
   onePillarResult.hidden = false;
   const panel = document.createElement('div');
   panel.className = 'one-pillar-calculating';
@@ -654,6 +655,7 @@ function trackOnePillarReading() {
 
 function renderOnePillarResult() {
   if (!onePillarResult) return;
+  document.body.classList.add('is-one-pillar-active');
   onePillarResult.hidden = false;
   const inputValue = onePillarYearInput?.value || `${ONE_PILLAR_DEFAULT_YEAR}`;
   const birthYear = parseGregorianYear(inputValue) || ONE_PILLAR_DEFAULT_YEAR;
@@ -775,8 +777,15 @@ function renderOnePillarResult() {
   }));
   recommendationPanel.append(recTitle, recList);
 
-  const actions = document.createElement('div');
-  actions.className = 'one-pillar-result-actions';
+  const toolbar = document.createElement('div');
+  toolbar.className = 'one-pillar-result-toolbar';
+  const toolbarText = document.createElement('div');
+  toolbarText.className = 'one-pillar-result-toolbar-text';
+  const toolbarTitle = document.createElement('strong');
+  toolbarTitle.textContent = '今日修心結果';
+  const toolbarNote = document.createElement('span');
+  toolbarNote.textContent = '重新輸入資料後，可再次試算。';
+  toolbarText.append(toolbarTitle, toolbarNote);
   const collapseButton = document.createElement('button');
   collapseButton.type = 'button';
   collapseButton.className = 'one-pillar-collapse-button';
@@ -785,14 +794,15 @@ function renderOnePillarResult() {
     clearOnePillarResult();
     trackEvent('one_pillar_collapse_result');
   });
-  actions.append(collapseButton);
+  toolbar.append(toolbarText, collapseButton);
 
-  onePillarResult.replaceChildren(actions, header, pathPanel, practiceCards, transformPanel, recommendationPanel);
+  onePillarResult.replaceChildren(toolbar, header, pathPanel, practiceCards, transformPanel, recommendationPanel);
 }
 
 function clearOnePillarResult() {
   if (!onePillarResult) return;
   resetOnePillarCalculation();
+  document.body.classList.remove('is-one-pillar-active');
   onePillarResult.replaceChildren();
   onePillarResult.hidden = true;
 }

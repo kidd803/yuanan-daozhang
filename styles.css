@@ -286,7 +286,8 @@ button:focus,
 .one-pillar-result {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(260px, 0.9fr) minmax(320px, 1.1fr);
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  align-items: start;
   gap: 12px;
 }
 
@@ -348,10 +349,35 @@ button:focus,
   }
 }
 
-.one-pillar-result-actions {
+.one-pillar-result-toolbar {
   grid-column: 1 / -1;
   display: flex;
+  align-items: center;
+  gap: 12px;
   justify-content: flex-end;
+  border: 1px solid rgba(155, 120, 48, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 254, 251, 0.72);
+  padding: 8px 10px;
+}
+
+.one-pillar-result-toolbar-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  margin-right: auto;
+}
+
+.one-pillar-result-toolbar-text strong {
+  color: var(--green-deep);
+  font-size: 0.94rem;
+  line-height: 1.25;
+}
+
+.one-pillar-result-toolbar-text span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.35;
 }
 
 .one-pillar-collapse-button {
@@ -383,6 +409,14 @@ button:focus,
   border-radius: 8px;
   background: rgba(255, 254, 251, 0.78);
   padding: 12px;
+}
+
+.one-pillar-result-head {
+  grid-column: 1;
+}
+
+.one-pillar-path {
+  grid-column: 2;
 }
 
 .one-pillar-result-head h3 {
@@ -430,7 +464,15 @@ button:focus,
 
 .one-pillar-practice-cards {
   grid-column: 1 / -1;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.one-pillar-transforms {
+  grid-column: 1;
+}
+
+.one-pillar-recommendations {
+  grid-column: 2;
 }
 
 .one-pillar-path h4 {
@@ -1863,6 +1905,10 @@ button.series-badge:hover {
   background: var(--green-deep);
 }
 
+.is-one-pillar-active .course-order {
+  display: none;
+}
+
 .floating-search-button {
   position: fixed;
   top: 50%;
@@ -1984,6 +2030,17 @@ button.series-badge:hover {
   .one-pillar-section,
   .one-pillar-result {
     grid-template-columns: 1fr;
+  }
+
+  .one-pillar-result-head,
+  .one-pillar-path,
+  .one-pillar-transforms,
+  .one-pillar-recommendations {
+    grid-column: 1;
+  }
+
+  .one-pillar-practice-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .pillar-grid {
