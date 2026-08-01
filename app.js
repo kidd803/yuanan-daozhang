@@ -719,7 +719,19 @@ function renderOnePillarResult() {
   }));
   recommendationPanel.append(recTitle, recList);
 
-  onePillarResult.replaceChildren(header, pathPanel, practiceCards, transformPanel, recommendationPanel);
+  const actions = document.createElement('div');
+  actions.className = 'one-pillar-result-actions';
+  const collapseButton = document.createElement('button');
+  collapseButton.type = 'button';
+  collapseButton.className = 'one-pillar-collapse-button';
+  collapseButton.textContent = '收起結果';
+  collapseButton.addEventListener('click', () => {
+    clearOnePillarResult();
+    trackEvent('one_pillar_collapse_result');
+  });
+  actions.append(collapseButton);
+
+  onePillarResult.replaceChildren(actions, header, pathPanel, practiceCards, transformPanel, recommendationPanel);
 }
 
 function clearOnePillarResult() {
