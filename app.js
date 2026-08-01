@@ -698,6 +698,8 @@ function renderOnePillarResult() {
     header.append(mainStarIntro);
   }
 
+  const chartPanel = onePillarChartPanel(reading);
+
   const pathPanel = document.createElement('section');
   pathPanel.className = 'one-pillar-path';
   const pathTitle = document.createElement('h4');
@@ -730,28 +732,16 @@ function renderOnePillarResult() {
   const transformPanel = document.createElement('section');
   transformPanel.className = 'one-pillar-transforms';
   const transformTitle = document.createElement('h4');
-  transformTitle.textContent = '命宮主星｜生年四化';
+  transformTitle.textContent = '本命四化提醒';
   const transformNote = document.createElement('p');
   transformNote.className = 'one-pillar-note';
   transformNote.textContent = reading.mainStar
-    ? '命宮主星由農曆月日與時辰推算；生年四化由出生年干推算。'
-    : '未填出生時辰時，先看生年四化；選定時辰後會自動推命宮主星。';
-  const starIntroList = document.createElement('div');
-  starIntroList.className = 'one-pillar-star-list';
-  const starCards = [];
-  starCards.push(...reading.transforms.map((item) => onePillarStarIntroCard(item.star, item.name, item.starMeaning)));
-  starIntroList.replaceChildren(...starCards);
-  const transformSubTitle = document.createElement('h5');
-  transformSubTitle.textContent = '四化在本命中的作用';
-  const transformList = document.createElement('dl');
-  transformList.replaceChildren(...reading.transforms.flatMap((item) => {
-    const term = document.createElement('dt');
-    term.textContent = `${item.name}：${item.star}`;
-    const detail = document.createElement('dd');
-    detail.textContent = `${item.meaning}，意思是${item.plainMeaning}${item.star}偏向${item.starMeaning}；今日形成${item.relation.label}，${onePillarTransformTodayText(item)}`;
-    return [term, detail];
-  }));
-  transformPanel.append(transformTitle, transformNote, starIntroList, transformSubTitle, transformList);
+    ? '出生年看本命四化，生日與時辰看命宮主星；這裡用來提醒今天容易被引動的習氣。'
+    : '出生年先看本命四化；若補上出生時辰，系統會再加入命宮主星作修心提醒。';
+  const transformCards = document.createElement('div');
+  transformCards.className = 'one-pillar-transform-cards';
+  transformCards.replaceChildren(...reading.transforms.map(onePillarTransformCard));
+  transformPanel.append(transformTitle, transformNote, transformCards);
 
   const recommendationPanel = document.createElement('section');
   recommendationPanel.className = 'one-pillar-recommendations';
@@ -796,7 +786,7 @@ function renderOnePillarResult() {
   });
   toolbar.append(toolbarText, collapseButton);
 
-  onePillarResult.replaceChildren(toolbar, header, pathPanel, practiceCards, transformPanel, recommendationPanel);
+  onePillarResult.replaceChildren(toolbar, header, chartPanel, practiceCards, transformPanel, pathPanel, recommendationPanel);
 }
 
 function clearOnePillarResult() {
@@ -828,17 +818,58 @@ function onePillarPathStep(label, text) {
   return item;
 }
 
-function onePillarStarIntroCard(star, roleText, bodyText) {
-  const card = document.createElement('article');
-  card.className = 'one-pillar-star-card';
-  const starName = document.createElement('strong');
-  starName.textContent = star;
-  const role = document.createElement('span');
-  role.textContent = roleText;
-  const meaning = document.createElement('p');
-  meaning.textContent = bodyText;
-  card.append(starName, role, meaning);
-  return card;
+function onePillarChartPanel(reading) {
+  const panel = document.createElement('section');
+  panel.className = 'one-pillar-chart';
+  const title = document.createElement('h4');
+  title.textContent = '簡式命盤';
+  const note = document.createElement('p');
+  note.className = 'one-pillar-note';
+  if (!reading.mainStar?.chartPalaces) {
+    note.textContent = '選定出生時辰後，這裡會顯示命宮與十四主星簡式落點。';
+    panel.append(title, note);
+    return panel;
+  }
+  note.textContent = '公開版只顯示命宮、十二地支宮位、十四主星與生年四化標記；完整十二宮、大限流年與深度解讀未開放。';
+  const grid = document.createElement('div');
+  grid.className = 'one-pillar-chart-grid';
+  const transformByStar = new Map(reading.transforms.map((item) => [item.star, item.name]));
+  grid.replaceChildren(...reading.mainStar.chartPalaces.map((palace) => onePillarChartCell(palace, reading.mainStar, transformByStar)));
+  panel.append(title, note, grid);
+  return panel;
+}
+
+function onePillarChartCell(palace, mainStar, transformByStar) {
+  const cell = document.createElement('article');
+  cell.className = 'one-pillar-chart-cell';
+  if (palace.index === mainStar.soulIndex) cell.classList.add('is-ming');
+  const head = document.createElement('div');
+  head.className = 'one-pillar-chart-cell-head';
+  const branch = document.createElement('strong');
+  branch.textContent = palace.label;
+  head.append(branch);
+  if (palace.index === mainStar.soulIndex) {
+    const ming = document.createElement('span');
+    ming.textContent = '命宮';
+    head.append(ming);
+  }
+  const stars = document.createElement('p');
+  stars.textContent = palace.stars.length ? palace.stars.join('、') : '未見十四主星';
+  cell.append(head, stars);
+  const badges = palace.stars
+    .map((star) => transformByStar.has(star) ? `${star}${transformByStar.get(star)}` : '')
+    .filter(Boolean);
+  if (badges.length) {
+    const badgeWrap = document.createElement('div');
+    badgeWrap.className = 'one-pillar-chart-badges';
+    badgeWrap.replaceChildren(...badges.map((label) => {
+      const badge = document.createElement('span');
+      badge.textContent = label;
+      return badge;
+    }));
+    cell.append(badgeWrap);
+  }
+  return cell;
 }
 
 function mainStarDescriptionText(mainStar) {
@@ -933,6 +964,13 @@ function calculateMainStar(stem, lunarMonth, lunarDay, birthHour) {
     palaceLabel: `${palaceStem}${palaceBranch}命宮`,
     fiveElementClass: fiveElementClass.label,
     fiveElementValue: fiveElementClass.value,
+    chartPalaces: PALACE_BRANCHES.map((branch, index) => ({
+      index,
+      branch,
+      stem: HEAVENLY_STEMS[fixIndex(HEAVENLY_STEMS.indexOf(yinStem) + index, 10)],
+      label: `${HEAVENLY_STEMS[fixIndex(HEAVENLY_STEMS.indexOf(yinStem) + index, 10)]}${branch}`,
+      stars: [...(palaces[index] || [])]
+    })),
     ziweiPalace: PALACE_BRANCHES[ziweiIndex],
     tianfuPalace: PALACE_BRANCHES[tianfuIndex]
   };
@@ -1176,6 +1214,28 @@ function onePillarTransformTodayText(item) {
     return `今天容易想掌控這個面向，宜謙卑校正。`;
   }
   return `今天同氣相應，這個面向會比較明顯，宜穩住分寸。`;
+}
+
+function onePillarTransformCard(item) {
+  const card = document.createElement('article');
+  card.className = 'one-pillar-transform-card';
+  const top = document.createElement('div');
+  top.className = 'one-pillar-transform-card-top';
+  const star = document.createElement('strong');
+  star.textContent = item.star;
+  const badge = document.createElement('span');
+  badge.textContent = item.name;
+  top.append(star, badge);
+  const role = document.createElement('p');
+  role.className = 'one-pillar-transform-role';
+  role.textContent = `${item.meaning}：${item.plainMeaning}`;
+  const nature = document.createElement('p');
+  nature.textContent = `${item.star}偏向${item.starMeaning}。`;
+  const today = document.createElement('p');
+  today.className = 'one-pillar-transform-today';
+  today.textContent = `今日提醒：${onePillarTransformTodayText(item)}`;
+  card.append(top, role, nature, today);
+  return card;
 }
 
 function onePillarRecommendations(topic) {
