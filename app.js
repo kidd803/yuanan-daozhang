@@ -786,7 +786,9 @@ function renderOnePillarResult() {
   });
   toolbar.append(toolbarText, collapseButton);
 
-  onePillarResult.replaceChildren(toolbar, header, chartPanel, practiceCards, transformPanel, pathPanel, recommendationPanel);
+  const conclusionPanel = onePillarConclusionPanel(personName, reading);
+
+  onePillarResult.replaceChildren(toolbar, conclusionPanel, header, chartPanel, practiceCards, transformPanel, pathPanel, recommendationPanel);
 }
 
 function clearOnePillarResult() {
@@ -806,6 +808,40 @@ function onePillarCard(label, value) {
   data.textContent = value;
   card.append(term, data);
   return card;
+}
+
+function onePillarConclusionPanel(personName, reading) {
+  const panel = document.createElement('section');
+  panel.className = 'one-pillar-conclusion';
+  const eyebrow = document.createElement('p');
+  eyebrow.className = 'eyebrow';
+  eyebrow.textContent = '今日總結';
+  const title = document.createElement('h4');
+  title.textContent = `${personName}今天先修「${reading.topic.title}」`;
+  const list = document.createElement('ul');
+  const items = onePillarConclusionItems(reading).map((text) => {
+    const item = document.createElement('li');
+    item.textContent = text;
+    return item;
+  });
+  list.replaceChildren(...items);
+  panel.append(eyebrow, title, list);
+  return panel;
+}
+
+function onePillarConclusionItems(reading) {
+  const ji = reading.transforms.find((item) => item.name === '化忌');
+  const lu = reading.transforms.find((item) => item.name === '化祿');
+  const mainStarText = reading.mainStar?.name
+    ? `本命盤固定不變：命宮主星為${reading.mainStar.name}，今天只是看${reading.day.label}${reading.day.element}氣如何引動本命。`
+    : `本命盤固定不變；未填出生時辰時，今天先看${reading.day.label}${reading.day.element}氣如何引動本命四化。`;
+  const transformText = ji
+    ? `今天最要留意${ji.star}${ji.name}：${onePillarTransformTodayText(ji)}`
+    : lu
+      ? `今天可善用${lu.star}${lu.name}，但仍要守住分寸。`
+      : reading.correction;
+  const practiceText = `今天不看吉凶，重點是${reading.topic.method}功課可先讀${reading.topic.homework}。`;
+  return [mainStarText, transformText, practiceText];
 }
 
 function onePillarPathStep(label, text) {

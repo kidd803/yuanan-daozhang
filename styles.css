@@ -401,6 +401,7 @@ button:focus,
 }
 
 .one-pillar-result-head,
+.one-pillar-conclusion,
 .one-pillar-path,
 .one-pillar-chart,
 .one-pillar-transforms,
@@ -410,6 +411,47 @@ button:focus,
   border-radius: 8px;
   background: rgba(255, 254, 251, 0.78);
   padding: 12px;
+}
+
+.one-pillar-conclusion {
+  grid-column: 1 / -1;
+  background: linear-gradient(180deg, rgba(255, 250, 240, 0.98), rgba(248, 244, 232, 0.86));
+  border-color: rgba(155, 120, 48, 0.34);
+}
+
+.one-pillar-conclusion h4 {
+  margin: 2px 0 8px;
+  color: var(--green-deep);
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+.one-pillar-conclusion ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.one-pillar-conclusion li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--green-deep);
+  font-size: 0.9rem;
+  font-weight: 720;
+  line-height: 1.6;
+}
+
+.one-pillar-conclusion li::before {
+  position: absolute;
+  top: 0.63em;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  content: "";
 }
 
 .one-pillar-result-head {
@@ -2097,6 +2139,7 @@ button.series-badge:hover {
   }
 
   .one-pillar-result-head,
+  .one-pillar-conclusion,
   .one-pillar-path,
   .one-pillar-chart,
   .one-pillar-transforms,
