@@ -700,18 +700,21 @@ function renderOnePillarResult() {
 
   const chartPanel = onePillarChartPanel(reading);
 
-  const pathPanel = document.createElement('section');
+  const pathPanel = document.createElement('details');
   pathPanel.className = 'one-pillar-path';
-  const pathTitle = document.createElement('h4');
-  pathTitle.textContent = '推算路徑';
+  const pathTitle = document.createElement('summary');
+  pathTitle.textContent = '查看推算依據';
   const pathList = document.createElement('ol');
+  const transformSummary = reading.transforms.map((item) => `${item.star}${item.name}`).join('、');
+  const mainStarBasis = reading.mainStar
+    ? `${reading.mainStar.palaceLabel}，${reading.mainStar.fiveElementClass}，主星${reading.mainStar.name}`
+    : '未填出生時辰，暫不安命宮主星';
+  const hourBasis = birthHour ? `${birthHourLabel}，${reading.birthHour.summary}` : reading.birthHour.summary;
   pathList.replaceChildren(
-    onePillarPathStep('出生年', `${birthYear} 年約為${yearGanzhi.label}，取${reading.stem}${reading.birthElement}作本命本氣。`),
-    onePillarPathStep('命宮主星', reading.mainStar ? `${reading.mainStar.palaceLabel}，${reading.mainStar.fiveElementClass}，主星${reading.mainStar.name}；${reading.mainStar.meaning}。` : '未填出生時辰，暫不安命宮主星。'),
-    onePillarPathStep('本命四化', reading.lifePattern),
-    onePillarPathStep('今日天地', `${reading.day.label}為${reading.day.element}氣，與本命形成${reading.primaryRelation.label}，所以${reading.primaryRelation.summary}`),
-    onePillarPathStep('生日修正', `農曆${lunarMonth}${lunarDay}：${reading.birthday.summary}`),
-    onePillarPathStep('時辰修正', reading.birthHour.summary)
+    onePillarPathStep('本命', `${birthYear} 年約為${yearGanzhi.label}，取${reading.stem}${reading.birthElement}作本命本氣；${mainStarBasis}。`),
+    onePillarPathStep('本命四化', transformSummary),
+    onePillarPathStep('今日氣勢', `${reading.day.label}為${reading.day.element}氣，與本命形成${reading.primaryRelation.label}，${reading.primaryRelation.summary}`),
+    onePillarPathStep('生日與時辰', `農曆${lunarMonth}${lunarDay}：${reading.birthday.summary}${hourBasis ? ` ${hourBasis}` : ''}`)
   );
   pathPanel.append(pathTitle, pathList);
 
