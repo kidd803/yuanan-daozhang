@@ -683,9 +683,9 @@ function renderOnePillarResult() {
   today.className = 'eyebrow';
   today.textContent = `今日 ${formatMonthDay(todayDate)} · ${reading.day.label} · ${reading.day.element}氣`;
   const title = document.createElement('h3');
-  title.textContent = `${personName}｜${reading.mainStar?.name ? `命宮主星：${reading.mainStar.name}｜` : ''}今日易失衡：${reading.topic.risk}`;
+  title.textContent = `${personName}｜今日氣勢：${reading.quality.label}｜主修：${reading.topic.title}`;
   const summaryText = document.createElement('p');
-  summaryText.textContent = `${birthNote}。${reading.mainStar?.name ? `系統推得${reading.mainStar.palaceLabel}主星${reading.mainStar.name}，` : '出生時辰未定，先不排命宮主星；'}今日主修「${reading.topic.title}」，不是看吉凶，而是看今天最該修哪一念。`;
+  summaryText.textContent = `${birthNote}。${reading.mainStar?.name ? `系統推得${reading.mainStar.palaceLabel}主星${reading.mainStar.name}，` : '出生時辰未定，先不排命宮主星；'}先看今日氣勢，再用「${reading.topic.title}」修正與善用。`;
   header.append(today, title, summaryText);
   if (reading.mainStar?.name) {
     const mainStarIntro = document.createElement('div');
@@ -721,6 +721,7 @@ function renderOnePillarResult() {
   const practiceCards = document.createElement('div');
   practiceCards.className = 'one-pillar-cards one-pillar-practice-cards';
   practiceCards.append(
+    onePillarCard('今日氣勢', `${reading.quality.label}：${reading.quality.summary}`),
     onePillarCard('命宮主星', reading.mainStar ? `${reading.mainStar.name}：${reading.mainStar.profile?.risk || reading.mainStar.meaning}` : '選定出生時辰後自動推算'),
     onePillarCard('今日主修', reading.topic.title),
     onePillarCard('容易失衡', reading.topic.risk),
@@ -820,7 +821,7 @@ function onePillarConclusionPanel(personName, reading) {
   eyebrow.className = 'eyebrow';
   eyebrow.textContent = '今日總結';
   const title = document.createElement('h4');
-  title.textContent = `${personName}今天先修「${reading.topic.title}」`;
+  title.textContent = `${personName}｜今日氣勢${reading.quality.label}，主修「${reading.topic.title}」`;
   const list = document.createElement('ul');
   const items = onePillarConclusionItems(reading).map((text) => {
     const item = document.createElement('li');
@@ -836,14 +837,14 @@ function onePillarConclusionItems(reading) {
   const ji = reading.transforms.find((item) => item.name === '化忌');
   const lu = reading.transforms.find((item) => item.name === '化祿');
   const mainStarText = reading.mainStar?.name
-    ? `本命盤固定不變：命宮主星為${reading.mainStar.name}，今天只是看${reading.day.label}${reading.day.element}氣如何引動本命。`
-    : `本命盤固定不變；未填出生時辰時，今天先看${reading.day.label}${reading.day.element}氣如何引動本命四化。`;
+    ? `今日氣勢判斷：${reading.quality.summary}本命盤固定不變，今天只是看${reading.day.label}${reading.day.element}氣如何引動本命。`
+    : `今日氣勢判斷：${reading.quality.summary}未填出生時辰時，先看${reading.day.label}${reading.day.element}氣如何引動本命四化。`;
   const transformText = ji
     ? `今天最要留意${ji.star}${ji.name}：${onePillarTransformTodayText(ji)}`
     : lu
       ? `今天可善用${lu.star}${lu.name}，但仍要守住分寸。`
       : reading.correction;
-  const practiceText = `今天不看吉凶，重點是${reading.topic.method}功課可先讀${reading.topic.homework}。`;
+  const practiceText = `修正方法：${reading.topic.method}功課可先讀${reading.topic.homework}。`;
   return [mainStarText, transformText, practiceText];
 }
 
@@ -917,7 +918,7 @@ function mainStarDescriptionText(mainStar) {
   const ziweiNote = '此段依站內「紫微斗數推演99講」整理。斗數不可只用單星斷一生，仍要看廟旺落陷、四化引動、吉煞交會與三方四正；此處先取命宮主星作修心入口，幫你看見這顆星的正用與偏病。';
   const practice = profile
     ? `容易失衡：${profile.risk}。修心方向：${profile.method}`
-    : '修心方向：先看見自己的慣性，再回到今日主修，不急著用吉凶判斷自己。';
+    : '修心方向：先看今日氣勢，再回到今日主修，不急著用吉凶困住自己。';
   return `${base}${ziweiNote}${practice}`;
 }
 
@@ -941,6 +942,7 @@ function buildOnePillarReading(stem, date, lunarMonth = '正月', lunarDay = '�
   const birthHourProfile = onePillarHourProfile(birthHour, day.element);
   const mainStar = calculateMainStar(stem, lunarMonth, lunarDay, birthHour);
   const topic = chooseOnePillarTopic(primaryRelation, transforms, birthday, birthHourProfile, mainStar);
+  const quality = onePillarDayQuality(primaryRelation, transforms, birthday, birthHourProfile, mainStar);
   return {
     stem,
     birthElement,
@@ -950,10 +952,92 @@ function buildOnePillarReading(stem, date, lunarMonth = '正月', lunarDay = '�
     birthday,
     birthHour: birthHourProfile,
     mainStar,
+    quality,
     topic,
     lifePattern: onePillarLifePattern(transforms),
     correction: onePillarCorrection(transforms, topic, birthday, birthHourProfile, mainStar),
     recommendations: onePillarRecommendations(topic)
+  };
+}
+
+function onePillarDayQuality(primaryRelation, transforms, birthday, birthHour, mainStar) {
+  const baseScores = {
+    sourceGeneratesTarget: 2,
+    same: 0.8,
+    targetControlsSource: 0,
+    targetGeneratesSource: -1,
+    sourceControlsTarget: -2
+  };
+  let score = baseScores[primaryRelation.type] ?? 0;
+  const details = [`今日天地為${primaryRelation.label}`];
+
+  transforms.forEach((item) => {
+    if (item.name === '化祿' && ['same', 'sourceGeneratesTarget'].includes(item.relation.type)) {
+      score += 1;
+      details.push(`${item.star}化祿得助`);
+    }
+    if (item.name === '化權' && ['same', 'sourceGeneratesTarget'].includes(item.relation.type)) {
+      score += 0.4;
+    }
+    if (item.name === '化科' && ['same', 'sourceGeneratesTarget'].includes(item.relation.type)) {
+      score += 0.4;
+    }
+    if (item.name === '化忌' && item.relation.type === 'sourceGeneratesTarget') {
+      score -= 1.4;
+      details.push(`${item.star}化忌被助長`);
+    }
+    if (item.name === '化忌' && ['same', 'sourceControlsTarget', 'targetControlsSource'].includes(item.relation.type)) {
+      score -= 2;
+      details.push(`${item.star}化忌被觸動`);
+    }
+    if (item.name !== '化忌' && item.relation.type === 'sourceControlsTarget') {
+      score -= 0.4;
+    }
+  });
+
+  if (birthday.monthRelation?.type === 'sourceGeneratesTarget') score += 0.3;
+  if (birthday.monthRelation?.type === 'sourceControlsTarget') score -= 0.3;
+  if (birthHour?.relation?.type === 'sourceGeneratesTarget') score += 0.2;
+  if (birthHour?.relation?.type === 'sourceControlsTarget') score -= 0.2;
+  if (mainStar?.profile?.topic) details.push(`命宮主星${mainStar.name}作修心入口`);
+
+  if (score >= 2.2) {
+    return {
+      label: '偏順',
+      level: 'good',
+      score,
+      summary: `${details.slice(0, 3).join('，')}，助力較明顯，可推動事情，但仍要用主修守分寸。`
+    };
+  }
+  if (score >= 0.7) {
+    return {
+      label: '平順',
+      level: 'steady-good',
+      score,
+      summary: `${details.slice(0, 3).join('，')}，整體可用，適合按次第完成該做的事。`
+    };
+  }
+  if (score > -0.8) {
+    return {
+      label: '平穩',
+      level: 'neutral',
+      score,
+      summary: `${details.slice(0, 3).join('，')}，不好不壞，重點在穩住心念。`
+    };
+  }
+  if (score > -2.2) {
+    return {
+      label: '有阻',
+      level: 'challenging',
+      score,
+      summary: `${details.slice(0, 3).join('，')}，容易耗神或卡住，要用主修先修正。`
+    };
+  }
+  return {
+    label: '偏逆',
+    level: 'difficult',
+    score,
+    summary: `${details.slice(0, 3).join('，')}，壓力較明顯，今天宜保守、少爭、先修心。`
   };
 }
 
@@ -989,7 +1073,7 @@ function calculateMainStar(stem, lunarMonth, lunarDay, birthHour) {
   const meaning = stars.length
     ? stars.map((star) => STAR_PLAIN_TEXT[star]).filter(Boolean).join('；')
     : '命宮未落入十四主星，第一版暫不借對宮，先以生年四化與今日修心判斷。';
-  const description = MAIN_STAR_DESCRIPTIONS[primaryStar] || `${name}偏向${meaning}。第一版先依命宮主星、生年四化、今日五行與生日時辰共同判斷，不作絕對吉凶，只提醒今天最容易從哪個習氣處用力，以及適合修哪一念。`;
+  const description = MAIN_STAR_DESCRIPTIONS[primaryStar] || `${name}偏向${meaning}。第一版先依命宮主星、生年四化、今日五行與生日時辰共同判斷今日氣勢，再提醒今天最容易從哪個習氣處用力，以及適合修哪一念。`;
   return {
     name,
     stars,
@@ -1230,7 +1314,7 @@ function onePillarCorrection(transforms, topic, birthday, birthHour, mainStar) {
   if (birthday.monthTopic === topic.key || birthday.phaseTopic === topic.key) {
     return `農曆生日也偏向${topic.title}，今天這個功課會比較明顯。`;
   }
-  return `今日不以吉凶論斷，重點是用${topic.title}調整身心。`;
+  return `今日氣勢需配合${topic.title}調整身心。`;
 }
 
 function onePillarTransformTodayText(item) {
