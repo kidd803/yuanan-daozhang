@@ -42,7 +42,7 @@
         "inLanguage": "zh-Hant"
       }
     </script>
-    <link rel="stylesheet" href="styles.css?v=20260729-reading-recommendations">
+    <link rel="stylesheet" href="styles.css?v=20260802-one-pillar-v16">
   </head>
   <body>
     <main class="shell">
@@ -93,6 +93,38 @@
         <button type="button" data-query="通靈">通靈</button>
         <button type="button" data-query="紫微斗數">紫微斗數</button>
       </nav>
+
+      <section class="one-pillar-section" aria-labelledby="onePillarTitle">
+        <div class="one-pillar-intro">
+          <p class="eyebrow">生肖紫微・一柱論命</p>
+          <h2 id="onePillarTitle">每日修心運勢</h2>
+          <p>出生年看本命承負，農曆生日與時辰修正今日功課；不同資料會得到不同提醒。</p>
+        </div>
+        <div class="one-pillar-form" aria-label="一柱論命試算">
+          <label class="one-pillar-field">
+            <span>姓名</span>
+            <input id="onePillarNameInput" type="text" placeholder="請輸入姓名">
+          </label>
+          <label class="one-pillar-field">
+            <span>西元出生年</span>
+            <input id="onePillarYearInput" type="number" inputmode="numeric" value="1981" min="1900" max="2099" placeholder="例：1981">
+          </label>
+          <label class="one-pillar-field">
+            <span>農曆月</span>
+            <select id="onePillarMonthSelect" aria-label="選擇農曆出生月"></select>
+          </label>
+          <label class="one-pillar-field">
+            <span>農曆日</span>
+            <select id="onePillarDaySelect" aria-label="選擇農曆出生日"></select>
+          </label>
+          <label class="one-pillar-field">
+            <span>出生時辰</span>
+            <select id="onePillarHourSelect" aria-label="選擇出生時辰"></select>
+          </label>
+          <button id="onePillarButton" class="one-pillar-button" type="button">試算今日修心</button>
+        </div>
+        <div id="onePillarResult" class="one-pillar-result" aria-live="polite" hidden></div>
+      </section>
 
       <section class="pillar-sections" aria-label="圓安道語導讀">
         <div class="pillar-header">
@@ -254,6 +286,6 @@
     </template>
 
     <script src="data/posts.js?v=20260729-remove-longmen-reels"></script>
-    <script src="app.js?v=20260729-reading-recommendations"></script>
+    <script src="app.js?v=20260802-one-pillar-v16"></script>
   </body>
 </html>
