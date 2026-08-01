@@ -278,11 +278,74 @@ button:focus,
   background: var(--green-deep);
 }
 
+.one-pillar-button:disabled {
+  cursor: wait;
+  opacity: 0.82;
+}
+
 .one-pillar-result {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: minmax(260px, 0.9fr) minmax(320px, 1.1fr);
   gap: 12px;
+}
+
+.one-pillar-calculating {
+  grid-column: 1 / -1;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  min-height: 168px;
+  border: 1px solid rgba(155, 120, 48, 0.24);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255, 254, 251, 0.96), rgba(248, 244, 232, 0.88));
+  padding: 26px 18px;
+  text-align: center;
+}
+
+.one-pillar-calculating-mark {
+  width: 42px;
+  height: 42px;
+  border: 3px solid rgba(20, 78, 62, 0.14);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: onePillarSpin 0.95s linear infinite;
+}
+
+.one-pillar-calculating strong {
+  color: var(--green-deep);
+  font-size: 1rem;
+}
+
+.one-pillar-calculating p {
+  max-width: 520px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.one-pillar-calculating-steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.one-pillar-calculating-steps span {
+  border: 1px solid rgba(20, 78, 62, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 850;
+  padding: 6px 10px;
+}
+
+@keyframes onePillarSpin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .one-pillar-result-actions {

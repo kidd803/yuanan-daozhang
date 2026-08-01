@@ -309,6 +309,7 @@ const ONE_PILLAR_MONTH_KEY = 'yuanan-one-pillar-month';
 const ONE_PILLAR_DAY_KEY = 'yuanan-one-pillar-day';
 const ONE_PILLAR_HOUR_KEY = 'yuanan-one-pillar-hour';
 const ONE_PILLAR_DEFAULT_YEAR = 1981;
+const ONE_PILLAR_CALCULATION_MS = 1100;
 const LUNAR_MONTHS = ['正月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '冬月', '臘月'];
 const LUNAR_DAYS = [
   '初一', '初二', '初三', '初四', '初五', '初六', '初七', '初八', '初九', '初十',
@@ -405,6 +406,7 @@ const courseFrameworkClose = courseFrameworkLightbox?.querySelector('.image-ligh
 const courseFrameworkLightboxImage = courseFrameworkLightbox?.querySelector('img');
 let activeLightboxTrigger = null;
 let searchTrackTimer = null;
+let onePillarCalculateTimer = null;
 
 const categoryCounts = countBy(posts, (post) => post.category || '未分類');
 const seriesCounts = countSeries(posts);
@@ -490,20 +492,7 @@ function bindEvents() {
   });
 
   onePillarButton?.addEventListener('click', () => {
-    renderOnePillarResult();
-    const birthYear = parseGregorianYear(onePillarYearInput?.value || '') || ONE_PILLAR_DEFAULT_YEAR;
-    const birthStem = onePillarStemSelect?.value || parseYearStem(onePillarYearInput?.value || '') || sexagenaryYearFromGregorian(birthYear).stem;
-    const mainStar = calculateMainStar(birthStem, onePillarMonthSelect?.value || '正月', onePillarDaySelect?.value || '初一', onePillarHourSelect?.value || '');
-    trackEvent('one_pillar_daily_reading', {
-      birth_year: birthYear,
-      birth_stem: birthStem,
-      lunar_month: onePillarMonthSelect?.value || '',
-      lunar_day: onePillarDaySelect?.value || '',
-      birth_hour: onePillarHourSelect?.value || '',
-      main_star: mainStar?.name || '',
-      ming_palace: mainStar?.palaceLabel || '',
-      day_ganzhi: sexagenaryDay(new Date()).label
-    });
+    scheduleOnePillarCalculation();
   });
 
   loadMoreButton.addEventListener('click', () => {
@@ -594,6 +583,73 @@ function populateOnePillarOptions() {
   if (onePillarDaySelect) onePillarDaySelect.value = window.localStorage.getItem(ONE_PILLAR_DAY_KEY) || '初一';
   if (onePillarHourSelect) onePillarHourSelect.value = window.localStorage.getItem(ONE_PILLAR_HOUR_KEY) || '';
   if (onePillarStemSelect) onePillarStemSelect.value = stem;
+}
+
+function scheduleOnePillarCalculation() {
+  if (!onePillarResult) return;
+  resetOnePillarCalculation();
+  renderOnePillarCalculating();
+  setOnePillarButtonBusy(true);
+  onePillarCalculateTimer = window.setTimeout(() => {
+    onePillarCalculateTimer = null;
+    renderOnePillarResult();
+    setOnePillarButtonBusy(false);
+    trackOnePillarReading();
+  }, ONE_PILLAR_CALCULATION_MS);
+}
+
+function renderOnePillarCalculating() {
+  if (!onePillarResult) return;
+  onePillarResult.hidden = false;
+  const panel = document.createElement('div');
+  panel.className = 'one-pillar-calculating';
+  const mark = document.createElement('div');
+  mark.className = 'one-pillar-calculating-mark';
+  mark.setAttribute('aria-hidden', 'true');
+  const title = document.createElement('strong');
+  title.textContent = '正在試算今日修心';
+  const text = document.createElement('p');
+  text.textContent = '排出生年四化、命宮主星與今日干支後，再給出今日最該修的一念。';
+  const steps = document.createElement('div');
+  steps.className = 'one-pillar-calculating-steps';
+  ['生年四化', '命宮主星', '今日干支'].forEach((label) => {
+    const item = document.createElement('span');
+    item.textContent = label;
+    steps.append(item);
+  });
+  panel.append(mark, title, text, steps);
+  onePillarResult.replaceChildren(panel);
+}
+
+function setOnePillarButtonBusy(isBusy) {
+  if (!onePillarButton) return;
+  onePillarButton.disabled = isBusy;
+  onePillarButton.setAttribute('aria-busy', isBusy ? 'true' : 'false');
+  onePillarButton.textContent = isBusy ? '推算中...' : '試算今日修心';
+}
+
+function resetOnePillarCalculation() {
+  if (onePillarCalculateTimer) {
+    window.clearTimeout(onePillarCalculateTimer);
+    onePillarCalculateTimer = null;
+  }
+  setOnePillarButtonBusy(false);
+}
+
+function trackOnePillarReading() {
+  const birthYear = parseGregorianYear(onePillarYearInput?.value || '') || ONE_PILLAR_DEFAULT_YEAR;
+  const birthStem = onePillarStemSelect?.value || parseYearStem(onePillarYearInput?.value || '') || sexagenaryYearFromGregorian(birthYear).stem;
+  const mainStar = calculateMainStar(birthStem, onePillarMonthSelect?.value || '正月', onePillarDaySelect?.value || '初一', onePillarHourSelect?.value || '');
+  trackEvent('one_pillar_daily_reading', {
+    birth_year: birthYear,
+    birth_stem: birthStem,
+    lunar_month: onePillarMonthSelect?.value || '',
+    lunar_day: onePillarDaySelect?.value || '',
+    birth_hour: onePillarHourSelect?.value || '',
+    main_star: mainStar?.name || '',
+    ming_palace: mainStar?.palaceLabel || '',
+    day_ganzhi: sexagenaryDay(new Date()).label
+  });
 }
 
 function renderOnePillarResult() {
@@ -736,6 +792,7 @@ function renderOnePillarResult() {
 
 function clearOnePillarResult() {
   if (!onePillarResult) return;
+  resetOnePillarCalculation();
   onePillarResult.replaceChildren();
   onePillarResult.hidden = true;
 }
