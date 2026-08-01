@@ -732,12 +732,12 @@ function renderOnePillarResult() {
   const transformPanel = document.createElement('section');
   transformPanel.className = 'one-pillar-transforms';
   const transformTitle = document.createElement('h4');
-  transformTitle.textContent = '本命四化提醒';
+  transformTitle.textContent = '今日四化引動';
   const transformNote = document.createElement('p');
   transformNote.className = 'one-pillar-note';
   transformNote.textContent = reading.mainStar
-    ? '出生年看本命四化，生日與時辰看命宮主星；這裡用來提醒今天容易被引動的習氣。'
-    : '出生年先看本命四化；若補上出生時辰，系統會再加入命宮主星作修心提醒。';
+    ? '本命四化固定不變；每日只看今日干支五行如何觸動四化，提醒今天容易起心動念之處。'
+    : '本命四化固定不變；若補上出生時辰，系統會再加入命宮主星作修心提醒。';
   const transformCards = document.createElement('div');
   transformCards.className = 'one-pillar-transform-cards';
   transformCards.replaceChildren(...reading.transforms.map(onePillarTransformCard));
@@ -822,15 +822,15 @@ function onePillarChartPanel(reading) {
   const panel = document.createElement('section');
   panel.className = 'one-pillar-chart';
   const title = document.createElement('h4');
-  title.textContent = '簡式命盤';
+  title.textContent = '本命簡式命盤';
   const note = document.createElement('p');
   note.className = 'one-pillar-note';
   if (!reading.mainStar?.chartPalaces) {
-    note.textContent = '選定出生時辰後，這裡會顯示命宮與十四主星簡式落點。';
+    note.textContent = '這是固定的本命盤，不會每天變；選定出生時辰後，這裡會顯示命宮與十四主星簡式落點。';
     panel.append(title, note);
     return panel;
   }
-  note.textContent = '公開版只顯示命宮、十二地支宮位、十四主星與生年四化標記；完整十二宮、大限流年與深度解讀未開放。';
+  note.textContent = '這是固定的本命盤，不會每天變；公開版只顯示命宮、十四主星與落在主星上的生年四化。文昌、文曲等輔星四化仍參與今日提醒，但不顯示於此簡式主星盤。';
   const grid = document.createElement('div');
   grid.className = 'one-pillar-chart-grid';
   const transformByStar = new Map(reading.transforms.map((item) => [item.star, item.name]));
@@ -1228,12 +1228,12 @@ function onePillarTransformCard(item) {
   top.append(star, badge);
   const role = document.createElement('p');
   role.className = 'one-pillar-transform-role';
-  role.textContent = `${item.meaning}：${item.plainMeaning}`;
+  role.textContent = `本命${item.name}：${item.meaning}，${item.plainMeaning}`;
   const nature = document.createElement('p');
   nature.textContent = `${item.star}偏向${item.starMeaning}。`;
   const today = document.createElement('p');
   today.className = 'one-pillar-transform-today';
-  today.textContent = `今日提醒：${onePillarTransformTodayText(item)}`;
+  today.textContent = `今日引動：${onePillarTransformTodayText(item)}`;
   card.append(top, role, nature, today);
   return card;
 }
