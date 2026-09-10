@@ -17,7 +17,7 @@ const CATEGORY_ORDER = Array.isArray(archiveMeta.categoryOrder) && archiveMeta.c
   ? archiveMeta.categoryOrder
   : DEFAULT_CATEGORY_ORDER;
 const countFormat = new Intl.NumberFormat('zh-Hant');
-const SECRET_PHRASES = ['林明心', '林明毅', '林圓安'];
+const SECRET_PHRASES = ['林明心', '林明毅', '林圓安', '曾明渺'];
 const PUBLIC_PREVIEW_RATIO = 0.5;
 const RECOMMENDATION_MIN_LENGTH = 320;
 const ARTICLE_UNLOCK_KEY = 'yuanan-article-unlocked';
